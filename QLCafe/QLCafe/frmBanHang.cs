@@ -446,7 +446,7 @@ namespace QLCafe
                 int IDban = IDBan;
                 int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
                 int SLMoi = Int32.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString());
-                float GiaTong =  float.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString());
+                float GiaTong = float.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString());
                 if (DAO_ChiTietHoaDon.CapNhatSoLuong(IDHoaDon, (SLMoi * GiaTong).ToString(), SLMoi.ToString(), MaHangHoa) == true)
                 {
                     TinhTongTien(IDHoaDon);
@@ -459,7 +459,10 @@ namespace QLCafe
                     MessageBox.Show("Cập nhật số lượng không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
+            else
+            {
+                HienThiHoaDon(IDBan);
+            }
                
         }
 
