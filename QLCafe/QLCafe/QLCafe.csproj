@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8747AB24-48D9-41F6-B55B-40400A3CDC98}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLCafe</RootNamespace>
+    <AssemblyName>QLCafe</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BUS">
+      <HintPath>..\BUS\bin\Debug\BUS.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v16.1" />
+    <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.1" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BUS\BUS_BAN.cs" />
+    <Compile Include="BUS\BUS_BanHang.cs" />
+    <Compile Include="BUS\BUS_DangNhap.cs" />
+    <Compile Include="BUS\BUS_HangHoa.cs" />
+    <Compile Include="BUS\BUS_KhuVuc.cs" />
+    <Compile Include="BUS\BUS_NhomHang.cs" />
+    <Compile Include="BUS\BUS_TestKetNoiServer.cs" />
+    <Compile Include="BUS\BUS_WriteDataConnect.cs" />
+    <Compile Include="DAO\DAO_BAN.cs" />
+    <Compile Include="DAO\DAO_BanHang.cs" />
+    <Compile Include="DAO\DAO_ChiTietHoaDon.cs" />
+    <Compile Include="DAO\DAO_ConnectSQL.cs" />
+    <Compile Include="DAO\DAO_DangNhap.cs" />
+    <Compile Include="DAO\DAO_DanhSachMonAn.cs" />
+    <Compile Include="DAO\DAO_DatBan.cs" />
+    <Compile Include="DAO\DAO_Gio.cs" />
+    <Compile Include="DAO\DAO_GoiMon.cs" />
+    <Compile Include="DAO\DAO_HangHoa.cs" />
+    <Compile Include="DAO\DAO_HoaDon.cs" />
+    <Compile Include="DAO\DAO_KhachHang.cs" />
+    <Compile Include="DAO\DAO_KhuVuc.cs" />
+    <Compile Include="DAO\DAO_NhomHang.cs" />
+    <Compile Include="DAO\DAO_NhomKhachHang.cs" />
+    <Compile Include="DAO\DAO_Setting.cs" />
+    <Compile Include="DAO\DAO_TestKetNoi.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\NativeMethods.cs" />
+    <Compile Include="DTO\DTO_BAN.cs" />
+    <Compile Include="DTO\DTO_ChiTietHoaDon.cs" />
+    <Compile Include="DTO\DTO_DangNhap.cs" />
+    <Compile Include="DTO\DTO_DanhSachMenu.cs" />
+    <Compile Include="DTO\DTO_DatBan.cs" />
+    <Compile Include="DTO\DTO_Gio.cs" />
+    <Compile Include="DTO\DTO_HangHoa.cs" />
+    <Compile Include="DTO\DTO_HoaDon.cs" />
+    <Compile Include="DTO\DTO_KhachHang.cs" />
+    <Compile Include="DTO\DTO_KhuVuc.cs" />
+    <Compile Include="DTO\DTO_NhomHangHoa.cs" />
+    <Compile Include="DTO\DTO_NhomKhachHang.cs" />
+    <Compile Include="DTO\DTO_WriteDataConnect.cs" />
+    <Compile Include="frmBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBanHang.Designer.cs">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCauHinhHeThong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCauHinhHeThong.Designer.cs">
+      <DependentUpon>frmCauHinhHeThong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChuyenBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChuyenBan.Designer.cs">
+      <DependentUpon>frmChuyenBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDangNhap.Designer.cs">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDatBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatBan.Designer.cs">
+      <DependentUpon>frmDatBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDoiMatKhau.Designer.cs">
+      <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGoiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGoiMon.Designer.cs">
+      <DependentUpon>frmGoiMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGopBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGopBan.Designer.cs">
+      <DependentUpon>frmGopBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTachBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTachBan.Designer.cs">
+      <DependentUpon>frmTachBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemKhachHang.Designer.cs">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBanHang.resx">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCauHinhHeThong.resx">
+      <DependentUpon>frmCauHinhHeThong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChuyenBan.resx">
+      <DependentUpon>frmChuyenBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatBan.resx">
+      <DependentUpon>frmDatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDoiMatKhau.resx">
+      <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGoiMon.resx">
+      <DependentUpon>frmGoiMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGopBan.resx">
+      <DependentUpon>frmGopBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTachBan.resx">
+      <DependentUpon>frmTachBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemKhachHang.resx">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\gpm.ico" />
+    <Content Include="images\gpm.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
