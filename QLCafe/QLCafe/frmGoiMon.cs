@@ -65,7 +65,7 @@ namespace QLCafe
         {
             string GioHienTai = GioVao.ToString("hh:mm:ss");
             float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
-            int IDKhuVuc  = DAO_BAN.LayIDKhuVuc(IDBan);
+            int IDKhuVuc = DAO_BAN.LayIDKhuVuc(IDBan);
             float TyLeKhuVuc = DAO_KhuVuc.LayTyLe(IDKhuVuc);
             int IDHangHoa = Int32.Parse(tbThongTin.Rows[0]["ID"].ToString());
             string MaHangHoa = tbThongTin.Rows[0]["MaHangHoa"].ToString();
@@ -91,9 +91,9 @@ namespace QLCafe
                     break;
                 }
             }
-            if(KT ==0)
+            if (KT == 0)
             {
-                listChiTietHoaDon.Add(new ChiTietHoaDon() { IDHangHoa = IDHangHoa, MaHangHoa = MaHangHoa, IDDonViTinh = IDDonViTinh, SoLuong = SL, DonGia = GiaBan, ThanhTien = DonGiaTong * SL, IdBan = idban, TenDonViTinh = TenDonViTinh, TenHangHoa = TenHangHoa, PhuThuGio = PhuThuGio, PhuThuKhuVuc = PhuThuKhuVuc,DonGiaTong = DonGiaTong });
+                listChiTietHoaDon.Add(new ChiTietHoaDon() { IDHangHoa = IDHangHoa, MaHangHoa = MaHangHoa, IDDonViTinh = IDDonViTinh, SoLuong = SL, DonGia = GiaBan, ThanhTien = DonGiaTong * SL, IdBan = idban, TenDonViTinh = TenDonViTinh, TenHangHoa = TenHangHoa, PhuThuGio = PhuThuGio, PhuThuKhuVuc = PhuThuKhuVuc, DonGiaTong = DonGiaTong });
             }
         }
         public void BindGridChiTietHoaDon()
@@ -203,6 +203,7 @@ namespace QLCafe
                     return;
                 GridView view = sender as GridView;
                 view.DeleteRow(view.FocusedRowHandle);
+                
             }
         }
 

@@ -271,7 +271,7 @@ namespace QLCafe
         {
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
-                frmChuyenBan fr = new frmChuyenBan();
+                frmTachBan fr = new frmTachBan();
                 fr.ShowDialog();
             }
             else
@@ -284,7 +284,7 @@ namespace QLCafe
         {
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
-                frmTachBan fr = new frmTachBan();
+                frmGopBan fr = new frmGopBan();
                 fr.ShowDialog();
             }
             else
