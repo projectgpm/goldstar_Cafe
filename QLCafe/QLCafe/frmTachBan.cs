@@ -217,7 +217,7 @@ namespace QLCafe
             }
             else
             {
-                MessageBox.Show("Bạn đang chọn trạng thái tách bàn? Danh sách món ăn còn lại phải lơn hơn hoặc bằng 1.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bạn đang chọn trạng thái tách bàn? Danh sách món ăn còn lại phải lớn hơn hoặc bằng 1.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //if (listChiTietHoaDonA2.Count > 1)
@@ -681,10 +681,7 @@ namespace QLCafe
                 set { giaTong = value; }
             }
         }
-        private void btnThucHien_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void gridControlA_Click(object sender, EventArgs e)
         {
@@ -709,6 +706,10 @@ namespace QLCafe
                 //int IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
                 //int IDHoaDon = DAO_BanHang.IDHoaDon(IDBanMoi);
             }
+        }
+        private void btnThucHien_Click(object sender, EventArgs e)
+        {
+            // lấy lại dữ liệu A và B, xóa chi tiết A, thêm lại A, Thêm B + Hóa Đơn Mới(if đã tồn tại thêm chèn vào)
         }
     }
 }

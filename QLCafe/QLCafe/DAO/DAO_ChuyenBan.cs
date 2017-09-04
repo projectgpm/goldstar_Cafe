@@ -77,5 +77,17 @@ namespace QLCafe.DAO
             }
             return tablelist;
         }
+
+        public static bool XoaChiTietBanCu(int IDHoaDon, int IDBanCu)
+        {
+            string sTruyVan = string.Format(@"DELETE [CF_ChiTietHoaDon]  WHERE IDHoaDon = {0} AND IDBan = {1}", IDHoaDon, IDBanCu);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+
+        public static bool CapNhatHoaDon(int IDHoaDon, int IDBanMoi)
+        {
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [IDBan] = {0} WHERE ID = {1}", IDBanMoi, IDHoaDon);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
     }
 }

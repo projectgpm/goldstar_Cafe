@@ -653,6 +653,7 @@
             this.btnThucHien.Size = new System.Drawing.Size(118, 35);
             this.btnThucHien.TabIndex = 12;
             this.btnThucHien.Text = "Thực Hiện";
+            this.btnThucHien.Click += new System.EventHandler(this.btnThucHien_Click);
             // 
             // frmChuyenBan
             // 

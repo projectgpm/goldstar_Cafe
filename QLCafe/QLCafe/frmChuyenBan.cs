@@ -19,7 +19,8 @@ namespace QLCafe
         int IDBan = frmBanHang.IDBan;
         int IDHoaDon = DAO_BanHang.IDHoaDon(frmBanHang.IDBan);
         string IDChiNhanh = frmDangNhap.NguoiDung.Idchinhanh;
-        
+        public delegate void GetKT(int KT, int IDBanChuyen, int IDBanNhan,int IDHoaDonMoi);
+        public GetKT MyGetData;
         List<ChiTietHoaDonA1> listChiTietHoaDonA1 = new List<ChiTietHoaDonA1>();
         List<ChiTietHoaDonA2> listChiTietHoaDonA2 = new List<ChiTietHoaDonA2>();
         List<ChiTietHoaDonB1> listChiTietHoaDonB1 = new List<ChiTietHoaDonB1>();
@@ -152,6 +153,22 @@ namespace QLCafe
 
             foreach (ChiTietHoaDonA2 item in listChiTietHoaDonA2)
             {
+                if (KTGio == 1)
+                {
+                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
+                }
+                else
+                {
+                    GiaTheoGio = item.PhuThuGio;
+                }
+                if (KTKhuVuc == 1)
+                {
+                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
+                }
+                else
+                {
+                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
+                }
                 float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
                 listChiTietHoaDonB2.Add(new ChiTietHoaDonB2
                 {
@@ -297,9 +314,6 @@ namespace QLCafe
                 set { maHangHoa = value; }
             }
         }
-
-
-
         public class ChiTietHoaDonA2
         {
             private int iDHoaDon;
@@ -380,7 +394,6 @@ namespace QLCafe
                 set { giaTong = value; }
             }
         }
-
         public class ChiTietHoaDonB1
         {
             private float giaTong;
@@ -448,9 +461,6 @@ namespace QLCafe
                 set { maHangHoa = value; }
             }
         }
-
-
-
         public class ChiTietHoaDonB2
         {
             private int iDHoaDon;
@@ -532,6 +542,44 @@ namespace QLCafe
             }
         }
 
+        private void btnThucHien_Click(object sender, EventArgs e)
+        {
+            int IDBanChuyen = IDBan;
+            int IDBanNhan = Int32.Parse(cmbBanB.EditValue.ToString());
+            int IDNhanVien = frmDangNhap.NguoiDung.Id;
+            // xóa chi tiết bàn A, thêm vào chi tiết bàn B, đổi IDBan trong hóa đơn, đổi trạng thái bàn.
+            if (listChiTietHoaDonB2.Count > 0)
+            {
+                if (DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDon, IDBanChuyen) == true && DAO_BAN.DoiTrangThaiBanCoNguoi(IDBanNhan) == true && DAO_BAN.XoaBanVeMatDinh(IDBanChuyen) == true && DAO_ChuyenBan.CapNhatHoaDon(IDHoaDon,IDBanNhan) == true)// xóa chi tiết hóa đơn củ
+                {
+                    foreach (ChiTietHoaDonB2 item in listChiTietHoaDonB2)
+                    {
+                        int IDHangHoa = item.IDHangHoa;
+                        int SL = item.SoLuong;
+                        float DonGia = item.DonGia;
+                        float ThanhTien = item.ThanhTien;
+                        int IdBan = IDBanNhan;
+                        string MaHangHoa = item.MaHangHoa;
+                        int IDDonViTinh = item.IDDonViTinh;
+                        float PhuThuGio = item.PhuThuGio;
+                        float PhuThuKhuVuc = item.PhuThuKhuVuc;
+                        float GiaTong = item.GiaTong;
+                        IDHoaDon = item.IDHoaDon;
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IdBan, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong); // thêm chi tiết hóa đơn mới
+                    }
+
+                    if (MyGetData != null)
+                    {
+                        MyGetData(1, IDBanChuyen, IDBanNhan, IDHoaDon);
+                        this.Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Danh sách món ăn rỗng. Vui lòng kiểm tra lại?", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
        
     }
 }

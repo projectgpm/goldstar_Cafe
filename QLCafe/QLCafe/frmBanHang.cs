@@ -241,14 +241,32 @@ namespace QLCafe
 
         private void barButtonChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
         {
+            // chuyển bàn
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
                 frmChuyenBan fr = new frmChuyenBan();
+                fr.MyGetData = new frmChuyenBan.GetKT(GetChuyenBan);
                 fr.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Bàn chưa có món ăn. Không thể chuyển bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void GetChuyenBan(int KT, int IDBanChuyen, int IDBanNhan, int IDHoaDon)
+        {
+            if (KT == 1)
+            {
+                DanhSachBan();
+                TinhTongTien(IDHoaDon);
+                gridControlCTHD.DataSource = null;
+                gridControlCTHD.Refresh();
+                MessageBox.Show("Chuyển bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Chuyển bàn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DanhSachBan();
             }
         }
         public void GetValueGoiMon(int KT, int IDHoaDon)
