@@ -78,12 +78,24 @@ namespace QLCafe.DAO
             return tablelist;
         }
 
+        /// <summary>
+        /// xóa chi tiết idhoadon 
+        /// </summary>
+        /// <param name="IDHoaDon"></param>
+        /// <param name="IDBanCu"></param>
+        /// <returns></returns>
         public static bool XoaChiTietBanCu(int IDHoaDon, int IDBanCu)
         {
             string sTruyVan = string.Format(@"DELETE [CF_ChiTietHoaDon]  WHERE IDHoaDon = {0} AND IDBan = {1}", IDHoaDon, IDBanCu);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 
+        /// <summary>
+        /// cập nhật hóa đơn
+        /// </summary>
+        /// <param name="IDHoaDon"></param>
+        /// <param name="IDBanMoi"></param>
+        /// <returns></returns>
         public static bool CapNhatHoaDon(int IDHoaDon, int IDBanMoi)
         {
             string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [IDBan] = {0} WHERE ID = {1}", IDBanMoi, IDHoaDon);

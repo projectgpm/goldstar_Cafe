@@ -23,6 +23,8 @@ namespace QLCafe
         List<ChiTietHoaDonA2> listChiTietHoaDonA2 = new List<ChiTietHoaDonA2>();
         List<ChiTietHoaDonB1> listChiTietHoaDonB1 = new List<ChiTietHoaDonB1>();
         List<ChiTietHoaDonB2> listChiTietHoaDonB2 = new List<ChiTietHoaDonB2>();
+        public delegate void GetKT(int KT, int IDHoaDonA, int IDHoaDonB);
+        public GetKT MyGetDataTachBan;
         public frmTachBan()
         {
             InitializeComponent();
@@ -77,14 +79,11 @@ namespace QLCafe
 
         private void cmbBanB_EditValueChanged(object sender, EventArgs e)
         {
-
             listChiTietHoaDonB1.Clear();
             listChiTietHoaDonB2.Clear();
             gridControlB.DataSource = null;
             gridControlB.Refresh();
             LamMoi();
-            //btnBA1.Enabled = true;
-            //btnAB2.Enabled = true;
             btnThucHien.Enabled = true;
             DanhSachHangHoaB(Int32.Parse(cmbBanB.EditValue.ToString()));
         }
@@ -206,7 +205,8 @@ namespace QLCafe
                         PhuThuKhuVuc = GiaTheoKhuVuc,
                         SoLuong = SoLuong,
                     });
-                listChiTietHoaDonA1.RemoveAt(dongHienTai);
+                listChiTietHoaDonA1.RemoveAt(dongHienTai);// xóa dòng hiện tại A1
+                listChiTietHoaDonA2.RemoveAt(dongHienTai); // xóa dòng hiện tại A2
                 gridControlB.DataSource = null;
                 gridControlB.Refresh();
                 gridControlB.DataSource = listChiTietHoaDonB1;
@@ -306,7 +306,9 @@ namespace QLCafe
                     PhuThuKhuVuc = GiaTheoKhuVuc,
                     SoLuong = SoLuong,
                 });
-                listChiTietHoaDonB1.RemoveAt(dongHienTai);
+
+                listChiTietHoaDonB1.RemoveAt(dongHienTai);// xóa dòng hiện tại B1
+                listChiTietHoaDonB2.RemoveAt(dongHienTai);// xóa dòng hiện tại B2
                 gridControlA.DataSource = null;
                 gridControlA.Refresh();
                 gridControlA.DataSource = listChiTietHoaDonA1;
@@ -689,9 +691,6 @@ namespace QLCafe
             {
                 btnBA1.Enabled = false;
                 btnAB2.Enabled = true;
-                //string TenHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[1]).ToString();
-                //string MaHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[0]).ToString();
-                //int IDHoaDon = DAO_BanHang.IDHoaDon(IDBan);
             }
         }
 
@@ -701,10 +700,6 @@ namespace QLCafe
             {
                 btnBA1.Enabled = true;
                 btnAB2.Enabled = false;
-                //string TenHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[1]).ToString();
-                //string MaHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[0]).ToString();
-                //int IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
-                //int IDHoaDon = DAO_BanHang.IDHoaDon(IDBanMoi);
             }
         }
         private void btnThucHien_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTachBan));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.gridControlB = new DevExpress.XtraGrid.GridControl();
             this.gridViewB = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -180,6 +180,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "SL";
+            this.gridColumn4.DisplayFormat.FormatString = "N0";
             this.gridColumn4.FieldName = "SoLuong";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -191,7 +192,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Đơn Giá";
-            this.gridColumn5.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn5.DisplayFormat.FormatString = "N0";
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn5.FieldName = "DonGia";
             this.gridColumn5.Name = "gridColumn5";
@@ -203,7 +204,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Phụ Thu Giờ";
-            this.gridColumn6.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn6.DisplayFormat.FormatString = "N0";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn6.FieldName = "PhuThuGio";
             this.gridColumn6.Name = "gridColumn6";
@@ -215,7 +216,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Phụ Thu Khu Vực";
-            this.gridColumn7.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn7.DisplayFormat.FormatString = "N0";
             this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn7.FieldName = "PhuThuKhuVuc";
             this.gridColumn7.Name = "gridColumn7";
@@ -227,7 +228,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Giá Tổng";
-            this.gridColumn8.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn8.DisplayFormat.FormatString = "N0";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn8.FieldName = "GiaTong";
             this.gridColumn8.Name = "gridColumn8";
@@ -239,7 +240,7 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Thành Tiền";
-            this.gridColumn9.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn9.DisplayFormat.FormatString = "N0";
             this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn9.FieldName = "ThanhTien";
             this.gridColumn9.Name = "gridColumn9";
@@ -294,7 +295,7 @@
             // 
             this.repositoryItemButtonEdit3.AutoHeight = false;
             this.repositoryItemButtonEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit3.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject7, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit3.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.repositoryItemButtonEdit3.Name = "repositoryItemButtonEdit3";
             this.repositoryItemButtonEdit3.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -570,6 +571,7 @@
             // gridColumn21
             // 
             this.gridColumn21.Caption = "SL";
+            this.gridColumn21.DisplayFormat.FormatString = "N0";
             this.gridColumn21.FieldName = "SoLuong";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.AllowEdit = false;
@@ -581,7 +583,7 @@
             // gridColumn22
             // 
             this.gridColumn22.Caption = "Đơn Giá";
-            this.gridColumn22.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn22.DisplayFormat.FormatString = "N0";
             this.gridColumn22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn22.FieldName = "DonGia";
             this.gridColumn22.Name = "gridColumn22";
@@ -593,7 +595,7 @@
             // gridColumn23
             // 
             this.gridColumn23.Caption = "Phụ Thu Giờ";
-            this.gridColumn23.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn23.DisplayFormat.FormatString = "N0";
             this.gridColumn23.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn23.FieldName = "PhuThuGio";
             this.gridColumn23.Name = "gridColumn23";
@@ -605,7 +607,7 @@
             // gridColumn24
             // 
             this.gridColumn24.Caption = "Phụ Thu Khu Vực";
-            this.gridColumn24.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn24.DisplayFormat.FormatString = "N0";
             this.gridColumn24.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn24.FieldName = "PhuThuKhuVuc";
             this.gridColumn24.Name = "gridColumn24";
@@ -617,7 +619,7 @@
             // gridColumn25
             // 
             this.gridColumn25.Caption = "Giá Tổng";
-            this.gridColumn25.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn25.DisplayFormat.FormatString = "N0";
             this.gridColumn25.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn25.FieldName = "GiaTong";
             this.gridColumn25.Name = "gridColumn25";
@@ -629,7 +631,7 @@
             // gridColumn26
             // 
             this.gridColumn26.Caption = "Thành Tiền";
-            this.gridColumn26.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn26.DisplayFormat.FormatString = "N0";
             this.gridColumn26.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn26.FieldName = "ThanhTien";
             this.gridColumn26.Name = "gridColumn26";

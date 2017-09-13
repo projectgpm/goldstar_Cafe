@@ -297,12 +297,29 @@ namespace QLCafe
                 MessageBox.Show("Bàn chưa có món ăn. Không thể tách bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        public void GetTachBan(int KT, int IDHoaDonA, int IDHoaDonB)
+        {
+            if (KT == 1)
+            {
+                DanhSachBan();
+                TinhTongTien(IDHoaDonA);
+                TinhTongTien(IDHoaDonB);
+                gridControlCTHD.DataSource = null;
+                gridControlCTHD.Refresh();
+                MessageBox.Show("Tách bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Tách bàn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DanhSachBan();
+            }
+        }
         private void barButtonGopBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
                 frmGopBan fr = new frmGopBan();
+                fr.MyGetDataGopBan = new frmGopBan.GetKT(GetGopBan);
                 fr.ShowDialog();
             }
             else
@@ -310,7 +327,22 @@ namespace QLCafe
                 MessageBox.Show("Bàn chưa có món ăn. Không thể gộp bàn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        public void GetGopBan(int KT, int IDBanA, int IDBanB, int IDHoaDon)
+        {
+            if (KT == 1)
+            {
+                DanhSachBan();
+                TinhTongTien(IDHoaDon);
+                gridControlCTHD.DataSource = null;
+                gridControlCTHD.Refresh();
+                MessageBox.Show("Gộp bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Gộp bàn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DanhSachBan();
+            }
+        }
         private void txtKhachThanhToan_EditValueChanged(object sender, EventArgs e)
         {
             float KhachThanhToan = float.Parse(txtKhachThanhToan.EditValue.ToString());

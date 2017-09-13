@@ -132,7 +132,6 @@
             this.cmbHangHoa.Properties.View = this.gridLookUpEdit1View;
             this.cmbHangHoa.Size = new System.Drawing.Size(177, 20);
             this.cmbHangHoa.TabIndex = 15;
-//            this.cmbHangHoa.EditValueChanged += new System.EventHandler(this.cmbHangHoa_EditValueChanged);
             // 
             // gridLookUpEdit1View
             // 
@@ -271,7 +270,7 @@
             // 
             this.gridColumn12.Caption = "Đơn Giá";
             this.gridColumn12.ColumnEdit = this.repositoryItemSpinEdit2;
-            this.gridColumn12.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn12.DisplayFormat.FormatString = "N0";
             this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn12.FieldName = "DonGia";
             this.gridColumn12.Name = "gridColumn12";
@@ -291,7 +290,7 @@
             // 
             this.gridColumn13.Caption = "Phụ Thu Theo Giờ";
             this.gridColumn13.ColumnEdit = this.repositoryItemSpinEdit3;
-            this.gridColumn13.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn13.DisplayFormat.FormatString = "N0";
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn13.FieldName = "PhuThuGio";
             this.gridColumn13.Name = "gridColumn13";
@@ -311,7 +310,7 @@
             // 
             this.gridColumn14.Caption = "Phụ Thu Theo Khu Vực";
             this.gridColumn14.ColumnEdit = this.repositoryItemSpinEdit3;
-            this.gridColumn14.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn14.DisplayFormat.FormatString = "N0";
             this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn14.FieldName = "PhuThuKhuVuc";
             this.gridColumn14.Name = "gridColumn14";
@@ -324,7 +323,7 @@
             // 
             this.gridColumn15.Caption = "Giá Tổng";
             this.gridColumn15.ColumnEdit = this.repositoryItemSpinEdit3;
-            this.gridColumn15.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn15.DisplayFormat.FormatString = "N0";
             this.gridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn15.FieldName = "DonGiaTong";
             this.gridColumn15.Name = "gridColumn15";
@@ -337,7 +336,7 @@
             // 
             this.gridColumn16.Caption = "Thành Tiền";
             this.gridColumn16.ColumnEdit = this.repositoryItemSpinEdit3;
-            this.gridColumn16.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn16.DisplayFormat.FormatString = "N0";
             this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn16.FieldName = "ThanhTien";
             this.gridColumn16.Name = "gridColumn16";

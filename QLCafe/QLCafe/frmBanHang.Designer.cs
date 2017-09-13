@@ -574,7 +574,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.71585F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
             this.tableLayoutPanel1.Controls.Add(this.txtTienThoi, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtKhachThanhToan, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtKhachCanTra, 1, 3);
@@ -608,7 +608,7 @@
             0,
             0,
             0});
-            this.txtTienThoi.Location = new System.Drawing.Point(162, 208);
+            this.txtTienThoi.Location = new System.Drawing.Point(160, 208);
             this.txtTienThoi.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtTienThoi.MenuManager = this.barManager1;
             this.txtTienThoi.Name = "txtTienThoi";
@@ -623,7 +623,7 @@
             this.txtTienThoi.Properties.DisplayFormat.FormatString = "{0:#,# đ}";
             this.txtTienThoi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTienThoi.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTienThoi.Size = new System.Drawing.Size(225, 30);
+            this.txtTienThoi.Size = new System.Drawing.Size(227, 30);
             this.txtTienThoi.TabIndex = 22;
             // 
             // txtKhachThanhToan
@@ -634,7 +634,7 @@
             0,
             0,
             0});
-            this.txtKhachThanhToan.Location = new System.Drawing.Point(162, 165);
+            this.txtKhachThanhToan.Location = new System.Drawing.Point(160, 165);
             this.txtKhachThanhToan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtKhachThanhToan.MenuManager = this.barManager1;
             this.txtKhachThanhToan.Name = "txtKhachThanhToan";
@@ -651,7 +651,7 @@
             this.txtKhachThanhToan.Properties.EditFormat.FormatString = "{0:#,# đ}";
             this.txtKhachThanhToan.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtKhachThanhToan.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtKhachThanhToan.Size = new System.Drawing.Size(225, 30);
+            this.txtKhachThanhToan.Size = new System.Drawing.Size(227, 30);
             this.txtKhachThanhToan.TabIndex = 21;
             this.txtKhachThanhToan.EditValueChanged += new System.EventHandler(this.txtKhachThanhToan_EditValueChanged);
             // 
@@ -663,7 +663,7 @@
             0,
             0,
             0});
-            this.txtKhachCanTra.Location = new System.Drawing.Point(162, 125);
+            this.txtKhachCanTra.Location = new System.Drawing.Point(160, 125);
             this.txtKhachCanTra.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtKhachCanTra.MenuManager = this.barManager1;
             this.txtKhachCanTra.Name = "txtKhachCanTra";
@@ -678,7 +678,7 @@
             this.txtKhachCanTra.Properties.DisplayFormat.FormatString = "{0:#,# đ}";
             this.txtKhachCanTra.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtKhachCanTra.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtKhachCanTra.Size = new System.Drawing.Size(225, 30);
+            this.txtKhachCanTra.Size = new System.Drawing.Size(227, 30);
             this.txtKhachCanTra.TabIndex = 20;
             // 
             // txtGiamGia
@@ -689,7 +689,7 @@
             0,
             0,
             0});
-            this.txtGiamGia.Location = new System.Drawing.Point(162, 85);
+            this.txtGiamGia.Location = new System.Drawing.Point(160, 85);
             this.txtGiamGia.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtGiamGia.MenuManager = this.barManager1;
             this.txtGiamGia.Name = "txtGiamGia";
@@ -704,7 +704,7 @@
             this.txtGiamGia.Properties.DisplayFormat.FormatString = "{0:#,# đ}";
             this.txtGiamGia.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtGiamGia.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtGiamGia.Size = new System.Drawing.Size(225, 30);
+            this.txtGiamGia.Size = new System.Drawing.Size(227, 30);
             this.txtGiamGia.TabIndex = 19;
             // 
             // txtDiemTichLuy
@@ -715,7 +715,7 @@
             0,
             0,
             0});
-            this.txtDiemTichLuy.Location = new System.Drawing.Point(162, 45);
+            this.txtDiemTichLuy.Location = new System.Drawing.Point(160, 45);
             this.txtDiemTichLuy.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtDiemTichLuy.MenuManager = this.barManager1;
             this.txtDiemTichLuy.Name = "txtDiemTichLuy";
@@ -728,7 +728,7 @@
             this.txtDiemTichLuy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDiemTichLuy.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtDiemTichLuy.Size = new System.Drawing.Size(225, 30);
+            this.txtDiemTichLuy.Size = new System.Drawing.Size(227, 30);
             this.txtDiemTichLuy.TabIndex = 18;
             this.txtDiemTichLuy.EditValueChanged += new System.EventHandler(this.txtDiemTichLuy_EditValueChanged);
             // 
@@ -739,7 +739,7 @@
             this.labelControl3.Location = new System.Drawing.Point(4, 206);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl3.Size = new System.Drawing.Size(151, 35);
+            this.labelControl3.Size = new System.Drawing.Size(149, 35);
             this.labelControl3.TabIndex = 16;
             this.labelControl3.Text = "TIỀN THỒI";
             // 
@@ -750,7 +750,7 @@
             this.labelControl2.Location = new System.Drawing.Point(4, 163);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl2.Size = new System.Drawing.Size(151, 36);
+            this.labelControl2.Size = new System.Drawing.Size(149, 36);
             this.labelControl2.TabIndex = 12;
             this.labelControl2.Text = "KHÁCH THANH TOÁN";
             // 
@@ -761,7 +761,7 @@
             this.labelControl8.Location = new System.Drawing.Point(4, 123);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl8.Size = new System.Drawing.Size(151, 33);
+            this.labelControl8.Size = new System.Drawing.Size(149, 33);
             this.labelControl8.TabIndex = 9;
             this.labelControl8.Text = "KHÁCH CẦN TRẢ";
             // 
@@ -772,7 +772,7 @@
             this.labelControl5.Location = new System.Drawing.Point(4, 83);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl5.Size = new System.Drawing.Size(151, 33);
+            this.labelControl5.Size = new System.Drawing.Size(149, 33);
             this.labelControl5.TabIndex = 6;
             this.labelControl5.Text = "GIẢM GIÁ";
             // 
@@ -783,7 +783,7 @@
             this.labelControl4.Location = new System.Drawing.Point(4, 43);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl4.Size = new System.Drawing.Size(151, 33);
+            this.labelControl4.Size = new System.Drawing.Size(149, 33);
             this.labelControl4.TabIndex = 5;
             this.labelControl4.Text = "ĐIỂM TÍCH LŨY";
             // 
@@ -794,7 +794,7 @@
             this.labelControl1.Location = new System.Drawing.Point(4, 4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl1.Size = new System.Drawing.Size(151, 32);
+            this.labelControl1.Size = new System.Drawing.Size(149, 32);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "TỔNG TIỀN";
             // 
@@ -806,7 +806,7 @@
             0,
             0,
             0});
-            this.txtTongTien.Location = new System.Drawing.Point(162, 6);
+            this.txtTongTien.Location = new System.Drawing.Point(160, 6);
             this.txtTongTien.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtTongTien.MenuManager = this.barManager1;
             this.txtTongTien.Name = "txtTongTien";
@@ -821,7 +821,7 @@
             this.txtTongTien.Properties.DisplayFormat.FormatString = "{0:#,# đ}";
             this.txtTongTien.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTongTien.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTongTien.Size = new System.Drawing.Size(225, 30);
+            this.txtTongTien.Size = new System.Drawing.Size(227, 30);
             this.txtTongTien.TabIndex = 17;
             // 
             // panelControl3
@@ -916,6 +916,7 @@
             // 
             this.gridColumn4.Caption = "Số Lượng";
             this.gridColumn4.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.gridColumn4.DisplayFormat.FormatString = "N0";
             this.gridColumn4.FieldName = "SoLuong";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
@@ -946,7 +947,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Đơn Giá";
-            this.gridColumn5.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn5.DisplayFormat.FormatString = "N0";
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn5.FieldName = "DonGia";
             this.gridColumn5.Name = "gridColumn5";
@@ -958,7 +959,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Phụ Thu Theo Giờ";
-            this.gridColumn6.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn6.DisplayFormat.FormatString = "N0";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn6.FieldName = "PhuThuGio";
             this.gridColumn6.Name = "gridColumn6";
@@ -970,7 +971,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Phụ Thu Theo Khu Vực";
-            this.gridColumn7.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn7.DisplayFormat.FormatString = "N0";
             this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn7.FieldName = "PhuThuKhuVuc";
             this.gridColumn7.Name = "gridColumn7";
@@ -982,7 +983,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Giá Tổng";
-            this.gridColumn8.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn8.DisplayFormat.FormatString = "N0";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn8.FieldName = "GiaTong";
             this.gridColumn8.Name = "gridColumn8";
@@ -994,7 +995,7 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Thành Tiền";
-            this.gridColumn9.DisplayFormat.FormatString = "{0:#,# đ}";
+            this.gridColumn9.DisplayFormat.FormatString = "N0";
             this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn9.FieldName = "ThanhTien";
             this.gridColumn9.Name = "gridColumn9";

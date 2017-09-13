@@ -23,6 +23,10 @@ namespace QLCafe
         List<ChiTietHoaDonA2> listChiTietHoaDonA2 = new List<ChiTietHoaDonA2>();
         List<ChiTietHoaDonB1> listChiTietHoaDonB1 = new List<ChiTietHoaDonB1>();
         List<ChiTietHoaDonB2> listChiTietHoaDonB2 = new List<ChiTietHoaDonB2>();
+
+        public delegate void GetKT(int KT, int IDBanA, int IDBanB, int IDHoaDonTinhTong);
+        public GetKT MyGetDataGopBan;
+
         public frmGopBan()
         {
             InitializeComponent();
@@ -107,6 +111,22 @@ namespace QLCafe
 
             foreach (ChiTietHoaDonA2 item in listChiTietHoaDonA2)
             {
+                if (KTGio == 1)
+                {
+                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
+                }
+                else
+                {
+                    GiaTheoGio = item.PhuThuGio;
+                }
+                if (KTKhuVuc == 1)
+                {
+                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
+                }
+                else
+                {
+                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
+                }
                 float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
                 listChiTietHoaDonB2.Add(new ChiTietHoaDonB2
                 {
@@ -187,6 +207,22 @@ namespace QLCafe
 
             foreach (ChiTietHoaDonB2 item in listChiTietHoaDonB2)
             {
+                if (KTGio == 1)
+                {
+                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
+                }
+                else
+                {
+                    GiaTheoGio = item.PhuThuGio;
+                }
+                if (KTKhuVuc == 1)
+                {
+                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
+                }
+                else
+                {
+                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
+                }
                 float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
                 listChiTietHoaDonA2.Add(new ChiTietHoaDonA2
                 {
@@ -261,7 +297,7 @@ namespace QLCafe
         }
         public void DanhSachBanTheoKhuVuc(int IDKhuVuc)
         {
-            //danh sách bàn phải có người
+            //danh sách bàn phải có người : 2
             List<DTO_BAN> ban = DAO_ChuyenBan.DanhSachBanTheoKhuVuc(IDKhuVuc, 2, IDBan);
             cmbBanB.Properties.DataSource = ban;
             cmbBanB.Properties.ValueMember = "Id";
@@ -661,7 +697,74 @@ namespace QLCafe
 
         private void btnThucHien_Click(object sender, EventArgs e)
         {
-
+            if (listChiTietHoaDonA2.Count > 0 && listChiTietHoaDonB2.Count > 0)
+            {
+                MessageBox.Show("Bạn chưa gộp bàn. Vui lòng kiểm tra lại?", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (listChiTietHoaDonB2.Count > 0)
+            {
+                int IDBanA = IDBan;
+                int IDBanB = Int32.Parse(cmbBanB.EditValue.ToString());
+                int IDHoaDonB = DAO_BanHang.IDHoaDon(IDBanB);
+                int IDHoaDonA = IDHoaDon;
+              
+                // A Chuyển sang B, xóa toàn bộ hóa đơn A, cập nhật hóa đơn B, đưa trạng thái bàn A về null, xóa chi tiết bàn B
+                if (DAO_BAN.XoaBanVeMatDinh(IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA) && DAO_GopBan.XoaHoaDonCu(IDHoaDonA, IDBanA) && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonB, IDBanB))
+                {
+                    //Thêm lại chi tiết bàn B,
+                    foreach (ChiTietHoaDonB2 item in listChiTietHoaDonB2)
+                    {
+                        int IDHangHoa = item.IDHangHoa;
+                        int SL = item.SoLuong;
+                        float DonGia = item.DonGia;
+                        float ThanhTien = item.ThanhTien;
+                        string MaHangHoa = item.MaHangHoa;
+                        int IDDonViTinh = item.IDDonViTinh;
+                        float PhuThuGio = item.PhuThuGio;
+                        float PhuThuKhuVuc = item.PhuThuKhuVuc;
+                        float GiaTong = item.GiaTong;
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong); // thêm chi tiết hóa đơn mới
+                    }
+                    if (MyGetDataGopBan != null)
+                    {
+                        MyGetDataGopBan(1, IDBanA, IDBanB, IDHoaDonB);
+                        this.Close();
+                    }
+                }
+            }
+            else if (listChiTietHoaDonA2.Count > 0)
+            {
+                // B Chuyển sang A, xóa toàn bộ hóa đơn B, cập nhật hóa đơn A
+                int IDBanA = IDBan;
+                int IDBanB = Int32.Parse(cmbBanB.EditValue.ToString());
+                int IDHoaDonB = DAO_BanHang.IDHoaDon(IDBanB);
+                int IDHoaDonA = IDHoaDon;
+                if (DAO_BAN.XoaBanVeMatDinh(IDBanB) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDBanB, IDBanB) && DAO_GopBan.XoaHoaDonCu(IDHoaDonB, IDBanB) && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA))
+                {
+                    foreach (ChiTietHoaDonA2 item in listChiTietHoaDonA2)
+                    {
+                        int IDHangHoa = item.IDHangHoa;
+                        int SL = item.SoLuong;
+                        float DonGia = item.DonGia;
+                        float ThanhTien = item.ThanhTien;
+                        string MaHangHoa = item.MaHangHoa;
+                        int IDDonViTinh = item.IDDonViTinh;
+                        float PhuThuGio = item.PhuThuGio;
+                        float PhuThuKhuVuc = item.PhuThuKhuVuc;
+                        float GiaTong = item.GiaTong;
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong); // thêm chi tiết hóa đơn mới
+                    }
+                    if (MyGetDataGopBan != null)
+                    {
+                        MyGetDataGopBan(1, IDBanA, IDBanB, IDHoaDonA);
+                        this.Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Gộp bàn thất bại. Vui lòng kiểm tra lại?", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

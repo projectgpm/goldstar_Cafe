@@ -214,3 +214,9 @@ D:\GPM\GoldStarBanVe\GoldStarBanVe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHan
 D:\GPM\GoldStarBanVe\GoldStarBanVe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.dll
 D:\GPM\GoldStarBanVe\GoldStarBanVe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.pdb
 D:\GPM\GoldStarBanVe\GoldStarBanVe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.pdb
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.dll
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.pdb
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.csprojResolveAssemblyReference.cache
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll.licenses
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.pdb

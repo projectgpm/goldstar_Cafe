@@ -82,6 +82,7 @@
     <Compile Include="DAO\DAO_DatBan.cs" />
     <Compile Include="DAO\DAO_Gio.cs" />
     <Compile Include="DAO\DAO_GoiMon.cs" />
+    <Compile Include="DAO\DAO_GopBan.cs" />
     <Compile Include="DAO\DAO_HangHoa.cs" />
     <Compile Include="DAO\DAO_HoaDon.cs" />
     <Compile Include="DAO\DAO_KhachHang.cs" />
