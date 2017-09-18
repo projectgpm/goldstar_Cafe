@@ -81,6 +81,10 @@ namespace BanHang
                 data = new dtBan();
                 data.Sua(ID, TenBan, IDKhuVuc);
             }
+            else
+            {
+                throw new Exception("Lỗi:Tên bàn phải là số?");
+            }
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
