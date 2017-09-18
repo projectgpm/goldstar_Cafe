@@ -19,7 +19,8 @@ namespace QLCafe.DAO
         }
         public static int LayTyLe(string GioVao)
         {
-            string sTruyVan = string.Format(@"SELECT TyLe FROM [CF_Gio] WHERE '{0}' BETWEEN GioBatDau AND GioKetThuc", GioVao);
+
+            string sTruyVan = string.Format(@"SELECT TyLe FROM [CF_Gio] WHERE '{0}' BETWEEN FORMAT(GioBatDau,'hh:mm:ss tt') AND FORMAT(GioKetThuc,'hh:mm:ss tt')", GioVao);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
