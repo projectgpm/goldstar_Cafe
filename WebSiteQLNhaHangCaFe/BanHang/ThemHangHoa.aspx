@@ -107,6 +107,8 @@
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
                                 <dx:ASPxGridView ID="gridNguyenLieu" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" OnRowDeleting="gridNguyenLieu_RowDeleting" Width="100%">
+                                    <SettingsPager Mode="ShowAllRecords">
+                                    </SettingsPager>
                                     <SettingsBehavior ConfirmDelete="True" ProcessSelectionChangedOnServer="True" />
                                     <SettingsCommandButton>
                                         <ShowAdaptiveDetailButton ButtonType="Image">
@@ -118,7 +120,7 @@
                                             </Image>
                                         </DeleteButton>
                                     </SettingsCommandButton>
-                                    <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
+                                    <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách trống." />
                                     <Columns>
                                         <dx:GridViewDataComboBoxColumn Caption="Tên Nguyên Liệu" FieldName="IDNguyenLieu" ShowInCustomizationForm="True" VisibleIndex="1">
                                             
