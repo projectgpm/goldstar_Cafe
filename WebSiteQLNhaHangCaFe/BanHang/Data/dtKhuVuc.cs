@@ -9,18 +9,38 @@ namespace BanHang.Data
 {
     public class dtKhuVuc
     {
-        public void Sua(string ID, string GhiChu, string TenKhuVuc, string TyLe, string IDChiNhanh)
+        public static bool KiemTra(string KyHieu)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [CF_KhuVuc] WHERE [KyHieu] = N'" + KyHieu + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count == 0)
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+            }
+        }
+        public void Sua(string ID, string GhiChu, string TenKhuVuc, string TyLe, string IDChiNhanh, string KyHieu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [CF_KhuVuc] SET [IDChiNhanh] = @IDChiNhanh,[TyLe] = @TyLe,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [CF_KhuVuc] SET [KyHieu] = @KyHieu,[IDChiNhanh] = @IDChiNhanh,[TyLe] = @TyLe,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@TenKhuVuc", TenKhuVuc);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
                         myCommand.Parameters.AddWithValue("@TyLe", TyLe);
@@ -53,17 +73,18 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Them(string MaKhuVuc, string TenKhuVuc, string TyLe, string IDChiNhanh, string GhiChu)
+        public void Them(string MaKhuVuc, string TenKhuVuc, string TyLe, string IDChiNhanh, string GhiChu, string KyHieu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[TyLe],[IDChiNhanh], [NgayCapNhat],[GhiChu]) VALUES (@MaKhuVuc,@TenKhuVuc,@TyLe,@IDChiNhanh, getdate(),@GhiChu)";
+                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[TyLe],[IDChiNhanh], [NgayCapNhat],[GhiChu],[KyHieu]) VALUES (@MaKhuVuc,@TenKhuVuc,@TyLe,@IDChiNhanh, getdate(),@GhiChu,@KyHieu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
                         myCommand.Parameters.AddWithValue("@TyLe", TyLe);
                         myCommand.Parameters.AddWithValue("@MaKhuVuc", MaKhuVuc);
