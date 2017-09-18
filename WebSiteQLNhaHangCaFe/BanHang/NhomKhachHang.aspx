@@ -51,8 +51,6 @@
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="5" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="ID" FieldName="ID">
-            </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Tên Nhóm KH" FieldName="TenNhomKhachHang">
                 <PropertiesTextEdit>
                     <ValidationSettings>
