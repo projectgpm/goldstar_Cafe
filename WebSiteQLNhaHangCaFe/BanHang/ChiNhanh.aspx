@@ -36,7 +36,7 @@
             <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="True" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin cửa hàng kho" Title="DANH SÁCH CHI NHÁNH" />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin cửa hàng kho" Title="DANH SÁCH CHI NHÁNH" EmptyDataRow="Danh sách chi nhánh trống" SearchPanelEditorNullText="Nhập thông tin cần tìm" />
         <EditFormLayoutProperties>
             <Items>
                 <dx:GridViewColumnLayoutItem ColumnName="Mã Chi Nhánh">
