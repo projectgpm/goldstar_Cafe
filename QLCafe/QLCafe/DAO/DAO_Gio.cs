@@ -20,7 +20,7 @@ namespace QLCafe.DAO
         public static int LayTyLe(string GioVao)
         {
 
-            string sTruyVan = string.Format(@"SELECT TyLe FROM [CF_Gio] WHERE '{0}' BETWEEN FORMAT(GioBatDau,'hh:mm:ss tt') AND FORMAT(GioKetThuc,'hh:mm:ss tt')", GioVao);
+            string sTruyVan = string.Format(@"SELECT TyLe FROM [CF_Gio] WHERE '{0}' BETWEEN FORMAT(GioBatDau,'h:mm:ss') AND FORMAT(GioKetThuc,'h:mm:ss')", GioVao);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)

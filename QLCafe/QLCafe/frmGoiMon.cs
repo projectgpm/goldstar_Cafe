@@ -63,8 +63,7 @@ namespace QLCafe
         }
         public void ThemMonAn(DataTable tbThongTin)
         {
-            string GioHienTai = GioVao.ToString("hh:mm:ss tt");
-            float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
+            float TyLeGio = DAO_Gio.LayTyLe(DateTime.Now.ToString("h:mm:ss"));
             int IDKhuVuc = DAO_BAN.LayIDKhuVuc(IDBan);
             float TyLeKhuVuc = DAO_KhuVuc.LayTyLe(IDKhuVuc);
             int IDHangHoa = Int32.Parse(tbThongTin.Rows[0]["ID"].ToString());

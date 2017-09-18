@@ -58,12 +58,12 @@ namespace QLCafe
             if (KTGio == 1)
             {
                 DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBanMoi);
-                GioHienTai = GioVao.ToString("hh:mm:ss tt");
+                GioHienTai = GioVao.ToString("h:mm:ss");
             }
             else
             {
                 DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
-                GioHienTai = GioVao.ToString("hh:mm:ss tt");
+                GioHienTai = GioVao.ToString("h:mm:ss");
             }
            
             float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
@@ -155,12 +155,12 @@ namespace QLCafe
             if (KTGio == 1)
             {
                 DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
-                GioHienTai = GioVao.ToString("hh:mm:ss tt");
+                GioHienTai = GioVao.ToString("h:mm:ss");
             }
             else
             {
                 DateTime GioVao = DAO_BanHang.GioVao_IDBan(Int32.Parse(cmbBanB.EditValue.ToString()));
-                GioHienTai = GioVao.ToString("hh:mm:ss tt");
+                GioHienTai = GioVao.ToString("h:mm:ss");
             }
             float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
             int IDKhuVuc = DAO_BAN.LayIDKhuVuc(IDBanMoi);

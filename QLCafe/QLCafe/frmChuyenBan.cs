@@ -101,12 +101,12 @@ namespace QLCafe
             string GioHienTai;
             if (KTGio == 1)
             {
-                GioHienTai = DateTime.Now.ToString("hh:mm:ss tt");
+                GioHienTai = DateTime.Now.ToString("h:mm:ss");
             }
             else
             {
                   DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
-                  GioHienTai = GioVao.ToString("hh:mm:ss");
+                  GioHienTai = GioVao.ToString("h:mm:ss");
             }
             int IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
             float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
