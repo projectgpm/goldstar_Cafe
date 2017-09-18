@@ -45,8 +45,27 @@ namespace BanHang
             string TenBan = e.NewValues["TenBan"].ToString();
             string IDKhuVuc = e.NewValues["IDKhuVuc"].ToString();
             string MaBan = dtBan.Dem_Max(IDKhuVuc);
-            data = new dtBan();
-            data.Them(MaBan, TenBan, IDKhuVuc);
+            string KyHieu = dtBan.LayKyHieu(IDKhuVuc);
+            string IDChiNhanh = dtBan.LayIDChiNhanh(IDKhuVuc);
+            if (dtSetting.IsNumber(TenBan) == true)
+            {
+                if (KyHieu != "")
+                {
+                    if (dtBan.KiemTra(KyHieu + " - " + TenBan, IDKhuVuc) == true)
+                    {
+                        data = new dtBan();
+                        data.Them(MaBan, KyHieu + " - " + TenBan, IDKhuVuc, IDChiNhanh);
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi:Tên bàn đã tồn tại?");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi:Tên bàn phải là số?");
+            }
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -57,8 +76,11 @@ namespace BanHang
             string ID = e.Keys[0].ToString();
             string TenBan = e.NewValues["TenBan"].ToString();
             string IDKhuVuc = e.NewValues["IDKhuVuc"].ToString();
-            data = new dtBan();
-            data.Sua(ID, TenBan, IDKhuVuc);
+            if (dtSetting.IsNumber(TenBan) == true)
+            {
+                data = new dtBan();
+                data.Sua(ID, TenBan, IDKhuVuc);
+            }
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -66,6 +88,7 @@ namespace BanHang
 
         protected void btnHuy_Click(object sender, EventArgs e)
         {
+            Clear();
             popup.ShowOnPageLoad = false;
         }
 
@@ -73,7 +96,12 @@ namespace BanHang
         {
             popup.ShowOnPageLoad = true;
         }
-
+        public void Clear()
+        {
+            txtSoA.Text = "";
+            txtSoB.Text = "";
+            cmbKhuVuc.Text = "";
+        }
         protected void btnThem_Click(object sender, EventArgs e)
         {
             if (cmbKhuVuc.Text != "" && txtSoA.Text != "" && txtSoB.Text != "")
@@ -81,6 +109,12 @@ namespace BanHang
                 string IDKhuVuc = cmbKhuVuc.Value.ToString();
                 int SoA = Int32.Parse(txtSoA.Text.ToString());
                 int SoB = Int32.Parse(txtSoB.Text.ToString());
+                string KyHieu = dtBan.LayKyHieu(IDKhuVuc);
+                string IDChiNhanh = dtBan.LayIDChiNhanh(IDKhuVuc);
+                for (int i = SoA; i <= SoB; i++)
+                {
+
+                }
             }
             else
             {

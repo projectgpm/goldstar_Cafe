@@ -13,6 +13,15 @@ namespace BanHang.Data
 {
     public class dtSetting
     {
+        public static bool IsNumber(string pValue)
+        {
+            foreach (Char c in pValue)
+            {
+                if (!Char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
         public static void CapNhatKho(string IDNguyenLieu, string TrongLuong, string IDChiNhanh)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
