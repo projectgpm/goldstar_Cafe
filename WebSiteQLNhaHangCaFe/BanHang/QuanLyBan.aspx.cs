@@ -63,5 +63,29 @@ namespace BanHang
             gridDanhSach.CancelEdit();
             LoadGrid();
         }
+
+        protected void btnHuy_Click(object sender, EventArgs e)
+        {
+            popup.ShowOnPageLoad = false;
+        }
+
+        protected void btnThemBan_Click(object sender, EventArgs e)
+        {
+            popup.ShowOnPageLoad = true;
+        }
+
+        protected void btnThem_Click(object sender, EventArgs e)
+        {
+            if (cmbKhuVuc.Text != "" && txtSoA.Text != "" && txtSoB.Text != "")
+            {
+                string IDKhuVuc = cmbKhuVuc.Value.ToString();
+                int SoA = Int32.Parse(txtSoA.Text.ToString());
+                int SoB = Int32.Parse(txtSoB.Text.ToString());
+            }
+            else
+            {
+                Response.Write("<script language='JavaScript'> alert('Vui lòng điền đầy đủ thông tin.'); </script>");
+            }
+        }
     }
 }

@@ -1,6 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="QuanLyBan.aspx.cs" Inherits="BanHang.QuanLyBan" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-       <dx:ASPxGridView ID="gridDanhSach" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowDeleting="gridDanhSach_RowDeleting" OnRowInserting="gridDanhSach_RowInserting" OnRowUpdating="gridDanhSach_RowUpdating">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
+        <Items>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxButton ID="btnThemBan" runat="server" Text="Thêm Bàn Nhanh" OnClick="btnThemBan_Click">
+                            <Image IconID="actions_add_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+        </Items>
+    </dx:ASPxFormLayout>
+     <dx:ASPxGridView ID="gridDanhSach" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowDeleting="gridDanhSach_RowDeleting" OnRowInserting="gridDanhSach_RowInserting" OnRowUpdating="gridDanhSach_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
@@ -91,4 +105,65 @@
                <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
            </SelectParameters>
        </asp:SqlDataSource>
+       <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="600px"
+         Height="280px" FooterText=""
+        HeaderText="Thêm Bàn Nhanh" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
+           <ContentCollection>
+<dx:PopupControlContentControl runat="server">
+    <dx:ASPxFormLayout ID="ASPxFormLayout2" runat="server" Width="100%">
+        <Items>
+            <dx:LayoutGroup Caption="Thông Tin" ColCount="2">
+                <Items>
+                    <dx:LayoutItem Caption="Khu Vực" ColSpan="2">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxComboBox ID="cmbKhuVuc" runat="server" Width="100%" DataSourceID="SqlKhuVuc" TextField="TenKhuVuc" ValueField="ID">
+                                </dx:ASPxComboBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Bàn Từ Số">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxSpinEdit ID="txtSoA" runat="server" Width="100%">
+                                </dx:ASPxSpinEdit>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Đến Số">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxSpinEdit ID="txtSoB" runat="server" Width="100%">
+                                </dx:ASPxSpinEdit>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxButton ID="btnThem" runat="server" Text="Thêm" OnClick="btnThem_Click">
+                                    <Image IconID="actions_apply_32x32">
+                                    </Image>
+                                </dx:ASPxButton>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxButton ID="btnHuy" runat="server" Text="Hủy" OnClick="btnHuy_Click">
+                                    <Image IconID="actions_cancel_32x32">
+                                    </Image>
+                                </dx:ASPxButton>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                </Items>
+            </dx:LayoutGroup>
+        </Items>
+    </dx:ASPxFormLayout>
+               </dx:PopupControlContentControl>
+</ContentCollection>
+    </dx:ASPxPopupControl>
 </asp:Content>

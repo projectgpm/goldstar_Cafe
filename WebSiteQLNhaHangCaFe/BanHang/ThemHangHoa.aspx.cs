@@ -14,14 +14,21 @@ namespace BanHang
         dtThemHangHoa data = new dtThemHangHoa();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM@2017")
             {
-                data = new dtThemHangHoa();
-                object IDHangHoa = data.ThemHangHoa();
-                IDHangHoa_Temp.Value = IDHangHoa.ToString();
-                txtMaHang.Text = dtThemHangHoa.Dem_Max().ToString();
+                Response.Redirect("DangNhap.aspx");
             }
-            LoadGrid(IDHangHoa_Temp.Value.ToString());
+            else
+            {
+                if (!IsPostBack)
+                {
+                    //data = new dtThemHangHoa();
+                    //object IDHangHoa = data.ThemHangHoa();
+                    IDHangHoa_Temp.Value = Session["IDNhanVien"].ToString();//IDHangHoa.ToString();
+                    txtMaHang.Text = dtThemHangHoa.Dem_Max().ToString();
+                }
+                LoadGrid(IDHangHoa_Temp.Value.ToString());
+            }
         }
 
         private void LoadGrid(string p)
@@ -86,24 +93,28 @@ namespace BanHang
                 string IDNhomHang = cmbNhomHang.Value.ToString();
                 string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                 data = new dtThemHangHoa();
-                data.CapNhatHangHoa(IDHangHoa, MaHangHoa, TenHangHoa, GiaBan, IDDonViTinh, IDNhomHang, GhiChu);
-                DataTable dt = data.NguyenLieu_Temp(IDHangHoa);
-                if (dt.Rows.Count > 0)
+                object ID = data.ThemHangHoa();
+                if (ID != null)
                 {
-                    foreach (DataRow dr in dt.Rows)
+                    data.CapNhatHangHoa(ID, MaHangHoa, TenHangHoa, GiaBan, IDDonViTinh, IDNhomHang, GhiChu);
+                    DataTable dt = data.NguyenLieu_Temp(IDHangHoa);
+                    if (dt.Rows.Count > 0)
                     {
-                        string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
-                        string TrongLuong = dr["TrongLuong"].ToString();
-                        string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
-                        string NhaCungCap = dr["NhaCungCap"].ToString();
-                        string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
-                        data = new dtThemHangHoa();
-                        data.ThemChiTietNguyenLieu(IDHangHoa, IDNguyenLieu, TrongLuong, MaNguyenLieu, NhaCungCap, IDDonViTinh1);
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
+                            string TrongLuong = dr["TrongLuong"].ToString();
+                            string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
+                            string NhaCungCap = dr["NhaCungCap"].ToString();
+                            string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
+                            data = new dtThemHangHoa();
+                            data.ThemChiTietNguyenLieu(ID, IDNguyenLieu, TrongLuong, MaNguyenLieu, NhaCungCap, IDDonViTinh1);
+                        }
                     }
+                    data = new dtThemHangHoa();
+                    data.XoaChiTiet_Temp_ID(IDHangHoa);
+                    Response.Redirect("QuanLyHangHoa.aspx");
                 }
-                data = new dtThemHangHoa();
-                data.XoaChiTiet_Temp_ID(IDHangHoa);
-                Response.Redirect("QuanLyHangHoa.aspx");
             }
             else
             {

@@ -9,7 +9,7 @@ namespace BanHang.Data
 {
     public class dtThemHangHoa
     {
-        public void ThemChiTietNguyenLieu(string IDHangHoa, string IDNguyenLieu, string TrongLuong, string MaNguyenLieu, string NhaCungCap, string IDDonViTinh)
+        public void ThemChiTietNguyenLieu(object IDHangHoa, string IDNguyenLieu, string TrongLuong, string MaNguyenLieu, string NhaCungCap, string IDDonViTinh)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -35,7 +35,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatHangHoa(string IDHangHoa, string MaHangHoa, string TenHangHoa, string GiaBan, string IDDonViTinh, string IDNhomHang, string GhiChu)
+        public void CapNhatHangHoa(object IDHangHoa, string MaHangHoa, string TenHangHoa, string GiaBan, string IDDonViTinh, string IDNhomHang, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
