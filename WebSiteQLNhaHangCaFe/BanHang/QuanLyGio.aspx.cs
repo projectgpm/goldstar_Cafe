@@ -32,14 +32,6 @@ namespace BanHang
         protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             string ID = e.Keys[0].ToString();
-
-
-            ASPxGridView grid = sender as ASPxGridView;
-            ASPxTimeEdit te = grid.FindEditRowCellTemplateControl(grid.Columns["GioBatDau"] as GridViewDataColumn, "GioBatDau") as ASPxTimeEdit;
-            object obj =  e.NewValues["GioBatDau"].ToString();
-          
-
-
             string GioBatDau = DateTime.Parse(e.NewValues["GioBatDau"].ToString()).ToString("hh:mm tt");
             string GioKetThuc = DateTime.Parse(e.NewValues["GioKetThuc"].ToString()).ToString("hh:mm tt");
             string TyLe = e.NewValues["TyLe"].ToString();
@@ -53,15 +45,11 @@ namespace BanHang
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             string MaGio = dtGio.Dem_Max();
-
-           
-            DateTime date = DateTime.Parse(e.NewValues["GioBatDau"].ToString());
-            string GioBatDau = date.ToShortTimeString();
-            DateTime date2 = DateTime.Parse(e.NewValues["GioKetThuc"].ToString());
-            string GioKetThuc = date2.ToShortTimeString();
+            string GioBatDau = DateTime.Parse(e.NewValues["GioBatDau"].ToString()).ToString("hh:mm tt");
+            string GioKetThuc = DateTime.Parse(e.NewValues["GioKetThuc"].ToString()).ToString("hh:mm tt");
             string TyLe = e.NewValues["TyLe"].ToString();
             data = new dtGio();
-            data.Them(MaGio, GioBatDau, GioKetThuc, Int32.Parse(TyLe));
+            data.Them(MaGio, DateTime.Parse(GioBatDau),  DateTime.Parse(GioKetThuc), Int32.Parse(TyLe));
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -77,8 +65,5 @@ namespace BanHang
             LoadGrid();
         }
 
-       
-
-      
     }
 }

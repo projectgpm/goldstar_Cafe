@@ -52,7 +52,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Them(string MaGio, string GioBatDau, string GioKetThuc, int TyLe)
+        public void Them(string MaGio, DateTime GioBatDau, DateTime GioKetThuc, int TyLe)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
