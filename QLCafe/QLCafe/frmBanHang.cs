@@ -24,12 +24,13 @@ namespace QLCafe
         public frmBanHang()
         {
             InitializeComponent();
-            DanhSachBan();
+            
         }
         public static int IDBan = 0;
         public static DateTime GioVao;
         private void frmBanHang_Load(object sender, EventArgs e)
         {
+            DanhSachBan();
             timer1.Start();
             KhachHang();
             // WindowState = FormWindowState.Maximized;
