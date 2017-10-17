@@ -13,7 +13,7 @@ namespace QLCafe.DAO
         public List<DTO_BAN> LoadTableList(string IDKhuVuc)
         {
             List<DTO_BAN> tablelist = new List<DTO_BAN>();
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDKhuVuc = {0} ", IDKhuVuc);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDKhuVuc = {0} AND DAXOA = 0", IDKhuVuc);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             foreach (DataRow item in data.Rows)

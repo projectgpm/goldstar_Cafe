@@ -118,7 +118,8 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "DELETE FROM [CF_Ban] WHERE [ID] = @ID AND [TRANGTHAI] = 0";
+                    //string strSQL = "DELETE FROM [CF_Ban] WHERE [ID] = @ID AND [TRANGTHAI] = 0";
+                    string strSQL = "UPDATE [CF_Ban] SET DAXOA = 1 WHERE [ID] = @ID AND [TRANGTHAI] = 0";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);

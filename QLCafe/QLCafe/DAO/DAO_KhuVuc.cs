@@ -11,7 +11,7 @@ namespace QLCafe.DAO
     {
         public static DataTable DanhSachKhuVuc(string IDChiNhanh)
         {
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_KhuVuc] WHERE IDChiNhanh = {0} ", IDChiNhanh);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_KhuVuc] WHERE IDChiNhanh = {0} AND DAXOA = 0 ", IDChiNhanh);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             return data;

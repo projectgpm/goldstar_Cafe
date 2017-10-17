@@ -776,7 +776,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.71585F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel1.Controls.Add(this.txtTienThoi, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtKhachThanhToan, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtKhachCanTra, 1, 2);
@@ -808,7 +808,7 @@
             0,
             0});
             this.txtTienThoi.Enabled = false;
-            this.txtTienThoi.Location = new System.Drawing.Point(174, 166);
+            this.txtTienThoi.Location = new System.Drawing.Point(173, 166);
             this.txtTienThoi.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtTienThoi.MenuManager = this.barManager1;
             this.txtTienThoi.Name = "txtTienThoi";
@@ -823,7 +823,7 @@
             this.txtTienThoi.Properties.DisplayFormat.FormatString = "N0";
             this.txtTienThoi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTienThoi.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTienThoi.Size = new System.Drawing.Size(191, 30);
+            this.txtTienThoi.Size = new System.Drawing.Size(192, 30);
             this.txtTienThoi.TabIndex = 22;
             // 
             // txtKhachThanhToan
@@ -834,7 +834,7 @@
             0,
             0,
             0});
-            this.txtKhachThanhToan.Location = new System.Drawing.Point(174, 122);
+            this.txtKhachThanhToan.Location = new System.Drawing.Point(173, 122);
             this.txtKhachThanhToan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtKhachThanhToan.MenuManager = this.barManager1;
             this.txtKhachThanhToan.Name = "txtKhachThanhToan";
@@ -851,7 +851,7 @@
             this.txtKhachThanhToan.Properties.EditFormat.FormatString = "N0";
             this.txtKhachThanhToan.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtKhachThanhToan.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtKhachThanhToan.Size = new System.Drawing.Size(191, 30);
+            this.txtKhachThanhToan.Size = new System.Drawing.Size(192, 30);
             this.txtKhachThanhToan.TabIndex = 21;
             this.txtKhachThanhToan.EditValueChanged += new System.EventHandler(this.txtKhachThanhToan_EditValueChanged);
             // 
@@ -864,7 +864,7 @@
             0,
             0});
             this.txtKhachCanTra.Enabled = false;
-            this.txtKhachCanTra.Location = new System.Drawing.Point(174, 86);
+            this.txtKhachCanTra.Location = new System.Drawing.Point(173, 86);
             this.txtKhachCanTra.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtKhachCanTra.MenuManager = this.barManager1;
             this.txtKhachCanTra.Name = "txtKhachCanTra";
@@ -879,7 +879,7 @@
             this.txtKhachCanTra.Properties.DisplayFormat.FormatString = "N0";
             this.txtKhachCanTra.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtKhachCanTra.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtKhachCanTra.Size = new System.Drawing.Size(191, 30);
+            this.txtKhachCanTra.Size = new System.Drawing.Size(192, 30);
             this.txtKhachCanTra.TabIndex = 20;
             // 
             // txtTienGio
@@ -891,7 +891,7 @@
             0,
             0});
             this.txtTienGio.Enabled = false;
-            this.txtTienGio.Location = new System.Drawing.Point(174, 49);
+            this.txtTienGio.Location = new System.Drawing.Point(173, 49);
             this.txtTienGio.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtTienGio.MenuManager = this.barManager1;
             this.txtTienGio.Name = "txtTienGio";
@@ -906,7 +906,7 @@
             this.txtTienGio.Properties.DisplayFormat.FormatString = "N0";
             this.txtTienGio.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTienGio.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTienGio.Size = new System.Drawing.Size(191, 30);
+            this.txtTienGio.Size = new System.Drawing.Size(192, 30);
             this.txtTienGio.TabIndex = 19;
             // 
             // labelControl3
@@ -916,7 +916,7 @@
             this.labelControl3.Location = new System.Drawing.Point(4, 164);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl3.Size = new System.Drawing.Size(163, 35);
+            this.labelControl3.Size = new System.Drawing.Size(162, 35);
             this.labelControl3.TabIndex = 16;
             this.labelControl3.Text = "TIỀN THỒI";
             // 
@@ -927,7 +927,7 @@
             this.labelControl2.Location = new System.Drawing.Point(4, 120);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl2.Size = new System.Drawing.Size(163, 37);
+            this.labelControl2.Size = new System.Drawing.Size(162, 37);
             this.labelControl2.TabIndex = 12;
             this.labelControl2.Text = "KHÁCH THANH TOÁN";
             // 
@@ -938,7 +938,7 @@
             this.labelControl8.Location = new System.Drawing.Point(4, 84);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl8.Size = new System.Drawing.Size(163, 29);
+            this.labelControl8.Size = new System.Drawing.Size(162, 29);
             this.labelControl8.TabIndex = 9;
             this.labelControl8.Text = "KHÁCH CẦN TRẢ";
             // 
@@ -949,7 +949,7 @@
             this.labelControl5.Location = new System.Drawing.Point(4, 47);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl5.Size = new System.Drawing.Size(163, 30);
+            this.labelControl5.Size = new System.Drawing.Size(162, 30);
             this.labelControl5.TabIndex = 6;
             this.labelControl5.Text = "TIỀN GIỜ";
             // 
@@ -960,7 +960,7 @@
             this.labelControl1.Location = new System.Drawing.Point(4, 4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl1.Size = new System.Drawing.Size(163, 36);
+            this.labelControl1.Size = new System.Drawing.Size(162, 36);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "TIỀN MÓN ĂN";
             // 
@@ -973,7 +973,7 @@
             0,
             0});
             this.txtTongTien.Enabled = false;
-            this.txtTongTien.Location = new System.Drawing.Point(174, 6);
+            this.txtTongTien.Location = new System.Drawing.Point(173, 6);
             this.txtTongTien.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.txtTongTien.MenuManager = this.barManager1;
             this.txtTongTien.Name = "txtTongTien";
@@ -988,7 +988,7 @@
             this.txtTongTien.Properties.DisplayFormat.FormatString = "N0";
             this.txtTongTien.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTongTien.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTongTien.Size = new System.Drawing.Size(191, 30);
+            this.txtTongTien.Size = new System.Drawing.Size(192, 30);
             this.txtTongTien.TabIndex = 17;
             // 
             // menuBan
