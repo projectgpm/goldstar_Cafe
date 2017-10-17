@@ -46,7 +46,7 @@ namespace QLCafe
             lblDiaChi.Text = DAO_Setting.DiaChiCongTy();
             lblDienThoai.Text = DAO_Setting.DienThoaiCongTy();
             txtTongTien.ReadOnly = true;
-            txtTienGio.ReadOnly = true;
+            //txtTienGio.ReadOnly = true;
             txtKhachCanTra.ReadOnly = true;
             txtTienThoi.ReadOnly = true;
             txtKhachThanhToan.ReadOnly = true;
@@ -186,19 +186,19 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
-            txtGioBatDau.Time = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
-            txtGioKetThuc.Time = DateTime.Now;
+            //txtGioBatDau.Time = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
+            //txtGioKetThuc.Time = DateTime.Now;
             DateTime GioBatDau = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
-            DateTime GioKetThuc = DateTime.Parse(txtGioKetThuc.Text.ToString());
-            TimeSpan TongGioChoi = GioKetThuc - GioBatDau;
-            int TongSoPhut = (int)TongGioChoi.TotalMinutes;
-            int SoGio = TongSoPhut / 60;
-            int SoPhut = TongSoPhut % 60;
-            txtTongGioChoi.Text = SoGio + " giờ " + SoPhut + " phút";
-            txtDonGiaGio.Text = DAO_KhuVuc.LayGiaTheoKhuVuc(DAO_BAN.LayIDKhuVuc(IDBan)) + "";
+            //DateTime GioKetThuc = DateTime.Parse(txtGioKetThuc.Text.ToString());
+           // TimeSpan TongGioChoi = GioKetThuc - GioBatDau;
+           //// int TongSoPhut = (int)TongGioChoi.TotalMinutes;
+           // int SoGio = TongSoPhut / 60;
+//int SoPhut = TongSoPhut % 60;
+           // txtTongGioChoi.Text = SoGio + " giờ " + SoPhut + " phút";
+           // txtDonGiaGio.Text = DAO_KhuVuc.LayGiaTheoKhuVuc(DAO_BAN.LayIDKhuVuc(IDBan)) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtTienGio.Text = DAO_HoaDon.TongTienGio(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtKhachCanTra.Text = (DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(IDBan)) + double.Parse(txtTienGio.Text.ToString())).ToString();
+           // txtTienGio.Text = DAO_HoaDon.TongTienGio(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+           // txtKhachCanTra.Text = (DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(IDBan)) + double.Parse(txtTienGio.Text.ToString())).ToString();
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -494,104 +494,104 @@ namespace QLCafe
             fr.ShowDialog();
         }
 
-        private void btnKetThuc_Click(object sender, EventArgs e)
-        {
-            // kết thúc và tính tiền. đỏi trạng thái = 1; cập nhật tền giờ trong hóa đơn
-             int IDBanHT = IDBan;
-             if (IDBanHT == 0)
-             {
-                 MessageBox.Show("Vui lòng chọn bàn để tính giờ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-             else
-             {
+        //private void btnKetThuc_Click(object sender, EventArgs e)
+        //{
+        //    // kết thúc và tính tiền. đỏi trạng thái = 1; cập nhật tền giờ trong hóa đơn
+        //     int IDBanHT = IDBan;
+        //     if (IDBanHT == 0)
+        //     {
+        //         MessageBox.Show("Vui lòng chọn bàn để tính giờ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //     }
+        //     else
+        //     {
                  
-                 if (MessageBox.Show("Tính tiền giờ", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
-                 {
-                     int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
-                     DateTime GioBatDau = DAO_BanHang.GioBatDauBiDa(IDBanHT, IDHoaDonHT);
-                     DateTime GioKetThuc = DateTime.Parse(txtGioKetThuc.Text.ToString());
-                     if (GioBatDau.ToString("yyyy-MM-dd H:mm") == GioKetThuc.ToString("yyyy-MM-dd H:mm"))
-                     {// kiểm tra xem bàn đó có giờ bắt đầu hay chưa
-                         MessageBox.Show("Chưa có thời gian bắt đầu. Vui lòng kiểm tra lại? ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     }
+        //         if (MessageBox.Show("Tính tiền giờ", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+        //         {
+        //             int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+        //             DateTime GioBatDau = DAO_BanHang.GioBatDauBiDa(IDBanHT, IDHoaDonHT);
+        //             DateTime GioKetThuc = DateTime.Parse(txtGioKetThuc.Text.ToString());
+        //             if (GioBatDau.ToString("yyyy-MM-dd H:mm") == GioKetThuc.ToString("yyyy-MM-dd H:mm"))
+        //             {// kiểm tra xem bàn đó có giờ bắt đầu hay chưa
+        //                 MessageBox.Show("Chưa có thời gian bắt đầu. Vui lòng kiểm tra lại? ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //             }
             
-                     else
-                     {
-                         TimeSpan TongGioChoi = GioKetThuc - GioBatDau;
-                         int TongSoPhut = (int)TongGioChoi.TotalMinutes;
-                         float DonGia = float.Parse(txtDonGiaGio.Text.ToString());
-                         double TongTien = (TongSoPhut / (double)60) * DonGia;
-                         int IDGio = DAO_BanHang.KiemTraLayIDGioBatDau(IDHoaDonHT, IDBanHT);
+        //             else
+        //             {
+        //                 TimeSpan TongGioChoi = GioKetThuc - GioBatDau;
+        //                 int TongSoPhut = (int)TongGioChoi.TotalMinutes;
+        //                 float DonGia = float.Parse(txtDonGiaGio.Text.ToString());
+        //                 double TongTien = (TongSoPhut / (double)60) * DonGia;
+        //                 int IDGio = DAO_BanHang.KiemTraLayIDGioBatDau(IDHoaDonHT, IDBanHT);
 
 
-                         int SoGio = TongSoPhut / 60;
-                         int SoPhut = TongSoPhut % 60;
-                         string GioChoi = SoGio + " giờ " + SoPhut + " phút";
-                         if (DAO_BanHang.CapNhatChiTietGio(IDHoaDonHT, IDBanHT, GioKetThuc, GioChoi, TongTien, IDGio) == true)
-                         {
-                             //cập nhật tiền giờ trong bảng hóa đơn, IDgio
-                             if (DAO_BanHang.CapNhatTienGio(IDHoaDonHT, TongTien, IDBanHT) == true)
-                             {
-                                 //reset giờ lại
-                                 LoadTongTien();
-                             }
+        //                 int SoGio = TongSoPhut / 60;
+        //                 int SoPhut = TongSoPhut % 60;
+        //                 string GioChoi = SoGio + " giờ " + SoPhut + " phút";
+        //                 if (DAO_BanHang.CapNhatChiTietGio(IDHoaDonHT, IDBanHT, GioKetThuc, GioChoi, TongTien, IDGio) == true)
+        //                 {
+        //                     //cập nhật tiền giờ trong bảng hóa đơn, IDgio
+        //                     if (DAO_BanHang.CapNhatTienGio(IDHoaDonHT, TongTien, IDBanHT) == true)
+        //                     {
+        //                         //reset giờ lại
+        //                         LoadTongTien();
+        //                     }
 
-                         }
-                     }
-                 }
-             }
-        }
+        //                 }
+        //             }
+        //         }
+        //     }
+        //}
 
-        private void btnBatDau_Click(object sender, EventArgs e)
-        {
-            int IDBanHT = IDBan;
-            // bắt đầu tính giờ bida, kiểm tra tồn tại thì cập nhật. chưa có thì tạo chi tiết giờ, nếu trang thái 0 đang có ng, 1 đã tính giờ
-            if (IDBanHT == 0)
-            {
-                MessageBox.Show("Vui lòng chọn bàn để tính giờ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                // chưa kiểm tra trùng
-                if (MessageBox.Show("Bắt đầu tính giờ.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
-                {
+        //private void btnBatDau_Click(object sender, EventArgs e)
+        //{
+        //    int IDBanHT = IDBan;
+        //    // bắt đầu tính giờ bida, kiểm tra tồn tại thì cập nhật. chưa có thì tạo chi tiết giờ, nếu trang thái 0 đang có ng, 1 đã tính giờ
+        //    if (IDBanHT == 0)
+        //    {
+        //        MessageBox.Show("Vui lòng chọn bàn để tính giờ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        // chưa kiểm tra trùng
+        //        if (MessageBox.Show("Bắt đầu tính giờ.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+        //        {
 
-                    int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);// if idhoadon == 0 thì tạo hóa đơn\
-                    DateTime GioBatDau = DateTime.Parse(txtGioBatDau.Text.ToString());
-                    float DonGia = float.Parse(txtDonGiaGio.Text.ToString());
-                    if (IDHoaDonHT == 0)
-                    {
-                        int IDNhanVien = frmDangNhap.NguoiDung.Id;
-                        object ID = DAO_GoiMon.ThemHoaDon(IDBan, IDNhanVien);
-                        if (ID != null)
-                        {
-                            //thêm Chi tiết giờ và đổi trạng thái bàn.
-                            if (DAO_BanHang.ThemChiTietGio(ID, GioBatDau, DonGia, IDBanHT) == true)//thêm chi tiết giờ
-                            {
-                                DAO_BAN.DoiTrangThaiBanCoNguoi(IDBan);// đổi trạng thái bàn
-                                DanhSachBan();
-                                LoadTongTien();
-                            }
-                        }
-                    }
-                    else// kiểm tra trùng
-                    { 
-                        int IDGio = DAO_BanHang.KiemTraLayIDGioBatDau(IDHoaDonHT, IDBanHT);
-                        if (IDGio > 0)
-                        {
-                            //cập nhật
-                            DAO_BanHang.CapNhatChiTietGio(IDHoaDonHT, GioBatDau, IDBanHT, IDGio);
-                        }
-                        else
-                        {
-                            DAO_BanHang.ThemChiTietGio(IDHoaDonHT, GioBatDau, DonGia, IDBanHT);
-                        }
-                        DanhSachBan();
-                        LoadTongTien();
-                    }
-                }
-            }
-        }
+        //            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);// if idhoadon == 0 thì tạo hóa đơn\
+        //            DateTime GioBatDau = DateTime.Parse(txtGioBatDau.Text.ToString());
+        //            float DonGia = float.Parse(txtDonGiaGio.Text.ToString());
+        //            if (IDHoaDonHT == 0)
+        //            {
+        //                int IDNhanVien = frmDangNhap.NguoiDung.Id;
+        //                object ID = DAO_GoiMon.ThemHoaDon(IDBan, IDNhanVien);
+        //                if (ID != null)
+        //                {
+        //                    //thêm Chi tiết giờ và đổi trạng thái bàn.
+        //                    if (DAO_BanHang.ThemChiTietGio(ID, GioBatDau, DonGia, IDBanHT) == true)//thêm chi tiết giờ
+        //                    {
+        //                        DAO_BAN.DoiTrangThaiBanCoNguoi(IDBan);// đổi trạng thái bàn
+        //                        DanhSachBan();
+        //                        LoadTongTien();
+        //                    }
+        //                }
+        //            }
+        //            else// kiểm tra trùng
+        //            { 
+        //                int IDGio = DAO_BanHang.KiemTraLayIDGioBatDau(IDHoaDonHT, IDBanHT);
+        //                if (IDGio > 0)
+        //                {
+        //                    //cập nhật
+        //                    DAO_BanHang.CapNhatChiTietGio(IDHoaDonHT, GioBatDau, IDBanHT, IDGio);
+        //                }
+        //                else
+        //                {
+        //                    DAO_BanHang.ThemChiTietGio(IDHoaDonHT, GioBatDau, DonGia, IDBanHT);
+        //                }
+        //                DanhSachBan();
+        //                LoadTongTien();
+        //            }
+        //        }
+        //    }
+        //}
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -835,6 +835,41 @@ namespace QLCafe
                         MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
+        {
+            txtDiemTichLuy.ReadOnly = false;
+            DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
+            if (tblThongTin.Rows.Count > 0)
+            {
+                DataRow dr = tblThongTin.Rows[0];
+                txtMaKhachHang.Text = dr["MaKhachHang"].ToString();
+                txtDienThoai.Text = dr["DienThoai"].ToString();
+                txtCMND.Text = dr["CMND"].ToString();
+                txtDiem.Text = dr["DiemTichLuy"].ToString();
+
+            }
+        }
+
+        private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
+        {
+            int SoDiemCanDoi = Int32.Parse(txtDiemTichLuy.EditValue.ToString());
+            float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
+            if (SoDiemCanDoi <= DiemTichLuy)
+            {
+                float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
+                float TongTien = float.Parse(txtTongTien.EditValue.ToString());
+                txtGiamGia.Text = (SoTienDoi * SoDiemCanDoi) + "";
+                txtKhachCanTra.Text = (TongTien - (SoTienDoi * SoDiemCanDoi)) + "";
+                txtKhachThanhToan.Text = "0";
+                txtTienThoi.Text = "0";
+            }
+            else
+            {
+                txtDiemTichLuy.Text = "0";
+                MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

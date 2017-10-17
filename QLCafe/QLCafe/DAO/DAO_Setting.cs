@@ -12,6 +12,36 @@ namespace QLCafe.DAO
 {
     class DAO_Setting
     {
+        public static float LayDiemQuyDoiTien()
+        {
+            string sTruyVan = string.Format(@"SELECT SoTienQuyDoi FROM [GPM_Setting] ");
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["SoTienQuyDoi"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public static float DiemTichLuy(string IDKhachHang)
+        {
+            string sTruyVan = string.Format(@"SELECT DiemTichLuy FROM [GPM_KhachHang] WHERE [ID] = {0}", IDKhachHang);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["DiemTichLuy"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public static bool IsNumber(string pValue)
         {
             foreach (Char c in pValue)
