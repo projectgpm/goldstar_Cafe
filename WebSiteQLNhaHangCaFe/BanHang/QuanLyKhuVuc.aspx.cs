@@ -29,11 +29,11 @@ namespace BanHang
             string ID = e.Keys[0].ToString();
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
             string KyHieu = e.NewValues["KyHieu"].ToString();
-            string TyLe = e.NewValues["GiaKhuVuc"].ToString();
+            //string TyLe = e.NewValues["GiaKhuVuc"].ToString();
             string IDChiNhanh = e.NewValues["IDChiNhanh"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             data = new dtKhuVuc();
-            data.Sua(ID, GhiChu, TenKhuVuc, TyLe, IDChiNhanh, KyHieu);
+            data.Sua(ID, GhiChu, TenKhuVuc, "0", IDChiNhanh, KyHieu);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -47,12 +47,12 @@ namespace BanHang
             string KyHieu = e.NewValues["KyHieu"].ToString();
             string MaKhuVuc = dtKhuVuc.Dem_Max(IDChiNhanh);
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
-            string TyLe = e.NewValues["GiaKhuVuc"].ToString();
+            //string TyLe = e.NewValues["GiaKhuVuc"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             //if (dtKhuVuc.KiemTra(KyHieu) == true)
             //{
             data = new dtKhuVuc();
-            data.Them(MaKhuVuc, TenKhuVuc, TyLe, IDChiNhanh, GhiChu, KyHieu);
+            data.Them(MaKhuVuc, TenKhuVuc, "0", IDChiNhanh, GhiChu, KyHieu);
             //}
             //else
             //{
@@ -73,7 +73,6 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
-
             dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý khu vực", "Xóa khu vực: " + ID);
         }
     }

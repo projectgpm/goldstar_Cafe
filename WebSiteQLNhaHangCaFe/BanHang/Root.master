@@ -52,6 +52,10 @@
                                                     <dx:RibbonDropDownButtonItem Name="Danh mục" NavigateUrl="javascript:void(2)" 
                                                         Size="Large" Text="Danh mục">
                                                         <Items>
+                                                            <dx:RibbonDropDownButtonItem Name="Nhóm Khách Hàng" NavigateUrl="NhomKhachHang.aspx" Text="Nhóm Khách Hàng">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Khách Hàng" NavigateUrl="KhachHang.aspx" Text="Khách Hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Nhà Cung Cấp" NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don_vi_tinh">
@@ -101,7 +105,7 @@
                                                         <Items>
                                                             <dx:RibbonDropDownButtonItem Name="bang_ke_thanh_toan" Text="Bảng kê thanh toán" NavigateUrl="BKBanHang.aspx">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bang_ke_tien_gio" NavigateUrl="BKTienGio.aspx" Text="Bảng kê tiền giờ">
+                                                            <dx:RibbonDropDownButtonItem Name="bang_ke_tien_gio" NavigateUrl="BKTienGio.aspx" Text="Bảng kê tiền giờ" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="bang_ke_phieu_xuat_khac" NavigateUrl="BKPhieuXuatKhac.aspx" Text="Bảng kê phiếu xuất khác">
                                                             </dx:RibbonDropDownButtonItem>
@@ -113,7 +117,7 @@
                                                         <Items>
                                                             <dx:RibbonDropDownButtonItem Name="bao_cao_ban_hang" NavigateUrl="BCBanHang.aspx" Text="Báo cáo bán hàng">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bao_cao_tien_gio" NavigateUrl="BCTienGio.aspx" Text="Báo cáo tiền giờ">
+                                                            <dx:RibbonDropDownButtonItem Name="bao_cao_tien_gio" NavigateUrl="BCTienGio.aspx" Text="Báo cáo tiền giờ" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="bao_cao_xuat_khac" NavigateUrl="BCPhieuXuatKhac.aspx" Text="Báo cáo xuất khác">
                                                             </dx:RibbonDropDownButtonItem>

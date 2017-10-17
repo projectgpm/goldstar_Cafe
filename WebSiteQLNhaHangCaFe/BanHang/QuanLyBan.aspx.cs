@@ -130,11 +130,13 @@ namespace BanHang
                         {
                             data = new dtBan();
                             data.Them(MaBan, KyHieu + " - " + i, IDKhuVuc, IDChiNhanh);
-
                             dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý bàn", "Thêm bàng: " + KyHieu + " - " + i);
                         }
                     }
                 }
+                Clear();
+                popup.ShowOnPageLoad = false;
+                Response.Redirect("QuanLyBan.aspx");
             }
             else
             {

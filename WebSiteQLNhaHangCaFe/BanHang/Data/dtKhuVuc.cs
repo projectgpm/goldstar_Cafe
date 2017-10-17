@@ -66,6 +66,12 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.ExecuteNonQuery();
                     }
+                    strSQL = "UPDATE [CF_Ban] SET [DAXOA] = 1 WHERE [IDKhuVuc] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.ExecuteNonQuery();
+                    }
                 }
                 catch (Exception e)
                 {

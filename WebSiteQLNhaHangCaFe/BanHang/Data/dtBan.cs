@@ -160,7 +160,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [CF_Ban]";
+                string cmdText = " SELECT * FROM [CF_Ban] WHERE DAXOA = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

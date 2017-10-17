@@ -47,8 +47,6 @@
                                         <Items>
                                             <dx:GridViewColumnLayoutItem ColumnName="Tên Khu Vực" Name="TenDonViTinh">
                                             </dx:GridViewColumnLayoutItem>
-                                            <dx:GridViewColumnLayoutItem ColumnName="Giá Khu Vực" Name="GiaKhuVuc">
-                                            </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Ký Hiệu" Name="KyHieu">
                                             </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Chi Nhánh" Name="IDChiNhanh">
@@ -86,7 +84,7 @@
                                             <propertiesdateedit displayformatstring="dd/MM/yyyy"></propertiesdateedit>
                                             <settings autofiltercondition="Contains" />
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Giá Khu Vực" FieldName="GiaKhuVuc" VisibleIndex="3">
+                                        <dx:GridViewDataSpinEditColumn Caption="Giá Khu Vực" FieldName="GiaKhuVuc" VisibleIndex="3" Visible="False">
                                             <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ/giờ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />

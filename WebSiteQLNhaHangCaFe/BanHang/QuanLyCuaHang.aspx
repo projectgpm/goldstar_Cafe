@@ -36,16 +36,16 @@
                                             </CellStyle>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataSpinEditColumn Caption="Tổng tiền hiện tại (Ngày)" FieldName="TongTienHienTai" ShowInCustomizationForm="True" VisibleIndex="4">
-                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#} VNĐ" NumberFormat="Custom">
+                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                             <CellStyle HorizontalAlign="Center">
                                             </CellStyle>
                                         </dx:GridViewDataSpinEditColumn>
                                         <dx:GridViewDataSpinEditColumn Caption="Tổng tiền hàng (Ngày)" FieldName="TongTienHang" ShowInCustomizationForm="True" VisibleIndex="3">
-                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#} VNĐ" NumberFormat="Custom">
+                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền giờ (Ngày)" FieldName="TongTienGio" ShowInCustomizationForm="True" VisibleIndex="2">
+                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền giờ (Ngày)" FieldName="TongTienGio" ShowInCustomizationForm="True" VisibleIndex="2" Visible="False">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#} VNĐ" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
