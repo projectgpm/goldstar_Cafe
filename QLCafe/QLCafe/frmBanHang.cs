@@ -39,6 +39,7 @@ namespace QLCafe
         private void frmBanHang_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            KhachHang();
             DanhSachBan();
             // WindowState = FormWindowState.Maximized;
             lblNgay.Text = "Ngày hôm nay: " + DateTime.Now.ToString("dd/MM/yyyy");
@@ -71,6 +72,15 @@ namespace QLCafe
                 DAO_BanHang.AddTabControll(xtraTabControlDanhSach, name, ID, layout);
                 
             }
+        }
+        public void KhachHang()
+        {
+            cmbTenKhachHang.Properties.DataSource = null;
+            cmbTenKhachHang.Refresh();
+            List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
+            cmbTenKhachHang.Properties.DataSource = listKhachHang;
+            cmbTenKhachHang.Properties.ValueMember = "ID";
+            cmbTenKhachHang.Properties.DisplayMember = "TenKhachHang";
         }
         public void ClearTabControl()
         {
@@ -841,6 +851,7 @@ namespace QLCafe
         private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
         {
             txtDiemTichLuy.ReadOnly = false;
+            txtDiemTichLuy.Text = "0";
             DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
             if (tblThongTin.Rows.Count > 0)
             {
@@ -849,7 +860,6 @@ namespace QLCafe
                 txtDienThoai.Text = dr["DienThoai"].ToString();
                 txtCMND.Text = dr["CMND"].ToString();
                 txtDiem.Text = dr["DiemTichLuy"].ToString();
-
             }
         }
 
@@ -870,6 +880,25 @@ namespace QLCafe
             {
                 txtDiemTichLuy.Text = "0";
                 MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnThemKhachHang_Click(object sender, EventArgs e)
+        {
+            frmThemKhachHang fr = new frmThemKhachHang();
+            fr.KTTrangThai = new frmThemKhachHang.GetKT(GetValueThemKhachHang);
+            fr.ShowDialog();
+        }
+        public void GetValueThemKhachHang(int KT)
+        {
+            if (KT == 1)
+            {
+                KhachHang();
+                MessageBox.Show("Thêm Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

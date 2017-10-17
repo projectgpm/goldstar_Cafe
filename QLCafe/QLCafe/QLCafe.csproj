@@ -200,6 +200,12 @@
     <Compile Include="frmTachBill.Designer.cs">
       <DependentUpon>frmTachBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThemKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemKhachHang.Designer.cs">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTinhGio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTachBill.resx">
       <DependentUpon>frmTachBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemKhachHang.resx">
+      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTinhGio.resx">
       <DependentUpon>frmTinhGio.cs</DependentUpon>
