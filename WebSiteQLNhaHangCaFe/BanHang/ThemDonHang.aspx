@@ -131,15 +131,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="" ColSpan="2">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
-                           <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls" Width="100%">
-                            </dx:ASPxUploadControl>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-                <dx:LayoutItem Caption="">
+                <dx:LayoutItem Caption="" ColSpan="3" HorizontalAlign="Right">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer16" runat="server">
                             <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Thêm" OnClick="btnThem_Temp_Click">

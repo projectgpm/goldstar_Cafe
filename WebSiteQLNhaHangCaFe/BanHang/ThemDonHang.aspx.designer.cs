@@ -247,24 +247,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxSpinEdit txtDonGia;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer15;
-        
-        /// <summary>
-        /// UploadFileExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxUploadControl UploadFileExcel;
-        
-        /// <summary>
         /// LayoutItemNestedControlContainer16 control.
         /// </summary>
         /// <remarks>

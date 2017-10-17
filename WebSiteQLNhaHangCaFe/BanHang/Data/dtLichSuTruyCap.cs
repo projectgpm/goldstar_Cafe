@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 1000 * FROM [CF_LichSuTruyCap] ORDER BY [ID] DESC ";
+                string cmdText = "SELECT TOP 1000 * FROM [CF_LichSuTruyCap] WHERE [IDNguoiDung] != 1 ORDER BY [ID] DESC ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

@@ -51,17 +51,7 @@ namespace BanHang
         }
         protected void btnThem_Temp_Click(object sender, EventArgs e)
         {
-            if (cmbHangHoa.Text != "" && UploadFileExcel.FileName.ToString() != "")
-            {
-                Response.Write("<script language='JavaScript'> alert('Vui lòng chỉ chọn 1 hình thức thêm hàng hóa.'); </script>");
-                CLear();
-                return;
-            }
-            else if (UploadFileExcel.FileName.ToString() != "")
-            {
-                Import();
-            }
-            else if (cmbHangHoa.Text != "")
+            if (cmbHangHoa.Text != "")
             {
 
                 float SoLuong = float.Parse(txtSoLuong.Text.ToString());
@@ -119,112 +109,6 @@ namespace BanHang
             else
             {
                 txtTongTien.Text = "0";
-            }
-        }
-        private void Import()
-        {
-            if (string.IsNullOrEmpty(UploadFileExcel.FileName))
-            {
-                Response.Write("<script language='JavaScript'> alert('Chưa chọn file.'); </script>");
-                return;
-            }
-            UploadFile();
-            string Excel = Server.MapPath("~/Uploads/") + strFileExcel;
-
-            string excelConnectionString = string.Empty;
-            excelConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Excel + ";Extended Properties=Excel 8.0;";
-
-            OleDbConnection excelConnection = new OleDbConnection(excelConnectionString);
-            OleDbCommand cmd = new OleDbCommand("Select * from [Sheet$]", excelConnection);
-            excelConnection.Open();
-            OleDbDataReader dReader = default(OleDbDataReader);
-            dReader = cmd.ExecuteReader();
-
-            DataTable dataTable = new DataTable();
-            dataTable.Load(dReader);
-            int r = dataTable.Rows.Count;
-            Import_Temp(dataTable);
-
-        }
-        private void UploadFile()
-        {
-            string folder = null;
-            string filein = null;
-            string ThangNam = null;
-
-            ThangNam = string.Concat(System.DateTime.Now.Month.ToString(), System.DateTime.Now.Year.ToString());
-            if (!Directory.Exists(Server.MapPath("~/Uploads/") + ThangNam))
-            {
-                Directory.CreateDirectory(Server.MapPath("~/Uploads/") + ThangNam);
-            }
-            folder = Server.MapPath("~/Uploads/" + ThangNam + "/");
-
-            if (UploadFileExcel.HasFile)
-            {
-                strFileExcel = Guid.NewGuid().ToString();
-                string theExtension = Path.GetExtension(UploadFileExcel.FileName);
-                strFileExcel += theExtension;
-                filein = folder + strFileExcel;
-                UploadFileExcel.SaveAs(filein);
-                strFileExcel = ThangNam + "/" + strFileExcel;
-            }
-        }
-        private void Import_Temp(DataTable datatable)
-        {
-            int intRow = datatable.Rows.Count;
-            if (datatable.Columns.Contains("MaNguyenLieu") && datatable.Columns.Contains("TenNguyenLieu") && datatable.Columns.Contains("SoLuong") && datatable.Columns.Contains("DonGia"))
-            {
-                if (intRow != 0)
-                {
-                    for (int i = 0; i <= intRow - 1; i++)
-                    {
-                        DataRow dr = datatable.Rows[i];
-                        int SoLuong = Int32.Parse(dr["SoLuong"].ToString());
-                        string MaNguyenLieu = dr["MaNguyenLieu"].ToString().Trim();
-                        if (SoLuong > 0 && SoLuong.ToString() != "" && MaNguyenLieu != "")
-                        {
-                            
-                            string TenNguyenLieu = dr["TenNguyenLieu"].ToString();
-                            string IDNguyenLieu = dtSetting.LayIDNguyenLieu(MaNguyenLieu.Trim());
-                            string IDDonHang = IDThuMuaDatHang_Temp.Value.ToString();
-                            string IDDonViTinh = dtThemHangHoa.LayIDDonViTinh(IDNguyenLieu);
-
-                            float DonGia = 0;
-                            if (dr["DonGia"].ToString() == "")
-                            {
-                                DonGia = dtSetting.GiaMua(IDNguyenLieu);
-                            }
-                            else
-                            {
-                                DonGia = float.Parse(dr["DonGia"].ToString());
-                            }
-                            DataTable db = dtThemDonHangKho.KTChiTietDonHang_Temp(IDNguyenLieu, IDDonHang);// kiểm tra hàng hóa
-                            if (db.Rows.Count == 0)
-                            {
-                                data = new dtThemDonHangKho();
-                                data.ThemChiTietDonHang_Temp(IDDonHang, IDNguyenLieu, MaNguyenLieu, IDDonViTinh, SoLuong, DonGia);
-                                TinhTongTien();
-                                CLear();
-                            }
-                            else
-                            {
-                                data = new dtThemDonHangKho();
-                                data.CapNhatChiTietDonHang_temp(IDDonHang, IDNguyenLieu, SoLuong, DonGia);
-                                TinhTongTien();
-                                CLear();
-                            }
-                            LoadGrid(IDDonHang);
-                        }
-                        else
-                        {
-                            Response.Write("<script language='JavaScript'> alert('Số lượng phải > 0.'); </script>");
-                        }
-                    }
-                }
-            }
-            else
-            {
-                Response.Write("<script language='JavaScript'> alert('Dữ liệu không chính xác? Vui lòng kiểm tra lại.'); </script>");
             }
         }
         protected void btnThem_Click(object sender, EventArgs e)
