@@ -21,6 +21,8 @@ namespace BanHang
             data = new dtTonKhoNguyenLieu();
             gridDanhSach.DataSource = data.DanhSachTonKhoNguyenLieu();
             gridDanhSach.DataBind();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Tồn kho", "Truy cập hàng hóa tồn kho");
         }
     }
 }

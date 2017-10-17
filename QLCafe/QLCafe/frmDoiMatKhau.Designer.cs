@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDoiMatKhau));
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckHienThi = new DevExpress.XtraEditors.CheckEdit();
             this.txtTenDangNhap = new DevExpress.XtraEditors.TextEdit();
@@ -45,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuuLai = new DevExpress.XtraEditors.SimpleButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckHienThi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDangNhap.Properties)).BeginInit();
@@ -52,16 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMatKhauMoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtXacNhanMatKhau.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 19);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE";
             // 
             // groupBox1
             // 
@@ -223,6 +213,16 @@
             this.btnLuuLai.Text = "Lưu Lại";
             this.btnLuuLai.Click += new System.EventHandler(this.btnLuuLai_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(368, 19);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE - BIDA";
+            // 
             // frmDoiMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,7 +256,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -272,6 +271,7 @@
         private DevExpress.XtraEditors.TextEdit txtMatKhau;
         private DevExpress.XtraEditors.TextEdit txtMatKhauMoi;
         private DevExpress.XtraEditors.CheckEdit ckHienThi;
+        private System.Windows.Forms.Label label1;
 
     }
 }

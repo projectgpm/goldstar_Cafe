@@ -9,7 +9,7 @@ namespace BanHang.Data
 {
     public class dtThemDonHangKho
     {
-        public void ThemChiTietDonHang(string IDDonHang, string IDNguyenLieu, string MaNguyenLieu, string IDDonViTinh, string SoLuong, string DonGia)
+        public void ThemChiTietDonHang(object IDDonHang, string IDNguyenLieu, string MaNguyenLieu, string IDDonViTinh, string SoLuong, string DonGia)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -78,7 +78,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTien, string GhiChu, string IDChiNhanh, string IDNhaCungCap, int TrangThaiCongNo)
+        public void CapNhatDonDatHang(object ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTien, string GhiChu, string IDChiNhanh, string IDNhaCungCap, int TrangThaiCongNo)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -196,14 +196,14 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [CF_DonDatHang_ChiTiet_Temp] SET [SoLuong] = @SoLuong,[DonGia] = @DonGia WHERE [IDNguyenLieu] = @IDNguyenLieu AND [IDNguyenLieu] = @IDNguyenLieu";
+                    string cmdText = "UPDATE [CF_DonDatHang_ChiTiet_Temp] SET [ThanhTien] = @ThanhTien,[SoLuong] = @SoLuong,[DonGia] = @DonGia WHERE [IDNguyenLieu] = @IDNguyenLieu AND [IDNguyenLieu] = @IDNguyenLieu";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDNguyenLieu", IDNguyenLieu);
                         myCommand.Parameters.AddWithValue("@IDDonHang", IDDonHang);
                         myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
                         myCommand.Parameters.AddWithValue("@DonGia", DonGia);
-                       
+                        myCommand.Parameters.AddWithValue("@ThanhTien",SoLuong* DonGia);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
@@ -221,7 +221,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [CF_DonDatHang_ChiTiet_Temp] ([IDDonHang],[IDNguyenLieu],[MaNguyenLieu],[IDDonViTinh],[SoLuong],[DonGia]) VALUES (@IDDonHang,@IDNguyenLieu,@MaNguyenLieu,@IDDonViTinh,@SoLuong,@DonGia)";
+                    string cmdText = "INSERT INTO [CF_DonDatHang_ChiTiet_Temp] ([IDDonHang],[IDNguyenLieu],[MaNguyenLieu],[IDDonViTinh],[SoLuong],[DonGia],[ThanhTien]) VALUES (@IDDonHang,@IDNguyenLieu,@MaNguyenLieu,@IDDonViTinh,@SoLuong,@DonGia,@ThanhTien)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHang", IDDonHang);
@@ -230,7 +230,7 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
                         myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
                         myCommand.Parameters.AddWithValue("@DonGia", DonGia);
-                      
+                        myCommand.Parameters.AddWithValue("@ThanhTien",SoLuong* DonGia);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

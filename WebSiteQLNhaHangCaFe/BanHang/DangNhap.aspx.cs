@@ -33,7 +33,10 @@ namespace BanHang
                     Session["IDNhom"] = dr["IDNhomNguoiDung"].ToString();
                     Session["KTDangNhap"] = "GPM@2017";
                     Session["IDChiNhanh"] = dr["IDChiNhanh"].ToString();
-                    Response.Redirect("QuanLyNguyenLieu.aspx");
+
+                    dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Đăng nhập", "Đăng nhập hệ thống");
+
+                    Response.Redirect("QuanLyCuaHang.aspx");
                    
                 }
                 else

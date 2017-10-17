@@ -13,6 +13,15 @@ namespace BanHang {
     public partial class NhaCungCap {
         
         /// <summary>
+        /// ASPxFormLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
+        
+        /// <summary>
         /// gridNhaCungCap control.
         /// </summary>
         /// <remarks>

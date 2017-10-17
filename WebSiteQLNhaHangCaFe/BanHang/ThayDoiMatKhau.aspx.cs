@@ -33,6 +33,9 @@ namespace BanHang
                         string sha1 = dtSetting.GetSHA1HashData(txtMatKhauMoi2.Value.ToString());
                         data.DoiMatKhau(ID, sha1);
                         Session["KTDangNhap"] = null;
+
+                        dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Thay đổi mật khẩu", "Thay đổi mật khẩu");
+
                         Response.Redirect("DangNhap.aspx");   
                     }
                 }

@@ -40,6 +40,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton ASPxFormLayout2_E3;
         
         /// <summary>
+        /// ASPxFormLayout3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout3;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer11;
+        
+        /// <summary>
         /// gridNhaCungCap control.
         /// </summary>
         /// <remarks>

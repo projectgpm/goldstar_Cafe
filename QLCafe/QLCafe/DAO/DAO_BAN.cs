@@ -93,5 +93,17 @@ namespace QLCafe.DAO
             }
             return -1;
         }
+        public static string LenTenBan(int IDBan)
+        {
+            string sTruyVan = string.Format(@"SELECT TenBan FROM [CF_Ban] WHERE [ID] = {0} ", IDBan);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return dr["TenBan"].ToString();
+            }
+            return null;
+        }
     }
 }

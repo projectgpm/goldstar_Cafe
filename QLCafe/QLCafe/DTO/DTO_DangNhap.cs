@@ -57,11 +57,18 @@ namespace QLCafe.DTO
             get { return sdt; }
             set { sdt = value; }
         }
+        private int iDNhomNguoiDung;
+
+        public int IDNhomNguoiDung
+        {
+            get { return iDNhomNguoiDung; }
+            set { iDNhomNguoiDung = value; }
+        }
         public DTO_DangNhap()
         {
 
         }
-        public DTO_DangNhap(int getid, string gettendangnhap, string getmatkhau, string gettennguoidung, string getidchinhanh, string getmanhanvien, string getsdt)
+        public DTO_DangNhap(int getid, string gettendangnhap, string getmatkhau, string gettennguoidung, string getidchinhanh, string getmanhanvien, string getsdt, int getIDNhomNguoiDung)
         {
             Id = getid;
             Tendangnhap = gettendangnhap.ToUpper();
@@ -70,6 +77,7 @@ namespace QLCafe.DTO
             Manhanvien = getmanhanvien;
             Sdt = getsdt;
             Idchinhanh = getidchinhanh;
+            IDNhomNguoiDung = getIDNhomNguoiDung;
         }
     }
 }

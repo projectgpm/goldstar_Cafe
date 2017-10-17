@@ -46,46 +46,73 @@ namespace QLCafe
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if (DAO_TestKetNoi.IsConnectedToInternet("google.com"))
-            {
+            //if (DAO_TestKetNoi.IsConnectedToInternet("gpm.vn"))
+            //{
                 DangNhap();
-            }
-            else
-            {
-                MessageBox.Show("Không có kết nối Internet. Vui lòng kiểm tra lại?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Không có kết nối Internet. Vui lòng kiểm tra lại?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         public void DangNhap()
         {
-            string TenDangNhap = txtTenDangNhap.Text.ToUpper();
-            string MatKhau = DAO_Setting.GetSHA1HashData(txtMatKhau.Text.ToString());
-            bool KT = BUS_DangNhap.KiemTraDangNhap(TenDangNhap, MatKhau);
-            if (KT == true)
+            if (DAO_Setting.TestDuKieu() != "")
             {
-                DataTable dt = BUS_DangNhap.ThongTin(TenDangNhap, MatKhau);
-                if (dt.Rows.Count > 0)
+                // kiểm tra key
+                if (DAO_Setting.TestDuKieu() == DAO_Setting.GetSHA1HashData("GPMVIETNAM@2017"))
                 {
-                    DataRow dr = dt.Rows[0];
-                    NguoiDung = new DTO_DangNhap();
-                    NguoiDung.Id = Int32.Parse(dr["ID"].ToString());
-                    NguoiDung.Tendangnhap = dr["TenDangNhap"].ToString();
-                    NguoiDung.Idchinhanh = dr["IDChiNhanh"].ToString();
-                    NguoiDung.Manhanvien = dr["MaNhanVien"].ToString();
-                    NguoiDung.Tennguoidung = dr["TenNguoiDung"].ToString();
-                    NguoiDung.Sdt = dr["SDT"].ToString();
-                    frmBanHang fr = new frmBanHang();
-                    txtMatKhau.Text = "";
-                    txtMatKhau.Select();
-                    this.Hide();
-                    fr.ShowDialog();
-                    this.Show();
+                    string TenDangNhap = txtTenDangNhap.Text.ToUpper();
+                    string MatKhau = DAO_Setting.GetSHA1HashData(txtMatKhau.Text.ToString());
+                    bool KT = BUS_DangNhap.KiemTraDangNhap(TenDangNhap, MatKhau);
+                    if (KT == true)
+                    {
+                        DataTable dt = BUS_DangNhap.ThongTin(TenDangNhap, MatKhau);
+                        if (dt.Rows.Count > 0)
+                        {
+                            DataRow dr = dt.Rows[0];
+                            NguoiDung = new DTO_DangNhap();
+                            NguoiDung.Id = Int32.Parse(dr["ID"].ToString());
+                            NguoiDung.Tendangnhap = dr["TenDangNhap"].ToString();
+                            NguoiDung.Idchinhanh = dr["IDChiNhanh"].ToString();
+                            NguoiDung.Manhanvien = dr["MaNhanVien"].ToString();
+                            NguoiDung.Tennguoidung = dr["TenNguoiDung"].ToString();
+                            NguoiDung.Sdt = dr["SDT"].ToString();
+                            NguoiDung.IDNhomNguoiDung = Int32.Parse(dr["IDNhomNguoiDung"].ToString());
+                            DAO_Setting.ThemLichSuTruyCap(frmDangNhap.NguoiDung.Id, frmDangNhap.NguoiDung.IDNhomNguoiDung, frmDangNhap.NguoiDung.Idchinhanh, "Đăng Nhập", "Đăng Nhập Bán Hàng");
+                            frmBanHang fr = new frmBanHang();
+                            txtMatKhau.Text = "";
+                            txtMatKhau.Select();
+                            this.Hide();
+                            fr.ShowDialog();
+                            this.Show();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng nhập không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Phần mềm chưa được kích hoạt bản quyền.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        frmKichHoat fr = new frmKichHoat();
+                        fr.ShowDialog();
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Đăng nhập không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (MessageBox.Show("Phần mềm chưa được kích hoạt bản quyền.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.OK)
+                {
+                    frmKichHoat fr = new frmKichHoat();
+                    fr.ShowDialog();
+                }
             }
         }
+       
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -113,6 +140,11 @@ namespace QLCafe
             {
                 txtMatKhau.Properties.UseSystemPasswordChar = true;
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -37,16 +37,27 @@
       <HintPath>..\BUS\bin\Debug\BUS.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v16.1" />
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1" />
+    <Reference Include="DevExpress.DataAccess.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.1" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core" />
+    <Reference Include="DevExpress.Utils.v16.1.UI, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v16.1" />
+    <Reference Include="DevExpress.XtraGauges.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -75,36 +86,37 @@
     <Compile Include="DAO\DAO_BAN.cs" />
     <Compile Include="DAO\DAO_BanHang.cs" />
     <Compile Include="DAO\DAO_ChiTietHoaDon.cs" />
+    <Compile Include="DAO\DAO_ChiTietHoaDonChinh.cs" />
     <Compile Include="DAO\DAO_ChuyenBan.cs" />
     <Compile Include="DAO\DAO_ConnectSQL.cs" />
     <Compile Include="DAO\DAO_DangNhap.cs" />
+    <Compile Include="DAO\DAO_DanhSachGioChuaThanhToan.cs" />
     <Compile Include="DAO\DAO_DanhSachMonAn.cs" />
     <Compile Include="DAO\DAO_DatBan.cs" />
-    <Compile Include="DAO\DAO_Gio.cs" />
     <Compile Include="DAO\DAO_GoiMon.cs" />
     <Compile Include="DAO\DAO_GopBan.cs" />
     <Compile Include="DAO\DAO_HangHoa.cs" />
     <Compile Include="DAO\DAO_HoaDon.cs" />
-    <Compile Include="DAO\DAO_KhachHang.cs" />
+    <Compile Include="DAO\DAO_KetCa.cs" />
     <Compile Include="DAO\DAO_KhuVuc.cs" />
+    <Compile Include="DAO\DAO_NguyenLieu.cs" />
     <Compile Include="DAO\DAO_NhomHang.cs" />
-    <Compile Include="DAO\DAO_NhomKhachHang.cs" />
     <Compile Include="DAO\DAO_Setting.cs" />
     <Compile Include="DAO\DAO_TestKetNoi.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\NativeMethods.cs" />
     <Compile Include="DTO\DTO_BAN.cs" />
+    <Compile Include="DTO\DTO_ChiTietGio.cs" />
     <Compile Include="DTO\DTO_ChiTietHoaDon.cs" />
     <Compile Include="DTO\DTO_DangNhap.cs" />
     <Compile Include="DTO\DTO_DanhSachMenu.cs" />
     <Compile Include="DTO\DTO_DatBan.cs" />
-    <Compile Include="DTO\DTO_Gio.cs" />
     <Compile Include="DTO\DTO_HangHoa.cs" />
     <Compile Include="DTO\DTO_HoaDon.cs" />
-    <Compile Include="DTO\DTO_KhachHang.cs" />
+    <Compile Include="DTO\DTO_KetCa.cs" />
     <Compile Include="DTO\DTO_KhuVuc.cs" />
+    <Compile Include="DTO\DTO_NguyenLieu.cs" />
     <Compile Include="DTO\DTO_NhomHangHoa.cs" />
-    <Compile Include="DTO\DTO_NhomKhachHang.cs" />
     <Compile Include="DTO\DTO_WriteDataConnect.cs" />
     <Compile Include="frmBanHang.cs">
       <SubType>Form</SubType>
@@ -154,26 +166,83 @@
     <Compile Include="frmGopBan.Designer.cs">
       <DependentUpon>frmGopBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKetCa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKetCa.Designer.cs">
+      <DependentUpon>frmKetCa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKichHoat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKichHoat.Designer.cs">
+      <DependentUpon>frmKichHoat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKiemTraTachBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKiemTraTachBan.Designer.cs">
+      <DependentUpon>frmKiemTraTachBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTachBan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTachBan.Designer.cs">
       <DependentUpon>frmTachBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmThemKhachHang.cs">
+    <Compile Include="frmTachBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmThemKhachHang.Designer.cs">
-      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    <Compile Include="frmTachBill.Designer.cs">
+      <DependentUpon>frmTachBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmXacNhan.cs">
+    <Compile Include="frmTinhGio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmXacNhan.Designer.cs">
-      <DependentUpon>frmXacNhan.cs</DependentUpon>
+    <Compile Include="frmTinhGio.Designer.cs">
+      <DependentUpon>frmTinhGio.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\rpHoaDonBanHang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang1.designer.cs">
+      <DependentUpon>rpHoaDonBanHang1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang2.designer.cs">
+      <DependentUpon>rpHoaDonBanHang2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_58.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_58.designer.cs">
+      <DependentUpon>rpHoaDonBanHang_58.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_581.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_581.designer.cs">
+      <DependentUpon>rpHoaDonBanHang_581.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_582.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_582.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang_582.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmBanHang.resx">
       <DependentUpon>frmBanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,15 +267,36 @@
     <EmbeddedResource Include="frmGopBan.resx">
       <DependentUpon>frmGopBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKetCa.resx">
+      <DependentUpon>frmKetCa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKichHoat.resx">
+      <DependentUpon>frmKichHoat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKiemTraTachBan.resx">
+      <DependentUpon>frmKiemTraTachBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTachBan.resx">
       <DependentUpon>frmTachBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmThemKhachHang.resx">
-      <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="frmTachBill.resx">
+      <DependentUpon>frmTachBill.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmXacNhan.resx">
-      <DependentUpon>frmXacNhan.cs</DependentUpon>
+    <EmbeddedResource Include="frmTinhGio.resx">
+      <DependentUpon>frmTinhGio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmBanHang.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmCauHinhHeThong.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmChuyenBan.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmDangNhap.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmDatBan.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmDoiMatKhau.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmGoiMon.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmGopBan.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmKiemTraTachBan.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmTachBan.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.frmTinhGio.resources" />
+    <EmbeddedResource Include="obj\Debug\QLCafe.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -217,6 +307,30 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang.resx">
+      <DependentUpon>rpHoaDonBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang1.resx">
+      <DependentUpon>rpHoaDonBanHang1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang2.resx">
+      <DependentUpon>rpHoaDonBanHang2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_58.resx">
+      <DependentUpon>rpHoaDonBanHang_58.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_581.resx">
+      <DependentUpon>rpHoaDonBanHang_581.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_582.resx">
+      <DependentUpon>rpHoaDonBanHang_582.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="bin\Debug\QLCafe.vshost.exe.manifest" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\QLCafe.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\QLCafe.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -228,10 +342,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\BUS.dll" />
+    <Content Include="bin\Debug\QLCafe.exe" />
+    <Content Include="bin\Debug\QLCafe.pdb" />
+    <Content Include="bin\Debug\QLCafe.vshost.exe" />
+    <Content Include="bin\Debug\ServerSql.txt" />
     <Content Include="images\gpm.ico" />
     <Content Include="images\gpm.png" />
+    <Content Include="obj\Debug\QLCafe.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\QLCafe.exe" />
+    <Content Include="obj\Debug\qlcafe.exe.licenses" />
+    <Content Include="obj\Debug\QLCafe.pdb" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

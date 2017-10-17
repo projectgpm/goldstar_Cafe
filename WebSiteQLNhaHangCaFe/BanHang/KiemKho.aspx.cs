@@ -15,15 +15,22 @@ namespace BanHang
         dtKiemKho data = new dtKiemKho();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM@2017")
             {
-                data = new dtKiemKho();
-                object IDPhieuKiemKho = data.ThemPhieu_Temp();
-                IDPhieuKiemKho_Temp.Value = IDPhieuKiemKho.ToString();
-                txtChiNhanh.Text = Session["IDChiNhanh"].ToString();
-                txtNguoiLapPhieu.Text = Session["TenDangNhap"] == null ? "" : Session["TenDangNhap"].ToString();
+                Response.Redirect("DangNhap.aspx");
             }
-            LoadGrid(IDPhieuKiemKho_Temp.Value.ToString()); 
+            else
+            {
+                if (!IsPostBack)
+                {
+                    data = new dtKiemKho();
+                    // object IDPhieuKiemKho = data.ThemPhieu_Temp();
+                    IDPhieuKiemKho_Temp.Value = Session["IDNhanVien"].ToString();
+                    txtChiNhanh.Text = Session["IDChiNhanh"].ToString();
+                    txtNguoiLapPhieu.Text = Session["TenDangNhap"] == null ? "" : Session["TenDangNhap"].ToString();
+                }
+                LoadGrid(IDPhieuKiemKho_Temp.Value.ToString());
+            }
         }
 
         protected void gridDanhSachHangHoa_Temp_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -35,6 +42,7 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSachHangHoa_Temp.CancelEdit();
             LoadGrid(IDPhieuKiemKho);
+
         }
         protected void btnHuy_Click(object sender, EventArgs e)
         {
@@ -122,28 +130,33 @@ namespace BanHang
                 DateTime NgayKiemKho = DateTime.Parse(txtNgayLapPhieu.Text.ToString());
                 string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                 data = new dtKiemKho();
-                data.CapNhatPhieuKiemKho(IDPhieuKiemKho, IDNguoiDung, NgayKiemKho, GhiChu, IDChiNhanh);
-                foreach (DataRow dr in db.Rows)
+                object ID = data.ThemPhieu_Temp();
+                if (ID != null)
                 {
-                    string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
-                    string TonKho = dr["TonKho"].ToString();
-                    string ChenhLech = dr["ChenhLech"].ToString();
-                    string ThucTe = dr["ThucTe"].ToString();
-                    string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
-                    string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                    data.CapNhatPhieuKiemKho(ID, IDNguoiDung, NgayKiemKho, GhiChu, IDChiNhanh);
+                    foreach (DataRow dr in db.Rows)
+                    {
+                        string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
+                        string TonKho = dr["TonKho"].ToString();
+                        string ChenhLech = dr["ChenhLech"].ToString();
+                        string ThucTe = dr["ThucTe"].ToString();
+                        string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
+                        string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                        data = new dtKiemKho();
+                        data.ThemPhieuKiemKho(ID, IDNguyenLieu, TonKho, ChenhLech, ThucTe, MaNguyenLieu, IDDonViTinh);
+                    }
                     data = new dtKiemKho();
-                    data.ThemPhieuKiemKho(IDPhieuKiemKho, IDNguyenLieu, TonKho, ChenhLech, ThucTe, MaNguyenLieu, IDDonViTinh);
+                    data.XoaPhieuKiemKho_Temp_IDPhieuKiemKho2(IDPhieuKiemKho);
+                    Response.Redirect("DanhSachKiemKho.aspx");
                 }
-                data = new dtKiemKho();
-                data.XoaPhieuKiemKho_Temp_IDPhieuKiemKho2(IDPhieuKiemKho);
-                Response.Redirect("DanhSachKiemKho.aspx");
-
             }
             else
             {
                 cmbHangHoa.Focus();
                 Response.Write("<script language='JavaScript'> alert('Danh sách kiểm kho rỗng.'); </script>");
             }
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Kiểm kho", "Tạo phiếu kiểm kho");
         }
         protected void cmbHangHoa_SelectedIndexChanged(object sender, EventArgs e)
         {

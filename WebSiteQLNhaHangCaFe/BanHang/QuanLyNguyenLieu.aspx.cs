@@ -39,6 +39,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nguyên liệu", "Xóa nguyên liệu: " + ID);
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -66,6 +68,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nguyên liệu", "Thêm nguyên liệu: " + TenNguyenLieu);
         }
 
         protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -77,12 +81,19 @@ namespace BanHang
             string NhaCungCap = e.NewValues["NhaCungCap"] == null ? "" : e.NewValues["NhaCungCap"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             string GiaMua = e.NewValues["GiaMua"].ToString();
+
             data = new dtNguyenLieu();
+
+            float GiaCu = data.LaySoTienCu(ID);
+            if (GiaCu != float.Parse(GiaMua))
+                dtThayDoiGia.ThemLichSu(Session["IDNhanVien"].ToString(), ID, GiaCu + "", GiaMua);
+
             data.Sua(ID, MaNguyenLieu, TenNguyenLieu, NhaCungCap, GhiChu, IDDonViTinh, GiaMua);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
 
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nguyên liệu", "Cập nhật nguyên liệu: " + TenNguyenLieu);
         }
     }
 }

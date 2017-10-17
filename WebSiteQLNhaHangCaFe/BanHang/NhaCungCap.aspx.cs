@@ -33,6 +33,8 @@ namespace BanHang
             e.Cancel = true;
             gridNhaCungCap.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Nhà cung cấp", "Xóa nhà cung cấp: " + ID);
         }
 
         protected void gridNhaCungCap_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -53,6 +55,8 @@ namespace BanHang
             e.Cancel = true;
             gridNhaCungCap.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Nhà cung cấp", "Thêm nhà cung cấp: " + tenNhaCungCap);
         }
 
         protected void gridNhaCungCap_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -73,6 +77,8 @@ namespace BanHang
             e.Cancel = true;
             gridNhaCungCap.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Nhà cung cấp", "Cập nhật nhà cung cấp: " + ID);
         }
     }
 }

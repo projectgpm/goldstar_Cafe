@@ -41,15 +41,23 @@ namespace QLCafe.DAO
         }
 
 
-        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float PhuThuGio, float PhuThuKhuVuc, float GiaTong)
+        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh)
         {
-            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,PhuThuGio,PhuThuKhuVuc,GiaTong) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong);
+            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static bool CapNhatChiTietHoaDon(int IDHoaDon, int SL, float ThanhTien, int IDHangHoa, int IDBan)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon SET [SoLuong] =  SoLuong + {0}, [ThanhTien] = [ThanhTien] + {1} WHERE [IDHoaDon] = {2} AND [IDHangHoa] = {3} AND [IDBan] = {4}", SL, ThanhTien, IDHoaDon, IDHangHoa, IDBan);
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [SoLuong] =  SoLuong + {0}, [ThanhTien] = [ThanhTien] + {1} WHERE [IDHoaDon] = {2} AND [IDHangHoa] = {3} AND [IDBan] = {4}", SL, ThanhTien, IDHoaDon, IDHangHoa, IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+
+        public static DataTable DanhSachMonAnBanChay()
+        {
+            string sTruyVan = string.Format(@"  SELECT TOP 16 SUM([CF_ChiTietHoaDon].SoLuong) as SL, [CF_ChiTietHoaDon].IDHangHoa,[CF_HangHoa].TenHangHoa  FROM [CF_ChiTietHoaDon],[CF_HangHoa] WHERE [CF_HangHoa].ID =[CF_ChiTietHoaDon].IDHangHoa   GROUP BY [CF_ChiTietHoaDon].IDHangHoa,[CF_HangHoa].TenHangHoa ORDER BY SL DESC");
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            return data;
         }
     }
 }

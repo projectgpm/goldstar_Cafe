@@ -89,6 +89,25 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public float LaySoTienCu(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT GiaBan FROM [CF_HangHoa] WHERE ID = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                        return float.Parse(tb.Rows[0]["GiaBan"].ToString());
+                    return 0;
+                }
+            }
+        }
+
         public void ThemNguyenLieu(object IDHangHoa, string IDNguyenLieu, string TrongLuong, string MaNguyenLieu, string NhaCungCap, string IDDonViTinh)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

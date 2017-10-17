@@ -163,6 +163,8 @@ namespace BanHang
             {
                 Response.Write("<script language='JavaScript'> alert('Vui lòng nhập đủ thông tin.'); </script>");
             }
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Cập nhật công nợ nhà cung cấp", "Thanh toán công nợ.");
         }
        
     }

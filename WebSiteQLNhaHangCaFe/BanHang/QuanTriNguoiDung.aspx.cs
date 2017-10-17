@@ -30,6 +30,8 @@ namespace BanHang
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý người dùng", "Xóa người dùng: " + ID);
         }
 
         protected void gridQuanTriNguoiDung_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -57,7 +59,9 @@ namespace BanHang
             }
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
-            LoadGrid();   
+            LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý người dùng", "Thêm người dùng: " + TenNguoiDung);
         }
 
         protected void gridQuanTriNguoiDung_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -91,6 +95,8 @@ namespace BanHang
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý người dùng", "Cập nhật người dùng: " + ID);
         }
     }
 }

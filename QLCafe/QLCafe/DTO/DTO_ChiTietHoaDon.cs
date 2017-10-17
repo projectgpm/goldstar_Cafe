@@ -74,30 +74,8 @@ namespace QLCafe.DTO
         }
 
 
-        private float phuThuGio;
-
-        public float PhuThuGio
-        {
-            get { return phuThuGio; }
-            set { phuThuGio = value; }
-        }
-        private float phuThuKhuVuc;
-
-        public float PhuThuKhuVuc
-        {
-            get { return phuThuKhuVuc; }
-            set { phuThuKhuVuc = value; }
-        }
-        private float giaTong;
-
-        public float GiaTong
-        {
-            get { return giaTong; }
-            set { giaTong = value; }
-        }
-
         public DTO_ChiTietHoaDon() { }
-        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien,string getMaHangHoa, int getiddvt,int getidban,float getgio, float getkhuvuc, float giatong)
+        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien,string getMaHangHoa, int getiddvt,int getidban)
         {
             this.ID = getid;
             this.IDHoaDon = getidhoadon;
@@ -108,9 +86,6 @@ namespace QLCafe.DTO
             this.MaHangHoa = getMaHangHoa;
             this.IDDonViTinh = getiddvt;
             this.IdBan = getidban;
-            this.PhuThuGio = getgio;
-            this.PhuThuKhuVuc = getkhuvuc;
-            this.GiaTong = giatong;
         }
         public DTO_ChiTietHoaDon(DataRow dr)
         {
@@ -123,10 +98,6 @@ namespace QLCafe.DTO
             this.MaHangHoa = dr["MaHangHoa"].ToString();
             this.IDDonViTinh = Int32.Parse(dr["IDDonViTinh"].ToString());
             this.IdBan = Int32.Parse(dr["IDBan"].ToString());
-
-            this.PhuThuGio = float.Parse(dr["PhuThuGio"].ToString());
-            this.PhuThuKhuVuc = float.Parse(dr["PhuThuKhuVuc"].ToString());
-            this.GiaTong = float.Parse(dr["GiaTong"].ToString());
         }
     }
 }

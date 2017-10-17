@@ -22,6 +22,8 @@ namespace BanHang
             data = new dtGio();
             gridDanhSach.DataSource = data.DanhSach();
             gridDanhSach.DataBind();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý giờ", "Truy cập");
         }
 
         protected void gridDanhSach_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -40,6 +42,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)

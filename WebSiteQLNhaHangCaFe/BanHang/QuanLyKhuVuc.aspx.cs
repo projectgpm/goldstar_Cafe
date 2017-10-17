@@ -29,7 +29,7 @@ namespace BanHang
             string ID = e.Keys[0].ToString();
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
             string KyHieu = e.NewValues["KyHieu"].ToString();
-            string TyLe = e.NewValues["TyLe"].ToString();
+            string TyLe = e.NewValues["GiaKhuVuc"].ToString();
             string IDChiNhanh = e.NewValues["IDChiNhanh"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             data = new dtKhuVuc();
@@ -37,6 +37,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý khu vực", "Cập nhật khu vực: " + ID);
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -45,7 +47,7 @@ namespace BanHang
             string KyHieu = e.NewValues["KyHieu"].ToString();
             string MaKhuVuc = dtKhuVuc.Dem_Max(IDChiNhanh);
             string TenKhuVuc = e.NewValues["TenKhuVuc"].ToString();
-            string TyLe = e.NewValues["TyLe"].ToString();
+            string TyLe = e.NewValues["GiaKhuVuc"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             //if (dtKhuVuc.KiemTra(KyHieu) == true)
             //{
@@ -59,6 +61,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý khu vực", "Thêm khu vực: " + TenKhuVuc );
         }
 
         protected void gridDanhSach_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -69,6 +73,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý khu vực", "Xóa khu vực: " + ID);
         }
     }
 }

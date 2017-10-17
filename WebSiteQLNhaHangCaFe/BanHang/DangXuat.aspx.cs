@@ -14,6 +14,9 @@ namespace BanHang
         {
             //dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đăng Xuất", Session["IDKho"].ToString(), "Đăng Xuất", "Thoát");
             Session["KTDangNhap"] = null;
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Đăng xuất", "Đăng xuất khỏi hệ thống");
+
             Response.Redirect("DangNhap.aspx");
         }
     }

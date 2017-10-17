@@ -15,15 +15,22 @@ namespace BanHang
         dtPhieuXuatKhac data = new dtPhieuXuatKhac();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM@2017")
             {
-                data = new dtPhieuXuatKhac();
-                object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
-                IDPhieuXuatKhac_Temp.Value = IDPhieuXuatKhac.ToString();
-                cmbChiNhanh.Text = Session["IDChiNhanh"].ToString();
-                txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
+                Response.Redirect("DangNhap.aspx");
             }
-            LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());  
+            else
+            {
+                if (!IsPostBack)
+                {
+                   // data = new dtPhieuXuatKhac();
+                    // object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
+                    IDPhieuXuatKhac_Temp.Value = Session["IDNhanVien"].ToString();
+                    cmbChiNhanh.Text = Session["IDChiNhanh"].ToString();
+                    txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
+                }
+                LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());
+            }
         }
        
         public void Clear()
@@ -143,23 +150,29 @@ namespace BanHang
                     string GhiChu = txtGhiChu == null ? "" : txtGhiChu.Text.ToString();
                     string IDChiNhanh = Session["IDChiNhanh"].ToString();
                     data = new dtPhieuXuatKhac();
-                    data.CapNhatPhieuXuatKhac_ID(IDPhieuXuatKhac, IDNguoiLapPhieu, IDLyDoXuat, NgayLapPhieu, GhiChu, IDChiNhanh);
-                    foreach (DataRow dr in db.Rows)
+                    object ID = data.ThemPhieuXuatKhac_Temp();
+                    if (ID != null)
                     {
-                        string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
-                        string TonKho = dr["TonKho"].ToString();
-                        string IDDonViTinh = dr["IDDonViTinh"].ToString();
-                        string SoLuongXuat = dr["SoLuongXuat"].ToString();
-                        string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
-                        string DonGia = dr["DonGia"].ToString();
-                        string ThanhTien = dr["ThanhTien"].ToString();
+                        data.CapNhatPhieuXuatKhac_ID(ID, IDNguoiLapPhieu, IDLyDoXuat, NgayLapPhieu, GhiChu, IDChiNhanh);
+                        foreach (DataRow dr in db.Rows)
+                        {
+                            string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
+                            string TonKho = dr["TonKho"].ToString();
+                            string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                            string SoLuongXuat = dr["SoLuongXuat"].ToString();
+                            string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
+                            string DonGia = dr["DonGia"].ToString();
+                            string ThanhTien = dr["ThanhTien"].ToString();
+                            data = new dtPhieuXuatKhac();
+                            data.ThemChiTietPhieuXuatKhac(ID, IDNguyenLieu, TonKho, IDDonViTinh, SoLuongXuat, MaNguyenLieu, DonGia, ThanhTien);
+                            dtSetting.TruTonKho(IDNguyenLieu, SoLuongXuat, IDChiNhanh);
+                        }
                         data = new dtPhieuXuatKhac();
-                        data.ThemChiTietPhieuXuatKhac(IDPhieuXuatKhac, IDNguyenLieu, TonKho, IDDonViTinh, SoLuongXuat, MaNguyenLieu, DonGia, ThanhTien);
-                        dtSetting.TruTonKho(IDNguyenLieu, SoLuongXuat, IDChiNhanh);
+                        data.XoaChiTietPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+
+                        dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Phiếu xuất khác", "Thêm phiếu xuất khác");
+                        Response.Redirect("DanhSachPhieuXuatKhac.aspx");
                     }
-                    data = new dtPhieuXuatKhac();
-                    data.XoaChiTietPhieuXuatKhac_Temp(IDPhieuXuatKhac);
-                    Response.Redirect("DanhSachPhieuXuatKhac.aspx");
                 }
                 else
                 {
@@ -172,6 +185,8 @@ namespace BanHang
                 cmbLyDoXuat.Focus();
                 Response.Write("<script language='JavaScript'> alert('Vui lòng chọn lý do để xuất.'); </script>");
             }
+
+            
         }
 
         protected void btnHuyPhieuXuatKhac_Click(object sender, EventArgs e)

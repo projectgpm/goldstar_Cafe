@@ -9,27 +9,6 @@ namespace QLCafe.DTO
 {
     public class DTO_DanhSachMenu
     {
-        private float giaTong;
-
-        public float GiaTong
-        {
-            get { return giaTong; }
-            set { giaTong = value; }
-        }
-        private float phuThuKhuVuc;
-
-        public float PhuThuKhuVuc
-        {
-            get { return phuThuKhuVuc; }
-            set { phuThuKhuVuc = value; }
-        }
-        private float phuThuGio;
-
-        public float PhuThuGio
-        {
-            get { return phuThuGio; }
-            set { phuThuGio = value; }
-        }
         private float thanhTien;
 
         public float ThanhTien
@@ -73,7 +52,7 @@ namespace QLCafe.DTO
             get { return maHangHoa; }
             set { maHangHoa = value; }
         }
-        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien, float getgio, float getkhuvuc, float getgiatong)
+        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien)
         {
             this.MaHangHoa = getMaHangHoa;
             this.TenHangHoa = getTenHangHoa;
@@ -81,9 +60,6 @@ namespace QLCafe.DTO
             this.SoLuong = getSL;
             this.DonGia = getDonGia;
             this.ThanhTien = getThanhTien;
-            this.PhuThuGio = getgio;
-            this.PhuThuKhuVuc = getkhuvuc;
-            this.GiaTong = getgiatong;
         }
         public DTO_DanhSachMenu(DataRow dr)
         {
@@ -93,9 +69,6 @@ namespace QLCafe.DTO
             this.SoLuong = Int32.Parse(dr["SoLuong"].ToString());
             this.DonGia = float.Parse(dr["DonGia"].ToString());
             this.ThanhTien = float.Parse(dr["ThanhTien"].ToString());
-            this.PhuThuGio = float.Parse(dr["PhuThuGio"].ToString());
-            this.PhuThuKhuVuc = float.Parse(dr["PhuThuKhuVuc"].ToString());
-            this.GiaTong = float.Parse(dr["GiaTong"].ToString());
         }
     }
 }

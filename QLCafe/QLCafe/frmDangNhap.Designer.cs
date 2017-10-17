@@ -81,7 +81,7 @@
             // 
             // txtTenDangNhap
             // 
-            this.txtTenDangNhap.EditValue = "nv1";
+            this.txtTenDangNhap.EditValue = "";
             this.txtTenDangNhap.Location = new System.Drawing.Point(129, 28);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,7 +91,7 @@
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.EditValue = "1";
+            this.txtMatKhau.EditValue = "";
             this.txtMatKhau.Location = new System.Drawing.Point(129, 57);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,11 +141,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 18);
+            this.label1.Location = new System.Drawing.Point(17, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 19);
+            this.label1.Size = new System.Drawing.Size(368, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE";
+            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE - BIDA";
             // 
             // linkCauHinh
             // 
@@ -180,6 +180,7 @@
             this.label5.Size = new System.Drawing.Size(156, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mọi chi tiết xin liên hệ :";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // defaultLookAndFeel1
             // 

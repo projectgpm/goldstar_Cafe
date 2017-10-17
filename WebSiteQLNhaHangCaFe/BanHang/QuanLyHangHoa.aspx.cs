@@ -61,6 +61,8 @@ namespace BanHang
             gridBarCode.CancelEdit();
             gridBarCode.DataSource = data.GetListBarCode(IDHangHoa);
             gridBarCode.DataBind();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Thêm nguyên liệu: " + IDNguyenLieu);
         }
 
         protected void gridBarCode_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -73,6 +75,8 @@ namespace BanHang
             object IDHangHoa = gridBarCode.GetMasterRowKeyValue();
             gridBarCode.DataSource = data.GetListBarCode(IDHangHoa);
             gridBarCode.DataBind();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Xóa nguyên liệu: " + ID);
         }
         protected void gridBarCode_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -109,6 +113,8 @@ namespace BanHang
                     throw new Exception("Lỗi: Nguyên liệu chế biến đã tồn tại?");
                 }
             }
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Cập nhật nguyên liệu: " + IDNguyenLieu);
         }
         protected void gridBarCode_Init(object sender, EventArgs e)
         {
@@ -126,6 +132,8 @@ namespace BanHang
             e.Cancel = true;
             gridHangHoa.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Xóa hàng hóa: " + ID);
         }
 
         protected void gridHangHoa_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -141,6 +149,8 @@ namespace BanHang
             e.Cancel = true;
             gridHangHoa.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Thêm hàng hóa: " + TenHangHoa);
         }
 
         protected void gridHangHoa_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -153,10 +163,17 @@ namespace BanHang
             string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
             string IDNhomHang = e.NewValues["IDNhomHang"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
+
+            float GiaCu = data.LaySoTienCu(ID);
+            if (GiaCu != float.Parse(GiaBan))
+                dtThayDoiGia.ThemLichSu(Session["IDNhanVien"].ToString(), ID, GiaCu + "", GiaBan);
+
             data.SuaHangHoa(ID, MaHangHoa, TenHangHoa, GiaBan, IDDonViTinh, IDNhomHang, GhiChu);
             e.Cancel = true;
             gridHangHoa.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý hàng hóa", "Cập nhật hàng hóa: " + ID);
         }
 
         protected void gridHangHoa_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)

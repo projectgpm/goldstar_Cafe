@@ -113,6 +113,7 @@ namespace BanHang
                     }
                     data = new dtThemHangHoa();
                     data.XoaChiTiet_Temp_ID(IDHangHoa);
+                    dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Thêm hàng hóa", "Thêm hàng hóa có nguyên liệu");
                     Response.Redirect("QuanLyHangHoa.aspx");
                 }
             }
@@ -120,6 +121,8 @@ namespace BanHang
             {
                 Response.Write("<script language='JavaScript'> alert('Trường  (*) không được bỏ trống .'); </script>");
             }
+
+
         }
 
         protected void btnHuy_Click(object sender, EventArgs e)

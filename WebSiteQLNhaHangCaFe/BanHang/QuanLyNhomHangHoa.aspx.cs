@@ -36,6 +36,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nhóm hàng hóa", "Xóa nhóm hàng hóa: " + ID);
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -48,6 +50,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nhóm hàng hóa", "Thêm nhóm hàng hóa: " + TenNhom);
         }
 
         protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -61,6 +65,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý nhóm hàng hóa", "Cập nhật nhóm: " + ID);
         }
     }
 }

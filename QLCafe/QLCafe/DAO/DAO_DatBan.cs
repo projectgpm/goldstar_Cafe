@@ -35,5 +35,6 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"DELETE FROM [CF_DatBan] WHERE IDBan = {0} ", IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
+
     }
 }

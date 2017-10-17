@@ -50,7 +50,17 @@ namespace QLCafe.DAO
             catch (Exception ex)
             { return null; }
         }
-
+        public string ConnectString()
+        {
+            try
+            {
+                this.ReadFileConnect();
+                string strConnect = "Data Source=" + Datasource + ";Initial Catalog=" + Database + ";User ID=" + Username + ";Password=" + Password + ";Persist Security Info=True";
+                return strConnect;
+            }
+            catch (Exception ex)
+            { return null; }
+        }
         public void DisConnect(SqlConnection mySqlConnect)
         {
             mySqlConnect.Close();
@@ -58,7 +68,7 @@ namespace QLCafe.DAO
 
         public static bool WriteFileConnect(string datasource, string database, string username, string password)
         {
-            FileStream fileStream = new FileStream("ServerSql.txt", FileMode.Create, FileAccess.Write, FileShare.None);
+            FileStream fileStream = new FileStream("QLCafeGPM.dll", FileMode.Create, FileAccess.Write, FileShare.None);
             try
             {
                 StreamWriter sw = new StreamWriter(fileStream);
@@ -79,7 +89,7 @@ namespace QLCafe.DAO
 
         public void ReadFileConnect()
         {
-            FileStream fileStream = new FileStream("ServerSql.txt", FileMode.Open, FileAccess.Read, FileShare.None);
+            FileStream fileStream = new FileStream("QLCafeGPM.dll", FileMode.Open, FileAccess.Read, FileShare.None);
             StreamReader sr = new StreamReader(fileStream);
             Datasource = sr.ReadLine();
             Database = sr.ReadLine();

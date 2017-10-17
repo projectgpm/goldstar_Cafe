@@ -20,9 +20,7 @@ namespace QLCafe
         int IDHoaDon = DAO_BanHang.IDHoaDon(frmBanHang.IDBan);
         string IDChiNhanh = frmDangNhap.NguoiDung.Idchinhanh;
         List<ChiTietHoaDonA1> listChiTietHoaDonA1 = new List<ChiTietHoaDonA1>();
-        List<ChiTietHoaDonA2> listChiTietHoaDonA2 = new List<ChiTietHoaDonA2>();
         List<ChiTietHoaDonB1> listChiTietHoaDonB1 = new List<ChiTietHoaDonB1>();
-        List<ChiTietHoaDonB2> listChiTietHoaDonB2 = new List<ChiTietHoaDonB2>();
 
         public delegate void GetKT(int KT, int IDBanA, int IDBanB, int IDHoaDonTinhTong);
         public GetKT MyGetDataGopBan;
@@ -33,63 +31,17 @@ namespace QLCafe
         }
         private void btnAB2_Click(object sender, EventArgs e)
         {
-            frmXacNhan fr = new frmXacNhan();
-            fr.getdate = new frmXacNhan.GetString(GetValue1);
-            fr.ShowDialog();
+            ChuyenASangB();
         }
         private void btnBA1_Click(object sender, EventArgs e)
         {
-            frmXacNhan fr = new frmXacNhan();
-            fr.getdate = new frmXacNhan.GetString(GetValue2);
-            fr.ShowDialog();
+            ChuyenBSangA();
         }
-        public void GetValue1(int PhuThuTheoGio, int PhuThuTheoKhuVuc)
-        {
-            ChuyenASangB(PhuThuTheoGio, PhuThuTheoKhuVuc);
-        }
-        public void GetValue2(int PhuThuTheoGio, int PhuThuTheoKhuVuc)
-        {
-            ChuyenBSangA(PhuThuTheoGio, PhuThuTheoKhuVuc);
-        }
-        public void ChuyenASangB(int KTGio, int KTKhuVuc)
+        public void ChuyenASangB()
         {
             int IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
-            string GioHienTai;
-            if (KTGio == 1)
-            {
-                DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBanMoi);
-                GioHienTai = GioVao.ToString("h:mm:ss");
-            }
-            else
-            {
-                DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
-                GioHienTai = GioVao.ToString("h:mm:ss");
-            }
-           
-            float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
-            int IDKhuVuc = DAO_BAN.LayIDKhuVuc(IDBanMoi);
-            float TyLeKhuVuc = DAO_KhuVuc.LayTyLe(IDKhuVuc);
-
-            float GiaTheoGio = 0, GiaTheoKhuVuc = 0;
             foreach (ChiTietHoaDonA1 item in listChiTietHoaDonA1)
             {
-                if (KTGio == 1)
-                {
-                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
-                }
-                else
-                {
-                    GiaTheoGio = item.PhuThuGio;
-                }
-                if (KTKhuVuc == 1)
-                {
-                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
-                }
-                else
-                {
-                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
-                }
-                float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
                 listChiTietHoaDonB1.Add(new ChiTietHoaDonB1
                 {
                     // nếu muốn kt trùng là ở đây
@@ -97,10 +49,7 @@ namespace QLCafe
                     TenHangHoa = item.TenHangHoa,
                     DonViTinh = item.DonViTinh,
                     DonGia = item.DonGia,
-                    ThanhTien = item.SoLuong * DonGiaTong,
-                    GiaTong = DonGiaTong,
-                    PhuThuGio = GiaTheoGio,
-                    PhuThuKhuVuc = GiaTheoKhuVuc,
+                    ThanhTien = item.SoLuong * item.DonGia,
                     SoLuong = item.SoLuong,
                 });
             }
@@ -109,94 +58,22 @@ namespace QLCafe
             gridControlB.Refresh();
             gridControlB.DataSource = listChiTietHoaDonB1;
 
-            foreach (ChiTietHoaDonA2 item in listChiTietHoaDonA2)
-            {
-                if (KTGio == 1)
-                {
-                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
-                }
-                else
-                {
-                    GiaTheoGio = item.PhuThuGio;
-                }
-                if (KTKhuVuc == 1)
-                {
-                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
-                }
-                else
-                {
-                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
-                }
-                float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
-                listChiTietHoaDonB2.Add(new ChiTietHoaDonB2
-                {
-                    IDHoaDon = item.IDHoaDon,
-                    IDHangHoa = item.IDHangHoa,
-                    SoLuong = item.SoLuong,
-                    DonGia = item.DonGia,
-                    ThanhTien = item.SoLuong * DonGiaTong,
-                    IDBan = IDBanMoi,
-                    MaHangHoa = item.MaHangHoa,
-                    IDDonViTinh = item.IDDonViTinh,
-                    PhuThuGio = GiaTheoGio,
-                    PhuThuKhuVuc = GiaTheoKhuVuc,
-                    GiaTong = DonGiaTong,
-                });
-            }
-            listChiTietHoaDonA2.Clear();
             gridControlA.DataSource = null;
             gridControlA.Refresh();
             gridControlA.DataSource = listChiTietHoaDonA1;
         }
-        public void ChuyenBSangA(int KTGio, int KTKhuVuc)
+        public void ChuyenBSangA()
         {
             int IDBanMoi = IDBan;// lấy lại IDBan của A
-            string GioHienTai;
-            if (KTGio == 1)
-            {
-                DateTime GioVao = DAO_BanHang.GioVao_IDBan(IDBan);
-                GioHienTai = GioVao.ToString("h:mm:ss");
-            }
-            else
-            {
-                DateTime GioVao = DAO_BanHang.GioVao_IDBan(Int32.Parse(cmbBanB.EditValue.ToString()));
-                GioHienTai = GioVao.ToString("h:mm:ss");
-            }
-            float TyLeGio = DAO_Gio.LayTyLe(GioHienTai);
-            int IDKhuVuc = DAO_BAN.LayIDKhuVuc(IDBanMoi);
-            float TyLeKhuVuc = DAO_KhuVuc.LayTyLe(IDKhuVuc);
-
-            float GiaTheoGio = 0, GiaTheoKhuVuc = 0;
             foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
             {
-                if (KTGio == 1)
-                {
-                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
-                }
-                else
-                {
-                    GiaTheoGio = item.PhuThuGio;
-                }
-                if (KTKhuVuc == 1)
-                {
-                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
-                }
-                else
-                {
-                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
-                }
-                float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
                 listChiTietHoaDonA1.Add(new ChiTietHoaDonA1
                 {
-                    // nếu muốn kt trùng là ở đây
                     MaHangHoa = item.MaHangHoa,
                     TenHangHoa = item.TenHangHoa,
                     DonViTinh = item.DonViTinh,
                     DonGia = item.DonGia,
-                    ThanhTien = item.SoLuong * DonGiaTong,
-                    GiaTong = DonGiaTong,
-                    PhuThuGio = GiaTheoGio,
-                    PhuThuKhuVuc = GiaTheoKhuVuc,
+                    ThanhTien = item.SoLuong * item.DonGia,
                     SoLuong = item.SoLuong,
                 });
             }
@@ -205,41 +82,6 @@ namespace QLCafe
             gridControlA.Refresh();
             gridControlA.DataSource = listChiTietHoaDonA1;
 
-            foreach (ChiTietHoaDonB2 item in listChiTietHoaDonB2)
-            {
-                if (KTGio == 1)
-                {
-                    GiaTheoGio = item.DonGia * (float)(TyLeGio / 100);
-                }
-                else
-                {
-                    GiaTheoGio = item.PhuThuGio;
-                }
-                if (KTKhuVuc == 1)
-                {
-                    GiaTheoKhuVuc = item.DonGia * (float)(TyLeKhuVuc / 100);
-                }
-                else
-                {
-                    GiaTheoKhuVuc = item.PhuThuKhuVuc;
-                }
-                float DonGiaTong = item.DonGia + GiaTheoGio + GiaTheoKhuVuc;
-                listChiTietHoaDonA2.Add(new ChiTietHoaDonA2
-                {
-                    IDHoaDon = item.IDHoaDon,
-                    IDHangHoa = item.IDHangHoa,
-                    SoLuong = item.SoLuong,
-                    DonGia = item.DonGia,
-                    ThanhTien = item.SoLuong * DonGiaTong,
-                    IDBan = IDBanMoi,
-                    MaHangHoa = item.MaHangHoa,
-                    IDDonViTinh = item.IDDonViTinh,
-                    PhuThuGio = GiaTheoGio,
-                    PhuThuKhuVuc = GiaTheoKhuVuc,
-                    GiaTong = DonGiaTong,
-                });
-            }
-            listChiTietHoaDonB2.Clear();
             gridControlB.DataSource = null;
             gridControlB.Refresh();
             gridControlB.DataSource = listChiTietHoaDonB1;
@@ -252,18 +94,14 @@ namespace QLCafe
             btnThucHien.Enabled = false;
             int IDKhuVuc = Int32.Parse(cmbKhuVucB.EditValue.ToString());
             DanhSachBanTheoKhuVuc(IDKhuVuc);
-            DanhSachHangHoaA();
             listChiTietHoaDonB1.Clear();
-            listChiTietHoaDonB2.Clear();
             gridControlB.DataSource = null;
             gridControlB.Refresh();
         }
 
         private void cmbBanB_EditValueChanged(object sender, EventArgs e)
         {
-            
-            listChiTietHoaDonB1.Clear();
-            listChiTietHoaDonB2.Clear();
+            listChiTietHoaDonB1.Clear(); 
             gridControlB.DataSource = null;
             gridControlB.Refresh();
             btnBA1.Enabled = true;
@@ -306,7 +144,6 @@ namespace QLCafe
         public void DanhSachHangHoaB(int IDBanB)
         {
             listChiTietHoaDonB1.Clear();
-            listChiTietHoaDonB2.Clear();
             // lấy món ăn theo IDBan
             List<DTO_ChiTietHoaDon> DanhSachHoaDonB2 = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(DAO_BanHang.IDHoaDon(IDBanB));
             List<DTO_DanhSachMenu> DanhSachHoaDonB1 = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(IDBanB));
@@ -319,29 +156,10 @@ namespace QLCafe
                     DonViTinh = item.DonViTinh,
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
-                    GiaTong = item.GiaTong,
-                    PhuThuGio = item.PhuThuGio,
-                    PhuThuKhuVuc = item.PhuThuKhuVuc,
                     SoLuong = item.SoLuong,
                 });
             }
-            foreach (DTO_ChiTietHoaDon item in DanhSachHoaDonB2)
-            {
-                listChiTietHoaDonB2.Add(new ChiTietHoaDonB2
-                {
-                    IDHoaDon = item.IDHoaDon,
-                    IDHangHoa = item.IDHangHoa,
-                    SoLuong = item.SoLuong,
-                    DonGia = item.DonGia,
-                    ThanhTien = item.ThanhTien,
-                    IDBan = item.IdBan,
-                    MaHangHoa = item.MaHangHoa,
-                    IDDonViTinh = item.IDDonViTinh,
-                    PhuThuGio = item.PhuThuGio,
-                    PhuThuKhuVuc = item.PhuThuKhuVuc,
-                    GiaTong = item.GiaTong,
-                });
-            }
+            
             gridControlB.DataSource = null;
             gridControlB.Refresh();
             gridControlB.DataSource = DanhSachHoaDonB1;
@@ -349,7 +167,6 @@ namespace QLCafe
         public void DanhSachHangHoaA()
         {
             listChiTietHoaDonA1.Clear();
-            listChiTietHoaDonA2.Clear();
             // lấy món ăn theo IDBan
             List<DTO_ChiTietHoaDon> DanhSachHoaDonA2 = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(DAO_BanHang.IDHoaDon(IDBan));
             List<DTO_DanhSachMenu> DanhSachHoaDonA1 = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(IDBan));
@@ -362,328 +179,14 @@ namespace QLCafe
                     DonViTinh = item.DonViTinh,
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
-                    GiaTong = item.GiaTong,
-                    PhuThuGio = item.PhuThuGio,
-                    PhuThuKhuVuc = item.PhuThuKhuVuc,
+                  
                     SoLuong = item.SoLuong,
-                });
-            }
-            foreach (DTO_ChiTietHoaDon item in DanhSachHoaDonA2)
-            {
-                listChiTietHoaDonA2.Add(new ChiTietHoaDonA2
-                {
-                    IDHoaDon = item.IDHoaDon,
-                    IDHangHoa = item.IDHangHoa,
-                    SoLuong = item.SoLuong,
-                    DonGia = item.DonGia,
-                    ThanhTien = item.ThanhTien,
-                    IDBan = item.IdBan,
-                    MaHangHoa = item.MaHangHoa,
-                    IDDonViTinh = item.IDDonViTinh,
-                    PhuThuGio = item.PhuThuGio,
-                    PhuThuKhuVuc = item.PhuThuKhuVuc,
-                    GiaTong = item.GiaTong,
                 });
             }
             gridControlA.DataSource = null;
             gridControlA.Refresh();
             gridControlA.DataSource = DanhSachHoaDonA1;
         }
-        public class ChiTietHoaDonA1
-        {
-            private float giaTong;
-
-            public float GiaTong
-            {
-                get { return giaTong; }
-                set { giaTong = value; }
-            }
-            private float phuThuKhuVuc;
-
-            public float PhuThuKhuVuc
-            {
-                get { return phuThuKhuVuc; }
-                set { phuThuKhuVuc = value; }
-            }
-            private float phuThuGio;
-
-            public float PhuThuGio
-            {
-                get { return phuThuGio; }
-                set { phuThuGio = value; }
-            }
-            private float thanhTien;
-
-            public float ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-
-            private float donGia;
-
-            public float DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private int soLuong;
-
-            public int SoLuong
-            {
-                get { return soLuong; }
-                set { soLuong = value; }
-            }
-            private string donViTinh;
-
-            public string DonViTinh
-            {
-                get { return donViTinh; }
-                set { donViTinh = value; }
-            }
-            private string tenHangHoa;
-
-            public string TenHangHoa
-            {
-                get { return tenHangHoa; }
-                set { tenHangHoa = value; }
-            }
-            private string maHangHoa;
-
-            public string MaHangHoa
-            {
-                get { return maHangHoa; }
-                set { maHangHoa = value; }
-            }
-        }
-        public class ChiTietHoaDonA2
-        {
-            private int iDHoaDon;
-
-            public int IDHoaDon
-            {
-                get { return iDHoaDon; }
-                set { iDHoaDon = value; }
-            }
-            private int iDHangHoa;
-
-            public int IDHangHoa
-            {
-                get { return iDHangHoa; }
-                set { iDHangHoa = value; }
-            }
-            private int soLuong;
-
-            public int SoLuong
-            {
-                get { return soLuong; }
-                set { soLuong = value; }
-            }
-            private float donGia;
-
-            public float DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private float thanhTien;
-
-            public float ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-            private int iDBan;
-
-            public int IDBan
-            {
-                get { return iDBan; }
-                set { iDBan = value; }
-            }
-            private string maHangHoa;
-
-            public string MaHangHoa
-            {
-                get { return maHangHoa; }
-                set { maHangHoa = value; }
-            }
-            private int iDDonViTinh;
-
-            public int IDDonViTinh
-            {
-                get { return iDDonViTinh; }
-                set { iDDonViTinh = value; }
-            }
-            private float phuThuGio;
-
-            public float PhuThuGio
-            {
-                get { return phuThuGio; }
-                set { phuThuGio = value; }
-            }
-            private float phuThuKhuVuc;
-
-            public float PhuThuKhuVuc
-            {
-                get { return phuThuKhuVuc; }
-                set { phuThuKhuVuc = value; }
-            }
-            private float giaTong;
-
-            public float GiaTong
-            {
-                get { return giaTong; }
-                set { giaTong = value; }
-            }
-        }
-        public class ChiTietHoaDonB1
-        {
-            private float giaTong;
-
-            public float GiaTong
-            {
-                get { return giaTong; }
-                set { giaTong = value; }
-            }
-            private float phuThuKhuVuc;
-
-            public float PhuThuKhuVuc
-            {
-                get { return phuThuKhuVuc; }
-                set { phuThuKhuVuc = value; }
-            }
-            private float phuThuGio;
-
-            public float PhuThuGio
-            {
-                get { return phuThuGio; }
-                set { phuThuGio = value; }
-            }
-            private float thanhTien;
-
-            public float ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-
-            private float donGia;
-
-            public float DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private int soLuong;
-
-            public int SoLuong
-            {
-                get { return soLuong; }
-                set { soLuong = value; }
-            }
-            private string donViTinh;
-
-            public string DonViTinh
-            {
-                get { return donViTinh; }
-                set { donViTinh = value; }
-            }
-            private string tenHangHoa;
-
-            public string TenHangHoa
-            {
-                get { return tenHangHoa; }
-                set { tenHangHoa = value; }
-            }
-            private string maHangHoa;
-
-            public string MaHangHoa
-            {
-                get { return maHangHoa; }
-                set { maHangHoa = value; }
-            }
-        }
-        public class ChiTietHoaDonB2
-        {
-            private int iDHoaDon;
-
-            public int IDHoaDon
-            {
-                get { return iDHoaDon; }
-                set { iDHoaDon = value; }
-            }
-            private int iDHangHoa;
-
-            public int IDHangHoa
-            {
-                get { return iDHangHoa; }
-                set { iDHangHoa = value; }
-            }
-            private int soLuong;
-
-            public int SoLuong
-            {
-                get { return soLuong; }
-                set { soLuong = value; }
-            }
-            private float donGia;
-
-            public float DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private float thanhTien;
-
-            public float ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-            private int iDBan;
-
-            public int IDBan
-            {
-                get { return iDBan; }
-                set { iDBan = value; }
-            }
-            private string maHangHoa;
-
-            public string MaHangHoa
-            {
-                get { return maHangHoa; }
-                set { maHangHoa = value; }
-            }
-            private int iDDonViTinh;
-
-            public int IDDonViTinh
-            {
-                get { return iDDonViTinh; }
-                set { iDDonViTinh = value; }
-            }
-            private float phuThuGio;
-
-            public float PhuThuGio
-            {
-                get { return phuThuGio; }
-                set { phuThuGio = value; }
-            }
-            private float phuThuKhuVuc;
-
-            public float PhuThuKhuVuc
-            {
-                get { return phuThuKhuVuc; }
-                set { phuThuKhuVuc = value; }
-            }
-            private float giaTong;
-
-            public float GiaTong
-            {
-                get { return giaTong; }
-                set { giaTong = value; }
-            }
-        }
-
         private void btnLamLai_Click(object sender, EventArgs e)
         {
             LamMoi();
@@ -697,33 +200,38 @@ namespace QLCafe
 
         private void btnThucHien_Click(object sender, EventArgs e)
         {
-            if (listChiTietHoaDonA2.Count > 0 && listChiTietHoaDonB2.Count > 0)
+            if (listChiTietHoaDonA1.Count > 0 && listChiTietHoaDonB1.Count > 0)
             {
                 MessageBox.Show("Bạn chưa gộp bàn. Vui lòng kiểm tra lại?", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (listChiTietHoaDonB2.Count > 0)
+            else if (listChiTietHoaDonB1.Count > 0)
             {
                 int IDBanA = IDBan;
                 int IDBanB = Int32.Parse(cmbBanB.EditValue.ToString());
                 int IDHoaDonB = DAO_BanHang.IDHoaDon(IDBanB);
                 int IDHoaDonA = IDHoaDon;
-              
+
                 // A Chuyển sang B, xóa toàn bộ hóa đơn A, cập nhật hóa đơn B, đưa trạng thái bàn A về null, xóa chi tiết bàn B
-                if (DAO_BAN.XoaBanVeMatDinh(IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA) && DAO_GopBan.XoaHoaDonCu(IDHoaDonA, IDBanA) && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonB, IDBanB))
+                if (DAO_BAN.XoaBanVeMatDinh(IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA) == true && DAO_GopBan.XoaHoaDonCu(IDHoaDonA, IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonB, IDBanB) == true)
                 {
                     //Thêm lại chi tiết bàn B,
-                    foreach (ChiTietHoaDonB2 item in listChiTietHoaDonB2)
+                    foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
                     {
-                        int IDHangHoa = item.IDHangHoa;
+                        string MaHangHoa = item.MaHangHoa;
+                        int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHangHoa);
                         int SL = item.SoLuong;
                         float DonGia = item.DonGia;
                         float ThanhTien = item.ThanhTien;
-                        string MaHangHoa = item.MaHangHoa;
-                        int IDDonViTinh = item.IDDonViTinh;
-                        float PhuThuGio = item.PhuThuGio;
-                        float PhuThuKhuVuc = item.PhuThuKhuVuc;
-                        float GiaTong = item.GiaTong;
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong); // thêm chi tiết hóa đơn mới
+                        int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHangHoa);
+                        if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB) == false)
+                        {
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh); // thêm chi tiết hóa đơn mới
+                        }
+                        else
+                        {
+                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonB, SL, ThanhTien, IDHangHoa, IDBanB);
+                        }
+                       
                     }
                     if (MyGetDataGopBan != null)
                     {
@@ -732,7 +240,7 @@ namespace QLCafe
                     }
                 }
             }
-            else if (listChiTietHoaDonA2.Count > 0)
+            else if (listChiTietHoaDonA1.Count > 0)
             {
                 // B Chuyển sang A, xóa toàn bộ hóa đơn B, cập nhật hóa đơn A
                 int IDBanA = IDBan;
@@ -741,18 +249,22 @@ namespace QLCafe
                 int IDHoaDonA = IDHoaDon;
                 if (DAO_BAN.XoaBanVeMatDinh(IDBanB) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDBanB, IDBanB) && DAO_GopBan.XoaHoaDonCu(IDHoaDonB, IDBanB) && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA))
                 {
-                    foreach (ChiTietHoaDonA2 item in listChiTietHoaDonA2)
+                    foreach (ChiTietHoaDonA1 item in listChiTietHoaDonA1)
                     {
-                        int IDHangHoa = item.IDHangHoa;
+                        string MaHangHoa = item.MaHangHoa;
+                        int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHangHoa);
                         int SL = item.SoLuong;
                         float DonGia = item.DonGia;
                         float ThanhTien = item.ThanhTien;
-                        string MaHangHoa = item.MaHangHoa;
-                        int IDDonViTinh = item.IDDonViTinh;
-                        float PhuThuGio = item.PhuThuGio;
-                        float PhuThuKhuVuc = item.PhuThuKhuVuc;
-                        float GiaTong = item.GiaTong;
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHangHoa, IDDonViTinh, PhuThuGio, PhuThuKhuVuc, GiaTong); // thêm chi tiết hóa đơn mới
+                        int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHangHoa);
+                        if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonA, IDHangHoa, IDBanA) == false)
+                        {
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHangHoa, IDDonViTinh); // thêm chi tiết hóa đơn mới
+                        }
+                        else
+                        {
+                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonA, SL, ThanhTien, IDHangHoa, IDBanA);
+                        }
                     }
                     if (MyGetDataGopBan != null)
                     {
@@ -764,6 +276,100 @@ namespace QLCafe
             else
             {
                 MessageBox.Show("Gộp bàn thất bại. Vui lòng kiểm tra lại?", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //--------------------------------------------
+        public class ChiTietHoaDonA1
+        {
+            private float thanhTien;
+
+            public float ThanhTien
+            {
+                get { return thanhTien; }
+                set { thanhTien = value; }
+            }
+
+            private float donGia;
+
+            public float DonGia
+            {
+                get { return donGia; }
+                set { donGia = value; }
+            }
+            private int soLuong;
+
+            public int SoLuong
+            {
+                get { return soLuong; }
+                set { soLuong = value; }
+            }
+            private string donViTinh;
+
+            public string DonViTinh
+            {
+                get { return donViTinh; }
+                set { donViTinh = value; }
+            }
+            private string tenHangHoa;
+
+            public string TenHangHoa
+            {
+                get { return tenHangHoa; }
+                set { tenHangHoa = value; }
+            }
+            private string maHangHoa;
+
+            public string MaHangHoa
+            {
+                get { return maHangHoa; }
+                set { maHangHoa = value; }
+            }
+        }
+        //--------------------------------------------
+        public class ChiTietHoaDonB1
+        {
+            private float thanhTien;
+
+            public float ThanhTien
+            {
+                get { return thanhTien; }
+                set { thanhTien = value; }
+            }
+
+            private float donGia;
+
+            public float DonGia
+            {
+                get { return donGia; }
+                set { donGia = value; }
+            }
+            private int soLuong;
+
+            public int SoLuong
+            {
+                get { return soLuong; }
+                set { soLuong = value; }
+            }
+            private string donViTinh;
+
+            public string DonViTinh
+            {
+                get { return donViTinh; }
+                set { donViTinh = value; }
+            }
+            private string tenHangHoa;
+
+            public string TenHangHoa
+            {
+                get { return tenHangHoa; }
+                set { tenHangHoa = value; }
+            }
+            private string maHangHoa;
+
+            public string MaHangHoa
+            {
+                get { return maHangHoa; }
+                set { maHangHoa = value; }
             }
         }
     }

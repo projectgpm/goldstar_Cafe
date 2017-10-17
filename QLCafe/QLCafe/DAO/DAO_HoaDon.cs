@@ -51,6 +51,18 @@ namespace QLCafe.DAO
             }
             return 0;
         }
+        public static float TongTienGio(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT TienGio FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["TienGio"].ToString());
+            }
+            return 0;
+        }
         public static float KhachCanTra(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT KhachCanTra FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
@@ -73,17 +85,20 @@ namespace QLCafe.DAO
             {
                 DTO_HoaDon hd = new DTO_HoaDon(data.Rows[0]);
 
-                sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietHoaDon] WHERE IDHoaDon = {0}", hd.ID);
+                sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietHoaDon_Temp] WHERE IDHoaDon = {0}", hd.ID);
                 DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
                 
                 sTruyVan = string.Format(@"DELETE FROM [CF_HoaDon] WHERE ID = {0}   AND [TrangThai] = 0", hd.ID);
                 DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+
+                sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietGio] WHERE IDHoaDon = {0} AND [ThanhToan] = 0", hd.ID);
+                DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
                
             }
         }
-        public static bool CapNhatTongTien(int ID, string TongTien, string KhachCanTra)
+        public static bool CapNhatTongTien(int ID, string TongTien, string KhachCanTra, string TienGio)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_HoaDon SET [TongTien] = {0}, [KhachCanTra] =  {1} WHERE [ID] = {2} ", TongTien, KhachCanTra, ID);
+            string sTruyVan = string.Format(@"UPDATE CF_HoaDon SET [TongTien] = {0}, [KhachCanTra] =  {1}, [TienGio] = {3} WHERE [ID] = {2} ", TongTien, KhachCanTra, ID, TienGio);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
     }

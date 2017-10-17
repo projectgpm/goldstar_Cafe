@@ -177,5 +177,17 @@ namespace BanHang.Data
 
             return returnValue.ToString();
         }
+
+        public static int tinhSoNgay(int thang, int nam)
+        {
+            if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12)
+                return 31;
+            if (thang == 4 || thang == 6 || thang == 9 || thang == 11)
+                return 30;
+
+            if (nam % 4 == 0 && nam % 100 != 0 || nam % 400 == 0)
+                return 29;
+            else return 28;
+        }
     }
 }

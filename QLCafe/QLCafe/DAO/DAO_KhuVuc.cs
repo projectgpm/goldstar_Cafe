@@ -17,15 +17,15 @@ namespace QLCafe.DAO
             return data;
         }
 
-        public static int LayTyLe(int IDKhuVuc)
+        public static float LayGiaTheoKhuVuc(int IDKhuVuc)
         {
-            string sTruyVan = string.Format(@"SELECT TyLe FROM [CF_KhuVuc] WHERE [ID] = {0} ", IDKhuVuc);
+            string sTruyVan = string.Format(@"SELECT GiaKhuVuc FROM [CF_KhuVuc] WHERE [ID] = {0} ", IDKhuVuc);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return Int32.Parse(dr["TyLe"].ToString());
+                return float.Parse(dr["GiaKhuVuc"].ToString());
             }
             return 0;
         }

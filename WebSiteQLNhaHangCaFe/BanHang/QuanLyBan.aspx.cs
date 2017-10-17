@@ -38,6 +38,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý bàn", "Xóa bàn: " + ID);
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -47,8 +49,8 @@ namespace BanHang
             string MaBan = dtBan.Dem_Max(IDKhuVuc);
             string KyHieu = dtBan.LayKyHieu(IDKhuVuc);
             string IDChiNhanh = dtBan.LayIDChiNhanh(IDKhuVuc);
-            if (dtSetting.IsNumber(TenBan) == true)
-            {
+            //if (dtSetting.IsNumber(TenBan) == true)
+            //{
                 if (KyHieu != "")
                 {
                     if (dtBan.KiemTra(KyHieu + " - " + TenBan, IDKhuVuc) == true)
@@ -61,14 +63,16 @@ namespace BanHang
                         throw new Exception("Lỗi:Tên bàn đã tồn tại?");
                     }
                 }
-            }
-            else
-            {
-                throw new Exception("Lỗi:Tên bàn phải là số?");
-            }
+            //}
+            //else
+            //{
+            //    throw new Exception("Lỗi:Tên bàn phải là số?");
+            //}
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý bàn", "Thêm bàn: " + TenBan);
         }
 
         protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -88,6 +92,8 @@ namespace BanHang
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý bàn", "Cập nhật bàn: " + ID);
         }
 
         protected void btnHuy_Click(object sender, EventArgs e)
@@ -117,7 +123,17 @@ namespace BanHang
                 string IDChiNhanh = dtBan.LayIDChiNhanh(IDKhuVuc);
                 for (int i = SoA; i <= SoB; i++)
                 {
+                    string MaBan = dtBan.Dem_Max(IDKhuVuc);
+                    if (KyHieu != "")
+                    {
+                        if (dtBan.KiemTra(KyHieu + " - " + i, IDKhuVuc) == true)
+                        {
+                            data = new dtBan();
+                            data.Them(MaBan, KyHieu + " - " + i, IDKhuVuc, IDChiNhanh);
 
+                            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Quản lý bàn", "Thêm bàng: " + KyHieu + " - " + i);
+                        }
+                    }
                 }
             }
             else

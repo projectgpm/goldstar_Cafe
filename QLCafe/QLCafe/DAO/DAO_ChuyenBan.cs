@@ -86,7 +86,7 @@ namespace QLCafe.DAO
         /// <returns></returns>
         public static bool XoaChiTietBanCu(int IDHoaDon, int IDBanCu)
         {
-            string sTruyVan = string.Format(@"DELETE [CF_ChiTietHoaDon]  WHERE IDHoaDon = {0} AND IDBan = {1}", IDHoaDon, IDBanCu);
+            string sTruyVan = string.Format(@"DELETE [CF_ChiTietHoaDon_Temp]  WHERE IDHoaDon = {0} AND IDBan = {1}", IDHoaDon, IDBanCu);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 

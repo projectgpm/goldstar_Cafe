@@ -36,3 +36,17 @@ C:\Users\vmquy\Desktop\Cty GPM\Code\ASP Ban Hang\BanHang\BanHang\obj\Release\Ban
 C:\Users\vmquy\Desktop\Cty GPM\Code\ASP Ban Hang\BanHang\BanHang\obj\Release\BanHang.dll.licenses
 C:\Users\vmquy\Desktop\Cty GPM\Code\ASP Ban Hang\BanHang\BanHang\obj\Release\BanHang.dll
 C:\Users\vmquy\Desktop\Cty GPM\Code\ASP Ban Hang\BanHang\BanHang\obj\Release\BanHang.pdb
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.dll
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.pdb
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCBanHang.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCPhieuXuatKhac.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCTonKho.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKBanHang.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKPhieuXuatKhac.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.csproj.GenerateResource.Cache
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll.licenses
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.pdb
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKTienGio.resources
+C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCTienGio.resources

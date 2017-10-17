@@ -28,14 +28,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Sua(string ID, string GhiChu, string TenKhuVuc, string TyLe, string IDChiNhanh, string KyHieu)
+        public void Sua(string ID, string GhiChu, string TenKhuVuc, string GiaKhuVuc, string IDChiNhanh, string KyHieu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [CF_KhuVuc] SET [KyHieu] = @KyHieu,[IDChiNhanh] = @IDChiNhanh,[TyLe] = @TyLe,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [CF_KhuVuc] SET [KyHieu] = @KyHieu,[IDChiNhanh] = @IDChiNhanh,[GiaKhuVuc] = @GiaKhuVuc,[GhiChu] = @GhiChu,[TenKhuVuc] = @TenKhuVuc, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -43,7 +43,7 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@TenKhuVuc", TenKhuVuc);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
-                        myCommand.Parameters.AddWithValue("@TyLe", TyLe);
+                        myCommand.Parameters.AddWithValue("@GiaKhuVuc", GiaKhuVuc);
                         myCommand.ExecuteNonQuery();
                     }
                 }
@@ -73,20 +73,20 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Them(string MaKhuVuc, string TenKhuVuc, string TyLe, string IDChiNhanh, string GhiChu, string KyHieu)
+        public void Them(string MaKhuVuc, string TenKhuVuc, string GiaKhuVuc, string IDChiNhanh, string GhiChu, string KyHieu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[TyLe],[IDChiNhanh], [NgayCapNhat],[GhiChu],[KyHieu]) VALUES (@MaKhuVuc,@TenKhuVuc,@TyLe,@IDChiNhanh, getdate(),@GhiChu,@KyHieu)";
+                    string cmdText = "INSERT INTO [CF_KhuVuc] ([MaKhuVuc],[TenKhuVuc],[GiaKhuVuc],[IDChiNhanh], [NgayCapNhat],[GhiChu],[KyHieu]) VALUES (@MaKhuVuc,@TenKhuVuc,@GiaKhuVuc,@IDChiNhanh, getdate(),@GhiChu,@KyHieu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@KyHieu", KyHieu);
                         myCommand.Parameters.AddWithValue("@IDChiNhanh", IDChiNhanh);
-                        myCommand.Parameters.AddWithValue("@TyLe", TyLe);
+                        myCommand.Parameters.AddWithValue("@GiaKhuVuc", GiaKhuVuc);
                         myCommand.Parameters.AddWithValue("@MaKhuVuc", MaKhuVuc);
                         myCommand.Parameters.AddWithValue("@TenKhuVuc", TenKhuVuc);
                         myCommand.ExecuteNonQuery();

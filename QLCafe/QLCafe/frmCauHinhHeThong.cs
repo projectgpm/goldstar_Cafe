@@ -60,6 +60,7 @@ namespace QLCafe
             bool KT = BUS_TestKetNoiServer.DanhSachKetNoi();
             if (KT == true)
             {
+                DAO_Setting.CapNhatMayInBill(cmbMayIn.Text.ToString());
                 MessageBox.Show("Kết nối tới server thành công.", "Thông báo");
                 this.Close();
             }
@@ -104,11 +105,19 @@ namespace QLCafe
             txtDatabase.Text = Database;
             txtUserName.Text = Username;
             txtPassword.Text = Password;
-            
+            DanhSachMayIn();
+        }
+        public void DanhSachMayIn()
+        {
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                //cmbMayIn.EditValue = printer;
+                cmbMayIn.Properties.Items.Add(printer.ToString());
+            }
         }
         public void ReadFileConnect()
         {
-            FileStream fileStream = new FileStream("ServerSql.txt", FileMode.Open, FileAccess.Read, FileShare.None);
+            FileStream fileStream = new FileStream("QLCafeGPM.dll", FileMode.Open, FileAccess.Read, FileShare.None);
             StreamReader sr = new StreamReader(fileStream);
             Datasource = sr.ReadLine();
             Database = sr.ReadLine();

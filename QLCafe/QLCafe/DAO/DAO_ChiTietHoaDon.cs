@@ -21,7 +21,7 @@ namespace QLCafe.DAO
         public List<DTO_ChiTietHoaDon> ChiTietHoaDon(int id)
         {
             List<DTO_ChiTietHoaDon> list = new List<DTO_ChiTietHoaDon>();
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon] WHERE IDHoaDon = {0} ", id);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDHoaDon = {0} ", id);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             foreach (DataRow item in data.Rows)
@@ -34,8 +34,7 @@ namespace QLCafe.DAO
 
         public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan)
         {
-
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2}", IDBan, IDHangHoa, IDHoaDon);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2}", IDBan, IDHangHoa, IDHoaDon);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
@@ -46,7 +45,7 @@ namespace QLCafe.DAO
         }
         public static bool CapNhatSoLuong(int IDHoaDon, string ThanhTien, string SL, string MaHangHoa)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon SET [ThanhTien] = {0}, [SoLuong] =  {1} WHERE [IDHoaDon] = {2} AND  [MaHangHoa] = '{3}' ", ThanhTien, SL, IDHoaDon, MaHangHoa);
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [ThanhTien] = {0}, [SoLuong] =  {1} WHERE [IDHoaDon] = {2} AND  [MaHangHoa] = '{3}' ", ThanhTien, SL, IDHoaDon, MaHangHoa);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
     }

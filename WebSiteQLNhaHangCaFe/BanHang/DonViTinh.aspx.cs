@@ -41,6 +41,8 @@ namespace BanHang
             {
                 throw new Exception("Lỗi: Tên đơn vị tính đã tồn tại: " + dtSetting.convertDauSangKhongDau(TenDonViTinh));
             }
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Đơn vị tính", "Thêm đơn vị tính: " + TenDonViTinh);
         }
 
         protected void gridDonViTinh_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -50,7 +52,9 @@ namespace BanHang
             data.XoaDonViTinh(Int32.Parse(ID));
             e.Cancel = true;
             gridDonViTinh.CancelEdit();
-            LoadGrid();   
+            LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Đơn vị tính", "Xóa đơn vị tính: " + ID);
         }
 
         protected void gridDonViTinh_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -62,6 +66,8 @@ namespace BanHang
             e.Cancel = true;
             gridDonViTinh.CancelEdit();
             LoadGrid();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Đơn vị tính", "Cập nhật đơn vị tính");
         }
 
         protected void gridDonViTinh_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)

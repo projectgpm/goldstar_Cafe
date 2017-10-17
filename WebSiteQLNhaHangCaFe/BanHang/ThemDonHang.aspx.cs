@@ -17,16 +17,23 @@ namespace BanHang
         dtThemDonHangKho data = new dtThemDonHangKho();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM@2017")
             {
-                data = new dtThemDonHangKho();
-                object IDPhieuDatHang = data.ThemPhieuDatHang();
-                IDThuMuaDatHang_Temp.Value = IDPhieuDatHang.ToString();
-                cmbKhoLap.Value = Session["IDChiNhanh"].ToString();
-                txtNguoiLap.Text = Session["TenDangNhap"].ToString();
-                txtSoDonHang.Text = (Int32.Parse(Session["IDChiNhanh"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
+                Response.Redirect("DangNhap.aspx");
             }
-            LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
+            else
+            {
+                if (!IsPostBack)
+                {
+                    //data = new dtThemDonHangKho();
+                    //object IDPhieuDatHang = data.ThemPhieuDatHang();
+                    IDThuMuaDatHang_Temp.Value = Session["IDNhanVien"].ToString();
+                    cmbKhoLap.Value = Session["IDChiNhanh"].ToString();
+                    txtNguoiLap.Text = Session["TenDangNhap"].ToString();
+                    txtSoDonHang.Text = (Int32.Parse(Session["IDChiNhanh"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
+                }
+                LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
+            }
         }
 
         private void LoadGrid(string p)
@@ -104,7 +111,7 @@ namespace BanHang
                 double TongTien = 0;
                 foreach (DataRow dr in db.Rows)
                 {
-                    double ThanhTien = double.Parse(dr["DonGia"].ToString());
+                    double ThanhTien = double.Parse(dr["ThanhTien"].ToString());
                     TongTien = TongTien + ThanhTien;
                 }
                 txtTongTien.Text = (TongTien).ToString();
@@ -222,51 +229,66 @@ namespace BanHang
         }
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            string IDThuMuaDatHang = IDThuMuaDatHang_Temp.Value.ToString();
-            data = new dtThemDonHangKho();
-            DataTable dt = data.DanhSachDonDatHang_Temp(IDThuMuaDatHang);
-            if (dt.Rows.Count != 0)
+            if (cmbNhaCungCap.Text != "")
             {
-                string SoDonHang = txtSoDonHang.Text.Trim();
-                string IDNguoiLap = Session["IDNhanVien"].ToString();
-                DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
-                string TongTien = txtTongTien.Text;
-                string IDChiNhanh = Session["IDChiNhanh"].ToString();
-                string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
-                string IDNhaCungCap = cmbNhaCungCap.Text ==  "" ? "" : cmbNhaCungCap.Value.ToString();
-                int TrangThai = 0;
-                if (ckThanhToan.Checked == true)
+                string IDThuMuaDatHang = IDThuMuaDatHang_Temp.Value.ToString();
+                data = new dtThemDonHangKho();
+                DataTable dt = data.DanhSachDonDatHang_Temp(IDThuMuaDatHang);
+                if (dt.Rows.Count != 0)
                 {
-                    TrangThai = 1;
-                }
-                if(cmbNhaCungCap.Text != "" && ckThanhToan.Checked == false)
-                {
-                    data = new dtThemDonHangKho();
-                    data.CongCongNoNCC(IDNhaCungCap, TongTien);
+                    string SoDonHang = txtSoDonHang.Text.Trim();
+                    string IDNguoiLap = Session["IDNhanVien"].ToString();
+                    DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
+                    string TongTien = txtTongTien.Text;
+                    string IDChiNhanh = Session["IDChiNhanh"].ToString();
+                    string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                    string IDNhaCungCap = cmbNhaCungCap.Value.ToString();
+                    int TrangThai = 0;
+                    if (ckThanhToan.Checked == true)
+                    {
+                        TrangThai = 1;
+                    }
+                    if (ckThanhToan.Checked == false)
+                    {
+                        data = new dtThemDonHangKho();
+                        data.CongCongNoNCC(IDNhaCungCap, TongTien);
 
-                }
-                data = new dtThemDonHangKho();
-                data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTien, GhiChu, IDChiNhanh, IDNhaCungCap, TrangThai);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
-                    string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
-                    string IDDonViTinh = dr["IDDonViTinh"].ToString();
-                    string SoLuong = dr["SoLuong"].ToString();
-                    string DonGia = dr["DonGia"].ToString();
+                    }
                     data = new dtThemDonHangKho();
-                    dtSetting.CongTonKho(IDNguyenLieu, SoLuong, IDChiNhanh); // cộng kho không qua bước duyệt
-                    // ghi lịch sử
-                    data.ThemChiTietDonHang(IDThuMuaDatHang, IDNguyenLieu, MaNguyenLieu, IDDonViTinh, SoLuong, DonGia);
+                    object ID = data.ThemPhieuDatHang();
+                    if (ID != null)
+                    {
+                        data.CapNhatDonDatHang(ID, SoDonHang, IDNguoiLap, NgayLap, TongTien, GhiChu, IDChiNhanh, IDNhaCungCap, TrangThai);
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            string IDNguyenLieu = dr["IDNguyenLieu"].ToString();
+                            string MaNguyenLieu = dr["MaNguyenLieu"].ToString();
+                            string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                            string SoLuong = dr["SoLuong"].ToString();
+                            string DonGia = dr["DonGia"].ToString();
+                            data = new dtThemDonHangKho();
+                            dtSetting.CongTonKho(IDNguyenLieu, SoLuong, IDChiNhanh); // cộng kho không qua bước duyệt
+                            // ghi lịch sử
+                            data.ThemChiTietDonHang(ID, IDNguyenLieu, MaNguyenLieu, IDDonViTinh, SoLuong, DonGia);
+                        }
+                        data = new dtThemDonHangKho();
+                        data.XoaChiTietDonHang_Nhap(IDThuMuaDatHang);
+
+                        dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Thêm đơn hàng", "Thêm đơn đặt hàng");
+
+                        Response.Redirect("DanhSachPhieuNhapHang.aspx");
+                    }
                 }
-                data = new dtThemDonHangKho();
-                data.XoaChiTietDonHang_Nhap(IDThuMuaDatHang);
-                Response.Redirect("DanhSachPhieuNhapHang.aspx");
+                else
+                {
+                    cmbHangHoa.Focus();
+                    Response.Write("<script language='JavaScript'> alert('Danh sách nguyên liệu rỗng.'); </script>");
+                }
             }
             else
             {
-                cmbHangHoa.Focus();
-                Response.Write("<script language='JavaScript'> alert('Danh sách nguyên liệu rỗng.'); </script>");
+                cmbNhaCungCap.Focus();
+                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn nhà cung cấp.'); </script>");
             }
         }
 
@@ -314,7 +336,6 @@ namespace BanHang
 	                                        WHERE ((CF_NguyenLieu.TenNguyenLieu LIKE @TenHang) OR (CF_NguyenLieu.MaNguyenLieu LIKE @MaHang)) AND (CF_NguyenLieu.DaXoa = 0)
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
-
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));

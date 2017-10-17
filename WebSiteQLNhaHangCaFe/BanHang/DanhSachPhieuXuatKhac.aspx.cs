@@ -21,6 +21,8 @@ namespace BanHang
             data = new dtPhieuXuatKhac();
             gridPhieuXuatKhac.DataSource = data.DanhSachPhieuXuatKhac();
             gridPhieuXuatKhac.DataBind();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDChiNhanh"].ToString(), Session["IDNhom"].ToString(), Session["IDNhanVien"].ToString(), "Danh sách phiếu xuất khác", "Truy cập");
         }
     }
 }

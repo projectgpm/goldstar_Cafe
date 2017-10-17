@@ -100,14 +100,21 @@ namespace QLCafe.DTO
             get { return tienThua; }
             set { tienThua = value; }
         }
-        public DTO_HoaDon(int getid, DateTime? getgiovao, DateTime? getgiora, int getidban, int gettrangthai, int getidkhachhang, string getmahoadon, int getidnhanvien, float gettongtien, float getgiamgia, float getkhachcantra, float getkhachthanhtoan, float gettienthua)
+        private float tienGio;
+
+        public float TienGio
+        {
+            get { return tienGio; }
+            set { tienGio = value; }
+        }
+        public DTO_HoaDon(int getid, DateTime? getgiovao, DateTime? getgiora, int getidban, int gettrangthai, float getTienGio, string getmahoadon, int getidnhanvien, float gettongtien, float getgiamgia, float getkhachcantra, float getkhachthanhtoan, float gettienthua)
         {
             this.ID = getid;
             this.GioRa = getgiora;
             this.GioVao = getgiovao;
             this.IDBan = getidban;
             this.TrangThai = gettrangthai;
-            this.IDKhachHang = getidkhachhang;
+            this.TienGio = getTienGio;
             this.MaHoaDon = getmahoadon;
             this.IDNhanVien = getidnhanvien;
             this.TongTien = gettongtien;
@@ -126,9 +133,6 @@ namespace QLCafe.DTO
             this.GioVao = (DateTime?)dr["GioVao"];
             this.IDBan = (int)dr["IDBan"];
             this.TrangThai = (int)dr["TrangThai"];
-            var KH = dr["IDKhachHang"];
-            if (KH.ToString() != "")
-                this.IDKhachHang = (int)KH;
             var MaHD = dr["MaHoaDon"];
             if(MaHD.ToString() !="")
                 this.MaHoaDon = MaHD.ToString();
@@ -140,6 +144,7 @@ namespace QLCafe.DTO
             this.KhachCanTra = float.Parse(dr["KhachCanTra"].ToString());
             this.KhachThanhToan = float.Parse(dr["KhachThanhToan"].ToString());
             this.TienThua = float.Parse(dr["TienThua"].ToString());
+            this.TienGio = float.Parse(dr["TienGio"].ToString());
         }
     }
 }
