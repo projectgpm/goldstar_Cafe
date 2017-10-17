@@ -1,0 +1,66 @@
+﻿using BanHang.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace BanHang
+{
+    public partial class QuanLyNhomHangHoa : System.Web.UI.Page
+    {
+        dtNhomHangHoa data = new dtNhomHangHoa();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            LoadGrid();
+        }
+
+        private void LoadGrid()
+        {
+            data = new dtNhomHangHoa();
+            gridDanhSach.DataSource = data.DanhSach();
+            gridDanhSach.DataBind();
+        }
+
+        protected void gridDanhSach_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["MaNhom"] = dtNhomHangHoa.Dem_Max();
+        }
+
+        protected void gridDanhSach_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            string ID = e.Keys[0].ToString();
+            data = new dtNhomHangHoa();
+            data.Xoa(ID);
+            e.Cancel = true;
+            gridDanhSach.CancelEdit();
+            LoadGrid();
+        }
+
+        protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            string MaNhom = e.NewValues["MaNhom"].ToString();
+            string TenNhom = e.NewValues["TenNhom"].ToString();
+            string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
+            data = new dtNhomHangHoa();
+            data.Them(MaNhom, TenNhom, GhiChu);
+            e.Cancel = true;
+            gridDanhSach.CancelEdit();
+            LoadGrid();
+        }
+
+        protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            string ID = e.Keys[0].ToString();
+            string MaNhom = e.NewValues["MaNhom"].ToString();
+            string TenNhom = e.NewValues["TenNhom"].ToString();
+            string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
+            data = new dtNhomHangHoa();
+            data.Sua(ID,MaNhom, TenNhom, GhiChu);
+            e.Cancel = true;
+            gridDanhSach.CancelEdit();
+            LoadGrid();
+        }
+    }
+}
