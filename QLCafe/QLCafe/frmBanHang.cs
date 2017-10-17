@@ -850,21 +850,33 @@ namespace QLCafe
 
         private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
         {
-            txtDiemTichLuy.ReadOnly = false;
-            txtDiemTichLuy.Text = "0";
-            DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
-            if (tblThongTin.Rows.Count > 0)
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDBanHT == 0)
             {
-                DataRow dr = tblThongTin.Rows[0];
-                txtMaKhachHang.Text = dr["MaKhachHang"].ToString();
-                txtDienThoai.Text = dr["DienThoai"].ToString();
-                txtCMND.Text = dr["CMND"].ToString();
-                txtDiem.Text = dr["DiemTichLuy"].ToString();
+                cmbTenKhachHang.Text = "";
+                txtDiemTichLuy.Text = "0";
+                MessageBox.Show("Vui lòng chọn bàn để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtDiemTichLuy.ReadOnly = false;
+                txtDiemTichLuy.Text = "0";
+                DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
+                if (tblThongTin.Rows.Count > 0)
+                {
+                    DataRow dr = tblThongTin.Rows[0];
+                    txtMaKhachHang.Text = dr["MaKhachHang"].ToString();
+                    txtDienThoai.Text = dr["DienThoai"].ToString();
+                    txtCMND.Text = dr["CMND"].ToString();
+                    txtDiem.Text = dr["DiemTichLuy"].ToString();
+                }
             }
         }
 
         private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
         {
+
             int SoDiemCanDoi = Int32.Parse(txtDiemTichLuy.EditValue.ToString());
             float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
             if (SoDiemCanDoi <= DiemTichLuy)
@@ -881,6 +893,7 @@ namespace QLCafe
                 txtDiemTichLuy.Text = "0";
                 MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnThemKhachHang_Click(object sender, EventArgs e)

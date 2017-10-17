@@ -18,13 +18,11 @@ namespace QLCafe
 {
     public partial class frmTachBill : DevExpress.XtraEditors.XtraForm
     {
+        double TongTien = 0;
         int IDBan = frmBanHang.IDBan;
         int IDHoaDon = DAO_BanHang.IDHoaDon(frmBanHang.IDBan);
         List<ChiTietHoaDonA1> listChiTietMonAn = new List<ChiTietHoaDonA1>();
         List<ChiTietHoaDonB1> listChiTietMonAnThanhToan = new List<ChiTietHoaDonB1>();
-        List<ChiTietGioA1> listChiTietGio = new List<ChiTietGioA1>();
-        List<ChiTietGioB1> listChiTietGioThanhToan = new List<ChiTietGioB1>();
-
         public delegate void GetString(int KT, int IDHoaDon, int IDBan);
         public GetString MyGetData;
         public frmTachBill()
@@ -36,59 +34,30 @@ namespace QLCafe
         {
             gridViewA.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
             gridViewB.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
-            gridViewC.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
-            gridViewD.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
             lblTenBan.Text = DAO_GoiMon.TenBan(IDBan);
             DanhSachHangHoaA();
-            DanhSachGio();
+            KhachHang();
         }
-
+        public void KhachHang()
+        {
+            cmbTenKhachHang.Properties.DataSource = null;
+            cmbTenKhachHang.Refresh();
+            List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
+            cmbTenKhachHang.Properties.DataSource = listKhachHang;
+            cmbTenKhachHang.Properties.ValueMember = "ID";
+            cmbTenKhachHang.Properties.DisplayMember = "TenKhachHang";
+        }
         private void LamMoi()
         {
+            TongTien = 0;
+            txtTongTien.Text = TongTien.ToString();
+            txtKhachCanTra.Text = TongTien.ToString();
+            txtDiemTichLuy.Text = "0";
             DanhSachHangHoaA();
             listChiTietMonAnThanhToan.Clear();
             gridControlB.DataSource = null;
             gridControlB.DataSource = listChiTietMonAnThanhToan;
         }
-
-        public void LamMoiGio()
-        {
-            DanhSachGio();
-            listChiTietGioThanhToan.Clear();
-            gridControlD.DataSource = null;
-            gridControlD.DataSource = listChiTietGioThanhToan;
-        }
-        private void DanhSachGio()
-        {
-            listChiTietGio.Clear();
-            List<DTO_ChiTietGio> DanhSachGio = DAO_DanhSachGioChuaThanhToan.Instance.GetDanhSachGio(IDHoaDon, IDBan);
-            foreach (DTO_ChiTietGio item in DanhSachGio)
-            {
-                listChiTietGio.Add(new ChiTietGioA1
-                {
-                   GioBatDau = item.GioBatDau,
-                   GioKetThuc = item.GioKetThuc,
-                   TongGioChoi = item.TongGioChoi,
-                   DonGia = item.DonGia,
-                   ThanhTien = item.ThanhTien,
-                   ID = item.ID,
-                });
-            }
-            gridControlC.DataSource = null;
-            gridControlC.Refresh();
-            gridControlC.DataSource = DanhSachGio;
-            if (listChiTietGio.Count > 0)
-            {
-                btnABGio.Enabled = true;
-                btnLamLaiABGio.Enabled = true;
-            }
-            else
-            {
-                btnABGio.Enabled = false;
-                btnLamLaiABGio.Enabled = false;
-            }
-        }
-
         private void DanhSachHangHoaA()
         {
             listChiTietMonAn.Clear();
@@ -143,6 +112,7 @@ namespace QLCafe
         {
             if (KT == 1 && listChiTietMonAn.Count > 0)
             {
+                txtDiemTichLuy.Text = "0";
                 int SoLuongA = Int32.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[3]).ToString());
                 string TenHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[1]).ToString();
                 string MaHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[0]).ToString();
@@ -150,6 +120,9 @@ namespace QLCafe
                 float DonGia = float.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[4]).ToString());
                 if (SoLuongA == SoLuong)
                 {
+                    TongTien = TongTien + (SoLuongA * DonGia);
+                    txtTongTien.Text = TongTien.ToString();
+                    txtKhachCanTra.Text = TongTien.ToString();
                     int dongHienTai = gridViewA.FocusedRowHandle;
                     listChiTietMonAnThanhToan.Add(new ChiTietHoaDonB1
                     {
@@ -158,6 +131,7 @@ namespace QLCafe
                         DonViTinh = DonViTinh,
                         DonGia = DonGia,
                         ThanhTien = SoLuongA * DonGia,
+                        
                         SoLuong = SoLuongA,
                     });
                     listChiTietMonAn.RemoveAt(dongHienTai);// xóa dòng hiện tại A1
@@ -183,6 +157,9 @@ namespace QLCafe
                     }
                     if (KiemTra == 1)
                     {
+                        TongTien = TongTien + (SoLuongA * DonGia);
+                        txtTongTien.Text = TongTien.ToString();
+                        txtKhachCanTra.Text = TongTien.ToString();
                         listChiTietMonAnThanhToan.Add(new ChiTietHoaDonB1
                         {
                             MaHangHoa = MaHangHoa,
@@ -202,97 +179,6 @@ namespace QLCafe
             else
             {
                 MessageBox.Show("Danh sách món ăn không có.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public class ChiTietGioA1
-        {
-            private DateTime gioBatDau;
-
-            public DateTime GioBatDau
-            {
-                get { return gioBatDau; }
-                set { gioBatDau = value; }
-            }
-            private DateTime gioKetThuc;
-
-            public DateTime GioKetThuc
-            {
-                get { return gioKetThuc; }
-                set { gioKetThuc = value; }
-            }
-            private string tongGioChoi;
-
-            public string TongGioChoi
-            {
-                get { return tongGioChoi; }
-                set { tongGioChoi = value; }
-            }
-            private double donGia;
-
-            public double DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private double thanhTien;
-
-            public double ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-            private int iD;
-
-            public int ID
-            {
-                get { return iD; }
-                set { iD = value; }
-            }
-        }
-        public class ChiTietGioB1
-        {
-            private DateTime gioBatDau;
-
-            public DateTime GioBatDau
-            {
-                get { return gioBatDau; }
-                set { gioBatDau = value; }
-            }
-            private DateTime gioKetThuc;
-
-            public DateTime GioKetThuc
-            {
-                get { return gioKetThuc; }
-                set { gioKetThuc = value; }
-            }
-            private string tongGioChoi;
-
-            public string TongGioChoi
-            {
-                get { return tongGioChoi; }
-                set { tongGioChoi = value; }
-            }
-            private double donGia;
-
-            public double DonGia
-            {
-                get { return donGia; }
-                set { donGia = value; }
-            }
-            private double thanhTien;
-
-            public double ThanhTien
-            {
-                get { return thanhTien; }
-                set { thanhTien = value; }
-            }
-            private int iD;
-
-            public int ID
-            {
-                get { return iD; }
-                set { iD = value; }
             }
         }
         public class ChiTietHoaDonA1
@@ -389,46 +275,13 @@ namespace QLCafe
             }
             
         }
-
-        private void btnABGio_Click(object sender, EventArgs e)
-        {
-            if (listChiTietGio.Count > 0)
-            {
-                DateTime GioBatDau = DateTime.Parse(gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[0]).ToString());
-                DateTime GioKetThuc = DateTime.Parse(gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[1]).ToString());
-                string TongGioChoi = gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[2]).ToString();
-                double DonGia = double.Parse(gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[3]).ToString());
-                double ThanhTien = double.Parse(gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[4]).ToString());
-                int ID = Int32.Parse(gridViewC.GetRowCellValue(gridViewC.FocusedRowHandle, gridViewC.Columns[5]).ToString());
-                int dongHienTai = gridViewC.FocusedRowHandle;
-                listChiTietGioThanhToan.Add(new ChiTietGioB1
-                {
-                    GioBatDau = GioBatDau,
-                    GioKetThuc = GioKetThuc,
-                    TongGioChoi = TongGioChoi,
-                    DonGia = DonGia,
-                    ThanhTien = ThanhTien,
-                    ID = ID,
-                });
-                listChiTietGio.RemoveAt(dongHienTai);// xóa dòng hiện tại A1
-                gridControlD.DataSource = null;
-                gridControlD.DataSource = listChiTietGioThanhToan;
-                gridControlC.DataSource = null;
-                gridControlC.DataSource = listChiTietGio;
-            }
-        }
-        private void btnLamLaiABGio_Click(object sender, EventArgs e)
-        {
-            LamMoiGio();
-        }
-
         private void btnThucHien_Click(object sender, EventArgs e)
         {
             int rp1 = 0, rp2 = 0;
             // thanh toán... đưa dữ liệu lai from chính, laod lại món ăn, tiền giờ.OK
             if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
             {
-                if (listChiTietMonAnThanhToan.Count > 0 || listChiTietGioThanhToan.Count > 0)
+                if (listChiTietMonAnThanhToan.Count > 0)
                 {
                     bool KT = true;
                     int IDNhanVien = frmDangNhap.NguoiDung.Id;
@@ -482,23 +335,6 @@ namespace QLCafe
                              DAO_ChiTietHoaDonChinh.CapNhatTongTienHoaDonChinh(Int32.Parse(ID.ToString()), IDBan, TongTien);
                         }
                         
-                    }
-                    if (listChiTietGioThanhToan.Count > 0 && KT == true && ID != null)// thanh toán tiền giờ
-                    {
-                        double TongTienGio = 0;
-                        foreach (ChiTietGioB1 item in listChiTietGioThanhToan)
-                        {
-                            int id = item.ID;
-                            TongTienGio = TongTienGio + item.ThanhTien;
-                            //cập nhật tiền giờ
-                            if (DAO_ChiTietHoaDonChinh.CapNhatChiTietGio_ID(Int32.Parse(ID.ToString()), IDBan, id) == false)
-                                KT = false;
-                        }
-                        if (KT == true)
-                        {
-                            rp2 = 1;  // Show Report 2
-                            DAO_ChiTietHoaDonChinh.CapNhatTienGioHoaDonChinh(Int32.Parse(ID.ToString()), IDBan, TongTienGio);
-                        }
                     }
                     if (KT == true && ID != null)
                     {
@@ -603,6 +439,71 @@ namespace QLCafe
                 {
                     MessageBox.Show("Lỗi thanh toán. Danh sách hóa đơn trống?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btnThemKhachHang_Click(object sender, EventArgs e)
+        {
+            frmThemKhachHang fr = new frmThemKhachHang();
+            fr.KTTrangThai = new frmThemKhachHang.GetKT(GetValueThemKhachHang);
+            fr.ShowDialog();
+        }
+        public void GetValueThemKhachHang(int KT)
+        {
+            if (KT == 1)
+            {
+                KhachHang();
+                MessageBox.Show("Thêm Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
+        {
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDBanHT == 0)
+            {
+                cmbTenKhachHang.Text = "";
+                txtDiemTichLuy.Text = "0";
+                MessageBox.Show("Vui lòng chọn bàn để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtDiemTichLuy.ReadOnly = false;
+                txtDiemTichLuy.Text = "0";
+                DataTable tblThongTin = DAO_KhachHang.KhachHangID(cmbTenKhachHang.EditValue.ToString());
+                if (tblThongTin.Rows.Count > 0)
+                {
+                    DataRow dr = tblThongTin.Rows[0];
+                    txtMaKhachHang.Text = dr["MaKhachHang"].ToString();
+                    txtDienThoai.Text = dr["DienThoai"].ToString();
+                    txtCMND.Text = dr["CMND"].ToString();
+                    txtDiem.Text = dr["DiemTichLuy"].ToString();
+                }
+            }
+        }
+
+        private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
+        {
+            int SoDiemCanDoi = Int32.Parse(txtDiemTichLuy.EditValue.ToString());
+            float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
+            if (SoDiemCanDoi <= DiemTichLuy)
+            {
+                float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
+                float TongTien = float.Parse(txtTongTien.EditValue.ToString());
+                txtGiamGia.Text = (SoTienDoi * SoDiemCanDoi) + "";
+                txtKhachCanTra.Text = (TongTien - (SoTienDoi * SoDiemCanDoi)) + "";
+                txtKhachThanhToan.Text = "0";
+                txtTienThoi.Text = "0";
+            }
+            else
+            {
+                txtDiemTichLuy.Text = "0";
+                MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
