@@ -66,3 +66,4 @@ D:\GPM\BiDa_MayMay\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang2.resour
 D:\GPM\BiDa_MayMay\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_58.resources
 D:\GPM\BiDa_MayMay\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_581.resources
 D:\GPM\BiDa_MayMay\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_582.resources
+D:\GPM\goldstar_Cafe\QLCafe\QLCafe\bin\Debug\QLCafe.exe.config
