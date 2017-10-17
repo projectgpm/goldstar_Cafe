@@ -141,11 +141,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 18);
+            this.label1.Location = new System.Drawing.Point(36, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(368, 19);
+            this.label1.Size = new System.Drawing.Size(316, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE - BIDA";
+            this.label1.Text = "HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE";
             // 
             // linkCauHinh
             // 
