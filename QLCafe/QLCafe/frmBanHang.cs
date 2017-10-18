@@ -726,6 +726,7 @@ namespace QLCafe
                 HienThiHoaDon(IDBan);
                 TinhTongTien(IDHoaDon);
                 LoadTongTien();
+                KhachHang();
             }
         }
 
