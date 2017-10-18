@@ -58,16 +58,28 @@ namespace QLCafe.DAO
 
         public static bool TruDiemTichLuy(string IDKhachHang, double DiemTichLuy)
         {
+            TruLichSu(IDKhachHang, DiemTichLuy);
             string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy - '{0}' WHERE ID = '{1}'", DiemTichLuy, IDKhachHang);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
-            sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Trừ')", IDKhachHang,DAO_Setting.LayDiemHienTai(IDKhachHang).ToString(),(DAO_Setting.LayDiemHienTai(IDKhachHang) - DiemTichLuy).ToString());
-            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+            
         }
         public static bool CongDiemTichLuy(string IDKhachHang, double DiemTichLuy)
         {
+            CongLichSu(IDKhachHang, DiemTichLuy);
             string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy.ToString(), IDKhachHang);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
-            sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Cộng')", IDKhachHang, DAO_Setting.LayDiemHienTai(IDKhachHang).ToString(), (DAO_Setting.LayDiemHienTai(IDKhachHang) + DiemTichLuy).ToString());
+            
+        }
+        public static bool TruLichSu(string IDKhachHang, double DiemTichLuy)
+        {
+            string DiemCu = DAO_Setting.LayDiemHienTai(IDKhachHang).ToString();
+            string sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Trừ')", IDKhachHang, DiemCu, (double.Parse(DiemCu) - DiemTichLuy).ToString());
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+        public static bool CongLichSu(string IDKhachHang, double DiemTichLuy)
+        {
+            string DiemCu = DAO_Setting.LayDiemHienTai(IDKhachHang).ToString();
+            string sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Cộng')", IDKhachHang, DiemCu, (double.Parse(DiemCu) + DiemTichLuy).ToString());
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static DateTime LayGioVao(int IDHoaDon)

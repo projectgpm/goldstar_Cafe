@@ -35,7 +35,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["DiemTichLuy"].ToString());
+                return double.Parse(dr["DiemTichLuy"].ToString());
             }
             else
             {
