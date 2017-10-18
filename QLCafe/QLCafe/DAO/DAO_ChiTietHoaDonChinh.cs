@@ -25,9 +25,16 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_ChiTietGio] SET [ThanhToan] = 1 WHERE [TrangThai] = 1 AND [IDHoaDon] = {0} AND [IDBan] = {1}", IDHoaDon, IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool CapNhatHoaDonChinh(int IDHoaDon, int IDBan, int IDNhanVien, double KhachThanhToan, double TienThua)
+
+
+
+
+
+
+
+        public static bool CapNhatHoaDonChinh(int IDHoaDon, int IDBan, int IDNhanVien, double KhachThanhToan, double TienThua, string IDKhachHang, double DiemTichLuy, double TongTien, double GiamGia, double KhachCanTra)
         {
-            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan);
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}',[IDKhachHang] = '{5}',[DiemTichLuy] = '{6}',[TongTien] = '{7}',[GiamGia] = '{8}',[KhachCanTra] = '{9}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, IDKhachHang, DiemTichLuy, TongTien, GiamGia, KhachCanTra);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 
@@ -56,7 +63,7 @@ namespace QLCafe.DAO
         }
         public static bool CongDiemTichLuy(string IDKhachHang, double DiemTichLuy)
         {
-            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy, IDKhachHang);
+            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy.ToString(), IDKhachHang);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static DateTime LayGioVao(int IDHoaDon)

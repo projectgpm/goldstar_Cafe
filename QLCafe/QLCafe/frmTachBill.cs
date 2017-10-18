@@ -346,7 +346,7 @@ namespace QLCafe
                              if (IDKhachHang != "1")
                              {
                                  double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
-                                 DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang,double.Parse(txtDiemTichLuy.Text.ToString());
+                                 DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang,double.Parse(txtDiemTichLuy.Text.ToString()));
                                  DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang,DiemCong);
                              }
                         }
@@ -357,6 +357,7 @@ namespace QLCafe
                         if (MyGetData != null)
                         {
                             MyGetData(1, IDHoaDon, IDBan);
+                            LamMoiKhachHang();
                             this.Close();
                         }
 
@@ -457,7 +458,14 @@ namespace QLCafe
                 }
             }
         }
-
+        public void LamMoiKhachHang()
+        {
+            txtMaKhachHang.Text = "...........................................";
+            txtDienThoai.Text = "...........................................";
+            txtCMND.Text = "...........................................";
+            txtDiem.Text = "...........................................";
+            KhachHang();
+        }
         private void btnThemKhachHang_Click(object sender, EventArgs e)
         {
             frmThemKhachHang fr = new frmThemKhachHang();

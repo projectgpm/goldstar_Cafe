@@ -196,6 +196,10 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
+            txtDiemTichLuy.Text = "0";
+            txtGiamGia.Text = "0";
+            txtTienThoi.Text = "0";
+            txtKhachThanhToan.ReadOnly = false;
             //txtGioBatDau.Time = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
             //txtGioKetThuc.Time = DateTime.Now;
             DateTime GioBatDau = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
@@ -561,13 +565,27 @@ namespace QLCafe
                                 int IDNhanVien = frmDangNhap.NguoiDung.Id;
                                 double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
                                 double TienThua = double.Parse(txtTienThoi.Text.ToString());
-                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                                string IDKhachHang = "1";
+                                if (cmbTenKhachHang.EditValue != null)
+                                    IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua, IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()), double.Parse(txtTongTien.Text.ToString()), double.Parse(txtGiamGia.Text.ToString()), double.Parse(txtKhachCanTra.Text.ToString())) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
                                 {
+                                    if (IDKhachHang != "1")
+                                    {
+                                        double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
+                                        DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
+                                        DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
+                                    }
                                     txtKhachThanhToan.Text = "0";
                                     txtTienThoi.Text = "0";
+                                    txtGiamGia.Text = "0";
+                                    txtDiemTichLuy.ReadOnly = true;
+                                    txtKhachThanhToan.ReadOnly = true;
                                     DanhSachBan();
                                     HienThiHoaDon(IDBanHT);
-
+                                    LamMoiKhachHang();
+                              
+                                   
 
                                     //In bill 
                                     int rp1 = 0, rp2 = 0;
@@ -674,7 +692,14 @@ namespace QLCafe
                 }
             }
         }
-
+        public void LamMoiKhachHang()
+        {
+            txtMaKhachHang.Text = "...........................................";
+            txtDienThoai.Text = "...........................................";
+            txtCMND.Text = "...........................................";
+            txtDiem.Text = "...........................................";
+            KhachHang();
+        }
         private void btnTachHoaDon_Click(object sender, EventArgs e)
         {
             int IDBanHT = IDBan;
@@ -747,9 +772,10 @@ namespace QLCafe
             int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
             if (IDBanHT == 0)
             {
-                cmbTenKhachHang.Text = "";
+                LamMoiKhachHang();
                 txtDiemTichLuy.Text = "0";
                 MessageBox.Show("Vui lòng chọn bàn để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
