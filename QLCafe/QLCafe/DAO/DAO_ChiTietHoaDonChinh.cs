@@ -60,10 +60,14 @@ namespace QLCafe.DAO
         {
             string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy - '{0}' WHERE ID = '{1}'", DiemTichLuy, IDKhachHang);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+            sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Trừ')", IDKhachHang,DAO_Setting.LayDiemHienTai(IDKhachHang).ToString(),(DAO_Setting.LayDiemHienTai(IDKhachHang) - DiemTichLuy).ToString());
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static bool CongDiemTichLuy(string IDKhachHang, double DiemTichLuy)
         {
             string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy.ToString(), IDKhachHang);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+            sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Cộng')", IDKhachHang, DAO_Setting.LayDiemHienTai(IDKhachHang).ToString(), (DAO_Setting.LayDiemHienTai(IDKhachHang) + DiemTichLuy).ToString());
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static DateTime LayGioVao(int IDHoaDon)

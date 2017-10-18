@@ -346,8 +346,11 @@ namespace QLCafe
                              if (IDKhachHang != "1")
                              {
                                  double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
-                                 DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang,double.Parse(txtDiemTichLuy.Text.ToString()));
-                                 DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang,DiemCong);
+                                 if (txtDiemTichLuy.Text.ToString() != "0")
+                                 {
+                                     DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
+                                 }
+                                 DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
                              }
                         }
                         
