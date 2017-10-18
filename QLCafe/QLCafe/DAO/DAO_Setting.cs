@@ -27,6 +27,22 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
+
+        public static float LayTienQuiDoiDiem()
+        {
+            string sTruyVan = string.Format(@"SELECT SoTienTichLuy FROM [GPM_Setting] ");
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["SoTienTichLuy"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public static float DiemTichLuy(string IDKhachHang)
         {
             string sTruyVan = string.Format(@"SELECT DiemTichLuy FROM [GPM_KhachHang] WHERE [ID] = {0}", IDKhachHang);

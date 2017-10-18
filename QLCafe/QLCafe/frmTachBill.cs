@@ -157,7 +157,7 @@ namespace QLCafe
                     }
                     if (KiemTra == 1)
                     {
-                        TongTien = TongTien + (SoLuongA * DonGia);
+                        TongTien = TongTien + (SoLuongB * DonGia);
                         txtTongTien.Text = TongTien.ToString();
                         txtKhachCanTra.Text = TongTien.ToString();
                         listChiTietMonAnThanhToan.Add(new ChiTietHoaDonB1
@@ -278,15 +278,23 @@ namespace QLCafe
         private void btnThucHien_Click(object sender, EventArgs e)
         {
             int rp1 = 0, rp2 = 0;
-            // thanh toán... đưa dữ liệu lai from chính, laod lại món ăn, tiền giờ.OK
-            if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            // thanh toán... đưa dữ liệu lai from chính, load lại món ăn, tiền giờ.OK
+            if (float.Parse(txtKhachThanhToan.Text.ToString()) < float.Parse(txtKhachCanTra.Text.ToString()))
+            {
+                txtKhachThanhToan.Focus();
+                MessageBox.Show("Khách thanh toán không đủ số tiền.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
             {
                 if (listChiTietMonAnThanhToan.Count > 0)
                 {
                     bool KT = true;
                     int IDNhanVien = frmDangNhap.NguoiDung.Id;
                     DateTime GioVao = DAO_ChiTietHoaDonChinh.LayGioVao(IDHoaDon);
-                    object ID = DAO_ChiTietHoaDonChinh.ThemMoiHoaDon(IDBan, IDNhanVien, GioVao);
+                    string IDKhachHang = "1";
+                    if (cmbTenKhachHang.EditValue != null)
+                        IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                    object ID = DAO_ChiTietHoaDonChinh.ThemMoiHoaDon(IDBan, IDNhanVien, GioVao, IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()), double.Parse(txtTongTien.Text.ToString()), double.Parse(txtGiamGia.Text.ToString()), double.Parse(txtKhachCanTra.Text.ToString()), double.Parse(txtKhachThanhToan.Text.ToString()), double.Parse(txtTienThoi.Text.ToString()));
                     if (listChiTietMonAnThanhToan.Count > 0 && KT == true && ID != null)// thanh toán món ăn
                     {
                         double TongTien = 0;
@@ -301,6 +309,7 @@ namespace QLCafe
                             int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHang);
                             //thêm vào chi tiết hóa đơn chính, cập nhật chi tiết hóa đơn củ, if  Sl = nhau xóa hóa đơn củ
                             // kiểm tra thêm chi tiết
+                           
                             if (DAO_ChiTietHoaDonChinh.KiemTraHangHoa(Int32.Parse(ID.ToString()), IDHangHoa, IDBan) == false)
                             {
                                 DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(Int32.Parse(ID.ToString()), IDHangHoa, SoLuong, DonGia, ThanhTien, IDBan, MaHang, IDDonViTinh);
@@ -333,6 +342,13 @@ namespace QLCafe
                              // cập nhật tổng tiền hóa đơn mới lại
                              rp1 = 1; // Show Report 1
                              DAO_ChiTietHoaDonChinh.CapNhatTongTienHoaDonChinh(Int32.Parse(ID.ToString()), IDBan, TongTien);
+                            //trừ điểm tích lũy nếu id != 1, cộng lại điểm tích lũy
+                             if (IDKhachHang != "1")
+                             {
+                                 double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
+                                 DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang,double.Parse(txtDiemTichLuy.Text.ToString());
+                                 DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang,DiemCong);
+                             }
                         }
                         
                     }
@@ -489,7 +505,7 @@ namespace QLCafe
 
         private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
         {
-            int SoDiemCanDoi = Int32.Parse(txtDiemTichLuy.EditValue.ToString());
+            float SoDiemCanDoi = float.Parse(txtDiemTichLuy.EditValue.ToString());
             float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
             if (SoDiemCanDoi <= DiemTichLuy)
             {
@@ -505,6 +521,13 @@ namespace QLCafe
                 txtDiemTichLuy.Text = "0";
                 MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtKhachThanhToan_EditValueChanged(object sender, EventArgs e)
+        {
+            float KhachThanhToan = float.Parse(txtKhachThanhToan.EditValue.ToString());
+            float KhachCanThanhToan = float.Parse(txtKhachCanTra.EditValue.ToString());
+            txtTienThoi.Text = (KhachThanhToan - KhachCanThanhToan).ToString();
         }
     }
 }

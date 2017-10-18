@@ -65,7 +65,7 @@ namespace QLCafe.DAO
         }
         public static bool ThemKhachHang(int IDNhomKhachHang, string MaKhachHang, string TenKhachHang, DateTime NgaySinh, string CMND, string DiaChi, string DienThoai, string GhiChu)
         {
-            string sTruyVan = string.Format(@"INSERT INTO GPM_KHACHHANG([IDNhomKhachHang],[MaKhachHang], [TenKhachHang], [NgaySinh], [CMND], [DiaChi], [DienThoai], [GhiChu]) VALUES ('{0}',N'{1}','{2}', '{3}','{4}','{5}','{6}','{7}')", IDNhomKhachHang, MaKhachHang, TenKhachHang, NgaySinh.ToString("yyyy-MM-dd hh:mm:ss"), CMND, DiaChi, DienThoai, GhiChu);
+            string sTruyVan = string.Format(@"INSERT INTO GPM_KHACHHANG([IDNhomKhachHang],[MaKhachHang], [TenKhachHang], [NgaySinh], [CMND], [DiaChi], [DienThoai], [GhiChu]) VALUES ('{0}',N'{1}',N'{2}', N'{3}',N'{4}',N'{5}',N'{6}',N'{7}')", IDNhomKhachHang, MaKhachHang, TenKhachHang, NgaySinh.ToString("yyyy-MM-dd hh:mm:ss"), CMND, DiaChi, DienThoai, GhiChu);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
     }

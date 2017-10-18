@@ -36,11 +36,11 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_ChiTietGio] SET [ThanhToan] = 1, [IDHoaDon] = {0} WHERE [TrangThai] = 1  AND [IDBan] = {1} AND [ID] = {2}", IDHoaDon, IDBan, ID);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-      
-        public static object ThemMoiHoaDon(int IDBan, int NhanVien, DateTime GioVao)
+
+        public static object ThemMoiHoaDon(int IDBan, int NhanVien, DateTime GioVao, string IDKhachHang, double DiemTichLuy, double TongTien, double GiamGia, double KhachCanTra, double KhachThanhToan, double TienThua)
         {
             object ID = null;
-            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien,GioRa) OUTPUT INSERTED.ID VALUES ('{0}','{1}',{2},getdate())", IDBan, GioVao.ToString("yyyy-MM-dd hh:mm:ss tt"), NhanVien);
+            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien,GioRa,IDKhachHang,DiemTichLuy,TongTien,GiamGia,KhachCanTra,KhachThanhToan,TienThua) OUTPUT INSERTED.ID VALUES ('{0}','{1}',{2},getdate(),'{3}','{4}','{5}','{6}','{7}','{8}','{9}')", IDBan, GioVao.ToString("yyyy-MM-dd hh:mm:ss tt"), NhanVien, IDKhachHang, DiemTichLuy, TongTien, GiamGia, KhachCanTra, KhachThanhToan, TienThua);
             SqlConnection conn = new SqlConnection();
             DAO_ConnectSQL connect = new DAO_ConnectSQL();
             conn = connect.Connect();
@@ -49,6 +49,16 @@ namespace QLCafe.DAO
             return ID;
         }
 
+        public static bool TruDiemTichLuy(string IDKhachHang, double DiemTichLuy)
+        {
+            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy - '{0}' WHERE ID = '{1}'", DiemTichLuy, IDKhachHang);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+        public static bool CongDiemTichLuy(string IDKhachHang, double DiemTichLuy)
+        {
+            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy, IDKhachHang);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static DateTime LayGioVao(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT GioVao FROM [CF_HoaDon] WHERE [ID] = {0} ", IDHoaDon);

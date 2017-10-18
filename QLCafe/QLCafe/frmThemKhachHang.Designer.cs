@@ -46,6 +46,7 @@
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtDienThoai = new DevExpress.XtraEditors.TextEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNhomKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).BeginInit();
@@ -70,6 +71,8 @@
             // 
             // gridLookUpEdit1View
             // 
+            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
             this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
             this.gridLookUpEdit1View.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
@@ -218,6 +221,14 @@
             this.txtDienThoai.Size = new System.Drawing.Size(221, 24);
             this.txtDienThoai.TabIndex = 2;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tên Nhóm";
+            this.gridColumn1.FieldName = "TenNhomKhachHang";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
             // frmThemKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,5 +290,6 @@
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit txtDienThoai;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
