@@ -1,9 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="NhomNguoiDung.aspx.cs" Inherits="BanHang.NhomNguoiDung" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="NhomKhachHang.aspx.cs" Inherits="BanHang.NhomKhachHang" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <dx:ASPxGridView ID="gridNhomNguoiDung" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridNhomNguoiDung_RowDeleting" OnRowInserting="gridNhomNguoiDung_RowInserting" OnRowUpdating="gridNhomNguoiDung_RowUpdating" OnInitNewRow="gridNhomNguoiDung_InitNewRow">
+    <dx:ASPxGridView ID="gridNhomKhachHang" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridNhomKhachHang_RowDeleting" OnRowInserting="gridNhomKhachHang_RowInserting" OnRowUpdating="gridNhomKhachHang_RowUpdating">
+        <SettingsPager Mode="ShowAllRecords" Visible="False">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-        <Settings ShowTitlePanel="True" ShowFilterRow="True" />
+        <Settings ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsBehavior ConfirmDelete="True" />
         <SettingsCommandButton>
             <ShowAdaptiveDetailButton ButtonType="Image">
@@ -34,39 +36,32 @@
         <SettingsPopup>
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể dẫn đễn việc xóa các Khách Hàng của nhóm!." PopupEditFormCaption="Thông tin nhóm khách hàng" Title="DANH SÁCH NHÓM KHÁCH HÀNG HÀNG" EmptyDataRow="Danh sách trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin nhóm người dùng" Title="DANH SÁCH NHÓM NGƯỜI DÙNG" EmptyDataRow="Danh sách trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <EditFormLayoutProperties>
             <Items>
-                <dx:GridViewColumnLayoutItem ColumnName="Mã Nhóm">
+                <dx:GridViewColumnLayoutItem ColumnName="Tên Nhóm KH" Name="TenNhomKhachHang">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Tên nhóm" Name="TenNhom">
+                <dx:GridViewColumnLayoutItem ColumnName="Ghi Chú" Name="GhiChu">
                 </dx:GridViewColumnLayoutItem>
                 <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
                 </dx:EditModeCommandLayoutItem>
             </Items>
         </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="6" Name="chucnang" ShowClearFilterButton="True">
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="5" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn Caption="Mã Nhóm" FieldName="MaNhom" ReadOnly="True" VisibleIndex="0">
+            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="ID" FieldName="ID" Visible="False">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Tên Nhóm KH" FieldName="TenNhomKhachHang">
                 <PropertiesTextEdit>
-                    <ValidationSettings SetFocusOnError="True">
-                        <RequiredField IsRequired="True" />
+                    <ValidationSettings>
+                        <RequiredField ErrorText="Không được bỏ trống" IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Tên nhóm" FieldName="TenNhom" VisibleIndex="1">
-                <PropertiesTextEdit>
-                    <ValidationSettings SetFocusOnError="True">
-                        <RequiredField IsRequired="True" />
-                    </ValidationSettings>
-                </PropertiesTextEdit>
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="4">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày cập nhật" FieldName="NgayCapNhat" VisibleIndex="5">
-                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
-                </PropertiesDateEdit>
-            </dx:GridViewDataDateColumn>
         </Columns>
         
          <Styles>

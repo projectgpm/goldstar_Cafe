@@ -8,11 +8,115 @@ using System.Text.RegularExpressions;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Web;
+using System.Management;
+using System.IO;
+using System.Collections; 
 
 namespace BanHang.Data
 {
     public class dtSetting
     {
+        public static int getKeyCode()
+        {
+            //PhysicalAddress address = GetMacAddress();
+            string sx = GetHardDiskSerialNo();
+
+            string strAddress = sx + "GPM";
+            string sha1Address = GetSHA1HashData(strAddress);
+
+            DataTable da = getData_Setting();
+            if (da.Rows.Count != 0)
+            {
+                DataRow dr = da.Rows[0];
+                string macAddress = dr["KeyKichHoatCaFe"].ToString();
+                if (macAddress.CompareTo(sha1Address) == 0)
+                    return 1;
+            }
+            return -1;
+        }
+        public static string GetHardDiskSerialNo()
+        {
+            string drive = "C";
+            ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + drive + ":\"");
+            disk.Get();
+            return disk["VolumeSerialNumber"].ToString();
+        }
+        public static int setKeyCode(string Key, string user)
+        {
+            //PhysicalAddress address = GetMacAddress();
+            string sx = GetHardDiskSerialNo();
+
+            string strAddress = sx + "GPM";
+
+            if (Key.CompareTo("gpm6868") == 0)
+            {
+                string sha1Address = GetSHA1HashData(strAddress);
+                setData_Setting(sha1Address, user);
+                return 1;
+            }
+            return -1;
+
+        }
+        public static void setData_Setting(string KeyKichHoatCaFe, string NguoiKichHoatCaFe)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "UPDATE [Setting] SET [KeyKichHoatCaFe] = @KeyKichHoatCaFe, [NguoiKichHoatCaFe] = @NguoiKichHoatCaFe";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@KeyKichHoatCaFe", KeyKichHoatCaFe);
+                        myCommand.Parameters.AddWithValue("@NguoiKichHoatCaFe", NguoiKichHoatCaFe);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+        public static DataTable getData_Setting()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string cmdText = "SELECT KeyKichHoatCaFe FROM [Setting]";
+                    using (SqlCommand command = new SqlCommand(cmdText, con))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return tb;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        //public static string GetSHA1HashData(string data)
+        //{
+        //    //create new instance of md5
+        //    SHA1 sha1 = SHA1.Create();
+
+        //    byte[] hashData = sha1.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data + 123));
+
+        //    System.Text.StringBuilder returnValue = new System.Text.StringBuilder();
+
+        //    for (int i = 0; i < hashData.Length; i++)
+        //    {
+        //        returnValue.Append(hashData[i].ToString("x"));
+        //    }
+
+        //    return returnValue.ToString();
+        //}
+       
         public static bool IsNumber(string pValue)
         {
             foreach (Char c in pValue)

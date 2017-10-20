@@ -50,3 +50,17 @@ C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Rel
 C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.pdb
 C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKTienGio.resources
 C:\Users\vmquy\Desktop\GPM Code\BiDa_MayMay\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCTienGio.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.dll
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.pdb
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCBanHang.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCPhieuXuatKhac.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCTienGio.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBCTonKho.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKBanHang.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKPhieuXuatKhac.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.Report.rpBKTienGio.resources
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.csproj.GenerateResource.Cache
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll.licenses
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll
+D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.pdb

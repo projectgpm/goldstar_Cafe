@@ -184,7 +184,7 @@
             <dx:LayoutItem Caption="Chọn Mã Phiếu" ColSpan="2">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                        <dx:ASPxComboBox ID="txtMaPhieu" runat="server" Width="100%" Enabled="False" ValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="txtMaPhieu_SelectedIndexChanged">
+                        <dx:ASPxComboBox ID="txtMaPhieu" TextFormatString="{0}" runat="server" Width="100%" Enabled="False" ValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="txtMaPhieu_SelectedIndexChanged">
                              <Columns>
                                     <dx:ListBoxColumn Caption="Mã Phiếu" FieldName="SoDonHang" Width="120px" />
                                     <dx:ListBoxColumn Caption="Tổng Tiền " FieldName="TongTien" Width="100px" />
@@ -221,7 +221,7 @@
             <dx:LayoutItem Caption="Ngày Thanh Toán" ColSpan="2">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                        <dx:ASPxDateEdit ID="dateNgayThanhToan" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy" OnInit="dateNgayThanhToan_Init">
+                        <dx:ASPxDateEdit ID="dateNgayThanhToan" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy" OnInit="dateNgayThanhToan_Init" Enabled="False">
                         </dx:ASPxDateEdit>
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>

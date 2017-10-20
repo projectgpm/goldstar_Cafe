@@ -14,7 +14,10 @@ namespace BanHang
         dtCheckDangNhap data = new dtCheckDangNhap();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (dtSetting.getKeyCode() == -1)
+            {
+                Response.Redirect("keyCode.aspx");
+            }
         }
         protected void btnDangNhapQuanLy_Click(object sender, EventArgs e)
         {
