@@ -587,103 +587,112 @@ namespace QLCafe
                                     DanhSachBan();
                                     HienThiHoaDon(IDBanHT);
                                     LamMoiKhachHang();
-                              
-                                   
 
-                                    //In bill 
-                                    int rp1 = 0, rp2 = 0;
-                                    int ktReporrt = DAO_Setting.KTHoaDon(IDHoaDonHT + "");
-                                    if (ktReporrt == 0) { rp1 = rp2 = 1; }
-                                    else if (ktReporrt == 1) rp1 = 1;
-                                    else rp2 = 1;
+                                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                                    rpHoaDon rp = new rpHoaDon();
+                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
                                     string NamePrinter = DAO_Setting.LayTenMayInBill();
-                                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                                    int IDBill = DAO_Setting.ReportBill();
-                                    if (IDBill == 58)
-                                    {
-                                        if (rp1 == 1 && rp2 == 1)
-                                        {
-                                            rpHoaDonBanHang_58 rp = new rpHoaDonBanHang_58();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    rp.Parameters["ID"].Visible = false;
+                                    rp.ShowPreviewDialog();
+                                    //rp.Print(NamePrinter);
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                        else if (rp1 == 1)
-                                        {
-                                            rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    ////In bill 
+                                    //int rp1 = 0, rp2 = 0;
+                                    //int ktReporrt = DAO_Setting.KTHoaDon(IDHoaDonHT + "");
+                                    //if (ktReporrt == 0) { rp1 = rp2 = 1; }
+                                    //else if (ktReporrt == 1) rp1 = 1;
+                                    //else rp2 = 1;
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                        else
-                                        {
-                                            rpHoaDonBanHang_582 rp = new rpHoaDonBanHang_582();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    //string NamePrinter = DAO_Setting.LayTenMayInBill();
+                                    //DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                                    //int IDBill = DAO_Setting.ReportBill();
+                                    //if (IDBill == 58)
+                                    //{
+                                    //    if (rp1 == 1 && rp2 == 1)
+                                    //    {
+                                    //        rpHoaDonBanHang_58 rp = new rpHoaDonBanHang_58();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (rp1 == 1 && rp2 == 1)
-                                        {
-                                            rpHoaDonBanHang rp = new rpHoaDonBanHang();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //    else if (rp1 == 1)
+                                    //    {
+                                    //        rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                        else if (rp1 == 1)
-                                        {
-                                            rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //    else
+                                    //    {
+                                    //        rpHoaDonBanHang_582 rp = new rpHoaDonBanHang_582();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                        else
-                                        {
-                                            rpHoaDonBanHang2 rp = new rpHoaDonBanHang2();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //}
+                                    //else
+                                    //{
+                                    //    if (rp1 == 1 && rp2 == 1)
+                                    //    {
+                                    //        rpHoaDonBanHang rp = new rpHoaDonBanHang();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            //rp.ShowPreviewDialog();
-                                            rp.Print(NamePrinter);
-                                        }
-                                    }
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //    else if (rp1 == 1)
+                                    //    {
+                                    //        rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //    else
+                                    //    {
+                                    //        rpHoaDonBanHang2 rp = new rpHoaDonBanHang2();
+                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+
+                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    //        rp.Parameters["ID"].Visible = false;
+                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    //        rp.Parameters["strHoaDon"].Visible = false;
+                                    //        //rp.ShowPreviewDialog();
+                                    //        rp.Print(NamePrinter);
+                                    //    }
+                                    //}
                                 }
                             }
                         }
