@@ -76,3 +76,4 @@ D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_58.re
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_581.resources
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_582.resources
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.frmThemKhachHang.resources
+D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.Report.rpHoaDon.resources

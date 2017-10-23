@@ -372,8 +372,8 @@ namespace QLCafe
                         string NamePrinter = DAO_Setting.LayTenMayInBill();
                         rp.Parameters["ID"].Value = ID;
                         rp.Parameters["ID"].Visible = false;
-                        rp.ShowPreviewDialog();
-                        //rp.Print(NamePrinter);
+                        //rp.ShowPreviewDialog();
+                        rp.Print(NamePrinter);
 
                         // in hóa đớn, cập nhật hóa đơn
                         //DAO_ConnectSQL connect = new DAO_ConnectSQL();

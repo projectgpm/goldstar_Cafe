@@ -32,7 +32,7 @@ namespace QLCafe.DAO
         }
         public static int ThongKeBan(string IDChiNhanh, int TrangThai)
         {
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDChiNhanh = {0} AND [TrangThai] = {1}", IDChiNhanh, TrangThai);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDChiNhanh = {0} AND DaXoa = 0 AND [TrangThai] = {1}", IDChiNhanh, TrangThai);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             return data.Rows.Count;

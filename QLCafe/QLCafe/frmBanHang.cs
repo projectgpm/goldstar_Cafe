@@ -596,8 +596,8 @@ namespace QLCafe
                                     string NamePrinter = DAO_Setting.LayTenMayInBill();
                                     rp.Parameters["ID"].Value = IDHoaDonHT;
                                     rp.Parameters["ID"].Visible = false;
-                                    rp.ShowPreviewDialog();
-                                    //rp.Print(NamePrinter);
+                                   // rp.ShowPreviewDialog();
+                                    rp.Print(NamePrinter);
 
                                     ////In bill 
                                     //int rp1 = 0, rp2 = 0;
