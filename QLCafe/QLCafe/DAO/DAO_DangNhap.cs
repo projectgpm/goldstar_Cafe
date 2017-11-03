@@ -38,6 +38,20 @@ namespace QLCafe.DAO
             data = DataProvider.TruyVanLayDuLieu(sTryVan);
             return data;
         }
+        public static DataTable ThuNgan(string TenDangNhap, string MatKhau)
+        {
+            string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}' AND IDNhomNguoiDung = 2", TenDangNhap, MatKhau);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTryVan);
+            return data;
+        }
+        public static DataTable PhaChe(string TenDangNhap, string MatKhau)
+        {
+            string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}' AND IDNhomNguoiDung = 3", TenDangNhap, MatKhau);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTryVan);
+            return data;
+        }
         public static bool DoiMatKhau(string TenDangNhap, string MatKhau, string MatKhauMoi)
         {
             string sTruyVan = string.Format(@"UPDATE [CF_NguoiDung] SET [MatKhau] = N'{0}' WHERE [TenDangNhap] = N'{1}' AND [MatKhau] = N'{2}'", MatKhauMoi, TenDangNhap, MatKhau);

@@ -23,6 +23,7 @@ namespace QLCafe
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             Application.Run(new frmDangNhap());
+            //Application.Run(new frmPhaChe());
         }
     }
 }
