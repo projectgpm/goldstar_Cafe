@@ -847,6 +847,16 @@ namespace QLCafe
             }
         }
 
+        private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+
+            int TrangThai = Int32.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString());
+            if (TrangThai == 0)
+            {
+                e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+            }
+        }
+
         
     }
 }

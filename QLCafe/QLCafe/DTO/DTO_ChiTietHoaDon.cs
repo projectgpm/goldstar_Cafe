@@ -73,9 +73,15 @@ namespace QLCafe.DTO
             set { idBan = value; }
         }
 
+        private int trangThai;
 
+        public int TrangThai
+        {
+            get { return trangThai; }
+            set { trangThai = value; }
+        }
         public DTO_ChiTietHoaDon() { }
-        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien,string getMaHangHoa, int getiddvt,int getidban)
+        public DTO_ChiTietHoaDon(int getid, int getidhoadon, int getidhanghoa, int getsoluong, float getdongia, float getthanhtien,string getMaHangHoa, int getiddvt,int getidban, int getTrangThai)
         {
             this.ID = getid;
             this.IDHoaDon = getidhoadon;
@@ -86,6 +92,7 @@ namespace QLCafe.DTO
             this.MaHangHoa = getMaHangHoa;
             this.IDDonViTinh = getiddvt;
             this.IdBan = getidban;
+            this.TrangThai = getTrangThai;
         }
         public DTO_ChiTietHoaDon(DataRow dr)
         {
@@ -98,6 +105,7 @@ namespace QLCafe.DTO
             this.MaHangHoa = dr["MaHangHoa"].ToString();
             this.IDDonViTinh = Int32.Parse(dr["IDDonViTinh"].ToString());
             this.IdBan = Int32.Parse(dr["IDBan"].ToString());
+            this.TrangThai = Int32.Parse(dr["TrangThai"].ToString());
         }
     }
 }
