@@ -59,7 +59,14 @@ namespace QLCafe.DTO
             get { return trangThai; }
             set { trangThai = value; }
         }
-        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien,int getTrangThai)
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien,int getTrangThai, int getID)
         {
             this.MaHangHoa = getMaHangHoa;
             this.TenHangHoa = getTenHangHoa;
@@ -68,6 +75,7 @@ namespace QLCafe.DTO
             this.DonGia = getDonGia;
             this.ThanhTien = getThanhTien;
             this.TrangThai = getTrangThai;
+            this.Id = getID;
         }
         public DTO_DanhSachMenu(DataRow dr)
         {
@@ -78,6 +86,7 @@ namespace QLCafe.DTO
             this.DonGia = float.Parse(dr["DonGia"].ToString());
             this.ThanhTien = float.Parse(dr["ThanhTien"].ToString());
             this.TrangThai = Int32.Parse(dr["TrangThai"].ToString());
+            this.Id = Int32.Parse(dr["ID"].ToString());
         }
     }
 }

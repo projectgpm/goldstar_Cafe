@@ -43,9 +43,28 @@ namespace QLCafe.DAO
             }
             return false;
         }
+
+        /// <summary>
+        /// nếu chưa là false, có là true
+        /// </summary>
+        /// <param name="IDHoaDon"></param>
+        /// <param name="IDHangHoa"></param>
+        /// <param name="IDBan"></param>
+        /// <returns></returns>
+        public static bool KiemTraCheBien(int IDHoaDon, int IDHangHoa, int IDBan)
+        {
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2} AND TrangThai = 0", IDBan, IDHangHoa, IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
         public static bool CapNhatSoLuong(int IDHoaDon, string ThanhTien, string SL, string MaHangHoa)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [ThanhTien] = {0}, [SoLuong] =  {1} WHERE [IDHoaDon] = {2} AND  [MaHangHoa] = '{3}' ", ThanhTien, SL, IDHoaDon, MaHangHoa);
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [ThanhTien] = {0}, [SoLuong] =  {1} WHERE [IDHoaDon] = {2} AND  [MaHangHoa] = '{3}' AND TrangThai = 0 ", ThanhTien, SL, IDHoaDon, MaHangHoa);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
     }

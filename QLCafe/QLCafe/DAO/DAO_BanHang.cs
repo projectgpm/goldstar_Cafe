@@ -80,10 +80,50 @@ namespace QLCafe.DAO
            }
            return 0;
        }
-
+       public static int SoLuongCu(string ID)
+       {
+           string sTruyVan = string.Format(@"SELECT SoLuong FROM [CF_ChiTietHoaDon_Temp] WHERE ID = '{0}'", ID);
+           DataTable data = new DataTable();
+           data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+           if (data.Rows.Count > 0)
+           {
+               DataRow dr = data.Rows[0];
+               return Int32.Parse(dr["SoLuong"].ToString());
+           }
+           return 0;
+       }
+       public static int SoLuongCu_LayIDHangHoa(string ID)
+       {
+           string sTruyVan = string.Format(@"SELECT IDHangHoa FROM [CF_ChiTietHoaDon_Temp] WHERE ID = '{0}'", ID);
+           DataTable data = new DataTable();
+           data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+           if (data.Rows.Count > 0)
+           {
+               DataRow dr = data.Rows[0];
+               return Int32.Parse(dr["IDHangHoa"].ToString());
+           }
+           return 0;
+       }
+       public static int SoLuongCu_LayIDDonViTinh(string ID)
+       {
+           string sTruyVan = string.Format(@"SELECT IDDonViTinh FROM [CF_ChiTietHoaDon_Temp] WHERE ID = '{0}'", ID);
+           DataTable data = new DataTable();
+           data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+           if (data.Rows.Count > 0)
+           {
+               DataRow dr = data.Rows[0];
+               return Int32.Parse(dr["IDDonViTinh"].ToString());
+           }
+           return 0;
+       }
        public static bool XoaMonAn(int IDBan, string MaHangHoa, int IDHoaDon)
        {
            string sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietHoaDon_Temp] WHERE IDBan = {0} AND [MaHangHoa] = '{1}' AND [IDHoaDon] = '{2}' ", IDBan, MaHangHoa, IDHoaDon);
+           return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+       }
+       public static bool XoaMonAnTemp(string ID)
+       {
+           string sTruyVan = string.Format(@"DELETE FROM [CF_ChiTietHoaDon_Temp] WHERE ID = '{0}' ", ID);
            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
        }
        public static DateTime GioBatDauBiDa(int IDBan, int IDHoaDon)

@@ -424,15 +424,14 @@ namespace QLCafe
                 if (MessageBox.Show("Bạn muốn xóa món này ra khỏi bàn?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     int IDban = IDBan;
-                    string MaHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
+                    string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[8]).ToString();
                     if (IDban != 0)
                     {
                         int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
-                        if (DAO_BanHang.XoaMonAn(IDban, MaHangHoa, IDHoaDon) == true)
+                        if (DAO_BanHang.XoaMonAnTemp(ID) == true)
                         {
                             TinhTongTien(IDHoaDon);
                             HienThiHoaDon(IDban);
-                            //MessageBox.Show("Xóa món ăn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
@@ -478,16 +477,49 @@ namespace QLCafe
                 int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
                 int SLMoi = Int32.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString());
                 float DonGia = float.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString());
-                if (DAO_ChiTietHoaDon.CapNhatSoLuong(IDHoaDon, (SLMoi * DonGia).ToString(), SLMoi.ToString(), MaHangHoa) == true)
+                string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[8]).ToString();
+                string TrangThai = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString();
+                int SoLuongCu = DAO_BanHang.SoLuongCu(ID);
+                int IDHangHoa = DAO_BanHang.SoLuongCu_LayIDHangHoa(ID);
+                int IDDonViTinh = DAO_BanHang.SoLuongCu_LayIDDonViTinh(ID);
+                if (TrangThai == "0" && SLMoi > SoLuongCu)
                 {
+                    //cập nhật tăng số lượng bình thường
+                    if (DAO_ChiTietHoaDon.CapNhatSoLuong(IDHoaDon, (SLMoi * DonGia).ToString(), SLMoi.ToString(), MaHangHoa) == true)
+                    {
+                        TinhTongTien(IDHoaDon);
+                        HienThiHoaDon(IDban);
+                    }
+                }
+                else if (TrangThai == "1" && SLMoi > SoLuongCu)
+                {
+                    //tạo món mới, thuộc hóa đơn này.
+                    if (DAO_ChiTietHoaDon.KiemTraCheBien(IDHoaDon, IDHangHoa, IDban) == false)
+                    {
+                        DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDon, SLMoi - SoLuongCu, (SLMoi - SoLuongCu) * DonGia, IDHangHoa, IDban);
+                    }
+                    else
+                    {
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SLMoi - SoLuongCu, DonGia, (SLMoi - SoLuongCu) * DonGia, IDban, MaHangHoa, IDDonViTinh);
+
+                    }
+
                     TinhTongTien(IDHoaDon);
                     HienThiHoaDon(IDban);
-                    //MessageBox.Show("Cập nhật số lượng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                else
+                else if(TrangThai == "0" && SLMoi < SoLuongCu)
+                {
+                    //cập nhật giảm số lượng
+                    if (DAO_ChiTietHoaDon.CapNhatSoLuong(IDHoaDon, (SLMoi * DonGia).ToString(), SLMoi.ToString(), MaHangHoa) == true)
+                    {
+                        TinhTongTien(IDHoaDon);
+                        HienThiHoaDon(IDban);
+                    }
+                }
+                else if (TrangThai == "1" && SLMoi < SoLuongCu)
                 {
                     HienThiHoaDon(IDban);
-                    MessageBox.Show("Cập nhật số lượng không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi: Món đã chế biến không thể giảm số lượng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -762,15 +794,14 @@ namespace QLCafe
             if (MessageBox.Show("Bạn muốn xóa món này ra khỏi bàn?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 int IDban = IDBan;
-                string MaHangHoa = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
+                string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[8]).ToString();
                 if (IDban != 0)
                 {
                     int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
-                    if (DAO_BanHang.XoaMonAn(IDban, MaHangHoa, IDHoaDon) == true)
+                    if (DAO_BanHang.XoaMonAnTemp(ID) == true)
                     {
                         TinhTongTien(IDHoaDon);
                         HienThiHoaDon(IDban);
-                       // MessageBox.Show("Xóa món ăn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
                     {

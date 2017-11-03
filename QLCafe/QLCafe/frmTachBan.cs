@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using QLCafe.DAO;
 using QLCafe.BUS;
 using QLCafe.DTO;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QLCafe
 {
@@ -51,6 +52,7 @@ namespace QLCafe
                     string MaHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[0]).ToString();
                     string DonViTinh = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[2]).ToString();
                     float DonGia = float.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[4]).ToString());
+                    int TrangThai = int.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[6]).ToString());
                     //int SoLuongA = Int32.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[3]).ToString());
                     int IDHoaDon = DAO_BanHang.IDHoaDon(IDBan);
                     if (SoLuongA == SoLuong)
@@ -62,6 +64,7 @@ namespace QLCafe
                             TenHangHoa = TenHangHoa,
                             DonViTinh = DonViTinh,
                             DonGia = DonGia,
+                            TrangThai = TrangThai,
                             ThanhTien = SoLuongA * DonGia,
                             SoLuong = SoLuongA,
                         });
@@ -96,6 +99,7 @@ namespace QLCafe
                                 DonGia = DonGia,
                                 ThanhTien = SoLuongB * DonGia,
                                 SoLuong = SoLuongB,
+                                TrangThai = TrangThai,
                             });
                         }
                     }
@@ -167,6 +171,7 @@ namespace QLCafe
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
                     SoLuong = item.SoLuong,
+                    TrangThai = item.TrangThai,
                 });
             }
             gridControlB.DataSource = null;
@@ -210,7 +215,7 @@ namespace QLCafe
                     DonViTinh = item.DonViTinh,
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
-                  
+                    TrangThai = item.TrangThai,
                     SoLuong = item.SoLuong,
                 });
             }
@@ -343,10 +348,25 @@ namespace QLCafe
                 get { return maHangHoa; }
                 set { maHangHoa = value; }
             }
+
+            private int trangThai;
+
+            public int TrangThai
+            {
+                get { return trangThai; }
+                set { trangThai = value; }
+            }
         }
         //--------------------------------------------------------------------
         public class ChiTietHoaDonB1
         {
+            private int trangThai;
+
+            public int TrangThai
+            {
+                get { return trangThai; }
+                set { trangThai = value; }
+            }
             private float thanhTien;
 
             public float ThanhTien
@@ -389,6 +409,32 @@ namespace QLCafe
             {
                 get { return maHangHoa; }
                 set { maHangHoa = value; }
+            }
+        }
+
+        private void gridViewA_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string TrangThai = View.GetRowCellDisplayText(e.RowHandle, View.Columns["TrangThai"]);
+                if (TrangThai == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                }
+            }
+        }
+
+        private void gridViewB_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string TrangThai = View.GetRowCellDisplayText(e.RowHandle, View.Columns["TrangThai"]);
+                if (TrangThai == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                }
             }
         }
     }

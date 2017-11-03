@@ -189,11 +189,21 @@ namespace QLCafe
                         int IDDonViTinh = item.IDDonViTinh;
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDon, IDHangHoa, IDBan) == false)
                         {
+                            //chưa có món nào
                             DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh);
                         }
                         else
                         {
-                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDon, SL, ThanhTien, IDHangHoa, IdBan);
+                            if (DAO_ChiTietHoaDon.KiemTraCheBien(IDHoaDon, IDHangHoa, IDBan) == false)
+                            {
+                                DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDon, SL, ThanhTien, IDHangHoa, IdBan);
+                            }
+                            else
+                            {
+                                DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh);
+                            }
+                            //kiểm tra if đã chế biến thì thêm mới. if chưa chế biến thì cập nhật if trùng
+                            
                         }
                     }
                 }
