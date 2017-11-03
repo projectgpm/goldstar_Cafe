@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using QLCafe.DAO;
 using QLCafe.BUS;
 using QLCafe.DTO;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QLCafe
 {
@@ -100,14 +101,13 @@ namespace QLCafe
                     DonGia = item.DonGia,
                     ThanhTien =  item.ThanhTien,
                     SoLuong = item.SoLuong,
+                    TrangThai = item.TrangThai,
                 });
             }
             listChiTietHoaDonA1.Clear();
             gridControlB.DataSource = null;
             gridControlB.Refresh();
             gridControlB.DataSource = listChiTietHoaDonB1;
-
-            
             gridControlA.DataSource = null;
             gridControlA.Refresh();
             gridControlA.DataSource = listChiTietHoaDonA1;
@@ -127,6 +127,7 @@ namespace QLCafe
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
                     SoLuong = item.SoLuong,
+                    TrangThai = item.TrangThai,
                 });
             }
             gridControlA.DataSource = null;
@@ -152,7 +153,8 @@ namespace QLCafe
                         float ThanhTien = item.ThanhTien;
                         int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHang);
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SoLuong, DonGia, ThanhTien, IdBan, MaHang, IDDonViTinh); // thêm chi tiết hóa đơn mới
+                        int TrangThai = item.TrangThai;
+                        DAO_GoiMon.ThemChiTietHoaDonTrangThai(IDHoaDon, IDHangHoa, SoLuong, DonGia, ThanhTien, IdBan, MaHang, IDDonViTinh, TrangThai); // thêm chi tiết hóa đơn mới
                     }
                     if (MyGetData != null)
                     {
@@ -169,6 +171,13 @@ namespace QLCafe
         //----------------------------------------------------
         public class ChiTietHoaDonA1
         {
+            private int trangThai;
+
+            public int TrangThai
+            {
+                get { return trangThai; }
+                set { trangThai = value; }
+            }
             private float thanhTien;
             public float ThanhTien
             {
@@ -214,6 +223,13 @@ namespace QLCafe
         //----------------------------------------------------
         public class ChiTietHoaDonB1
         {
+            private int trangThai;
+
+            public int TrangThai
+            {
+                get { return trangThai; }
+                set { trangThai = value; }
+            }
             private float thanhTien;
 
             public float ThanhTien
@@ -266,6 +282,32 @@ namespace QLCafe
             listChiTietHoaDonB1.Clear();
             gridControlB.DataSource = null;
             gridControlB.Refresh();
+        }
+
+        private void gridViewA_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string TrangThai = View.GetRowCellDisplayText(e.RowHandle, View.Columns["TrangThai"]);
+                if (TrangThai == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                }
+            }
+        }
+
+        private void gridViewB_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string TrangThai = View.GetRowCellDisplayText(e.RowHandle, View.Columns["TrangThai"]);
+                if (TrangThai == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                }
+            }
         }
     }
 }

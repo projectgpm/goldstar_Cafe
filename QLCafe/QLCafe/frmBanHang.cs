@@ -268,26 +268,26 @@ namespace QLCafe
         }
         private void barButtonXoaBan_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Chuyển trạng thái bàn về mặc định? Dữ liệu trước sẽ không được lưu lại.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
-            {
-                bool KT = DAO_BAN.XoaBanVeMatDinh(IDBan);
-                if (KT == true)
-                {
-                    DAO_HoaDon.XoaDatBan(IDBan);
-                    DAO_DatBan.XoaKhachDat(IDBan);
-                    DanhSachBan();
-                    HienThiHoaDon(IDBan);
-                    //gridControlCTHD.DataSource = null;
-                    //gridControlCTHD.Refresh();
-                    MessageBox.Show("Cập Nhật Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            frmXoaBan fr = new frmXoaBan();
+            fr.ShowDialog();
+                //bool KT = DAO_BAN.XoaBanVeMatDinh(IDBan);
+                //if (KT == true)
+                //{
+                //    DAO_HoaDon.XoaDatBan(IDBan);
+                //    DAO_DatBan.XoaKhachDat(IDBan);
+                //    DanhSachBan();
+                //    HienThiHoaDon(IDBan);
+                //    //gridControlCTHD.DataSource = null;
+                //    //gridControlCTHD.Refresh();
+                //    MessageBox.Show("Cập Nhật Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                    
-                }
-                else
-                {
-                    DanhSachBan();
-                    MessageBox.Show("Cập Nhật Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+                //}
+                //else
+                //{
+                //    DanhSachBan();
+                //    MessageBox.Show("Cập Nhật Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            
         }
 
         private void barButtonChonMon_ItemClick(object sender, ItemClickEventArgs e)

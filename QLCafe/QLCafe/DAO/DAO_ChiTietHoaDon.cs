@@ -43,7 +43,17 @@ namespace QLCafe.DAO
             }
             return false;
         }
-
+        public static bool KiemTraHangHoaTrangThai(int IDHoaDon, int IDHangHoa, int IDBan, int TrangThai)
+        {
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2} AND TrangThai = '{3}'", IDBan, IDHangHoa, IDHoaDon, TrangThai);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         /// <summary>
         /// nếu chưa là false, có là true
         /// </summary>

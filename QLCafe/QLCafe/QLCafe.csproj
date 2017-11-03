@@ -220,6 +220,12 @@
     <Compile Include="frmTinhGio.Designer.cs">
       <DependentUpon>frmTinhGio.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmXoaBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXoaBan.Designer.cs">
+      <DependentUpon>frmXoaBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -314,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTinhGio.resx">
       <DependentUpon>frmTinhGio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXoaBan.resx">
+      <DependentUpon>frmXoaBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\QLCafe.frmBanHang.resources" />
     <EmbeddedResource Include="obj\Debug\QLCafe.frmCauHinhHeThong.resources" />

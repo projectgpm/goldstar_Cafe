@@ -46,12 +46,21 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
+        public static bool ThemChiTietHoaDonTrangThai(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, int TrangThai)
+        {
+            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrangThai) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrangThai);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static bool CapNhatChiTietHoaDon(int IDHoaDon, int SL, float ThanhTien, int IDHangHoa, int IDBan)
         {
             string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [SoLuong] =  SoLuong + {0}, [ThanhTien] = [ThanhTien] + {1} WHERE [IDHoaDon] = {2} AND [IDHangHoa] = {3} AND [IDBan] = {4} AND TrangThai   = 0", SL, ThanhTien, IDHoaDon, IDHangHoa, IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-
+        public static bool CapNhatChiTietHoaDonTrangThai(int IDHoaDon, int SL, float ThanhTien, int IDHangHoa, int IDBan, int TrangThai)
+        {
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [SoLuong] =  SoLuong + {0}, [ThanhTien] = [ThanhTien] + {1} WHERE [IDHoaDon] = {2} AND [IDHangHoa] = {3} AND [IDBan] = {4} AND TrangThai  = {5}", SL, ThanhTien, IDHoaDon, IDHangHoa, IDBan, TrangThai);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static DataTable DanhSachMonAnBanChay()
         {
             string sTruyVan = string.Format(@"  SELECT TOP 16 SUM([CF_ChiTietHoaDon].SoLuong) as SL, [CF_ChiTietHoaDon].IDHangHoa,[CF_HangHoa].TenHangHoa  FROM [CF_ChiTietHoaDon],[CF_HangHoa] WHERE [CF_HangHoa].ID =[CF_ChiTietHoaDon].IDHangHoa   GROUP BY [CF_ChiTietHoaDon].IDHangHoa,[CF_HangHoa].TenHangHoa ORDER BY SL DESC");

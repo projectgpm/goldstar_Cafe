@@ -268,8 +268,9 @@ namespace QLCafe
                         float ThanhTien = SoLuong * DonGia;
                         int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHang);
+                        int TrangThai = item.TrangThai;
                         // xóa a. Lưu lại A.
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh); 
+                        DAO_GoiMon.ThemChiTietHoaDonTrangThai(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrangThai); 
                     }
                     foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
                     {
@@ -279,14 +280,15 @@ namespace QLCafe
                         float ThanhTien = SoLuong * DonGia;
                         int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHang);
+                        int TrangThai = item.TrangThai;
                         // xóa B. Lưu lại B.
-                        if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB) == false)
+                        if (DAO_ChiTietHoaDon.KiemTraHangHoaTrangThai(IDHoaDonB, IDHangHoa, IDBanB, TrangThai) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh); 
+                            DAO_GoiMon.ThemChiTietHoaDonTrangThai(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrangThai); 
                         }
                         else
                         {
-                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonB, SoLuong, ThanhTien, IDHangHoa, IDBanB);
+                            DAO_GoiMon.CapNhatChiTietHoaDonTrangThai(IDHoaDonB, SoLuong, ThanhTien, IDHangHoa, IDBanB, TrangThai);
                         }
                         DAO_BAN.DoiTrangThaiBanCoNguoi(IDBanB);
                     }
