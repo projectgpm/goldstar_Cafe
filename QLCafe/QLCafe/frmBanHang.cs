@@ -21,6 +21,7 @@ using System.Globalization;
 using QLCafe.Report;
 using DevExpress.XtraReports.UI;
 using DevExpress.DataAccess.Sql;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QLCafe
 {
@@ -847,16 +848,17 @@ namespace QLCafe
             }
         }
 
-        private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-
-            int TrangThai = Int32.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString());
-            if (TrangThai == 0)
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
             {
-                e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                string TrangThai = View.GetRowCellDisplayText(e.RowHandle, View.Columns["TrangThai"]);
+                if (TrangThai == "0")
+                {
+                    e.Appearance.BackColor = Color.FromArgb(255, 224, 192);
+                }
             }
         }
-
-        
     }
 }
