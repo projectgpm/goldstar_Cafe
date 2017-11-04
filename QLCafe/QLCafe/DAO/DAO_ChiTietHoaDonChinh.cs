@@ -30,7 +30,11 @@ namespace QLCafe.DAO
 
 
 
-
+        public static bool CapNhatHoaDonChinhXoaBan(int IDHoaDon, int IDBan, int IDNhanVien, double KhachThanhToan, double TienThua, string IDKhachHang, double DiemTichLuy, double TongTien, double GiamGia, double KhachCanTra,string LyDoXoa)
+        {
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}',[IDKhachHang] = '{5}',[DiemTichLuy] = '{6}',[TongTien] = '{7}',[GiamGia] = '{8}',[KhachCanTra] = '{9}',LyDoXoa = N'{10}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, IDKhachHang, DiemTichLuy, TongTien, GiamGia, KhachCanTra,LyDoXoa);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
 
         public static bool CapNhatHoaDonChinh(int IDHoaDon, int IDBan, int IDNhanVien, double KhachThanhToan, double TienThua, string IDKhachHang, double DiemTichLuy, double TongTien, double GiamGia, double KhachCanTra)
         {

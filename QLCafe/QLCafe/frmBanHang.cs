@@ -200,6 +200,7 @@ namespace QLCafe
             txtDiemTichLuy.Text = "0";
             txtGiamGia.Text = "0";
             txtTienThoi.Text = "0";
+         
             txtKhachThanhToan.ReadOnly = false;
             //txtGioBatDau.Time = DAO_BanHang.GioBatDauBiDa(IDBan, DAO_BanHang.IDHoaDon(IDBan));
             //txtGioKetThuc.Time = DateTime.Now;
@@ -213,7 +214,9 @@ namespace QLCafe
            // txtDonGiaGio.Text = DAO_KhuVuc.LayGiaTheoKhuVuc(DAO_BAN.LayIDKhuVuc(IDBan)) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
            // txtTienGio.Text = DAO_HoaDon.TongTienGio(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+
             txtKhachCanTra.Text = DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(IDBan)) + "";
+           
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -269,6 +272,7 @@ namespace QLCafe
         private void barButtonXoaBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmXoaBan fr = new frmXoaBan();
+            fr.MyGetData = new frmXoaBan.GetString(GetXoaBan);
             fr.ShowDialog();
                 //bool KT = DAO_BAN.XoaBanVeMatDinh(IDBan);
                 //if (KT == true)
@@ -293,23 +297,112 @@ namespace QLCafe
         {
             if (KT == 1)
             {
-                if (MessageBox.Show("Bạn chắc chắn muốn xóa bàn ?.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                //int KTTrangThaiCheBien = 0;
+                //List<DTO_DanhSachMenu> DanhSachHoaDon = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(IDBan));
+                //foreach (DTO_DanhSachMenu item in DanhSachHoaDon)
+                //{
+                //    if (item.TrangThai == 0)
+                //    {
+                //        //TrangThai == 0 chưa chế biến
+                //        KTTrangThaiCheBien = 1;
+                //    }
+                //}
+                //if (KTTrangThaiCheBien == 0)
+                //{
+                if (MessageBox.Show("Bạn chắc chắn muốn xóa bàn này ? Doanh thu sẽ chuyển về 0 VNĐ.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {
                     bool KTTrangThai = DAO_BAN.XoaBanVeMatDinh(IDBAN);// cập nhật trạng thái bàn  = 0; bàn trống
                     if (KTTrangThai == true)
                     {
                         if (IDHOADON != 0)
                         {
-                            // đã có món
-                            DAO_DatBan.XoaKhachDat(IDBAN);
+                            // đã có món,
+                            bool insert = true;
+                            bool DaCheBien = false;// không có
+                            List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHOADON);
+                            foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
+                            {
+                                int TrangThai = item.TrangThai;
+                                if (TrangThai == 1)
+                                {
+                                    DaCheBien = true;// có
+                                }
+                            }
+                            if (DaCheBien == true)
+                            {
+                                foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
+                                {
+                                    //thêm vào chi tiết hóa đơn chính
+                                    int IDHangHoa = item.IDHangHoa;
+                                    int SoLuong = item.SoLuong;
+                                    double DonGia = item.DonGia;
+                                    double ThanhTien = item.ThanhTien;
+                                    string MaHangHoa = item.MaHangHoa;
+                                    int IDDonViTinh = item.IDDonViTinh;
+                                    int TrangThai = item.TrangThai;
+                                    if (TrangThai == 1)
+                                    {
+                                        // đã chế biến
+                                        //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
+                                        if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHOADON, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBAN, MaHangHoa, IDDonViTinh) == false)
+                                        {
+                                            insert = false;
+                                            return;
+                                        }
+                                        else if (insert == true)
+                                        {
+                                            List<DTO_NguyenLieu> ListNguyenLieu = DAO_NguyenLieu.Instance.LoadNguyenLieu(IDHangHoa);
+                                            if (ListNguyenLieu.Count > 0)
+                                            {
+                                                foreach (DTO_NguyenLieu itemNL in ListNguyenLieu)
+                                                {
+                                                    double SLTru = (itemNL.TrongLuong * SoLuong);
+                                                    DAO_Setting.TruTonKho(itemNL.IDNguyenLieu, frmDangNhap.NguoiDung.Idchinhanh, SLTru);
+                                                    // trừ tồn kho
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                                if (insert == true)
+                                {
+                                    // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
+                                    if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHOADON) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHOADON, IDBAN) == true)
+                                    {
+                                        // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
+                                        int IDNhanVien = frmDangNhap.NguoiDung.Id;
+                                        if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinhXoaBan(IDHOADON, IDBAN, IDNhanVien, 0, 0, "1", 0, 0, 0, 0, LyDoXoa) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBAN) == true)// thành công
+                                        {
+                                            txtKhachThanhToan.Text = "0";
+                                            txtTienThoi.Text = "0";
+                                            txtGiamGia.Text = "0";
+                                            txtDiemTichLuy.ReadOnly = true;
+                                            txtKhachThanhToan.ReadOnly = true;
+                                            DanhSachBan();
+                                            HienThiHoaDon(IDBAN);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                DAO_DatBan.XoaKhachDat(IDBAN);
+                                DAO_HoaDon.XoaDatBan(IDBAN);
+                                DanhSachBan();
+                            }
                         }
                         else
                         {
                             //chưa có món ăn, xóa bình thường
                             DAO_DatBan.XoaKhachDat(IDBAN);
                             DAO_HoaDon.XoaDatBan(IDBAN);
+                            DanhSachBan();
                         }
-                        
+
                     }
                     else
                     {
@@ -317,6 +410,11 @@ namespace QLCafe
                         MessageBox.Show("Xóa bàn thất bại?.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Cảnh báo: Danh sách có những món chưa chế biến xong.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
             else
             {
