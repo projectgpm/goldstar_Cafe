@@ -44,13 +44,21 @@ namespace QLCafe.DTO
             get { return iDBan; }
             set { iDBan = value; }
         }
-        public DTO_DatBan(int getiD, string getTenKhachHang, string getDienThoai, DateTime getGioDat, int getIDBan)
+        private string soNguoi;
+
+        public string SoNguoi
+        {
+            get { return soNguoi; }
+            set { soNguoi = value; }
+        }
+        public DTO_DatBan(int getiD, string getTenKhachHang, string getDienThoai, DateTime getGioDat, int getIDBan, string getSoNguoi)
         {
             this.ID = getiD;
             this.TenKhachHang = getTenKhachHang;
             this.DienThoai = getDienThoai;
             this.GioDat = getGioDat;
             this.IDBan = getIDBan;
+            this.SoNguoi = getSoNguoi;
         }
         public DTO_DatBan(DataRow dr)
         {
@@ -59,6 +67,7 @@ namespace QLCafe.DTO
             this.DienThoai = dr["DienThoai"].ToString();
             this.GioDat = DateTime.Parse(dr["GioDat"].ToString());
             this.IDBan = (int)dr["IDBan"];
+            this.SoNguoi = dr["SoNguoi"].ToString();
         }
     }
 }

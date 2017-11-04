@@ -14,7 +14,7 @@ namespace QLCafe
 {
     public partial class frmDatBan : DevExpress.XtraEditors.XtraForm 
     {
-        public delegate void GetString(String TenKhachHang, String DienThoai, DateTime GioDat);
+        public delegate void GetString(String TenKhachHang, String DienThoai, DateTime GioDat, string SoNguoi);
         public GetString MyGetData;
         public frmDatBan()
         {
@@ -35,12 +35,20 @@ namespace QLCafe
         {
             string TenKhachHang = txtTenKhachHang.Text;
             string DienThoai = txtDienThoai.Text;
-            DateTime GioDat = DateTime.Parse(timeGioDat.Text);
-            if (MyGetData != null)
+            string SoNguoi = txtSoNguoi.Text;
+            if (TenKhachHang != "" && timeGioDat.Text != "" && DienThoai != "" && SoNguoi != "")
             {
-                MyGetData(TenKhachHang, DienThoai, GioDat);
+                DateTime GioDat = DateTime.Parse(timeGioDat.Text);
+                if (MyGetData != null)
+                {
+                    MyGetData(TenKhachHang, DienThoai, GioDat, SoNguoi);
+                }
+                this.Close();
             }
-            this.Close();
+            else
+            {
+                MessageBox.Show("Vui lòng nhập trường có dấu (*)", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         } 
     }
 }

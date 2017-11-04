@@ -182,10 +182,6 @@
             this.label5.Text = "Mọi chi tiết xin liên hệ :";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Coffee";
-            // 
             // btnDangNhap
             // 
             this.btnDangNhap.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

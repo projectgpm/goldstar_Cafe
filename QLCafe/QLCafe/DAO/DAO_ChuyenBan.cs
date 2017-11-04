@@ -67,7 +67,7 @@ namespace QLCafe.DAO
         public static List<DTO_BAN> DanhSachBanTheoKhuVuc(int IDKhuVuc, int TrangThai, int IDBan)
         {
             List<DTO_BAN> tablelist = new List<DTO_BAN>();
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDKhuVuc = {0} AND ('" + TrangThai + "' = -1 OR [TrangThai] = {1}) AND [ID] != {2} ", IDKhuVuc, TrangThai, IDBan);
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_Ban] WHERE IDKhuVuc = {0} AND ('" + TrangThai + "' = -1 OR [TrangThai] = {1}) AND [ID] != {2} AND DaXoa = 0", IDKhuVuc, TrangThai, IDBan);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             foreach (DataRow item in data.Rows)

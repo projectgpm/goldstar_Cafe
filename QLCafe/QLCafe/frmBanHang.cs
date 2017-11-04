@@ -158,7 +158,7 @@ namespace QLCafe
                         List<DTO_DatBan> thongtinnguoidat = DAO_DatBan.Instance.LoadTableList(item.Id);
                         foreach (DTO_DatBan dr1 in thongtinnguoidat)
                         {
-                            btn.ToolTip = dr1.TenKhachHang + Environment.NewLine + dr1.DienThoai + Environment.NewLine + dr1.GioDat;
+                            btn.ToolTip = "Họ & Tên: "+ dr1.TenKhachHang + Environment.NewLine + "Điện thoại: " +dr1.DienThoai + Environment.NewLine + "Giờ đặt: " +  dr1.GioDat + Environment.NewLine + "Tổng số người: " +  dr1.SoNguoi;
                         }
                         btn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Skin;
                         layout.Controls.Add(btn);
@@ -251,12 +251,9 @@ namespace QLCafe
             }
         }
 
-        public void GetValue(String str1, String str2,DateTime a)
+        public void GetValue(String TenKhachHang, String DienThoai, DateTime GioDat, string SoNguoi)
         {
-            string TenKhachHang = str1;
-            string DienThoai = str2;
-            DateTime GioDat = a;
-            bool KT = DAO_BAN.ThemKhachDatBan(TenKhachHang, DienThoai, GioDat, IDBan);
+            bool KT = DAO_BAN.ThemKhachDatBan(TenKhachHang, DienThoai, GioDat, IDBan, SoNguoi);
             if (KT == true)
             {
                 DAO_BAN.DoiTrangThaiDatBan(IDBan);
@@ -336,7 +333,7 @@ namespace QLCafe
                                     int IDHangHoa = item.IDHangHoa;
                                     int SoLuong = item.SoLuong;
                                     double DonGia = item.DonGia;
-                                    double ThanhTien = item.ThanhTien;
+                                    double ThanhTien = 0;
                                     string MaHangHoa = item.MaHangHoa;
                                     int IDDonViTinh = item.IDDonViTinh;
                                     int TrangThai = item.TrangThai;
@@ -362,10 +359,6 @@ namespace QLCafe
                                                 }
                                             }
                                         }
-                                    }
-                                    else
-                                    {
-
                                     }
                                 }
                                 if (insert == true)
