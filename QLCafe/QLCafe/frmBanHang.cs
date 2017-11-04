@@ -289,7 +289,41 @@ namespace QLCafe
                 //}
             
         }
-
+        public void GetXoaBan(int KT, string LyDoXoa, int IDHOADON, int IDBAN)
+        {
+            if (KT == 1)
+            {
+                if (MessageBox.Show("Bạn chắc chắn muốn xóa bàn ?.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                {
+                    bool KTTrangThai = DAO_BAN.XoaBanVeMatDinh(IDBAN);// cập nhật trạng thái bàn  = 0; bàn trống
+                    if (KTTrangThai == true)
+                    {
+                        if (IDHOADON != 0)
+                        {
+                            // đã có món
+                            DAO_DatBan.XoaKhachDat(IDBAN);
+                        }
+                        else
+                        {
+                            //chưa có món ăn, xóa bình thường
+                            DAO_DatBan.XoaKhachDat(IDBAN);
+                            DAO_HoaDon.XoaDatBan(IDBAN);
+                        }
+                        
+                    }
+                    else
+                    {
+                        DanhSachBan();
+                        MessageBox.Show("Xóa bàn thất bại?.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xóa bàn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DanhSachBan();
+            }
+        }
         private void barButtonChonMon_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmGoiMon fr = new frmGoiMon();
