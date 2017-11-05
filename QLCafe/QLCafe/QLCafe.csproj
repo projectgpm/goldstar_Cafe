@@ -105,6 +105,7 @@
     <Compile Include="DAO\DAO_NguyenLieu.cs" />
     <Compile Include="DAO\DAO_NhomHang.cs" />
     <Compile Include="DAO\DAO_NhomKhachHang.cs" />
+    <Compile Include="DAO\DAO_PhaChe.cs" />
     <Compile Include="DAO\DAO_Setting.cs" />
     <Compile Include="DAO\DAO_TestKetNoi.cs" />
     <Compile Include="DAO\DataProvider.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="DTO\DTO_ChiTietGio.cs" />
     <Compile Include="DTO\DTO_ChiTietHoaDon.cs" />
     <Compile Include="DTO\DTO_DangNhap.cs" />
+    <Compile Include="DTO\DTO_DanhSachChuaPhaChe.cs" />
     <Compile Include="DTO\DTO_DanhSachMenu.cs" />
     <Compile Include="DTO\DTO_DatBan.cs" />
     <Compile Include="DTO\DTO_HangHoa.cs" />
