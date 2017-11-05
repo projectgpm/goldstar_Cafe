@@ -34,10 +34,7 @@ namespace QLCafe
         {
             ChuyenASangB();
         }
-        private void btnBA1_Click(object sender, EventArgs e)
-        {
-            ChuyenBSangA();
-        }
+       
         public void ChuyenASangB()
         {
             int IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
@@ -64,35 +61,10 @@ namespace QLCafe
             gridControlA.Refresh();
             gridControlA.DataSource = listChiTietHoaDonA1;
         }
-        public void ChuyenBSangA()
-        {
-            int IDBanMoi = IDBan;// lấy lại IDBan của A
-            foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
-            {
-                listChiTietHoaDonA1.Add(new ChiTietHoaDonA1
-                {
-                    MaHangHoa = item.MaHangHoa,
-                    TenHangHoa = item.TenHangHoa,
-                    DonViTinh = item.DonViTinh,
-                    DonGia = item.DonGia,
-                    ThanhTien = item.SoLuong * item.DonGia,
-                    SoLuong = item.SoLuong,
-                    TrangThai = item.TrangThai
-                });
-            }
-            listChiTietHoaDonB1.Clear();
-            gridControlA.DataSource = null;
-            gridControlA.Refresh();
-            gridControlA.DataSource = listChiTietHoaDonA1;
-
-            gridControlB.DataSource = null;
-            gridControlB.Refresh();
-            gridControlB.DataSource = listChiTietHoaDonB1;
-        }
+        
         private void cmbKhuVucB_EditValueChanged(object sender, EventArgs e)
         {
             cmbBanB.Enabled = true;
-            btnBA1.Enabled = false;
             btnAB2.Enabled = false;
             btnThucHien.Enabled = false;
             int IDKhuVuc = Int32.Parse(cmbKhuVucB.EditValue.ToString());
@@ -107,7 +79,6 @@ namespace QLCafe
             listChiTietHoaDonB1.Clear(); 
             gridControlB.DataSource = null;
             gridControlB.Refresh();
-            btnBA1.Enabled = true;
             btnAB2.Enabled = true;
             btnThucHien.Enabled = true;
             DanhSachHangHoaB(Int32.Parse(cmbBanB.EditValue.ToString()));
@@ -217,7 +188,6 @@ namespace QLCafe
                 int IDBanB = Int32.Parse(cmbBanB.EditValue.ToString());
                 int IDHoaDonB = DAO_BanHang.IDHoaDon(IDBanB);
                 int IDHoaDonA = IDHoaDon;
-
                 // A Chuyển sang B, xóa toàn bộ hóa đơn A, cập nhật hóa đơn B, đưa trạng thái bàn A về null, xóa chi tiết bàn B
                 if (DAO_BAN.XoaBanVeMatDinh(IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA) == true && DAO_GopBan.XoaHoaDonCu(IDHoaDonA, IDBanA) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonB, IDBanB) == true)
                 {
@@ -230,6 +200,7 @@ namespace QLCafe
                         float DonGia = item.DonGia;
                         float ThanhTien = item.ThanhTien;
                         int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHangHoa);
+                        int TrangThai = item.TrangThai;
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB) == false)
                         {
                             DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh); // thêm chi tiết hóa đơn mới
@@ -243,39 +214,6 @@ namespace QLCafe
                     if (MyGetDataGopBan != null)
                     {
                         MyGetDataGopBan(1, IDBanA, IDBanB, IDHoaDonB);
-                        this.Close();
-                    }
-                }
-            }
-            else if (listChiTietHoaDonA1.Count > 0)
-            {
-                // B Chuyển sang A, xóa toàn bộ hóa đơn B, cập nhật hóa đơn A
-                int IDBanA = IDBan;
-                int IDBanB = Int32.Parse(cmbBanB.EditValue.ToString());
-                int IDHoaDonB = DAO_BanHang.IDHoaDon(IDBanB);
-                int IDHoaDonA = IDHoaDon;
-                if (DAO_BAN.XoaBanVeMatDinh(IDBanB) == true && DAO_ChuyenBan.XoaChiTietBanCu(IDBanB, IDBanB) && DAO_GopBan.XoaHoaDonCu(IDHoaDonB, IDBanB) && DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDonA, IDBanA))
-                {
-                    foreach (ChiTietHoaDonA1 item in listChiTietHoaDonA1)
-                    {
-                        string MaHangHoa = item.MaHangHoa;
-                        int IDHangHoa = DAO_Setting.LayIDHangHoa(MaHangHoa);
-                        int SL = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float ThanhTien = item.ThanhTien;
-                        int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHangHoa);
-                        if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonA, IDHangHoa, IDBanA) == false)
-                        {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHangHoa, IDDonViTinh); // thêm chi tiết hóa đơn mới
-                        }
-                        else
-                        {
-                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonA, SL, ThanhTien, IDHangHoa, IDBanA);
-                        }
-                    }
-                    if (MyGetDataGopBan != null)
-                    {
-                        MyGetDataGopBan(1, IDBanA, IDBanB, IDHoaDonA);
                         this.Close();
                     }
                 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGopBan));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cmbBanA = new DevExpress.XtraEditors.GridLookUpEdit();
@@ -54,7 +54,6 @@
             this.cmbBanB = new DevExpress.XtraEditors.GridLookUpEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnAB2 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnBA1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnLamLai = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlA = new DevExpress.XtraGrid.GridControl();
             this.gridViewA = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -64,6 +63,7 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlB = new DevExpress.XtraGrid.GridControl();
             this.gridViewB = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,7 +72,6 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -215,7 +214,7 @@
             // 
             this.repositoryItemButtonEdit3.AutoHeight = false;
             this.repositoryItemButtonEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit3.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject6, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEdit3.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.repositoryItemButtonEdit3.Name = "repositoryItemButtonEdit3";
             this.repositoryItemButtonEdit3.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -344,21 +343,11 @@
             // 
             this.btnAB2.Enabled = false;
             this.btnAB2.Image = ((System.Drawing.Image)(resources.GetObject("btnAB2.Image")));
-            this.btnAB2.Location = new System.Drawing.Point(553, 200);
+            this.btnAB2.Location = new System.Drawing.Point(554, 241);
             this.btnAB2.Name = "btnAB2";
             this.btnAB2.Size = new System.Drawing.Size(42, 35);
             this.btnAB2.TabIndex = 16;
             this.btnAB2.Click += new System.EventHandler(this.btnAB2_Click);
-            // 
-            // btnBA1
-            // 
-            this.btnBA1.Enabled = false;
-            this.btnBA1.Image = ((System.Drawing.Image)(resources.GetObject("btnBA1.Image")));
-            this.btnBA1.Location = new System.Drawing.Point(553, 241);
-            this.btnBA1.Name = "btnBA1";
-            this.btnBA1.Size = new System.Drawing.Size(42, 35);
-            this.btnBA1.TabIndex = 17;
-            this.btnBA1.Click += new System.EventHandler(this.btnBA1_Click);
             // 
             // btnLamLai
             // 
@@ -467,6 +456,12 @@
             this.gridColumn26.VisibleIndex = 5;
             this.gridColumn26.Width = 92;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Trạng Thái";
+            this.gridColumn6.FieldName = "TrangThai";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
             // gridControlB
             // 
             this.gridControlB.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -514,7 +509,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 200;
             // 
             // gridColumn3
@@ -524,7 +519,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 35;
             // 
             // gridColumn4
@@ -536,7 +531,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 2;
             this.gridColumn4.Width = 49;
             // 
             // gridColumn5
@@ -548,7 +543,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 78;
             // 
             // gridColumn9
@@ -560,14 +555,8 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 5;
+            this.gridColumn9.VisibleIndex = 4;
             this.gridColumn9.Width = 92;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Trạng Thái";
-            this.gridColumn6.FieldName = "TrangThai";
-            this.gridColumn6.Name = "gridColumn6";
             // 
             // gridColumn7
             // 
@@ -575,7 +564,7 @@
             this.gridColumn7.FieldName = "TrangThai";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 5;
             // 
             // frmGopBan
             // 
@@ -590,7 +579,6 @@
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.btnAB2);
             this.Controls.Add(this.btnLamLai);
-            this.Controls.Add(this.btnBA1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -650,7 +638,6 @@
         private DevExpress.XtraEditors.GridLookUpEdit cmbBanB;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton btnAB2;
-        private DevExpress.XtraEditors.SimpleButton btnBA1;
         private DevExpress.XtraEditors.SimpleButton btnLamLai;
         private DevExpress.XtraGrid.GridControl gridControlA;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewA;
