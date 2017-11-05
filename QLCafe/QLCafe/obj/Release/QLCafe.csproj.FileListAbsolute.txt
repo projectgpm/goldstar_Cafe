@@ -60,3 +60,5 @@ D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.Report.rpHoaDonBanHang_581
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.Report.rpHoaDonBanHang_582.resources
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.csproj.GenerateResource.Cache
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.exe.licenses
+D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.frmPhaChe.resources
+D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Release\QLCafe.frmXoaBan.resources

@@ -563,8 +563,6 @@
             this.gridColumn7.Caption = "Trạng Thái";
             this.gridColumn7.FieldName = "TrangThai";
             this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
             // 
             // frmGopBan
             // 

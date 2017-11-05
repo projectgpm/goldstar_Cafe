@@ -201,15 +201,14 @@ namespace QLCafe
                         float ThanhTien = item.ThanhTien;
                         int IDDonViTinh = DAO_Setting.LayIDDonViTinh(MaHangHoa);
                         int TrangThai = item.TrangThai;
-                        if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB) == false)
+                        if (DAO_ChiTietHoaDon.KiemTraHangHoaTrangThai(IDHoaDonB, IDHangHoa, IDBanB, TrangThai) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh); // thêm chi tiết hóa đơn mới
+                            DAO_GoiMon.ThemChiTietHoaDonTrangThai(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHangHoa, IDDonViTinh, TrangThai); 
                         }
                         else
                         {
-                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonB, SL, ThanhTien, IDHangHoa, IDBanB);
+                            DAO_GoiMon.CapNhatChiTietHoaDonTrangThai(IDHoaDonB, SL, ThanhTien, IDHangHoa, IDBanB, TrangThai);
                         }
-                       
                     }
                     if (MyGetDataGopBan != null)
                     {
