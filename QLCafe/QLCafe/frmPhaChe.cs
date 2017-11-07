@@ -45,6 +45,7 @@ namespace QLCafe
         public void DanhSachMon()
         {
             List<DTO_DanhSachChuaPhaChe> DanhSachMonChuaPhaChe = DAO_PhaChe.Instance.GetDanhSachMonAn();
+            
             gridView1.OptionsSelection.EnableAppearanceFocusedRow = false;
             gridPhaChe.DataSource = null;
             gridPhaChe.DataSource = DanhSachMonChuaPhaChe;
