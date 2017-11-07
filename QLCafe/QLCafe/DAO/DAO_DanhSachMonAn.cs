@@ -33,5 +33,19 @@ namespace QLCafe.DAO
             }
             return listMenu;
         }
+
+        public List<DTO_DanhSachMenu> GetDanhSachMonAnDaCheBien(int IDHoaDon)
+        {
+            List<DTO_DanhSachMenu> listMenu = new List<DTO_DanhSachMenu>();
+            string sTruyVan = string.Format(@"SELECT [CF_HangHoa].MaHangHoa, [CF_HangHoa].TenHangHoa,[CF_DonViTinh].TenDonViTinh, [CF_ChiTietHoaDon_Temp].SoLuong,[CF_ChiTietHoaDon_Temp].DonGia,[CF_ChiTietHoaDon_Temp].ID,[CF_ChiTietHoaDon_Temp].ThanhTien,[CF_ChiTietHoaDon_Temp].TrangThai FROM [CF_ChiTietHoaDon_Temp],[CF_HangHoa],[CF_DonViTinh] WHERE [CF_HangHoa].IDDonViTinh = [CF_DonViTinh].ID AND [CF_ChiTietHoaDon_Temp].IDHangHoa = [CF_HangHoa].ID AND [CF_ChiTietHoaDon_Temp].IDHoaDon = {0} AND [CF_ChiTietHoaDon_Temp].TrangThai = 1 ORDER BY [CF_ChiTietHoaDon_Temp].TrangThai DESC", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            foreach (DataRow item in data.Rows)
+            {
+                DTO_DanhSachMenu table = new DTO_DanhSachMenu(item);
+                listMenu.Add(table);
+            }
+            return listMenu;
+        }
     }
 }

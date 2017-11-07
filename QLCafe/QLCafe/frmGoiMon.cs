@@ -134,6 +134,7 @@ namespace QLCafe
         }
         public void BindGridChiTietHoaDon()
         {
+            txtSoLuong.Text = "1";
             gridViewHangHoa.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
             gridControllHangHoa.DataSource = null;
             gridControllHangHoa.Refresh();

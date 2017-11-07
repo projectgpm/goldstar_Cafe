@@ -189,6 +189,7 @@ namespace QLCafe
         {
             List<DTO_DanhSachMenu> DanhSachHoaDon = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(IDBan));
             gridView1.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
+           
             gridControlCTHD.DataSource = null;
             //gridControlCTHD.Refresh();
             gridControlCTHD.DataSource = DanhSachHoaDon;
@@ -271,24 +272,6 @@ namespace QLCafe
             frmXoaBan fr = new frmXoaBan();
             fr.MyGetData = new frmXoaBan.GetString(GetXoaBan);
             fr.ShowDialog();
-                //bool KT = DAO_BAN.XoaBanVeMatDinh(IDBan);
-                //if (KT == true)
-                //{
-                //    DAO_HoaDon.XoaDatBan(IDBan);
-                //    DAO_DatBan.XoaKhachDat(IDBan);
-                //    DanhSachBan();
-                //    HienThiHoaDon(IDBan);
-                //    //gridControlCTHD.DataSource = null;
-                //    //gridControlCTHD.Refresh();
-                //    MessageBox.Show("Cập Nhật Thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                   
-                //}
-                //else
-                //{
-                //    DanhSachBan();
-                //    MessageBox.Show("Cập Nhật Thất Bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-            
         }
         public void GetXoaBan(int KT, string LyDoXoa, int IDHOADON, int IDBAN)
         {
@@ -550,18 +533,26 @@ namespace QLCafe
                 {
                     int IDban = IDBan;
                     string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[8]).ToString();
-                    if (IDban != 0)
+                    string TrangThai = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString();
+                    if (TrangThai == "0")
                     {
-                        int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
-                        if (DAO_BanHang.XoaMonAnTemp(ID) == true)
+                        if (IDban != 0)
                         {
-                            TinhTongTien(IDHoaDon);
-                            HienThiHoaDon(IDban);
+                            int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
+                            if (DAO_BanHang.XoaMonAnTemp(ID) == true)
+                            {
+                                TinhTongTien(IDHoaDon);
+                                HienThiHoaDon(IDban);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Món đã chế biến không thể xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -679,180 +670,103 @@ namespace QLCafe
             {
                 if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {
+
                     //nếu có bàn nào tính giờ mà chưa có giờ kết thúc thì thông báo cho nhấn giờ kết thúc
                     int KT = DAO_BanHang.KiemTraLayIDGioBatDau(IDHoaDonHT, IDBanHT);// kiểm tra xem có giờ kết thúc hay không
                     if (KT == 0)
                     {
                         bool insert = true;
                         List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHoaDonHT);
-                        // đổi trạng thái hóa đơn + thêm vào CTHD chính, xóa tạm + Chi tiết giờ
+                        int KTTrangThai = 0;
                         foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
                         {
-                            //thêm vào chi tiết hóa đơn chính
-                            int IDHangHoa = item.IDHangHoa;
-                            int SoLuong = item.SoLuong;
-                            double DonGia = item.DonGia;
-                            double ThanhTien = item.ThanhTien;
-                            string MaHangHoa = item.MaHangHoa;
-                            int IDDonViTinh = item.IDDonViTinh;
-                            //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
-                            if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHoaDonHT, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanHT, MaHangHoa, IDDonViTinh) == false)
+                            int TrangThai = item.TrangThai;
+                            if (TrangThai == 0)
                             {
-                                insert = false;
+                                KTTrangThai = 1;
+                               
                             }
-                            else
+                        }
+                        if (KTTrangThai == 0)
+                        {
+                            // đổi trạng thái hóa đơn + thêm vào CTHD chính, xóa tạm + Chi tiết giờ
+                            foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
                             {
-                                List<DTO_NguyenLieu> ListNguyenLieu = DAO_NguyenLieu.Instance.LoadNguyenLieu(IDHangHoa);
-                                if (ListNguyenLieu.Count > 0)
+                                //thêm vào chi tiết hóa đơn chính
+                                int IDHangHoa = item.IDHangHoa;
+                                int SoLuong = item.SoLuong;
+                                double DonGia = item.DonGia;
+                                double ThanhTien = item.ThanhTien;
+                                string MaHangHoa = item.MaHangHoa;
+                                int IDDonViTinh = item.IDDonViTinh;
+                                //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
+                                if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHoaDonHT, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanHT, MaHangHoa, IDDonViTinh) == false)
                                 {
-                                    foreach (DTO_NguyenLieu itemNL in ListNguyenLieu)
+                                    insert = false;
+                                }
+                                else
+                                {
+                                    List<DTO_NguyenLieu> ListNguyenLieu = DAO_NguyenLieu.Instance.LoadNguyenLieu(IDHangHoa);
+                                    if (ListNguyenLieu.Count > 0)
                                     {
-                                        double SLTru = (itemNL.TrongLuong * SoLuong);
-                                        DAO_Setting.TruTonKho(itemNL.IDNguyenLieu, frmDangNhap.NguoiDung.Idchinhanh, SLTru);
-                                        // trừ tồn kho
+                                        foreach (DTO_NguyenLieu itemNL in ListNguyenLieu)
+                                        {
+                                            double SLTru = (itemNL.TrongLuong * SoLuong);
+                                            DAO_Setting.TruTonKho(itemNL.IDNguyenLieu, frmDangNhap.NguoiDung.Idchinhanh, SLTru);
+                                            // trừ tồn kho
+                                        }
+                                    }
+                                }
+                            }
+                            if (insert == true)
+                            {
+                                // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
+                                if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHoaDonHT, IDBanHT) == true)
+                                {
+                                    // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
+                                    int IDNhanVien = frmDangNhap.NguoiDung.Id;
+                                    double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
+                                    double TienThua = double.Parse(txtTienThoi.Text.ToString());
+                                    string IDKhachHang = "1";
+                                    if (cmbTenKhachHang.EditValue != null)
+                                        IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                                    if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua, IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()), double.Parse(txtTongTien.Text.ToString()), double.Parse(txtGiamGia.Text.ToString()), double.Parse(txtKhachCanTra.Text.ToString())) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                                    {
+                                        if (IDKhachHang != "1")
+                                        {
+                                            double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
+                                            if (txtDiemTichLuy.Text.ToString() != "0")
+                                            {
+                                                DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
+                                            }
+                                            DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
+                                        }
+                                        txtKhachThanhToan.Text = "0";
+                                        txtTienThoi.Text = "0";
+                                        txtGiamGia.Text = "0";
+                                        txtDiemTichLuy.ReadOnly = true;
+                                        txtKhachThanhToan.ReadOnly = true;
+                                        DanhSachBan();
+                                        HienThiHoaDon(IDBanHT);
+                                        LamMoiKhachHang();
+
+                                        DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                                        rpHoaDon rp = new rpHoaDon();
+                                        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+
+                                        string NamePrinter = DAO_Setting.LayTenMayInBill();
+                                        rp.Parameters["ID"].Value = IDHoaDonHT;
+                                        rp.Parameters["ID"].Visible = false;
+                                        // rp.ShowPreviewDialog();
+                                        rp.Print(NamePrinter);
                                     }
                                 }
                             }
                         }
-                        if (insert == true)
+                        else
                         {
-                            // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
-                            if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHoaDonHT, IDBanHT) == true)
-                            {
-                                // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
-                                int IDNhanVien = frmDangNhap.NguoiDung.Id;
-                                double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
-                                double TienThua = double.Parse(txtTienThoi.Text.ToString());
-                                string IDKhachHang = "1";
-                                if (cmbTenKhachHang.EditValue != null)
-                                    IDKhachHang = cmbTenKhachHang.EditValue.ToString();
-                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua, IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()), double.Parse(txtTongTien.Text.ToString()), double.Parse(txtGiamGia.Text.ToString()), double.Parse(txtKhachCanTra.Text.ToString())) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
-                                {
-                                    if (IDKhachHang != "1")
-                                    {
-                                        double DiemCong = double.Parse(txtKhachCanTra.Text.ToString()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
-                                        if (txtDiemTichLuy.Text.ToString() != "0")
-                                        {
-                                            DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
-                                        }
-                                        DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
-                                    }
-                                    txtKhachThanhToan.Text = "0";
-                                    txtTienThoi.Text = "0";
-                                    txtGiamGia.Text = "0";
-                                    txtDiemTichLuy.ReadOnly = true;
-                                    txtKhachThanhToan.ReadOnly = true;
-                                    DanhSachBan();
-                                    HienThiHoaDon(IDBanHT);
-                                    LamMoiKhachHang();
-
-                                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                                    rpHoaDon rp = new rpHoaDon();
-                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    string NamePrinter = DAO_Setting.LayTenMayInBill();
-                                    rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    rp.Parameters["ID"].Visible = false;
-                                   // rp.ShowPreviewDialog();
-                                    rp.Print(NamePrinter);
-
-                                    ////In bill 
-                                    //int rp1 = 0, rp2 = 0;
-                                    //int ktReporrt = DAO_Setting.KTHoaDon(IDHoaDonHT + "");
-                                    //if (ktReporrt == 0) { rp1 = rp2 = 1; }
-                                    //else if (ktReporrt == 1) rp1 = 1;
-                                    //else rp2 = 1;
-
-                                    //string NamePrinter = DAO_Setting.LayTenMayInBill();
-                                    //DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                                    //int IDBill = DAO_Setting.ReportBill();
-                                    //if (IDBill == 58)
-                                    //{
-                                    //    if (rp1 == 1 && rp2 == 1)
-                                    //    {
-                                    //        rpHoaDonBanHang_58 rp = new rpHoaDonBanHang_58();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //    else if (rp1 == 1)
-                                    //    {
-                                    //        rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        rpHoaDonBanHang_582 rp = new rpHoaDonBanHang_582();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //}
-                                    //else
-                                    //{
-                                    //    if (rp1 == 1 && rp2 == 1)
-                                    //    {
-                                    //        rpHoaDonBanHang rp = new rpHoaDonBanHang();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //    else if (rp1 == 1)
-                                    //    {
-                                    //        rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        rpHoaDonBanHang2 rp = new rpHoaDonBanHang2();
-                                    //        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                    //        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-
-                                    //        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                    //        rp.Parameters["ID"].Visible = false;
-                                    //        rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                    //        rp.Parameters["strHoaDon"].Visible = false;
-                                    //        //rp.ShowPreviewDialog();
-                                    //        rp.Print(NamePrinter);
-                                    //    }
-                                    //}
-                                }
-                            }
+                            MessageBox.Show("Bàn có món chưa chế biến. Vui lòng kiểm tra lại?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -920,18 +834,26 @@ namespace QLCafe
             {
                 int IDban = IDBan;
                 string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[8]).ToString();
-                if (IDban != 0)
+                string TrangThai = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString();
+                if (TrangThai == "0")
                 {
-                    int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
-                    if (DAO_BanHang.XoaMonAnTemp(ID) == true)
+                    if (IDban != 0)
                     {
-                        TinhTongTien(IDHoaDon);
-                        HienThiHoaDon(IDban);
+                        int IDHoaDon = DAO_BanHang.IDHoaDon(IDban);
+                        if (DAO_BanHang.XoaMonAnTemp(ID) == true)
+                        {
+                            TinhTongTien(IDHoaDon);
+                            HienThiHoaDon(IDban);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Xóa món ăn không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Món đã chế biến không thể xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -1016,5 +938,43 @@ namespace QLCafe
                 }
             }
         }
+
+        private void btnInTam_Click(object sender, EventArgs e)
+        {
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDBanHT == 0)
+            {
+                MessageBox.Show("Vui lòng chọn bàn để in phiếu tạm tính.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (DAO_BanHang.IDHoaDon(IDBanHT) == 0)
+            {
+                MessageBox.Show("Bàn chưa có hóa đơn để in phiếu tạm tính.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                 List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHoaDonHT);
+                int KTTrangThai = 0;
+                foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
+                {
+                    int TrangThai = item.TrangThai;
+                    if (TrangThai == 0)
+                    {
+                        KTTrangThai = 1;
+                    }
+                }
+                if (KTTrangThai == 0)
+                {
+                    // in phiếu tạm tính ở đây
+                }
+                else
+                {
+                    MessageBox.Show("Bàn có món chưa chế biến. Vui lòng kiểm tra lại?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+      
+       
+    
     }
 }

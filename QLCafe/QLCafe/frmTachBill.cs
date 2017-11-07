@@ -62,7 +62,7 @@ namespace QLCafe
         {
             listChiTietMonAn.Clear();
             // lấy món ăn theo IDBan
-            List<DTO_DanhSachMenu> DanhSachHoaDonA1 = DAO_DanhSachMonAn.Instance.GetDanhSachMonAn(DAO_BanHang.IDHoaDon(IDBan));
+            List<DTO_DanhSachMenu> DanhSachHoaDonA1 = DAO_DanhSachMonAn.Instance.GetDanhSachMonAnDaCheBien(DAO_BanHang.IDHoaDon(IDBan));
             foreach (DTO_DanhSachMenu item in DanhSachHoaDonA1)
             {
                 listChiTietMonAn.Add(new ChiTietHoaDonA1
