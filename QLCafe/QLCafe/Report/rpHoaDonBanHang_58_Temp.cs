@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace QLCafe.Report
 {
-    public partial class rpHoaDon : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpHoaDonBanHang_58_Temp : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpHoaDon()
+        public rpHoaDonBanHang_58_Temp()
         {
             InitializeComponent();
         }

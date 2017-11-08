@@ -87,6 +87,11 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
+        public static bool CapNhatBillInTemp(string ID)
+        {
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [LanIn] = [LanIn] + 1 WHERE ID = {0}", ID);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static bool IsNumber(string pValue)
         {
             foreach (Char c in pValue)

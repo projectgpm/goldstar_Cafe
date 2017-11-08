@@ -954,7 +954,7 @@
             this.xrLabel38.SizeF = new System.Drawing.SizeF(94.79173F, 14.66666F);
             this.xrLabel38.StylePriority.UseFont = false;
             this.xrLabel38.StylePriority.UseTextAlignment = false;
-            this.xrLabel38.Text = "Tổng tiền hàng:";
+            this.xrLabel38.Text = "Tổng tiền nước:";
             this.xrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLine3
@@ -1009,7 +1009,7 @@
             this.xrLabel40.SizeF = new System.Drawing.SizeF(94.79173F, 14.66666F);
             this.xrLabel40.StylePriority.UseFont = false;
             this.xrLabel40.StylePriority.UseTextAlignment = false;
-            this.xrLabel40.Text = "Tổng tiền dịch vụ:";
+            this.xrLabel40.Text = "Tổng tiền giờ:";
             this.xrLabel40.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel43

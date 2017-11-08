@@ -751,15 +751,34 @@ namespace QLCafe
                                         LamMoiKhachHang();
 
                                         DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                                        rpHoaDon rp = new rpHoaDon();
-                                        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                        int IDBill = DAO_Setting.ReportBill();
+                                        if (IDBill == 58)
+                                        {
+                                            rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
+                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
 
-                                        string NamePrinter = DAO_Setting.LayTenMayInBill();
-                                        rp.Parameters["ID"].Value = IDHoaDonHT;
-                                        rp.Parameters["ID"].Visible = false;
-                                        // rp.ShowPreviewDialog();
-                                        rp.Print(NamePrinter);
+                                            string NamePrinter = DAO_Setting.LayTenMayInBill();
+                                            rp.Parameters["ID"].Value = IDHoaDonHT;
+                                            rp.Parameters["ID"].Visible = false;
+                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN BÁN HÀNG";
+                                            rp.Parameters["strHoaDon"].Visible = false;
+                                            rp.ShowPreviewDialog();
+                                            //rp.Print(NamePrinter);
+                                        }
+                                        else
+                                        {
+                                            string NamePrinter = DAO_Setting.LayTenMayInBill();
+                                            rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
+                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                            rp.Parameters["ID"].Value = IDHoaDonHT;
+                                            rp.Parameters["ID"].Visible = false;
+                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                            rp.Parameters["strHoaDon"].Visible = false;
+                                            rp.ShowPreviewDialog();
+                                            //rp.Print(NamePrinter);
+                                        }
                                     }
                                 }
                             }
@@ -966,6 +985,34 @@ namespace QLCafe
                 if (KTTrangThai == 0)
                 {
                     // in phiếu tạm tính ở đây
+                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                    int IDBill = DAO_Setting.ReportBill();
+                    if (IDBill == 58)
+                    {
+                        DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
+                        rpHoaDonBanHang_581_Temp rp = new rpHoaDonBanHang_581_Temp();
+                        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+
+                        string NamePrinter = DAO_Setting.LayTenMayInBill();
+                        rp.Parameters["ID"].Value = IDHoaDonHT;
+                        rp.Parameters["ID"].Visible = false;
+                        rp.ShowPreviewDialog();
+                        //rp.Print(NamePrinter);
+                    }
+                    else
+                    {
+                        DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
+                        rpHoaDonBanHang1_Temp rp = new rpHoaDonBanHang1_Temp();
+                        SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                        sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+
+                        string NamePrinter = DAO_Setting.LayTenMayInBill();
+                        rp.Parameters["ID"].Value = IDHoaDonHT;
+                        rp.Parameters["ID"].Visible = false;
+                        rp.ShowPreviewDialog();
+                        //rp.Print(NamePrinter);
+                    }
                 }
                 else
                 {
