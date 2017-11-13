@@ -32,6 +32,9 @@
             DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
             DevExpress.DataAccess.Sql.AllColumns allColumns1 = new DevExpress.DataAccess.Sql.AllColumns();
             DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rpHoaDonBanHang));
             DevExpress.DataAccess.Sql.SelectQuery selectQuery2 = new DevExpress.DataAccess.Sql.SelectQuery();
             DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
@@ -40,64 +43,35 @@
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column3 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression3 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table3 = new DevExpress.DataAccess.Sql.Table();
             DevExpress.DataAccess.Sql.Column column4 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression4 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table4 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column5 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression5 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table5 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column6 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression6 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.Table table3 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.Join join1 = new DevExpress.DataAccess.Sql.Join();
             DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.Join join2 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo2 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.Join join3 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo3 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             DevExpress.DataAccess.Sql.SelectQuery selectQuery3 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Column column5 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression5 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Table table4 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Column column6 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression6 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column7 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression7 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table6 = new DevExpress.DataAccess.Sql.Table();
             DevExpress.DataAccess.Sql.Column column8 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression8 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column9 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression9 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column10 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression10 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table7 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.Join join4 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo4 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.SelectQuery selectQuery4 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Table table5 = new DevExpress.DataAccess.Sql.Table();
             DevExpress.DataAccess.Sql.Column column11 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression11 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table8 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column12 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression12 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column13 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression13 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column14 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression14 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column15 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression15 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column16 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression16 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table9 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column17 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression17 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table10 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Table table6 = new DevExpress.DataAccess.Sql.Table();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.Join join5 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo5 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.Join join6 = new DevExpress.DataAccess.Sql.Join();
-            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo6 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rpHoaDonBanHang));
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.Join join2 = new DevExpress.DataAccess.Sql.Join();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo2 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.Join join3 = new DevExpress.DataAccess.Sql.Join();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo3 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
@@ -182,10 +156,10 @@
             // 
             this.xrLabel17.Dpi = 100F;
             this.xrLabel17.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(216.625F, 0F);
+            this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(206.6667F, 0F);
             this.xrLabel17.Name = "xrLabel17";
             this.xrLabel17.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel17.SizeF = new System.Drawing.SizeF(84.37497F, 14.66666F);
+            this.xrLabel17.SizeF = new System.Drawing.SizeF(84.33328F, 14.66666F);
             this.xrLabel17.StylePriority.UseFont = false;
             this.xrLabel17.StylePriority.UseTextAlignment = false;
             this.xrLabel17.Text = "Thành tiền";
@@ -208,7 +182,7 @@
             // 
             this.xrLabel16.Dpi = 100F;
             this.xrLabel16.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(152.0417F, 0F);
+            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(141.1667F, 0F);
             this.xrLabel16.Name = "xrLabel16";
             this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel16.SizeF = new System.Drawing.SizeF(64.5833F, 14.66666F);
@@ -224,7 +198,7 @@
             this.xrLabel15.LocationFloat = new DevExpress.Utils.PointFloat(112.5001F, 0F);
             this.xrLabel15.Name = "xrLabel15";
             this.xrLabel15.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel15.SizeF = new System.Drawing.SizeF(39.54167F, 14.66666F);
+            this.xrLabel15.SizeF = new System.Drawing.SizeF(28.66657F, 14.66666F);
             this.xrLabel15.StylePriority.UseFont = false;
             this.xrLabel15.StylePriority.UseTextAlignment = false;
             this.xrLabel15.Text = "SL";
@@ -236,7 +210,7 @@
             this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 14.66659F);
             this.xrLine1.Name = "xrLine1";
-            this.xrLine1.SizeF = new System.Drawing.SizeF(301F, 7.375F);
+            this.xrLine1.SizeF = new System.Drawing.SizeF(291F, 7.374999F);
             // 
             // xrLabel18
             // 
@@ -261,7 +235,7 @@
             this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(112.5001F, 0F);
             this.xrLabel19.Name = "xrLabel19";
             this.xrLabel19.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel19.SizeF = new System.Drawing.SizeF(39.54167F, 14.66666F);
+            this.xrLabel19.SizeF = new System.Drawing.SizeF(28.66657F, 14.66666F);
             this.xrLabel19.StylePriority.UseFont = false;
             this.xrLabel19.StylePriority.UseTextAlignment = false;
             this.xrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -272,7 +246,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietHoaDon.DonGia", "{0:#,#}")});
             this.xrLabel20.Dpi = 100F;
             this.xrLabel20.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(152.0417F, 0F);
+            this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(141.1667F, 0F);
             this.xrLabel20.Name = "xrLabel20";
             this.xrLabel20.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel20.SizeF = new System.Drawing.SizeF(64.5833F, 14.66666F);
@@ -286,10 +260,10 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietHoaDon.ThanhTien", "{0:#,#}")});
             this.xrLabel21.Dpi = 100F;
             this.xrLabel21.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel21.LocationFloat = new DevExpress.Utils.PointFloat(216.625F, 0F);
+            this.xrLabel21.LocationFloat = new DevExpress.Utils.PointFloat(206.6667F, 0F);
             this.xrLabel21.Name = "xrLabel21";
             this.xrLabel21.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel21.SizeF = new System.Drawing.SizeF(84.37497F, 14.66666F);
+            this.xrLabel21.SizeF = new System.Drawing.SizeF(84.33328F, 14.66666F);
             this.xrLabel21.StylePriority.UseFont = false;
             this.xrLabel21.StylePriority.UseTextAlignment = false;
             this.xrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -338,7 +312,7 @@
             // topMarginBand1
             // 
             this.topMarginBand1.Dpi = 100F;
-            this.topMarginBand1.HeightF = 26F;
+            this.topMarginBand1.HeightF = 14F;
             this.topMarginBand1.Name = "topMarginBand1";
             // 
             // bottomMarginBand1
@@ -360,165 +334,101 @@
             selectQuery1.Columns.Add(allColumns1);
             selectQuery1.Name = "Setting";
             selectQuery1.Tables.Add(table1);
-            columnExpression1.ColumnName = "GioVao";
-            table2.Name = "CF_HoaDon";
+            customSqlQuery1.Name = "CF_HoaDon";
+            queryParameter1.Name = "ID";
+            queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter1.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
+            customSqlQuery1.Parameters.Add(queryParameter1);
+            customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
+            columnExpression1.ColumnName = "SoLuong";
+            table2.Name = "CF_ChiTietHoaDon";
             columnExpression1.Table = table2;
             column1.Expression = columnExpression1;
-            columnExpression2.ColumnName = "GioRa";
+            columnExpression2.ColumnName = "DonGia";
             columnExpression2.Table = table2;
             column2.Expression = columnExpression2;
-            columnExpression3.ColumnName = "TenNguoiDung";
-            table3.Name = "CF_NguoiDung";
-            columnExpression3.Table = table3;
+            columnExpression3.ColumnName = "ThanhTien";
+            columnExpression3.Table = table2;
             column3.Expression = columnExpression3;
-            columnExpression4.ColumnName = "TenBan";
-            table4.Name = "CF_Ban";
-            columnExpression4.Table = table4;
+            columnExpression4.ColumnName = "TenHangHoa";
+            table3.Name = "CF_HangHoa";
+            columnExpression4.Table = table3;
             column4.Expression = columnExpression4;
-            columnExpression5.ColumnName = "TenKhuVuc";
-            table5.Name = "CF_KhuVuc";
-            columnExpression5.Table = table5;
-            column5.Expression = columnExpression5;
-            columnExpression6.ColumnName = "TongTien";
-            columnExpression6.Table = table2;
-            column6.Expression = columnExpression6;
             selectQuery2.Columns.Add(column1);
             selectQuery2.Columns.Add(column2);
             selectQuery2.Columns.Add(column3);
             selectQuery2.Columns.Add(column4);
-            selectQuery2.Columns.Add(column5);
-            selectQuery2.Columns.Add(column6);
-            selectQuery2.FilterString = "[CF_HoaDon.ID] = ?ID";
-            selectQuery2.Name = "CF_HoaDon";
-            queryParameter1.Name = "ID";
-            queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter1.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
-            selectQuery2.Parameters.Add(queryParameter1);
+            selectQuery2.FilterString = "[CF_ChiTietHoaDon.IDHoaDon] = ?ID";
+            selectQuery2.Name = "CF_ChiTietHoaDon";
+            queryParameter2.Name = "ID";
+            queryParameter2.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter2.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
+            selectQuery2.Parameters.Add(queryParameter2);
             relationColumnInfo1.NestedKeyColumn = "ID";
-            relationColumnInfo1.ParentKeyColumn = "IDNhanVien";
+            relationColumnInfo1.ParentKeyColumn = "IDHangHoa";
             join1.KeyColumns.Add(relationColumnInfo1);
             join1.Nested = table3;
             join1.Parent = table2;
-            relationColumnInfo2.NestedKeyColumn = "ID";
-            relationColumnInfo2.ParentKeyColumn = "IDBan";
-            join2.KeyColumns.Add(relationColumnInfo2);
-            join2.Nested = table4;
-            join2.Parent = table2;
-            relationColumnInfo3.NestedKeyColumn = "ID";
-            relationColumnInfo3.ParentKeyColumn = "IDKhuVuc";
-            join3.KeyColumns.Add(relationColumnInfo3);
-            join3.Nested = table5;
-            join3.Parent = table4;
             selectQuery2.Relations.Add(join1);
-            selectQuery2.Relations.Add(join2);
-            selectQuery2.Relations.Add(join3);
             selectQuery2.Tables.Add(table2);
             selectQuery2.Tables.Add(table3);
-            selectQuery2.Tables.Add(table4);
-            selectQuery2.Tables.Add(table5);
-            columnExpression7.ColumnName = "SoLuong";
-            table6.Name = "CF_ChiTietHoaDon";
-            columnExpression7.Table = table6;
+            columnExpression5.ColumnName = "GioBatDau";
+            table4.Name = "CF_ChiTietGio";
+            columnExpression5.Table = table4;
+            column5.Expression = columnExpression5;
+            columnExpression6.ColumnName = "GioKetThuc";
+            columnExpression6.Table = table4;
+            column6.Expression = columnExpression6;
+            columnExpression7.ColumnName = "TongGioChoi";
+            columnExpression7.Table = table4;
             column7.Expression = columnExpression7;
             columnExpression8.ColumnName = "DonGia";
-            columnExpression8.Table = table6;
+            columnExpression8.Table = table4;
             column8.Expression = columnExpression8;
             columnExpression9.ColumnName = "ThanhTien";
-            columnExpression9.Table = table6;
+            columnExpression9.Table = table4;
             column9.Expression = columnExpression9;
-            columnExpression10.ColumnName = "TenHangHoa";
-            table7.Name = "CF_HangHoa";
-            columnExpression10.Table = table7;
+            columnExpression10.ColumnName = "TenBan";
+            table5.Name = "CF_Ban";
+            columnExpression10.Table = table5;
             column10.Expression = columnExpression10;
+            columnExpression11.ColumnName = "TenKhuVuc";
+            table6.Name = "CF_KhuVuc";
+            columnExpression11.Table = table6;
+            column11.Expression = columnExpression11;
+            selectQuery3.Columns.Add(column5);
+            selectQuery3.Columns.Add(column6);
             selectQuery3.Columns.Add(column7);
             selectQuery3.Columns.Add(column8);
             selectQuery3.Columns.Add(column9);
             selectQuery3.Columns.Add(column10);
-            selectQuery3.FilterString = "[CF_ChiTietHoaDon.IDHoaDon] = ?ID";
-            selectQuery3.Name = "CF_ChiTietHoaDon";
-            queryParameter2.Name = "ID";
-            queryParameter2.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter2.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
-            selectQuery3.Parameters.Add(queryParameter2);
-            relationColumnInfo4.NestedKeyColumn = "ID";
-            relationColumnInfo4.ParentKeyColumn = "IDHangHoa";
-            join4.KeyColumns.Add(relationColumnInfo4);
-            join4.Nested = table7;
-            join4.Parent = table6;
-            selectQuery3.Relations.Add(join4);
-            selectQuery3.Tables.Add(table6);
-            selectQuery3.Tables.Add(table7);
-            columnExpression11.ColumnName = "GioBatDau";
-            table8.Name = "CF_ChiTietGio";
-            columnExpression11.Table = table8;
-            column11.Expression = columnExpression11;
-            columnExpression12.ColumnName = "GioKetThuc";
-            columnExpression12.Table = table8;
-            column12.Expression = columnExpression12;
-            columnExpression13.ColumnName = "TongGioChoi";
-            columnExpression13.Table = table8;
-            column13.Expression = columnExpression13;
-            columnExpression14.ColumnName = "DonGia";
-            columnExpression14.Table = table8;
-            column14.Expression = columnExpression14;
-            columnExpression15.ColumnName = "ThanhTien";
-            columnExpression15.Table = table8;
-            column15.Expression = columnExpression15;
-            columnExpression16.ColumnName = "TenBan";
-            table9.Name = "CF_Ban";
-            columnExpression16.Table = table9;
-            column16.Expression = columnExpression16;
-            columnExpression17.ColumnName = "TenKhuVuc";
-            table10.Name = "CF_KhuVuc";
-            columnExpression17.Table = table10;
-            column17.Expression = columnExpression17;
-            selectQuery4.Columns.Add(column11);
-            selectQuery4.Columns.Add(column12);
-            selectQuery4.Columns.Add(column13);
-            selectQuery4.Columns.Add(column14);
-            selectQuery4.Columns.Add(column15);
-            selectQuery4.Columns.Add(column16);
-            selectQuery4.Columns.Add(column17);
-            selectQuery4.FilterString = "[CF_ChiTietGio.IDHoaDon] = ?ID";
-            selectQuery4.Name = "CF_ChiTietGio";
+            selectQuery3.Columns.Add(column11);
+            selectQuery3.FilterString = "[CF_ChiTietGio.IDHoaDon] = ?ID";
+            selectQuery3.Name = "CF_ChiTietGio";
             queryParameter3.Name = "ID";
             queryParameter3.Type = typeof(DevExpress.DataAccess.Expression);
             queryParameter3.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
-            selectQuery4.Parameters.Add(queryParameter3);
-            relationColumnInfo5.NestedKeyColumn = "ID";
-            relationColumnInfo5.ParentKeyColumn = "IDBan";
-            join5.KeyColumns.Add(relationColumnInfo5);
-            join5.Nested = table9;
-            join5.Parent = table8;
-            relationColumnInfo6.NestedKeyColumn = "ID";
-            relationColumnInfo6.ParentKeyColumn = "IDKhuVuc";
-            join6.KeyColumns.Add(relationColumnInfo6);
-            join6.Nested = table10;
-            join6.Parent = table9;
-            selectQuery4.Relations.Add(join5);
-            selectQuery4.Relations.Add(join6);
-            selectQuery4.Tables.Add(table8);
-            selectQuery4.Tables.Add(table9);
-            selectQuery4.Tables.Add(table10);
-            customSqlQuery1.Name = "CF_ChiTietHoaDon_TongTien";
-            queryParameter4.Name = "ID";
-            queryParameter4.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter4.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
-            customSqlQuery1.Parameters.Add(queryParameter4);
-            customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
-            customSqlQuery2.Name = "CF_ChiTietGio_TongTien";
-            queryParameter5.Name = "ID";
-            queryParameter5.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter5.Value = new DevExpress.DataAccess.Expression("[Parameters.ID]", typeof(string));
-            customSqlQuery2.Parameters.Add(queryParameter5);
-            customSqlQuery2.Sql = resources.GetString("customSqlQuery2.Sql");
+            selectQuery3.Parameters.Add(queryParameter3);
+            relationColumnInfo2.NestedKeyColumn = "ID";
+            relationColumnInfo2.ParentKeyColumn = "IDBan";
+            join2.KeyColumns.Add(relationColumnInfo2);
+            join2.Nested = table5;
+            join2.Parent = table4;
+            relationColumnInfo3.NestedKeyColumn = "ID";
+            relationColumnInfo3.ParentKeyColumn = "IDKhuVuc";
+            join3.KeyColumns.Add(relationColumnInfo3);
+            join3.Nested = table6;
+            join3.Parent = table5;
+            selectQuery3.Relations.Add(join2);
+            selectQuery3.Relations.Add(join3);
+            selectQuery3.Tables.Add(table4);
+            selectQuery3.Tables.Add(table5);
+            selectQuery3.Tables.Add(table6);
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             selectQuery1,
-            selectQuery2,
-            selectQuery3,
-            selectQuery4,
             customSqlQuery1,
-            customSqlQuery2});
+            selectQuery2,
+            selectQuery3});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // PageHeader
@@ -565,7 +475,7 @@
             this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(81.25009F, 145.9583F);
             this.xrLabel50.Name = "xrLabel50";
             this.xrLabel50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel50.SizeF = new System.Drawing.SizeF(219.7499F, 14.66666F);
+            this.xrLabel50.SizeF = new System.Drawing.SizeF(209.7499F, 14.66666F);
             this.xrLabel50.StylePriority.UseFont = false;
             this.xrLabel50.StylePriority.UseTextAlignment = false;
             this.xrLabel50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -579,7 +489,7 @@
             this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(204.6667F, 131.2916F);
             this.xrLabel13.Name = "xrLabel13";
             this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel13.SizeF = new System.Drawing.SizeF(96.33333F, 14.66666F);
+            this.xrLabel13.SizeF = new System.Drawing.SizeF(86.33328F, 14.66666F);
             this.xrLabel13.StylePriority.UseFont = false;
             this.xrLabel13.StylePriority.UseTextAlignment = false;
             this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -606,7 +516,7 @@
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(63.08333F, 131.2916F);
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel11.SizeF = new System.Drawing.SizeF(92.66667F, 14.66666F);
+            this.xrLabel11.SizeF = new System.Drawing.SizeF(78.08334F, 14.66666F);
             this.xrLabel11.StylePriority.UseFont = false;
             this.xrLabel11.StylePriority.UseTextAlignment = false;
             this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -633,7 +543,7 @@
             this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(190.0834F, 115.625F);
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(110.9166F, 14.66666F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(100.9166F, 14.66666F);
             this.xrLabel9.StylePriority.UseFont = false;
             this.xrLabel9.StylePriority.UseTextAlignment = false;
             this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -660,7 +570,7 @@
             this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(44.33333F, 115.625F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(111.4167F, 14.66666F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(107.7084F, 14.66666F);
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.StylePriority.UseTextAlignment = false;
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -684,10 +594,10 @@
             new DevExpress.XtraReports.UI.XRBinding(this.strHoaDon, "Text", "")});
             this.xrLabel5.Dpi = 100F;
             this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 84.5F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 84.49999F);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(301F, 18.83333F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(291F, 18.83333F);
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.StylePriority.UseTextAlignment = false;
             this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -705,7 +615,7 @@
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 62.3333F);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(301F, 14.66666F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(291F, 14.66666F);
             this.xrLabel4.StylePriority.UseFont = false;
             this.xrLabel4.StylePriority.UseTextAlignment = false;
             this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -719,7 +629,7 @@
             this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 47.66665F);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(301F, 14.66666F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(291F, 14.66666F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.StylePriority.UseTextAlignment = false;
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -733,7 +643,7 @@
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28.83333F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(301F, 18.83333F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(291F, 18.83333F);
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.StylePriority.UseTextAlignment = false;
             this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -747,7 +657,7 @@
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10.00001F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(301F, 18.83333F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(291F, 18.83333F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -782,7 +692,7 @@
             this.xrLabel37.LocationFloat = new DevExpress.Utils.PointFloat(84.95824F, 55.66661F);
             this.xrLabel37.Name = "xrLabel37";
             this.xrLabel37.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel37.SizeF = new System.Drawing.SizeF(216.0417F, 14.66666F);
+            this.xrLabel37.SizeF = new System.Drawing.SizeF(206.0418F, 14.66665F);
             this.xrLabel37.StylePriority.UseFont = false;
             this.xrLabel37.StylePriority.UseTextAlignment = false;
             this.xrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -791,9 +701,9 @@
             // 
             this.xrLine2.Dpi = 100F;
             this.xrLine2.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(3.178914E-05F, 1.020772F);
+            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(3.178914E-05F, 1.020813F);
             this.xrLine2.Name = "xrLine2";
-            this.xrLine2.SizeF = new System.Drawing.SizeF(301F, 7.375F);
+            this.xrLine2.SizeF = new System.Drawing.SizeF(291F, 7.375F);
             // 
             // xrLabel31
             // 
@@ -801,10 +711,10 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietGio.GioKetThuc", "{0:H:mm}")});
             this.xrLabel31.Dpi = 100F;
             this.xrLabel31.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(200.9584F, 26.33329F);
+            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(200.9584F, 26.3333F);
             this.xrLabel31.Name = "xrLabel31";
             this.xrLabel31.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel31.SizeF = new System.Drawing.SizeF(96.33333F, 14.66666F);
+            this.xrLabel31.SizeF = new System.Drawing.SizeF(90.0416F, 14.66666F);
             this.xrLabel31.StylePriority.UseFont = false;
             this.xrLabel31.StylePriority.UseTextAlignment = false;
             this.xrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -856,7 +766,7 @@
             this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(3.178914E-05F, 10.00001F);
             this.xrLabel23.Name = "xrLabel23";
             this.xrLabel23.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel23.SizeF = new System.Drawing.SizeF(301F, 14.66666F);
+            this.xrLabel23.SizeF = new System.Drawing.SizeF(291F, 14.66666F);
             this.xrLabel23.StylePriority.UseFont = false;
             this.xrLabel23.StylePriority.UseTextAlignment = false;
             this.xrLabel23.Text = "Tiền giờ";
@@ -908,10 +818,10 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietGio.TongGioChoi")});
             this.xrLabel35.Dpi = 100F;
             this.xrLabel35.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel35.LocationFloat = new DevExpress.Utils.PointFloat(230.1667F, 40.99997F);
+            this.xrLabel35.LocationFloat = new DevExpress.Utils.PointFloat(230.1667F, 40.99998F);
             this.xrLabel35.Name = "xrLabel35";
             this.xrLabel35.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel35.SizeF = new System.Drawing.SizeF(67.125F, 14.66666F);
+            this.xrLabel35.SizeF = new System.Drawing.SizeF(60.83331F, 14.66666F);
             this.xrLabel35.StylePriority.UseFont = false;
             this.xrLabel35.StylePriority.UseTextAlignment = false;
             this.xrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -961,41 +871,39 @@
             // 
             this.xrLine3.Dpi = 100F;
             this.xrLine3.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.xrLine3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 2.479164F);
+            this.xrLine3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 2.479172F);
             this.xrLine3.Name = "xrLine3";
-            this.xrLine3.SizeF = new System.Drawing.SizeF(301F, 7.375F);
+            this.xrLine3.SizeF = new System.Drawing.SizeF(291F, 7.375F);
             // 
             // xrLabel39
             // 
             this.xrLabel39.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietHoaDon.ThanhTien")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietHoaDon.ThanhTien", "{0:#,# VNĐ}")});
             this.xrLabel39.Dpi = 100F;
             this.xrLabel39.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel39.LocationFloat = new DevExpress.Utils.PointFloat(101.0834F, 12.47917F);
+            this.xrLabel39.LocationFloat = new DevExpress.Utils.PointFloat(101.0834F, 12.47918F);
             this.xrLabel39.Name = "xrLabel39";
             this.xrLabel39.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel39.SizeF = new System.Drawing.SizeF(199.9166F, 14.66666F);
+            this.xrLabel39.SizeF = new System.Drawing.SizeF(189.9166F, 14.66666F);
             this.xrLabel39.StylePriority.UseFont = false;
             this.xrLabel39.StylePriority.UseTextAlignment = false;
             xrSummary1.FormatString = "{0:#,# VND}";
-            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrLabel39.Summary = xrSummary1;
             this.xrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
             // xrLabel41
             // 
             this.xrLabel41.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietGio.ThanhTien")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_ChiTietGio.ThanhTien", "{0:#,# VNĐ}")});
             this.xrLabel41.Dpi = 100F;
             this.xrLabel41.Font = new System.Drawing.Font("Times New Roman", 8F);
             this.xrLabel41.LocationFloat = new DevExpress.Utils.PointFloat(101.0833F, 27.14583F);
             this.xrLabel41.Name = "xrLabel41";
             this.xrLabel41.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel41.SizeF = new System.Drawing.SizeF(199.9166F, 14.66666F);
+            this.xrLabel41.SizeF = new System.Drawing.SizeF(189.9167F, 14.66666F);
             this.xrLabel41.StylePriority.UseFont = false;
             this.xrLabel41.StylePriority.UseTextAlignment = false;
             xrSummary2.FormatString = "{0:#,# VND}";
-            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrLabel41.Summary = xrSummary2;
             this.xrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
@@ -1015,13 +923,13 @@
             // xrLabel43
             // 
             this.xrLabel43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Tong", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.Tong", "{0:#,# VNĐ}")});
             this.xrLabel43.Dpi = 100F;
             this.xrLabel43.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
             this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(101.0834F, 41.81248F);
             this.xrLabel43.Name = "xrLabel43";
             this.xrLabel43.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel43.SizeF = new System.Drawing.SizeF(199.9166F, 14.66666F);
+            this.xrLabel43.SizeF = new System.Drawing.SizeF(189.9166F, 14.66666F);
             this.xrLabel43.StylePriority.UseFont = false;
             this.xrLabel43.StylePriority.UseTextAlignment = false;
             this.xrLabel43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
@@ -1046,7 +954,7 @@
             this.xrLabel48.LocationFloat = new DevExpress.Utils.PointFloat(6.291708F, 71.1875F);
             this.xrLabel48.Name = "xrLabel48";
             this.xrLabel48.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel48.SizeF = new System.Drawing.SizeF(291F, 14.66666F);
+            this.xrLabel48.SizeF = new System.Drawing.SizeF(284.7083F, 14.66666F);
             this.xrLabel48.StylePriority.UseFont = false;
             this.xrLabel48.StylePriority.UseTextAlignment = false;
             this.xrLabel48.Text = "Cám ơn quý khách. Hẹn gặp lại!";
@@ -1087,7 +995,8 @@
             // 
             // Tong
             // 
-            this.Tong.Expression = "[CF_ChiTietGio_TongTien.TongTien] + [CF_ChiTietHoaDon_TongTien.ThanhTien]";
+            this.Tong.DataMember = "CF_HoaDon";
+            this.Tong.Expression = "[TienGio] + [TongTien]";
             this.Tong.Name = "Tong";
             // 
             // rpHoaDonBanHang
@@ -1107,8 +1016,9 @@
             this.DataSource = this.sqlDataSource1;
             this.FormattingRuleSheet.AddRange(new DevExpress.XtraReports.UI.FormattingRule[] {
             this.formattingRule1});
-            this.Margins = new System.Drawing.Printing.Margins(0, 0, 26, 100);
-            this.PageHeight = 1800;
+            this.Margins = new System.Drawing.Printing.Margins(0, 0, 14, 100);
+            this.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 1, 1, 1, 100F);
+            this.PageHeight = 1200;
             this.PageWidth = 301;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {

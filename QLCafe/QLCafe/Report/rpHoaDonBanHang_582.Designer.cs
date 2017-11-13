@@ -624,7 +624,7 @@
             this.xrLabel41.SizeF = new System.Drawing.SizeF(102.0208F, 11.41145F);
             this.xrLabel41.StylePriority.UseFont = false;
             this.xrLabel41.StylePriority.UseTextAlignment = false;
-            xrSummary1.FormatString = "{0:#,# VND}";
+            xrSummary1.FormatString = "{0:#,# VNĐ}";
             xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrLabel41.Summary = xrSummary1;
             this.xrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;

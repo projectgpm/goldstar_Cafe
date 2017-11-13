@@ -233,12 +233,6 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\rpHoaDon.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\rpHoaDon.Designer.cs">
-      <DependentUpon>rpHoaDon.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\rpHoaDonBanHang.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -251,11 +245,23 @@
     <Compile Include="Report\rpHoaDonBanHang1.designer.cs">
       <DependentUpon>rpHoaDonBanHang1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpHoaDonBanHang1_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang1_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang1_Temp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpHoaDonBanHang2.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rpHoaDonBanHang2.designer.cs">
       <DependentUpon>rpHoaDonBanHang2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang2_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang2_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang2_Temp.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\rpHoaDonBanHang_58.cs">
       <SubType>Component</SubType>
@@ -269,11 +275,35 @@
     <Compile Include="Report\rpHoaDonBanHang_581.designer.cs">
       <DependentUpon>rpHoaDonBanHang_581.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_581_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_581_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang_581_Temp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpHoaDonBanHang_582.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rpHoaDonBanHang_582.Designer.cs">
       <DependentUpon>rpHoaDonBanHang_582.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_582_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_582_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang_582_Temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_58_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_58_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang_58_Temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_Temp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDonBanHang_Temp.Designer.cs">
+      <DependentUpon>rpHoaDonBanHang_Temp.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmBanHang.resx">
       <DependentUpon>frmBanHang.cs</DependentUpon>
@@ -348,17 +378,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Report\rpHoaDon.resx">
-      <DependentUpon>rpHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHang.resx">
       <DependentUpon>rpHoaDonBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHang1.resx">
       <DependentUpon>rpHoaDonBanHang1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang1_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang1_Temp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHang2.resx">
       <DependentUpon>rpHoaDonBanHang2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang2_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang2_Temp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHang_58.resx">
       <DependentUpon>rpHoaDonBanHang_58.cs</DependentUpon>
@@ -366,10 +399,24 @@
     <EmbeddedResource Include="Report\rpHoaDonBanHang_581.resx">
       <DependentUpon>rpHoaDonBanHang_581.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_581_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang_581_Temp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHang_582.resx">
       <DependentUpon>rpHoaDonBanHang_582.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_582_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang_582_Temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_58_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang_58_Temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpHoaDonBanHang_Temp.resx">
+      <DependentUpon>rpHoaDonBanHang_Temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bin\Debug\QLCafe.exe.config" />
     <None Include="bin\Debug\QLCafe.vshost.exe.config" />
     <None Include="bin\Debug\QLCafe.vshost.exe.manifest" />

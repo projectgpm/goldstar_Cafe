@@ -866,7 +866,7 @@
             // xrLabel39
             // 
             this.xrLabel39.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TongTien", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TongTien", "{0:#,# VNĐ}")});
             this.xrLabel39.Dpi = 100F;
             this.xrLabel39.Font = new System.Drawing.Font("Times New Roman", 7F);
             this.xrLabel39.LocationFloat = new DevExpress.Utils.PointFloat(76.04177F, 7.374982F);
@@ -882,7 +882,7 @@
             // xrLabel41
             // 
             this.xrLabel41.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TienGio", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TienGio", "{0:#,# VNĐ}")});
             this.xrLabel41.Dpi = 100F;
             this.xrLabel41.Font = new System.Drawing.Font("Times New Roman", 7F);
             this.xrLabel41.LocationFloat = new DevExpress.Utils.PointFloat(86.97924F, 18.78643F);
@@ -911,7 +911,7 @@
             // xrLabel43
             // 
             this.xrLabel43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.Tong", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.Tong", "{0:#,# VNĐ}")});
             this.xrLabel43.Dpi = 100F;
             this.xrLabel43.Font = new System.Drawing.Font("Times New Roman", 7F, System.Drawing.FontStyle.Bold);
             this.xrLabel43.LocationFloat = new DevExpress.Utils.PointFloat(86.97924F, 30.19785F);
