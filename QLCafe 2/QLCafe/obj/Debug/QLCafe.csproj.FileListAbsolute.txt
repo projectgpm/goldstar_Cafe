@@ -271,3 +271,4 @@ D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBan
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.Report.rpHoaDonBanHang_PhaChe_Temp.resources
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.csproj.GenerateResource.Cache
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.exe.licenses
+D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmThemKhachHang.resources

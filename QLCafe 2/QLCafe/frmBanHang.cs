@@ -41,6 +41,7 @@ namespace QLCafe
         {
             timer1.Start();
             DanhSachBan();
+            KhachHang();
             // WindowState = FormWindowState.Maximized;
             lblNgay.Text = "Ngày hôm nay: " + DateTime.Now.ToString("dd/MM/yyyy");
             lblTenCongTy.Text = DAO_Setting.TenCongTy();
@@ -53,6 +54,16 @@ namespace QLCafe
             txtKhachThanhToan.ReadOnly = true;
             txtTenDangNhap.Text = "Nhân viên: " + frmDangNhap.NguoiDung.Tennguoidung;
             
+        }
+        public void KhachHang()
+        {
+            cmbTenKhachHang.Properties.DataSource = null;
+            cmbTenKhachHang.Refresh();
+            List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
+            cmbTenKhachHang.Properties.DataSource = listKhachHang;
+            cmbTenKhachHang.Properties.ValueMember = "ID";
+            //cmbTenKhachHang.sele = "1";
+            cmbTenKhachHang.Properties.DisplayMember = "TenKhachHang";
         }
         public void AddTabControl(string name, string ID, FlowLayoutPanel layout)
         {
@@ -909,6 +920,25 @@ namespace QLCafe
                     }
 
                 }
+            }
+        }
+
+        private void btnThemKhachHang_Click(object sender, EventArgs e)
+        {
+            frmThemKhachHang fr = new frmThemKhachHang();
+            fr.KTTrangThai = new frmThemKhachHang.GetKT(GetValueThemKhachHang);
+            fr.ShowDialog();
+        }
+        public void GetValueThemKhachHang(int KT)
+        {
+            if (KT == 1)
+            {
+                KhachHang();
+                MessageBox.Show("Thêm Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
