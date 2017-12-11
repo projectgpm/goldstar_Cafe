@@ -69,29 +69,31 @@ namespace BanHang
                 if (ID != null)
                 {
                     dt.CapNhatCongNo(IDNhaCungCap, SoTienThanhToan);
-                    data = new dtNhaCungCap();
-                    DataTable db = data.DanhSachSoDonHang(cmbNhaCungCap.Value.ToString());
-                    if (db.Rows.Count != 0)
-                    {
-                        foreach (DataRow dr in db.Rows)
-                        {
-                            float TienMaPhieu = float.Parse(dr["TongTien"].ToString());
-                            string IDDonHang = dr["ID"].ToString();
-                            if (SoTienThanhToan > TienMaPhieu)
-                            {
-                                dt = new dtCongNo();
-                                dt.CapNhatTinhTrang(IDDonHang);
-                                SoTienThanhToan = SoTienThanhToan - TienMaPhieu;
-                            }
-                            else if (SoTienThanhToan > 0)
-                            {
-                                dt = new dtCongNo();
-                                dt.CapNhatTinhTrang(IDDonHang);
-                                SoTienThanhToan = 0;
-                                Response.Redirect("CapNhatCongNo.aspx");
-                            }
-                        }
-                    }
+                    //data = new dtNhaCungCap();
+                    //DataTable db = data.DanhSachSoDonHang(cmbNhaCungCap.Value.ToString());
+                    //if (db.Rows.Count != 0)
+                    //{
+                    //    foreach (DataRow dr in db.Rows)
+                    //    {
+                    //        float TienMaPhieu = float.Parse(dr["TongTien"].ToString());
+                    //        string IDDonHang = dr["ID"].ToString();
+                    //        if (SoTienThanhToan > TienMaPhieu)
+                    //        {
+                    //            dt = new dtCongNo();
+                    //            dt.CapNhatTinhTrang(IDDonHang);
+                    //            SoTienThanhToan = SoTienThanhToan - TienMaPhieu;
+                    //        }
+                    //        else if (SoTienThanhToan > 0)
+                    //        {
+                    //            dt = new dtCongNo();
+                    //            dt.CapNhatTinhTrang(IDDonHang);
+                    //            SoTienThanhToan = 0;
+                    //        }
+                    //    }
+                       
+                    //}
+                    popup.ShowOnPageLoad = false;
+                    Response.Redirect("ChiTietCongNo.aspx");
                 }
             }
             else

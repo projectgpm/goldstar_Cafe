@@ -60,8 +60,6 @@
                                                             <dx:RibbonDropDownButtonItem Name="Nhà Cung Cấp" NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don_vi_tinh">
-                                                                <SmallImage IconID="businessobjects_bodepartment_16x16">
-                                                                </SmallImage>
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Bảng Giá" NavigateUrl="BangGia.aspx" Text="Bảng Giá">
                                                             </dx:RibbonDropDownButtonItem>
