@@ -268,3 +268,17 @@ D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKB
 D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKPhieuXuatKhac.resources
 D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKTienGio.resources
 D:\GPM\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.csproj.GenerateResource.Cache
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.dll
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\bin\BanHang.pdb
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.csprojResolveAssemblyReference.cache
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBCBanHang.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBCPhieuXuatKhac.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBCTienGio.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBCTonKho.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKBanHang.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKPhieuXuatKhac.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.Report.rpBKTienGio.resources
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.csproj.GenerateResource.Cache
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll.licenses
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll
+D:\GPMSoffware\goldstar_Cafe\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.pdb

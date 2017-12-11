@@ -37,3 +37,5 @@ D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.Properties.Resources.resourc
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.csproj.GenerateResource.Cache
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.exe.licenses
 D:\GPM\goldstar_Cafe\QLCafe\QLCafe\obj\Debug\QLCafe.frmXacNhan.resources
+D:\GPMSoffware\goldstar_Cafe\hethongcu\QLCafe\QLCafe\obj\Debug\QLCafe.exe
+D:\GPMSoffware\goldstar_Cafe\hethongcu\QLCafe\QLCafe\obj\Debug\QLCafe.pdb
