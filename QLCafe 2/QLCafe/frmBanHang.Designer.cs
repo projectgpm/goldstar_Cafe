@@ -572,7 +572,7 @@
             this.btnXoaMonAn,
             this.repositoryItemSpinEdit2,
             this.repositoryItemTextEdit1});
-            this.gridControlCTHD.Size = new System.Drawing.Size(727, 353);
+            this.gridControlCTHD.Size = new System.Drawing.Size(727, 329);
             this.gridControlCTHD.TabIndex = 12;
             this.gridControlCTHD.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -640,17 +640,17 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "Số Lượng";
+            this.gridColumn4.Caption = "SL";
             this.gridColumn4.ColumnEdit = this.repositoryItemSpinEdit1;
             this.gridColumn4.DisplayFormat.FormatString = "N0";
             this.gridColumn4.FieldName = "SoLuong";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "Tổng={0:0.##}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "N0")});
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 53;
+            this.gridColumn4.Width = 37;
             // 
             // gridColumn6
             // 
@@ -662,7 +662,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
-            this.gridColumn6.Width = 73;
+            this.gridColumn6.Width = 80;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -681,7 +681,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 46;
+            this.gridColumn5.Width = 61;
             // 
             // gridColumn9
             // 
@@ -692,10 +692,10 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "Tổng={0:N0}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "N0")});
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 6;
-            this.gridColumn9.Width = 76;
+            this.gridColumn9.Width = 79;
             // 
             // gridColumn10
             // 
@@ -705,7 +705,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 125;
+            this.gridColumn10.Width = 113;
             // 
             // repositoryItemTextEdit1
             // 
@@ -719,7 +719,7 @@
             this.btnXoaHangHoa.Name = "btnXoaHangHoa";
             this.btnXoaHangHoa.Visible = true;
             this.btnXoaHangHoa.VisibleIndex = 8;
-            this.btnXoaHangHoa.Width = 46;
+            this.btnXoaHangHoa.Width = 49;
             // 
             // btnXoaMonAn
             // 
