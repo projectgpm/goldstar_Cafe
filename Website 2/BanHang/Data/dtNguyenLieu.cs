@@ -48,16 +48,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Sua(string ID, string MaNguyenLieu, string TenNguyenLieu, string NhaCungCap, string GhiChu, string IDDonViTinh, string GiaMua, string TrangThai, string GiaBan)
+        public void Sua(string ID, string MaNguyenLieu, string TenNguyenLieu, string NhaCungCap, string GhiChu, string IDDonViTinh, string GiaMua, string TrangThai, string GiaBan, string IDNhomHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [CF_NguyenLieu] SET [GiaBan] = @GiaBan,[TrangThai] = @TrangThai,[GiaMua] = @GiaMua,[IDDonViTinh] = @IDDonViTinh,[MaNguyenLieu] = @MaNguyenLieu,[TenNguyenLieu] = @TenNguyenLieu,[GhiChu] = @GhiChu,[NhaCungCap]=@NhaCungCap, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [CF_NguyenLieu] SET [IDNhomHang] = @IDNhomHang,[GiaBan] = @GiaBan,[TrangThai] = @TrangThai,[GiaMua] = @GiaMua,[IDDonViTinh] = @IDDonViTinh,[MaNguyenLieu] = @MaNguyenLieu,[TenNguyenLieu] = @TenNguyenLieu,[GhiChu] = @GhiChu,[NhaCungCap]=@NhaCungCap, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@IDNhomHang", IDNhomHang);
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@TrangThai", TrangThai);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
@@ -102,7 +103,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public object Them(string MaNguyenLieu, string TenNguyenLieu, string NhaCungCap, string GhiChu, string IDDonViTinh, string GiaMua, string TrangThai, string GiaBan)
+        public object Them(string MaNguyenLieu, string TenNguyenLieu, string NhaCungCap, string GhiChu, string IDDonViTinh, string GiaMua, string TrangThai, string GiaBan, string IDNhomHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -110,9 +111,10 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     object ID = null;
-                    string cmdText = "INSERT INTO [CF_NguyenLieu] ([MaNguyenLieu],[TenNguyenLieu],[NhaCungCap], [NgayCapNhat],[GhiChu],[IDDonViTinh],[GiaMua],[TrangThai],[GiaBan])  OUTPUT INSERTED.ID VALUES (@MaNguyenLieu,@TenNguyenLieu,@NhaCungCap, getdate(),@GhiChu,@IDDonViTinh,@GiaMua,@TrangThai,@GiaBan)";
+                    string cmdText = "INSERT INTO [CF_NguyenLieu] ([MaNguyenLieu],[TenNguyenLieu],[NhaCungCap], [NgayCapNhat],[GhiChu],[IDDonViTinh],[GiaMua],[TrangThai],[GiaBan],[IDNhomHang])  OUTPUT INSERTED.ID VALUES (@MaNguyenLieu,@TenNguyenLieu,@NhaCungCap, getdate(),@GhiChu,@IDDonViTinh,@GiaMua,@TrangThai,@GiaBan,@IDNhomHang)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@IDNhomHang", IDNhomHang);
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
                         myCommand.Parameters.AddWithValue("@MaNguyenLieu", MaNguyenLieu);

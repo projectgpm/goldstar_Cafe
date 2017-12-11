@@ -51,16 +51,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Sua(string ID, string MaNhom, string TenNhom, string GhiChu)
+        public void Sua(string ID, string MaNhom, string TenNhom, string GhiChu,string IDMayIn)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [CF_NhomHangHoa] SET [MaNhom] = @MaNhom,[TenNhom] = @TenNhom,[GhiChu] = @GhiChu, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [CF_NhomHangHoa] SET [IDMayIn] = @IDMayIn,[MaNhom] = @MaNhom,[TenNhom] = @TenNhom,[GhiChu] = @GhiChu, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@IDMayIn", IDMayIn);
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.Parameters.AddWithValue("@MaNhom", MaNhom);
                         myCommand.Parameters.AddWithValue("@TenNhom", TenNhom);
@@ -74,19 +75,20 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Them(string MaNhom, string TenNhom, string GhiChu)
+        public void Them(string MaNhom, string TenNhom, string GhiChu, string IDMayIn)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [CF_NhomHangHoa] ([MaNhom],[TenNhom],[GhiChu],[NgayCapNhat]) VALUES (@MaNhom,@TenNhom,@GhiChu,getdate())";
+                    string cmdText = "INSERT INTO [CF_NhomHangHoa] ([MaNhom],[TenNhom],[GhiChu],[NgayCapNhat],[IDMayIn]) VALUES (@MaNhom,@TenNhom,@GhiChu,getdate(),@IDMayIn)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@MaNhom", MaNhom);
+                        myCommand.Parameters.AddWithValue("@IDMayIn", IDMayIn);
                         myCommand.Parameters.AddWithValue("@TenNhom", TenNhom);
-                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);;
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

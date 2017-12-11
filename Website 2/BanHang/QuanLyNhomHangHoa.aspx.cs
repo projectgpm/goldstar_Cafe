@@ -45,8 +45,9 @@ namespace BanHang
             string MaNhom = e.NewValues["MaNhom"].ToString();
             string TenNhom = e.NewValues["TenNhom"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
+            string IDMayIn = e.NewValues["IDMayIn"].ToString();
             data = new dtNhomHangHoa();
-            data.Them(MaNhom, TenNhom, GhiChu);
+            data.Them(MaNhom, TenNhom, GhiChu, IDMayIn);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();
@@ -60,8 +61,9 @@ namespace BanHang
             string MaNhom = e.NewValues["MaNhom"].ToString();
             string TenNhom = e.NewValues["TenNhom"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
+            string IDMayIn = e.NewValues["IDMayIn"].ToString();
             data = new dtNhomHangHoa();
-            data.Sua(ID,MaNhom, TenNhom, GhiChu);
+            data.Sua(ID, MaNhom, TenNhom, GhiChu, IDMayIn);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();

@@ -53,9 +53,10 @@ namespace BanHang
             string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
             string TrangThai = e.NewValues["TrangThai"].ToString();
             string GiaBan = e.NewValues["GiaBan"].ToString();
+            string IDNhomHang = e.NewValues["IDNhomHang"].ToString();
             data = new dtNguyenLieu();
 
-            object ID = data.Them(MaNguyenLieu, TenNguyenLieu, NhaCungCap, GhiChu, IDDonViTinh, GiaMua, TrangThai, GiaBan);
+            object ID = data.Them(MaNguyenLieu, TenNguyenLieu, NhaCungCap, GhiChu, IDDonViTinh, GiaMua, TrangThai, GiaBan, IDNhomHang);
             if (ID != null)
             {
                 data = new dtNguyenLieu();
@@ -85,6 +86,7 @@ namespace BanHang
             string GiaMua = e.NewValues["GiaMua"].ToString();
             string GiaBan = e.NewValues["GiaBan"].ToString();
             string TrangThai = e.NewValues["TrangThai"].ToString();
+            string IDNhomHang = e.NewValues["IDNhomHang"].ToString();
             data = new dtNguyenLieu();
 
 
@@ -92,7 +94,7 @@ namespace BanHang
             if (GiaCu != float.Parse(GiaBan))
                 dtThayDoiGia.ThemLichSu(Session["IDNhanVien"].ToString(), MaNguyenLieu, TenNguyenLieu, IDDonViTinh, GiaCu + "", GiaBan);
 
-            data.Sua(ID, MaNguyenLieu, TenNguyenLieu, NhaCungCap, GhiChu, IDDonViTinh, GiaMua, TrangThai, GiaBan);
+            data.Sua(ID, MaNguyenLieu, TenNguyenLieu, NhaCungCap, GhiChu, IDDonViTinh, GiaMua, TrangThai, GiaBan, IDNhomHang);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();

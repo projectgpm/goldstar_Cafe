@@ -51,6 +51,8 @@
                                             </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="ĐVT">
                                             </dx:GridViewColumnLayoutItem>
+                                            <dx:GridViewColumnLayoutItem ColumnName="Nhóm Hàng">
+                                            </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Giá Mua">
                                             </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Giá Bán">
@@ -66,7 +68,7 @@
                                         </Items>
                                     </EditFormLayoutProperties>
                                     <Columns>
-                                        <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="9" Name="iconaction">
+                                        <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="10" Name="iconaction">
                                         </dx:GridViewCommandColumn>
                                         <dx:GridViewDataTextColumn Caption="Mã Nguyên Liệu" FieldName="MaNguyenLieu" VisibleIndex="0" ReadOnly="True">
                                             <PropertiesTextEdit>
@@ -88,29 +90,29 @@
                                             </PropertiesTextEdit>
                                             <Settings AutoFilterCondition="Contains" />
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="8">
+                                        <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="9">
                                             <propertiesdateedit displayformatstring="dd/MM/yyyy"></propertiesdateedit>
                                             <settings autofiltercondition="Contains" />
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataTextColumn Caption="Nhà Cung Cấp" FieldName="NhaCungCap" VisibleIndex="4">
+                                        <dx:GridViewDataTextColumn Caption="Nhà Cung Cấp" FieldName="NhaCungCap" VisibleIndex="6">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="6">
+                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="7">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" VisibleIndex="5">
+                                        <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" VisibleIndex="2">
                                             <PropertiesComboBox DataSourceID="SqlDVT" TextField="TenDonViTinh" ValueField="ID">
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />
                                                 </ValidationSettings>
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Giá Mua" FieldName="GiaMua" VisibleIndex="2">
+                                        <dx:GridViewDataSpinEditColumn Caption="Giá Mua" FieldName="GiaMua" VisibleIndex="4">
                                             <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />
                                                 </ValidationSettings>
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="Loại Nguyên Liệu" FieldName="TrangThai" ShowInCustomizationForm="True" VisibleIndex="7">
+                                        <dx:GridViewDataComboBoxColumn Caption="Loại Nguyên Liệu" FieldName="TrangThai" ShowInCustomizationForm="True" VisibleIndex="8">
                                             <PropertiesComboBox>
                                                 <Items>
                                                     <dx:ListEditItem Text="Tự chọn" Value="1" />
@@ -121,13 +123,20 @@
                                                 </ValidationSettings>
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
+                                        <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="5">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" NumberFormat="Custom">
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />
                                                 </ValidationSettings>
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataComboBoxColumn Caption="Nhóm Hàng" FieldName="IDNhomHang" ShowInCustomizationForm="True" VisibleIndex="3">
+                                            <PropertiesComboBox DataSourceID="SqlNhomHang" TextField="TenNhom" ValueField="ID">
+                                                <ValidationSettings SetFocusOnError="True">
+                                                    <RequiredField IsRequired="True" />
+                                                </ValidationSettings>
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">
@@ -138,6 +147,11 @@
                                         </TitlePanel>
                                     </Styles>
                                 </dx:ASPxGridView>
+                                 <asp:SqlDataSource ID="SqlNhomHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNhom] FROM [CF_NhomHangHoa] WHERE ([DaXoa] = @DaXoa)">
+                                     <SelectParameters>
+                                         <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+                                     </SelectParameters>
+                                 </asp:SqlDataSource>
                              </dx:LayoutItemNestedControlContainer>
                          </LayoutItemNestedControlCollection>
                      </dx:LayoutItem>
