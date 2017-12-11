@@ -106,6 +106,8 @@
     <Content Include="BCNhapHang_In.aspx" />
     <Content Include="BCTienGio.aspx" />
     <Content Include="BCTienGio_In.aspx" />
+    <Content Include="BCTongHop.aspx" />
+    <Content Include="BCTongHop_In.aspx" />
     <Content Include="BCXuatKhac.aspx" />
     <Content Include="BCXuatKhac_In.aspx" />
     <Content Include="bin\BanHang.dll" />
@@ -331,6 +333,20 @@
     </Compile>
     <Compile Include="BCTienGio_In.aspx.designer.cs">
       <DependentUpon>BCTienGio_In.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BCTongHop.aspx.cs">
+      <DependentUpon>BCTongHop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BCTongHop.aspx.designer.cs">
+      <DependentUpon>BCTongHop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BCTongHop_In.aspx.cs">
+      <DependentUpon>BCTongHop_In.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BCTongHop_In.aspx.designer.cs">
+      <DependentUpon>BCTongHop_In.aspx</DependentUpon>
     </Compile>
     <Compile Include="BCXuatKhac.aspx.cs">
       <DependentUpon>BCXuatKhac.aspx</DependentUpon>
@@ -719,6 +735,12 @@
     <Compile Include="QuanTriNguoiDung.aspx.designer.cs">
       <DependentUpon>QuanTriNguoiDung.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpBaoCaoTongHop.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpBaoCaoTongHop.designer.cs">
+      <DependentUpon>rpBaoCaoTongHop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpBCBanHang.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -861,6 +883,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Report\rpBaoCaoTongHop.resx">
+      <DependentUpon>rpBaoCaoTongHop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpBCBanHang.resx">
       <DependentUpon>rpBCBanHang.cs</DependentUpon>
     </EmbeddedResource>

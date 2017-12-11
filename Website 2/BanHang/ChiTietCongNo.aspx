@@ -39,8 +39,6 @@
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoHoaDon" VisibleIndex="0">
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn Caption="Hình Thức Thanh Toán" FieldName="HinhThucThanhToan" VisibleIndex="2">
-             </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn Caption="Nội Dung Thanh Toán" FieldName="NoiDung" VisibleIndex="4">
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataDateColumn Caption="Ngày Thanh Toán" FieldName="NgayThanhToan" VisibleIndex="5">
