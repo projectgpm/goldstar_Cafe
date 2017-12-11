@@ -199,17 +199,18 @@ namespace BanHang.Data
             }
         }
 
-        public void SuaThongTinKhachHang(int ID, int IDNhomKhachHang, string TenKhachHang, DateTime NgaySinh, string CMND, string DiaChi, string DienThoai, string GhiChu)
+        public void SuaThongTinKhachHang(int ID, int IDNhomKhachHang, string TenKhachHang, DateTime NgaySinh, string CMND, string DiaChi, string DienThoai, string GhiChu, string MaKhachHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_KHACHHANG] SET [IDNhomKhachHang] = @IDNhomKhachHang,[TenKhachHang] = @TenKhachHang, [NgaySinh] = @NgaySinh, [CMND] = @CMND, [DiaChi] = @DiaChi, [DienThoai] = @DienThoai, [GhiChu] = @GhiChu WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_KHACHHANG] SET [MaKhachHang] = @MaKhachHang, [IDNhomKhachHang] = @IDNhomKhachHang,[TenKhachHang] = @TenKhachHang, [NgaySinh] = @NgaySinh, [CMND] = @CMND, [DiaChi] = @DiaChi, [DienThoai] = @DienThoai, [GhiChu] = @GhiChu WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@MaKhachHang", MaKhachHang);
                         myCommand.Parameters.AddWithValue("@IDNhomKhachHang", IDNhomKhachHang);
                         myCommand.Parameters.AddWithValue("@TenKhachHang", TenKhachHang);
                         myCommand.Parameters.AddWithValue("@NgaySinh", NgaySinh);
@@ -242,23 +243,23 @@ namespace BanHang.Data
             }
         }
 
-        public int KiemTraMaKhachHang(string MaKhachHang)
-        {
-            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
-            {
-                con.Open();
-                string cmdText = "SELECT * FROM [GPM_KHACHHANG] WHERE MaKhachHang = " + MaKhachHang;
-                using (SqlCommand command = new SqlCommand(cmdText, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    DataTable tb = new DataTable();
-                    tb.Load(reader);
-                    if (tb.Rows.Count == 0)
-                        return 0;
-                    return 1;
-                }
-            }
-        }
+        //public int KiemTraMaKhachHang(string MaKhachHang)
+        //{
+        //    using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+        //    {
+        //        con.Open();
+        //        string cmdText = "SELECT * FROM [GPM_KHACHHANG] WHERE MaKhachHang = " + MaKhachHang;
+        //        using (SqlCommand command = new SqlCommand(cmdText, con))
+        //        using (SqlDataReader reader = command.ExecuteReader())
+        //        {
+        //            DataTable tb = new DataTable();
+        //            tb.Load(reader);
+        //            if (tb.Rows.Count == 0)
+        //                return 0;
+        //            return 1;
+        //        }
+        //    }
+        //}
 
         public int KiemTraSDTKhachHang(string SDT)
         {
@@ -277,7 +278,23 @@ namespace BanHang.Data
                 }
             }
         }
-
+        public bool KiemTraMaKhachHang(string MaKhachHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_KHACHHANG] WHERE MaKhachHang = N'" + MaKhachHang + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count == 0)
+                        return true;
+                    return false;
+                }
+            }
+        }
         public int KiemTraSDTKhachHang_KhacID(string ID, string SDT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -295,7 +312,23 @@ namespace BanHang.Data
                 }
             }
         }
-
+        public bool KiemTraMaKhachHang_CapNhat(string ID, string MaKhachHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_KHACHHANG] WHERE MaKhachHang = N'" + MaKhachHang + "' AND ID != '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count == 0)
+                        return true;
+                    return false;
+                }
+            }
+        }
         // import 
         public DataTable DanhSachKhachHang_Import_Temp()
         {

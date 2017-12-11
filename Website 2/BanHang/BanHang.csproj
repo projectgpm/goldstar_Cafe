@@ -175,6 +175,7 @@
     <Content Include="image\taikhoan.png" />
     <Content Include="image\thuho.png" />
     <Content Include="image\trangchu.png" />
+    <Content Include="KhachHang.aspx" />
     <Content Include="KiemKho.aspx" />
     <Content Include="LichSuThayDoiGia.aspx" />
     <Content Include="LichSuTruyCap.aspx" />
@@ -577,6 +578,7 @@
     <Compile Include="Data\dtDonViTinh.cs" />
     <Compile Include="Data\dtGio.cs" />
     <Compile Include="Data\dtHangHoa.cs" />
+    <Compile Include="Data\dtKhachHang.cs" />
     <Compile Include="Data\dtKhuVuc.cs" />
     <Compile Include="Data\dtKiemKho.cs" />
     <Compile Include="Data\dtLichSuKho.cs" />
@@ -621,6 +623,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHang.aspx.cs">
+      <DependentUpon>KhachHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KhachHang.aspx.designer.cs">
+      <DependentUpon>KhachHang.aspx</DependentUpon>
     </Compile>
     <Compile Include="KiemKho.aspx.cs">
       <DependentUpon>KiemKho.aspx</DependentUpon>

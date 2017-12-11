@@ -44,6 +44,8 @@
                     <Items>
                         <dx:GridViewColumnLayoutItem ColumnName="Nhóm khách hàng" Name="IDNhomKhachHang">
                         </dx:GridViewColumnLayoutItem>
+                        <dx:GridViewColumnLayoutItem ColumnName="Mã khách hàng">
+                        </dx:GridViewColumnLayoutItem>
                         <dx:GridViewColumnLayoutItem ColumnName="Tên khách hàng" Name="TenKhachHang" Width="100%">
                         </dx:GridViewColumnLayoutItem>
                         <dx:GridViewColumnLayoutItem ColumnName="Ngày sinh" Name="NgaySinh">
@@ -66,6 +68,11 @@
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="20" Name="iconaction">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn Caption="Mã khách hàng" FieldName="MaKhachHang" VisibleIndex="1">
+                <PropertiesTextEdit>
+                    <ValidationSettings SetFocusOnError="True">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
+                </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn Caption="Tên khách hàng" FieldName="TenKhachHang" VisibleIndex="2">
                 <PropertiesTextEdit>

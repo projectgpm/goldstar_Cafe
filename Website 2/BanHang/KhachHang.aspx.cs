@@ -32,26 +32,26 @@ namespace BanHang
             string DiaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
             string DienThoai = e.NewValues["DienThoai"] == null ? "" : e.NewValues["DienThoai"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
-
+            string MaKhachHang = e.NewValues["MaKhachHang"].ToString();
             data = new dtKhachHang();
             if (data.KiemTraSDTKhachHang_KhacID(ID,DienThoai) == 0)
             {
-                data.SuaThongTinKhachHang(Int32.Parse(ID), IDNhomKhachHang, TenKhachHang, NgaySinh, CMND, DiaChi, DienThoai, GhiChu);
-                e.Cancel = true;
-                KhachHangExport.CancelEdit();
-                LoadGrid();
+                if (data.KiemTraMaKhachHang_CapNhat(ID, MaKhachHang) == true)
+                {
+                    data.SuaThongTinKhachHang(Int32.Parse(ID), IDNhomKhachHang, TenKhachHang, NgaySinh, CMND, DiaChi, DienThoai, GhiChu, MaKhachHang);
+                    e.Cancel = true;
+                    KhachHangExport.CancelEdit();
+                    LoadGrid();
+                }
+                else
+                {
+                    throw new Exception("Mã khách hàng đã được đăng ký.");
+                }
             }
             else
             {
                 throw new Exception("Số điện thoại này đã được đăng ký.");
             }
-
-            string IDNhanVien1 = "1"; // Session["IDThuNgan"].ToString();
-            if (Session["IDThuNgan"] != null)
-                IDNhanVien1 = Session["IDThuNgan"].ToString();
-            if (Session["IDNhanVien"] != null)
-                IDNhanVien1 = Session["IDNhanVien"].ToString();
-            dtLichSuHeThong.ThemLichSuTruyCap(IDNhanVien1, "Khách hàng", "Cập nhật khách hàng ID: " + ID);
         }
 
         protected void gridKhachHang_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -63,38 +63,26 @@ namespace BanHang
             string CMND = e.NewValues["CMND"] == null ? "" : e.NewValues["CMND"].ToString();
             string DiaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
             string DienThoai = e.NewValues["DienThoai"] == null ? "" : e.NewValues["DienThoai"].ToString();
-
-            DateTime date = DateTime.Now;
-            string sDate = date.ToString("MMddyyyy");
-            int MaKh = 0;
-            Random dr = new Random();
-            while (MaKh == 0)
-            {
-                int sR = dr.Next(10000, 99999);
-                int kt = data.KiemTraMaKhachHang(sDate + sR);
-                if (kt == 0)
-                    MaKh = sR;
-            }
-
+            string MaKhachHang = e.NewValues["MaKhachHang"].ToString();
             string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             if (data.KiemTraSDTKhachHang(DienThoai) == 0)
             {
-                data.ThemKhachHang(IDNhomKhachHang, sDate + MaKh, TenKhachHang, NgaySinh, CMND, DiaChi, DienThoai, GhiChu);
-                e.Cancel = true;
-                KhachHangExport.CancelEdit();
-                LoadGrid();
+                if (data.KiemTraMaKhachHang(MaKhachHang) == true)
+                {
+                    data.ThemKhachHang(IDNhomKhachHang, MaKhachHang, TenKhachHang, NgaySinh, CMND, DiaChi, DienThoai, GhiChu);
+                    e.Cancel = true;
+                    KhachHangExport.CancelEdit();
+                    LoadGrid();
+                }
+                else
+                {
+                    throw new Exception("Mã khách hàng đã được đăng ký.");
+                }
             }
             else
             {
                 throw new Exception("Số điện thoại này đã được đăng ký.");
             }
-
-            string IDNhanVien1 = "1"; // Session["IDThuNgan"].ToString();
-            if (Session["IDThuNgan"] != null)
-                IDNhanVien1 = Session["IDThuNgan"].ToString();
-            if (Session["IDNhanVien"] != null)
-                IDNhanVien1 = Session["IDNhanVien"].ToString();
-            dtLichSuHeThong.ThemLichSuTruyCap(IDNhanVien1, "Khách hàng", "Thêm khách hàng");
         }
 
         protected void gridKhachHang_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -105,13 +93,6 @@ namespace BanHang
             e.Cancel = true;
             KhachHangExport.CancelEdit();
             LoadGrid();
-
-            string IDNhanVien1 = "1"; // Session["IDThuNgan"].ToString();
-            if (Session["IDThuNgan"] != null)
-                IDNhanVien1 = Session["IDThuNgan"].ToString();
-            if (Session["IDNhanVien"] != null)
-                IDNhanVien1 = Session["IDNhanVien"].ToString();
-            dtLichSuHeThong.ThemLichSuTruyCap(IDNhanVien1, "Khách hàng", "Xóa khách hàng ID: " + ID);
         }
 
         protected void btnXuatPDF_Click(object sender, EventArgs e)
@@ -122,13 +103,6 @@ namespace BanHang
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
             ExportKhachHang.WriteXlsToResponse();
-
-            string IDNhanVien1 = "1"; // Session["IDThuNgan"].ToString();
-            if (Session["IDThuNgan"] != null)
-                IDNhanVien1 = Session["IDThuNgan"].ToString();
-            if (Session["IDNhanVien"] != null)
-                IDNhanVien1 = Session["IDNhanVien"].ToString();
-            dtLichSuHeThong.ThemLichSuTruyCap(IDNhanVien1, "Khách hàng", "Xuất Exel Khách hàng");
         }
 
         protected void btnNhapExcel_Click(object sender, EventArgs e)
