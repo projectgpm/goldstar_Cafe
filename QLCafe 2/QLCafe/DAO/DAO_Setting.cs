@@ -13,6 +13,36 @@ namespace QLCafe.DAO
 {
     class DAO_Setting
     {
+        public static float LayDiemQuyDoiTien()
+        {
+            string sTruyVan = string.Format(@"SELECT SoTienQuyDoi FROM [GPM_Setting] ");
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["SoTienQuyDoi"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public static float DiemTichLuy(string IDKhachHang)
+        {
+            string sTruyVan = string.Format(@"SELECT DiemTichLuy FROM [GPM_KhachHang] WHERE [ID] = {0}", IDKhachHang);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["DiemTichLuy"].ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public static int ThoiGianPhaChe()
         {
             string sTruyVan = string.Format(@"SELECT LamMoiPhaChe FROM [Setting] ");
@@ -418,6 +448,11 @@ namespace QLCafe.DAO
         public static bool ThemLichSuTruyCap(int IDNhanVien, int IDNhom, string IDChiNhanh, string Menu, string HanhDong)
         {
             string sTruyVan = string.Format(@"INSERT INTO [CF_LichSuTruyCap](IDChiNhanh,IDNhom,IDNguoiDung,Menu,HanhDong,ThoiGian) VALUES ('{0}','{1}','{2}',N'{3}',N'{4}',getdate())", IDChiNhanh, IDNhom, IDNhanVien, Menu, HanhDong);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+        public static bool ThemLichSuQuanLy(int IDNhanVien, int IDNhom, string IDChiNhanh, string Menu, string HanhDong)
+        {
+            string sTruyVan = string.Format(@"INSERT INTO [CF_LichSuQuanLy](IDChiNhanh,IDNhom,IDNguoiDung,Menu,HanhDong,ThoiGian) VALUES ('{0}','{1}','{2}',N'{3}',N'{4}',getdate())", IDChiNhanh, IDNhom, IDNhanVien, Menu, HanhDong);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         //public static float LayDiemQuyDoiTien()

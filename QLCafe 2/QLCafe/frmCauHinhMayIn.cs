@@ -42,10 +42,11 @@ namespace QLCafe
         {
             if (cmbMayIn.Text != "" && cmbKhoGiay.Text !="")
             {
-                if (DAO_Setting.KiemTra(cmbMayIn.Text.ToString(), frmDangNhap.NguoiDung.Idchinhanh) == -1)
+                if (DAO_Setting.KiemTra(cmbMayIn.Text.ToString(), frmKiemTraThemMayIn.QuanLy.Idchinhanh) == -1)
                 {
-                    DAO_Setting.ThemMayIn(cmbMayIn.Text.ToString(), frmDangNhap.NguoiDung.Idchinhanh, cmbKhoGiay.Text.ToString());
-                    DanhSach(frmDangNhap.NguoiDung.Idchinhanh);
+                    DAO_Setting.ThemLichSuQuanLy(frmKiemTraThemMayIn.QuanLy.Id, frmKiemTraThemMayIn.QuanLy.IDNhomNguoiDung, frmKiemTraThemMayIn.QuanLy.Idchinhanh, "Đăng Nhập", "Thêm máy in: " + cmbMayIn.Text.ToString());
+                    DAO_Setting.ThemMayIn(cmbMayIn.Text.ToString(), frmKiemTraThemMayIn.QuanLy.Idchinhanh, cmbKhoGiay.Text.ToString());
+                    DanhSach(frmKiemTraThemMayIn.QuanLy.Idchinhanh);
                 }
                 else
                     MessageBox.Show("Tên máy in đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -60,11 +61,11 @@ namespace QLCafe
             {
                 if (MessageBox.Show("Bạn muốn xóa máy in này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-
+                    DAO_Setting.ThemLichSuQuanLy(frmKiemTraThemMayIn.QuanLy.Id, frmKiemTraThemMayIn.QuanLy.IDNhomNguoiDung, frmKiemTraThemMayIn.QuanLy.Idchinhanh, "Đăng Nhập", "Xóa máy in: " + gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString());
                     string ID = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
                     if (DAO_Setting.XoaMayIn(ID))
                     {
-                        DanhSach(frmDangNhap.NguoiDung.Idchinhanh);
+                        DanhSach(frmKiemTraThemMayIn.QuanLy.Idchinhanh);
                     }
                     else
                     {

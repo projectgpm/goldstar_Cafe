@@ -38,6 +38,13 @@ namespace QLCafe.DAO
             data = DataProvider.TruyVanLayDuLieu(sTryVan);
             return data;
         }
+        public static DataTable QuanLy(string TenDangNhap, string MatKhau)
+        {
+            string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}' AND IDNhomNguoiDung = 4", TenDangNhap, MatKhau);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTryVan);
+            return data;
+        }
         public static DataTable PhaChe(string TenDangNhap, string MatKhau)
         {
             string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}' AND IDNhomNguoiDung = 3", TenDangNhap, MatKhau);

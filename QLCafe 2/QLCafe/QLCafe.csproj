@@ -142,6 +142,7 @@
     <Compile Include="DTO\DTO_NguyenLieu.cs" />
     <Compile Include="DTO\DTO_NhomHangHoa.cs" />
     <Compile Include="DTO\DTO_NhomKhachHang.cs" />
+    <Compile Include="DTO\DTO_QuanLy.cs" />
     <Compile Include="DTO\DTO_WriteDataConnect.cs" />
     <Compile Include="frmBanHang.cs">
       <SubType>Form</SubType>

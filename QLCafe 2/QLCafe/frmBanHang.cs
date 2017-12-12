@@ -858,7 +858,8 @@ namespace QLCafe
 
         private void btnMayIn_Click(object sender, EventArgs e)
         {
-            frmCauHinhMayIn fr = new frmCauHinhMayIn();
+            frmKiemTraThemMayIn fr = new frmKiemTraThemMayIn();
+            //frmCauHinhMayIn fr = new frmCauHinhMayIn();
             fr.ShowDialog();
         }
 
@@ -939,6 +940,33 @@ namespace QLCafe
             else
             {
                 MessageBox.Show("Thêm không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+      
+        private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cmbTenKhachHang.EditValue == "")
+            {
+                txtDiemTichLuy.Value = 0;
+                MessageBox.Show("Vui lòng chọn khách hàng?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                float SoDiemCanDoi = float.Parse(txtDiemTichLuy.EditValue.ToString());
+                float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
+                if (SoDiemCanDoi <= DiemTichLuy)
+                {
+                    float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
+                    float TongTien = float.Parse(txtTongTien.EditValue.ToString());
+                    txtGiamGia.Text = (SoTienDoi * SoDiemCanDoi) + float.Parse(txtGiamGia.Text.ToString()) + "";
+                    txtKhachCanTra.Text = (TongTien - float.Parse(txtGiamGia.Text.ToString())) + "";
+                    txtKhachThanhToan.Text = (TongTien - float.Parse(txtGiamGia.Text.ToString())) + "";
+                    txtTienThoi.Text = "0";
+                }
+                else
+                {
+                    MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
