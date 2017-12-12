@@ -39,6 +39,7 @@ namespace QLCafe
         //public static DateTime GioVao;
         private void frmBanHang_Load(object sender, EventArgs e)
         {
+          
             timer1.Start();
             DanhSachBan();
             KhachHang();
@@ -145,6 +146,7 @@ namespace QLCafe
                 btn.Height = 80;
                 btn.Text = TenBan;
                 btn.Click += btn_Click;
+                btn.DoubleClick += btn_DoubleClick;
                 btn.MouseDown += btn_MouseDown;
                 btn.Tag = item;
                 switch (TrangThai)
@@ -177,6 +179,13 @@ namespace QLCafe
             }
         }
 
+        private void btn_DoubleClick(object sender, EventArgs e)
+        {
+            frmGoiMon fr = new frmGoiMon();
+            fr.MyGetData = new frmGoiMon.GetKT(GetValueGoiMon);
+            fr.ShowDialog();
+        }
+
         private void btn_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -191,8 +200,6 @@ namespace QLCafe
         {
             List<DTO_DanhSachMenu> MonAnThuong = DAO_DanhSachMonAn.Instance.GetMonAnThuong(DAO_BanHang.IDHoaDon(IDBan));
             List<DTO_DanhSachMenu> MonAnTuChon = DAO_DanhSachMonAn.Instance.GetMonAnTuChon(DAO_BanHang.IDHoaDon(IDBan));
-
-
             DataTable db = new DataTable();
             db.Columns.Add("MaHangHoa", typeof(string));
             db.Columns.Add("TenHangHoa", typeof(string));
@@ -260,8 +267,6 @@ namespace QLCafe
             HienThiHoaDon(IDBan);
             txtKhachThanhToan.ReadOnly = false;
         }
-       
-        
         private void frmBanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn thật sự muốn thoát chương trình?", "Thông báo", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
@@ -286,7 +291,6 @@ namespace QLCafe
                 MessageBox.Show("Bàn đã có người ngồi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public void GetValue(String str1, String str2,DateTime a)
         {
             string TenKhachHang = str1;
@@ -324,14 +328,12 @@ namespace QLCafe
                 }
             }
         }
-
         private void barButtonChonMon_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmGoiMon fr = new frmGoiMon();
             fr.MyGetData = new frmGoiMon.GetKT(GetValueGoiMon);
             fr.ShowDialog();
         }
-
         private void barButtonChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             // chuyển bàn
