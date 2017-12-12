@@ -905,34 +905,40 @@ namespace QLCafe
                             string NamePrinter = dr["TenMayIn"].ToString();
                             int KhoGiay = Int32.Parse(dr["KhoGiay"].ToString());
                             string IDMayIn = dr["ID"].ToString();
-
-                            // có IDMayIn. kiểm tra Hàng HÓa trong bảng chitiethoadon temp_ lấy danh sách theo máy in rùi in.
-
-
-                            if (KhoGiay == 58)
+                            if (DAO_MayIn.KiemTraDanhSachMonCanIn(IDHoaDonHT.ToString(), IDMayIn) == 1)
                             {
-                                rpHoaDonBanHang_PhaChe_Temp rp = new rpHoaDonBanHang_PhaChe_Temp();
-                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                rp.Parameters["ID"].Value = IDHoaDonHT;
-                                rp.Parameters["ID"].Visible = false;
-                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN PHA CHẾ " + SoLanIn;
-                                rp.Parameters["strHoaDon"].Visible = false;
-                                rp.Print(NamePrinter);
-                                DAO_Setting.CapNhatHangHoaInPhaChe(IDHoaDonHT + "");
+                                // có IDMayIn. kiểm tra Hàng HÓa trong bảng chitiethoadon temp_ lấy danh sách theo máy in rùi in.
+                                if (KhoGiay == 58)
+                                {
+                                    rpHoaDonBanHang_PhaChe_Temp rp = new rpHoaDonBanHang_PhaChe_Temp();
+                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    rp.Parameters["IDMayIn"].Value = IDMayIn;
+                                    rp.Parameters["ID"].Visible = false;
+                                    rp.Parameters["IDMayIn"].Visible = false;
+                                    rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN PHA CHẾ " + SoLanIn;
+                                    rp.Parameters["strHoaDon"].Visible = false;
+                                    rp.Print(NamePrinter);
+                                    DAO_Setting.CapNhatHangHoaInPhaChe(IDHoaDonHT + "", IDMayIn);
+                                }
+                                else
+                                {
+                                    rpHoaDonBanHang_PhaChe_Temp rp = new rpHoaDonBanHang_PhaChe_Temp();
+                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    rp.Parameters["ID"].Value = IDHoaDonHT;
+                                    rp.Parameters["IDMayIn"].Value = IDMayIn;
+                                    rp.Parameters["ID"].Visible = false;
+                                    rp.Parameters["IDMayIn"].Visible = false;
+                                    rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN PHA CHẾ " + SoLanIn;
+                                    rp.Parameters["strHoaDon"].Visible = false;
+                                    rp.Print(NamePrinter);
+                                    DAO_Setting.CapNhatHangHoaInPhaChe(IDHoaDonHT + "", IDMayIn);
+                                }
                             }
                             else
-                            {
-                                rpHoaDonBanHang_PhaChe_Temp rp = new rpHoaDonBanHang_PhaChe_Temp();
-                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                rp.Parameters["ID"].Value = IDHoaDonHT;
-                                rp.Parameters["ID"].Visible = false;
-                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN PHA CHẾ " + SoLanIn;
-                                rp.Parameters["strHoaDon"].Visible = false;
-                                rp.Print(NamePrinter);
-                                DAO_Setting.CapNhatHangHoaInPhaChe(IDHoaDonHT + "");
-                            }
+                                MessageBox.Show("Không có món cần in pha chế.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else

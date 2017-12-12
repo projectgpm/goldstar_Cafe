@@ -24,6 +24,20 @@ namespace QLCafe.DAO
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             return data;
         }
+        public static int KiemTraDanhSachMonCanIn(string IDHoaDon, string IDMayIn)
+        {
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDHoaDon = {0} AND [IDMayIn] = {1} AND [InPhaChe] != [SoLuong]", IDHoaDon, IDMayIn);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         //public static float LayGiaTheoKhuVuc(int IDKhuVuc)
         //{
         //    string sTruyVan = string.Format(@"SELECT GiaKhuVuc FROM [CF_KhuVuc] WHERE [ID] = {0} ", IDKhuVuc);

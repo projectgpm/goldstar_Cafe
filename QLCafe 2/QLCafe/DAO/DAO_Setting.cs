@@ -336,9 +336,9 @@ namespace QLCafe.DAO
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 
-        public static bool CapNhatHangHoaInPhaChe(string ID)
+        public static bool CapNhatHangHoaInPhaChe(string ID, string IDMayIn)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET InPhaChe = SoLuong WHERE IDHoaDon = {0}", ID);
+            string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET InPhaChe = SoLuong WHERE IDHoaDon = {0} AND IDMayIn = {1}", ID, IDMayIn);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 

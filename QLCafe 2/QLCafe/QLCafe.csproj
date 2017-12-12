@@ -378,7 +378,9 @@
     <EmbeddedResource Include="Report\rpHoaDonBanHang_PhaChe_Temp.resx">
       <DependentUpon>rpHoaDonBanHang_PhaChe_Temp.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bin\Debug\QLCafe.vshost.exe.manifest" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
