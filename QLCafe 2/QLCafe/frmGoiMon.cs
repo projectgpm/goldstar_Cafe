@@ -124,7 +124,7 @@ namespace QLCafe
             }
             int IDDonViTinh = Int32.Parse(tbThongTin.Rows[0]["IDDonViTinh"].ToString());
             int idban = IDBan;
-            int SL = Int32.Parse(txtSoLuongTuChon.Text);
+            int SL = 1;
             //-------------------------------------------
             int KT = 0;
             foreach (ChiTietHoaDon item in listChiTietHoaDon)
@@ -157,9 +157,7 @@ namespace QLCafe
         }
         public void BindGridChiTietHoaDon()
         {
-            txtSoLuongTuChon.Text = "1";
             txtTrongLuongTuChon.Text = "0";
-            //txtDonGiaBan.Text = "0";
             gridViewHangHoa.OptionsSelection.EnableAppearanceFocusedRow = false;// Ẩn dòng đầu...
             gridControllHangHoa.DataSource = null;
             gridControllHangHoa.Refresh();
@@ -335,9 +333,20 @@ namespace QLCafe
                     float GiaBan = float.Parse(txtDonGiaBan.Text.ToString());
                     int IDDonViTinh = Int32.Parse(dt.Rows[0]["IDDonViTinh"].ToString());
                     int idban = IDBan;
-                    int SL = Int32.Parse(txtSoLuongTuChon.Text);
+                    int SL = 1;
                     float TrongLuong = float.Parse(txtTrongLuongTuChon.Text.ToString());
                     //-------------------------------------------
+                    int IDMayIn;
+                    if (TrongLuong > 0)
+                    {
+                        // tự chọn
+                        IDMayIn = DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa);
+                    }
+                    else
+                    {
+                        //k tự chọn
+                        IDMayIn = DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
+                    }
                     int KT = 0;
                     foreach (ChiTietHoaDon item in listChiTietHoaDon)
                     {
@@ -362,7 +371,8 @@ namespace QLCafe
                             IdBan = idban,
                             TenDonViTinh = TenDonViTinh,
                             TenHangHoa = TenHangHoa,
-                            TrongLuong = TrongLuong
+                            TrongLuong = TrongLuong,
+                            IdMayIn = IDMayIn,
                         });
                     }
                     BindGridChiTietHoaDon();

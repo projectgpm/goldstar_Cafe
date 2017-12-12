@@ -937,8 +937,8 @@ namespace QLCafe
                                     DAO_Setting.CapNhatHangHoaInPhaChe(IDHoaDonHT + "", IDMayIn);
                                 }
                             }
-                            else
-                                MessageBox.Show("Không có món cần in pha chế.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //else
+                            //    MessageBox.Show("Không có món cần in pha chế.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
