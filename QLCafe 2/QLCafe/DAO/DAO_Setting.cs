@@ -253,15 +253,15 @@ namespace QLCafe.DAO
             else
                 return "";
         }
-        public static string LayTenMayInBill()
+        public static string LayTenMayInBill(string CD)
         {
-            string sTruyVan = string.Format(@"SELECT MayIn FROM [Setting] ");
+            string sTruyVan = string.Format(@"SELECT TenMayIn FROM [CF_KeyCode] WHERE [GetKey] = N'{0}'", CD);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return dr["MayIn"].ToString();
+                return dr["TenMayIn"].ToString();
             }
             else
                 return "";
@@ -304,9 +304,9 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"DELETE FROM CF_MayIn WHERE ID  = {0} ", ID);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool CapNhatMayInBill(string TenMayIn)
+        public static bool CapNhatMayInBill(string TenMayIn, string KhoGiay, string GetKey)
         {
-            string sTruyVan = string.Format(@"UPDATE [Setting] SET [MayIn] = '{0}' WHERE ID = 1", TenMayIn);
+            string sTruyVan = string.Format(@"UPDATE [CF_KeyCode] SET [TenMayIn] = N'{0}',[KhoGiay] = N'{1}'  WHERE [GetKey] = N'{2}'", TenMayIn, KhoGiay, GetKey);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 
@@ -367,15 +367,15 @@ namespace QLCafe.DAO
             else
                 return 1;
         }
-        public static int ReportBill()
+        public static int ReportBill(string GetKey )
         {
-            string sTruyVan = string.Format(@"SELECT ReportBill FROM [Setting] ");
+            string sTruyVan = string.Format(@"SELECT KhoGiay FROM [CF_KeyCode] WHERE [GetKey] = N'{0}'", GetKey);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return Int32.Parse(dr["ReportBill"].ToString());
+                return Int32.Parse(dr["KhoGiay"].ToString());
             }
             else
                 return 58;

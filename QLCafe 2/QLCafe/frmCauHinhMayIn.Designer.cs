@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCauHinhMayIn));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.label2 = new System.Windows.Forms.Label();
             this.btnKiemTra = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -37,12 +37,12 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoaMonAn = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.cmbMayIn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbKhoGiay = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCTHD)).BeginInit();
@@ -131,11 +131,20 @@
             this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 463;
             // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Khổ Giấy";
+            this.gridColumn3.FieldName = "KhoGiay";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            // 
             // btnXoaMonAn
             // 
             this.btnXoaMonAn.AutoHeight = false;
             this.btnXoaMonAn.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoaMonAn.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoaMonAn.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.btnXoaMonAn.Name = "btnXoaMonAn";
             this.btnXoaMonAn.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -180,15 +189,6 @@
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Khổ Giấy:";
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Khổ Giấy";
-            this.gridColumn3.FieldName = "KhoGiay";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsColumn.AllowEdit = false;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
             // 
             // frmCauHinhMayIn
             // 

@@ -384,32 +384,39 @@ namespace QLCafe
 
                             //DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
                             //int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
+                            string sx = DAO_Setting.GetHardDiskSerialNo();
+                            string strAddress = sx + "GPM";
+                            string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
 
-                            string NamePrinter = DAO_Setting.LayTenMayInBill();
-                            int KhoGiay = DAO_Setting.ReportBill();
-
-                            if (KhoGiay == 58)
+                            string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
+                            if (NamePrinter != "")
                             {
-                                rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
-                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                rp.Parameters["ID"].Value = ID;
-                                rp.Parameters["ID"].Visible = false;
-                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                rp.Parameters["strHoaDon"].Visible = false;
-                                rp.Print(NamePrinter);
+                                int KhoGiay = DAO_Setting.ReportBill(sha1Address);
+                                if (KhoGiay == 58)
+                                {
+                                    rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
+                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    rp.Parameters["ID"].Value = ID;
+                                    rp.Parameters["ID"].Visible = false;
+                                    rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    rp.Parameters["strHoaDon"].Visible = false;
+                                    rp.Print(NamePrinter);
+                                }
+                                else
+                                {
+                                    rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
+                                    SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                    sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                    rp.Parameters["ID"].Value = ID;
+                                    rp.Parameters["ID"].Visible = false;
+                                    rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                    rp.Parameters["strHoaDon"].Visible = false;
+                                    rp.Print(NamePrinter);
+                                }
                             }
                             else
-                            {
-                                rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
-                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                rp.Parameters["ID"].Value = ID;
-                                rp.Parameters["ID"].Visible = false;
-                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                rp.Parameters["strHoaDon"].Visible = false;
-                                rp.Print(NamePrinter);
-                            }                            
+                                MessageBox.Show("Lỗi: Chưa có máy in hóa đơn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

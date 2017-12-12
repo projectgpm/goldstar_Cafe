@@ -12,7 +12,8 @@ using QLCafe.DTO;
 using QLCafe.BUS;
 using QLCafe.DAO;
 using System.IO;
-
+using System.Management;
+using System.Security.Cryptography;
 
 namespace QLCafe
 {
@@ -53,14 +54,16 @@ namespace QLCafe
                 txtDataSource.Focus();
             }
         }
-
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
 
             bool KT = BUS_TestKetNoiServer.DanhSachKetNoi();
             if (KT == true)
             {
-                DAO_Setting.CapNhatMayInBill(cmbMayIn.Text.ToString());
+                string sx = DAO_Setting.GetHardDiskSerialNo();
+                string strAddress = sx + "GPM";
+                string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
+                DAO_Setting.CapNhatMayInBill(cmbMayIn.Text.ToString(),cmbKhoGiay.Text.ToString(),sha1Address);
                 MessageBox.Show("Kết nối tới server thành công.", "Thông báo");
                 this.Close();
             }
