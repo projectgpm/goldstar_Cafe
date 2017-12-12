@@ -51,6 +51,7 @@ namespace QLCafe
                     DonGia = item.DonGia,
                     ThanhTien = item.ThanhTien,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                     TrongLuong = item.TrongLuong,
                 });
             }
@@ -77,6 +78,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     SoLuong = item.SoLuong,
                     TrongLuong = item.TrongLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             listChiTietHoaDonB1.Clear();
@@ -160,6 +162,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             foreach (DTO_DanhSachMenu item in MonAnTuChon)
@@ -173,6 +176,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             gridControlB.DataSource = null;
@@ -253,10 +257,10 @@ namespace QLCafe
                         float ThanhTien = item.ThanhTien;
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
-                      
+                        int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB, TrongLuong) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong); // thêm chi tiết hóa đơn mới
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SL, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong, IDMayIn); // thêm chi tiết hóa đơn mới
                         }
                         else
                         {
@@ -289,9 +293,10 @@ namespace QLCafe
                         float ThanhTien = item.ThanhTien;
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
+                        int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonA, IDHangHoa, IDBanA, TrongLuong) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong); // thêm chi tiết hóa đơn mới
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SL, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong, IDMayIn); // thêm chi tiết hóa đơn mới
                         }
                         else
                         {
@@ -363,10 +368,24 @@ namespace QLCafe
                 get { return maHangHoa; }
                 set { maHangHoa = value; }
             }
+            private int iDMayIn;
+
+            public int IDMayIn
+            {
+                get { return iDMayIn; }
+                set { iDMayIn = value; }
+            }
         }
         //--------------------------------------------
         public class ChiTietHoaDonB1
         {
+            private int iDMayIn;
+
+            public int IDMayIn
+            {
+                get { return iDMayIn; }
+                set { iDMayIn = value; }
+            }
             private float trongLuong;
 
             public float TrongLuong

@@ -104,7 +104,55 @@ namespace QLCafe.DAO
             }
             return 0;
         }
-        
+
+        /// <summary>
+        /// lấy id máy in món ăn thuong
+        /// </summary>
+        /// <param name="IDBan"></param>
+        /// <returns></returns>
+        public static int LayIDMayInHangHoa(int IDHangHoa)
+        {
+            string sTruyVan = string.Format(@"SELECT IDNhomHang FROM [CF_HangHoa] WHERE ID = {0} ", IDHangHoa);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                sTruyVan = string.Format(@"SELECT IDMayIn FROM [CF_NhomHangHoa] WHERE ID = {0} ", dr["IDNhomHang"].ToString());
+                data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+                if (data.Rows.Count > 0)
+                {
+                    DataRow dr1 = data.Rows[0];
+                    return Int32.Parse(dr1["IDMayIn"].ToString());
+                }
+                return 0;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="IDHangHoa"></param>
+        /// <returns></returns>
+        public static int LayIDMayInNguyenLieu(int IDNguyenLieu)
+        {
+            string sTruyVan = string.Format(@"SELECT IDNhomHang FROM [CF_NguyenLieu] WHERE ID = {0} ", IDNguyenLieu);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                sTruyVan = string.Format(@"SELECT IDMayIn FROM [CF_NhomHangHoa] WHERE ID = {0} ", dr["IDNhomHang"].ToString());
+                data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+                if (data.Rows.Count > 0)
+                {
+                    DataRow dr1 = data.Rows[0];
+                    return Int32.Parse(dr1["IDMayIn"].ToString());
+                }
+                return 0;
+            }
+            return 0;
+        }
 
         /// <summary>
         /// Thêm hóa đơn return IDHoaDon
@@ -125,9 +173,9 @@ namespace QLCafe.DAO
         }
 
 
-        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float TrongLuong)
+        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float TrongLuong, int IDMayIn)
         {
-            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrongLuong) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong);
+            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrongLuong,IDMayIn) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong, IDMayIn);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static bool CapNhatChiTietHoaDon(int IDHoaDon, int SL, float ThanhTien, int IDHangHoa, int IDBan)

@@ -77,6 +77,8 @@
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.SlInPhaChe = new DevExpress.XtraReports.UI.CalculatedField();
             this.SLIn = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -223,6 +225,8 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel1,
+            this.xrLabel2,
             this.xrLabel11,
             this.xrLabel10,
             this.xrLabel9,
@@ -231,13 +235,13 @@
             this.xrLabel6,
             this.xrLabel5});
             this.ReportHeader.Dpi = 100F;
-            this.ReportHeader.HeightF = 66.52082F;
+            this.ReportHeader.HeightF = 88.65624F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrLabel11
             // 
             this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.GioVao", "{0:dd/MM/yy H:mm}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.GioVao", "{0:dd/MM/yyyy H:mm}")});
             this.xrLabel11.Dpi = 100F;
             this.xrLabel11.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(59.45838F, 50.4375F);
@@ -503,6 +507,33 @@
             this.SLIn.Expression = "([SoLuong] * [TrongLuong]) - [InPhaChe]";
             this.SLIn.Name = "SLIn";
             // 
+            // xrLabel1
+            // 
+            this.xrLabel1.Dpi = 100F;
+            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(3.666783F, 65.10416F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(68.81238F, 14.66666F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "Thu ngân:";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel2
+            // 
+            this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.GioVao", "{0:dd/MM/yy H:mm}")});
+            this.xrLabel2.Dpi = 100F;
+            this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(72.47916F, 65.10416F);
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(222.1877F, 14.66666F);
+            this.xrLabel2.StylePriority.UseFont = false;
+            this.xrLabel2.StylePriority.UseTextAlignment = false;
+            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
             // rpHoaDonBanHang_PhaChe_Temp
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -566,5 +597,7 @@
         private DevExpress.XtraReports.Parameters.Parameter strHoaDon;
         private DevExpress.XtraReports.UI.CalculatedField SlInPhaChe;
         private DevExpress.XtraReports.UI.CalculatedField SLIn;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
     }
 }

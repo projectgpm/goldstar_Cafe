@@ -361,7 +361,8 @@ namespace QLCafe
                                  float ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
                                  int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                                  int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
-                                 DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBan, MaHang, IDDonViTinh, TrongLuong);
+                                 int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
+                                 DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBan, MaHang, IDDonViTinh, TrongLuong, IDMayIn);
                              }
 
                              DAO_ChiTietHoaDonChinh.CapNhatTongTienHoaDonChinh(Int32.Parse(ID.ToString()), IDBan, TongTien);

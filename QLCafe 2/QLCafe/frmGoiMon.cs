@@ -111,7 +111,17 @@ namespace QLCafe
             {
                 GiaBan = DAO_GoiMon.LayGiaBan(IDHangHoa, IDBangGia);
             }
-           
+            int IDMayIn;
+            if (TrongLuong > 0)
+            {
+                // tự chọn
+                IDMayIn = DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa);
+            }
+            else
+            {
+                //k tự chọn
+                IDMayIn = DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
+            }
             int IDDonViTinh = Int32.Parse(tbThongTin.Rows[0]["IDDonViTinh"].ToString());
             int idban = IDBan;
             int SL = Int32.Parse(txtSoLuongTuChon.Text);
@@ -140,7 +150,8 @@ namespace QLCafe
                     IdBan = idban,
                     TenDonViTinh = TenDonViTinh,
                     TenHangHoa = TenHangHoa,
-                    TrongLuong = TrongLuong
+                    TrongLuong = TrongLuong,
+                    IdMayIn = IDMayIn
                 });
             }
         }
@@ -187,7 +198,8 @@ namespace QLCafe
                             string MaHangHoa = item.MaHangHoa;
                             int IDDonViTinh = item.IDDonViTinh;
                             float TrongLuong = item.TrongLuong;
-                            DAO_GoiMon.ThemChiTietHoaDon(ID, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong);
+                            int IDMayIn = item.IdMayIn;
+                            DAO_GoiMon.ThemChiTietHoaDon(ID, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong, IDMayIn);
                         }
                         DAO_BAN.DoiTrangThaiBanCoNguoi(IDBan);
                     }
@@ -204,9 +216,10 @@ namespace QLCafe
                         string MaHangHoa = item.MaHangHoa;
                         int IDDonViTinh = item.IDDonViTinh;
                         float TrongLuong = item.TrongLuong;
+                        int IDMayIn = item.IdMayIn;
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDon, IDHangHoa, IDBan, TrongLuong) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong);
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong, IDMayIn);
                         }
                         else
                         {
@@ -229,6 +242,13 @@ namespace QLCafe
         //------------------------------------------
         public class ChiTietHoaDon
         {
+            private int idMayIn;
+
+            public int IdMayIn
+            {
+                get { return idMayIn; }
+                set { idMayIn = value; }
+            }
             private float trongLuong;
 
             public float TrongLuong

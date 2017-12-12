@@ -58,6 +58,21 @@ namespace QLCafe.DAO
                 return 60;
             }
         }
+        public static int LayIDMayIn(string IDHangHoa)
+        {
+            string sTruyVan = string.Format(@"SELECT LamMoiPhaChe FROM [Setting] ");
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["LamMoiPhaChe"].ToString());
+            }
+            else
+            {
+                return 60;
+            }
+        }
         public static int setKeyCode(string Key, string user)
         {
             string sx = GetHardDiskSerialNo();

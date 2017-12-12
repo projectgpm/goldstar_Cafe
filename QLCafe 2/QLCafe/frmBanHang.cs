@@ -904,6 +904,11 @@ namespace QLCafe
                         {
                             string NamePrinter = dr["TenMayIn"].ToString();
                             int KhoGiay = Int32.Parse(dr["KhoGiay"].ToString());
+                            string IDMayIn = dr["ID"].ToString();
+
+                            // có IDMayIn. kiểm tra Hàng HÓa trong bảng chitiethoadon temp_ lấy danh sách theo máy in rùi in.
+
+
                             if (KhoGiay == 58)
                             {
                                 rpHoaDonBanHang_PhaChe_Temp rp = new rpHoaDonBanHang_PhaChe_Temp();

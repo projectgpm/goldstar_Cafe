@@ -172,6 +172,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             foreach (DTO_DanhSachMenu item in MonAnTuChon)
@@ -185,6 +186,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             gridControlB.DataSource = null;
@@ -230,6 +232,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             foreach (DTO_DanhSachMenu item in MonAnTuChon)
@@ -243,6 +246,7 @@ namespace QLCafe
                     ThanhTien = item.ThanhTien,
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
+                    IDMayIn = item.IDMayIn,
                 });
             }
             gridControlA.DataSource = null;
@@ -295,8 +299,9 @@ namespace QLCafe
                         float ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
+                        int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         // xóa a. Lưu lại A.
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong); 
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong, IDMayIn); 
                     }
                     foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
                     {
@@ -308,9 +313,10 @@ namespace QLCafe
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         // xóa B. Lưu lại B.
+                        int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB, TrongLuong) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong); 
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong, IDMayIn); 
                         }
                         else
                         {
@@ -333,6 +339,13 @@ namespace QLCafe
         //----------------------------------------------------------
         public class ChiTietHoaDonA1
         {
+            private int iDMayIn;
+
+            public int IDMayIn
+            {
+                get { return iDMayIn; }
+                set { iDMayIn = value; }
+            }
             private float trongLuong;
 
             public float TrongLuong
@@ -387,6 +400,13 @@ namespace QLCafe
         //--------------------------------------------------------------------
         public class ChiTietHoaDonB1
         {
+            private int iDMayIn;
+
+            public int IDMayIn
+            {
+                get { return iDMayIn; }
+                set { iDMayIn = value; }
+            }
             private float trongLuong;
 
             public float TrongLuong
