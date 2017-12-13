@@ -11,7 +11,20 @@ namespace QLCafe.DAO
 {
    public  class DAO_BanHang
     {
-
+       public static int KiemTraPhaChe(int IDHoaDon)
+       {
+           string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDHoaDon = {0} AND [InPhaChe] != [SoLuong]", IDHoaDon);
+           DataTable data = new DataTable();
+           data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+           if (data.Rows.Count > 0)
+           {
+               return 1;
+           }
+           else
+           {
+               return 0;
+           }
+       }
        public static int KiemTraLayIDGioBatDau(int IDHoaDon, int IDBan)
        {
            string sTruyVan = string.Format(@"SELECT ID FROM [CF_ChiTietGio] WHERE [IDHoaDon] = {0} AND [IDBan] = {1} AND [TrangThai] = 0 AND [ThanhToan] = 0", IDHoaDon, IDBan);

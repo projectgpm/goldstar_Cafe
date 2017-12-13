@@ -257,9 +257,11 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
+            txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtKhachCanTra.Text = (DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(IDBan))).ToString();
-            txtKhachThanhToan.Text = (DAO_HoaDon.KhachCanTra(DAO_BanHang.IDHoaDon(IDBan))).ToString();
+            txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+            txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+            
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -339,9 +341,16 @@ namespace QLCafe
             // chuyển bàn
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
-                frmChuyenBan fr = new frmChuyenBan();
-                fr.MyGetData = new frmChuyenBan.GetKT(GetChuyenBan);
-                fr.ShowDialog();
+                if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBan)) == 1)
+                {
+                    MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    frmChuyenBan fr = new frmChuyenBan();
+                    fr.MyGetData = new frmChuyenBan.GetKT(GetChuyenBan);
+                    fr.ShowDialog();
+                }
             }
             else
             {
@@ -387,9 +396,16 @@ namespace QLCafe
         {
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
-                frmTachBan fr = new frmTachBan();
-                fr.MyGetDataTachBan = new frmTachBan.GetKT(GetTachBan);
-                fr.ShowDialog();
+                if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBan)) == 1)
+                {
+                    MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    frmTachBan fr = new frmTachBan();
+                    fr.MyGetDataTachBan = new frmTachBan.GetKT(GetTachBan);
+                    fr.ShowDialog();
+                }
             }
             else
             {
@@ -417,9 +433,16 @@ namespace QLCafe
         {
             if (DAO_BAN.TrangThaiBan(IDBan) == 2)
             {
-                frmGopBan fr = new frmGopBan();
-                fr.MyGetDataGopBan = new frmGopBan.GetKT(GetGopBan);
-                fr.ShowDialog();
+                if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBan)) == 1)
+                {
+                    MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    frmGopBan fr = new frmGopBan();
+                    fr.MyGetDataGopBan = new frmGopBan.GetKT(GetGopBan);
+                    fr.ShowDialog();
+                }
             }
             else
             {
@@ -590,108 +613,115 @@ namespace QLCafe
             {
                 if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {
-
-                    bool insert = true;
-                    List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHoaDonHT);
-                    // đổi trạng thái hóa đơn + thêm vào CTHD chính, xóa tạm + Chi tiết giờ
-                    foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
+                    if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBanHT)) == 1)
                     {
-                        //thêm vào chi tiết hóa đơn chính
-                        int IDHangHoa = item.IDHangHoa;
-                        int SoLuong = item.SoLuong;
-                        double DonGia = item.DonGia;
-                        double ThanhTien = item.ThanhTien;
-                        string MaHangHoa = item.MaHangHoa;
-                        int IDDonViTinh = item.IDDonViTinh;
-                        float TrongLuong = item.TrongLuong;
-                        //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
-                        if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHoaDonHT, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanHT, MaHangHoa, IDDonViTinh, TrongLuong) == false)
+                        MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+
+                        bool insert = true;
+                        List<DTO_ChiTietHoaDon> DanhSachHoaDon = DAO_ChiTietHoaDon.Instance.ChiTietHoaDon(IDHoaDonHT);
+                        // đổi trạng thái hóa đơn + thêm vào CTHD chính, xóa tạm + Chi tiết giờ
+                        foreach (DTO_ChiTietHoaDon item in DanhSachHoaDon)
                         {
-                            insert = false;
-                        }
-                        else
-                        {
-                            if (TrongLuong == 0)
+                            //thêm vào chi tiết hóa đơn chính
+                            int IDHangHoa = item.IDHangHoa;
+                            int SoLuong = item.SoLuong;
+                            double DonGia = item.DonGia;
+                            double ThanhTien = item.ThanhTien;
+                            string MaHangHoa = item.MaHangHoa;
+                            int IDDonViTinh = item.IDDonViTinh;
+                            float TrongLuong = item.TrongLuong;
+                            //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
+                            if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHoaDonHT, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanHT, MaHangHoa, IDDonViTinh, TrongLuong) == false)
                             {
-                                // trừ tồn kho nguyên liệu chế biến
-                                List<DTO_NguyenLieu> ListNguyenLieu = DAO_NguyenLieu.Instance.LoadNguyenLieu(IDHangHoa);
-                                if (ListNguyenLieu.Count > 0)
+                                insert = false;
+                            }
+                            else
+                            {
+                                if (TrongLuong == 0)
                                 {
-                                    foreach (DTO_NguyenLieu itemNL in ListNguyenLieu)
+                                    // trừ tồn kho nguyên liệu chế biến
+                                    List<DTO_NguyenLieu> ListNguyenLieu = DAO_NguyenLieu.Instance.LoadNguyenLieu(IDHangHoa);
+                                    if (ListNguyenLieu.Count > 0)
                                     {
-                                        double SLTru = (itemNL.TrongLuong * SoLuong);
-                                        DAO_Setting.TruTonKho(itemNL.IDNguyenLieu, frmDangNhap.NguoiDung.Idchinhanh, SLTru);
-                                        // trừ tồn kho
+                                        foreach (DTO_NguyenLieu itemNL in ListNguyenLieu)
+                                        {
+                                            double SLTru = (itemNL.TrongLuong * SoLuong);
+                                            DAO_Setting.TruTonKho(itemNL.IDNguyenLieu, frmDangNhap.NguoiDung.Idchinhanh, SLTru);
+                                            // trừ tồn kho
+                                        }
                                     }
                                 }
-                            }
-                            else if (TrongLuong > 0)
-                            {
-                                //trừ nguyên liệu tự chọn
-                                DAO_Setting.TruTonKho(IDHangHoa, frmDangNhap.NguoiDung.Idchinhanh, SoLuong * TrongLuong);
+                                else if (TrongLuong > 0)
+                                {
+                                    //trừ nguyên liệu tự chọn
+                                    DAO_Setting.TruTonKho(IDHangHoa, frmDangNhap.NguoiDung.Idchinhanh, SoLuong * TrongLuong);
+                                }
                             }
                         }
-                    }
-                    if (insert == true)
-                    {
-                        // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
-                        if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHoaDonHT, IDBanHT) == true)
+                        if (insert == true)
                         {
-                            // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
-                            int IDNhanVien = frmDangNhap.NguoiDung.Id;
-                            double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
-                            double TienThua = double.Parse(txtTienThoi.Text.ToString());
-                            double GiamGia = double.Parse(txtGiamGia.Text.ToString());
-                            double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
-                            string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
-                            if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua,KhachCanTra,HinhThucThanhToan,GiamGia) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                            // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
+                            if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHoaDonHT, IDBanHT) == true)
                             {
-                                txtKhachThanhToan.Text = "0";
-                                txtTienThoi.Text = "0";
-                                cmbHinhThucGiamGia.SelectedIndex = 0;
-                                txtGiamGia.Text = "0";
-                                txtKhachCanTra.Text = "0";
-                                DanhSachBan();
-                                HienThiHoaDon(IDBanHT);
-
-                                if (MessageBox.Show("In hóa đơn", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                                // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
+                                int IDNhanVien = frmDangNhap.NguoiDung.Id;
+                                double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
+                                double TienThua = double.Parse(txtTienThoi.Text.ToString());
+                                double GiamGia = double.Parse(txtGiamGia.Text.ToString());
+                                double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
+                                string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
+                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua, KhachCanTra, HinhThucThanhToan, GiamGia) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
                                 {
-                                    // In 1 máy in bán hàng.
-                                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                                    //DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
-                                    //int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
-                                    string sx = DAO_Setting.GetHardDiskSerialNo();
-                                    string strAddress = sx + "GPM";
-                                    string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
-                                    string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
-                                    if (NamePrinter != "")
+                                    txtKhachThanhToan.Text = "0";
+                                    txtTienThoi.Text = "0";
+                                    cmbHinhThucGiamGia.SelectedIndex = 0;
+                                    txtGiamGia.Text = "0";
+                                    txtKhachCanTra.Text = "0";
+                                    DanhSachBan();
+                                    HienThiHoaDon(IDBanHT);
+
+                                    if (MessageBox.Show("In hóa đơn", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                                     {
-                                        int KhoGiay = DAO_Setting.ReportBill(sha1Address);
-                                        if (KhoGiay == 58)
+                                        // In 1 máy in bán hàng.
+                                        DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                                        //DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
+                                        //int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
+                                        string sx = DAO_Setting.GetHardDiskSerialNo();
+                                        string strAddress = sx + "GPM";
+                                        string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
+                                        string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
+                                        if (NamePrinter != "")
                                         {
-                                            rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            rp.Print(NamePrinter);
+                                            int KhoGiay = DAO_Setting.ReportBill(sha1Address);
+                                            if (KhoGiay == 58)
+                                            {
+                                                rpHoaDonBanHang_581 rp = new rpHoaDonBanHang_581();
+                                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                                rp.Parameters["ID"].Value = IDHoaDonHT;
+                                                rp.Parameters["ID"].Visible = false;
+                                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                                rp.Parameters["strHoaDon"].Visible = false;
+                                                rp.Print(NamePrinter);
+                                            }
+                                            else
+                                            {
+                                                rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
+                                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                                rp.Parameters["ID"].Value = IDHoaDonHT;
+                                                rp.Parameters["ID"].Visible = false;
+                                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
+                                                rp.Parameters["strHoaDon"].Visible = false;
+                                                rp.Print(NamePrinter);
+                                            }
                                         }
                                         else
-                                        {
-                                            rpHoaDonBanHang1 rp = new rpHoaDonBanHang1();
-                                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                                            rp.Parameters["ID"].Visible = false;
-                                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN THANH TOÁN";
-                                            rp.Parameters["strHoaDon"].Visible = false;
-                                            rp.Print(NamePrinter);
-                                        }
+                                            MessageBox.Show("Lỗi: Chưa có máy in hóa đơn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                    else
-                                        MessageBox.Show("Lỗi: Chưa có máy in hóa đơn?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -713,9 +743,16 @@ namespace QLCafe
             }
             else
             {
-                frmTachBill fr = new frmTachBill();
-                fr.MyGetData = new frmTachBill.GetString(GetTachBill);
-                fr.ShowDialog();
+                if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBanHT)) == 1)
+                {
+                    MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    frmTachBill fr = new frmTachBill();
+                    fr.MyGetData = new frmTachBill.GetString(GetTachBill);
+                    fr.ShowDialog();
+                }
             }
         }
 
@@ -782,79 +819,58 @@ namespace QLCafe
             {
                 if (MessageBox.Show("In tạm tính", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {
-                    // In 1 máy in bán hàng.
-                    DAO_ConnectSQL connect = new DAO_ConnectSQL();
-                    DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
-                    int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
-                    string sx = DAO_Setting.GetHardDiskSerialNo();
-                    string strAddress = sx + "GPM";
-                    string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
-                    string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
-                    if (NamePrinter != "")
+                    if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(IDBanHT)) == 1)
                     {
-                        int KhoGiay = DAO_Setting.ReportBill(sha1Address);
-                        if (KhoGiay == 58)
-                        {
-                            rpHoaDonBanHang_581_Temp rp = new rpHoaDonBanHang_581_Temp();
-                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                            rp.Parameters["ID"].Visible = false;
-                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
-                            rp.Parameters["strHoaDon"].Visible = false;
-                            rp.Print(NamePrinter);
-                        }
-                        else
-                        {
-                            rpHoaDonBanHang1_Temp rp = new rpHoaDonBanHang1_Temp();
-                            SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
-                            sqlDataSource.Connection.ConnectionString += connect.ConnectString();
-                            rp.Parameters["ID"].Value = IDHoaDonHT;
-                            rp.Parameters["ID"].Visible = false;
-                            rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
-                            rp.Parameters["strHoaDon"].Visible = false;
-                            rp.Print(NamePrinter);
-                        }
+                        MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
-                        MessageBox.Show("Chưa có máy in hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        // In 1 máy in bán hàng.
+                        DAO_ConnectSQL connect = new DAO_ConnectSQL();
+                        DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
+                        int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
+                        string sx = DAO_Setting.GetHardDiskSerialNo();
+                        string strAddress = sx + "GPM";
+                        string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
+                        string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
+                        if (NamePrinter != "")
+                        {
+                            int KhoGiay = DAO_Setting.ReportBill(sha1Address);
+                            if (KhoGiay == 58)
+                            {
+                                rpHoaDonBanHang_581_Temp rp = new rpHoaDonBanHang_581_Temp();
+                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                rp.Parameters["ID"].Value = IDHoaDonHT;
+                                rp.Parameters["ID"].Visible = false;
+
+                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
+                                rp.Parameters["strHoaDon"].Visible = false;
+                                rp.Print(NamePrinter);
+                            }
+                            else
+                            {
+                                rpHoaDonBanHang1_Temp rp = new rpHoaDonBanHang1_Temp();
+                                SqlDataSource sqlDataSource = rp.DataSource as SqlDataSource;
+                                sqlDataSource.Connection.ConnectionString += connect.ConnectString();
+                                rp.Parameters["ID"].Value = IDHoaDonHT;
+                                rp.Parameters["ID"].Visible = false;
+
+                                rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
+                                rp.Parameters["strHoaDon"].Visible = false;
+                                rp.Print(NamePrinter);
+                            }
+                        }
+                        else
+                            MessageBox.Show("Chưa có máy in hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         private void txtGiamGia_EditValueChanged(object sender, EventArgs e)
         {
-            if (cmbHinhThucGiamGia.Text == "$")
-            {
-                double TienGiam = double.Parse(txtGiamGia.Text.ToString());
-                double TongTien = double.Parse(txtTongTien.Text.ToString());
-                if (TienGiam > TongTien)
-                {
-                    txtGiamGia.Text = "0";
-                    MessageBox.Show("Tiền giảm giá không thể lớn hơn tiền khách cần trả !!.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    txtKhachCanTra.Text = (TongTien - TienGiam).ToString();
-                    txtKhachThanhToan.Text = (TongTien - TienGiam).ToString();
-                }
-            }
-            else if (cmbHinhThucGiamGia.Text == "%")
-            {
-                double TyLeGiamGia = double.Parse(txtGiamGia.Text.ToString());
-                if (TyLeGiamGia <= 100 && TyLeGiamGia >= 0)
-                {
-                    double TongTien = double.Parse(txtTongTien.Text.ToString());
-                    double TienGiamGia = TongTien * (TyLeGiamGia / (double)100);
-                    txtKhachCanTra.Text = (TongTien - TienGiamGia).ToString();
-                    txtKhachThanhToan.Text = (TongTien - TienGiamGia).ToString();
-                }
-                else
-                {
-                    txtGiamGia.Text = "0";
-                    MessageBox.Show("Giảm giá theo phần trăm trong khoảng 0% đến 100% !!.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
         private void gridView1_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
@@ -984,14 +1000,49 @@ namespace QLCafe
                 {
                     float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
                     float TongTien = float.Parse(txtTongTien.EditValue.ToString());
-                    txtGiamGia.Text = (SoTienDoi * SoDiemCanDoi) + float.Parse(txtGiamGia.Text.ToString()) + "";
-                    txtKhachCanTra.Text = (TongTien - float.Parse(txtGiamGia.Text.ToString())) + "";
-                    txtKhachThanhToan.Text = (TongTien - float.Parse(txtGiamGia.Text.ToString())) + "";
-                    txtTienThoi.Text = "0";
+                    txtGiamGiaDiem.Text = (SoTienDoi * SoDiemCanDoi) + "";
+
+                    LoadTongTien();
                 }
                 else
                 {
                     MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtGiamGiaHoaDon_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cmbHinhThucGiamGia.Text == "$")
+            {
+                double TienGiam = double.Parse(txtGiamGiaHoaDon.Text.ToString());
+                double TongTienCanTra = double.Parse(txtKhachCanTra.Text.ToString());
+                if (TienGiam > TongTienCanTra)
+                {
+                    txtGiamGiaHoaDon.Text = "0";
+                    MessageBox.Show("Tiền giảm giá không thể lớn hơn tiền khách cần trả !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    txtGiamGia.Text = TienGiam.ToString();
+                    LoadTongTien();
+                }
+            }
+            else if (cmbHinhThucGiamGia.Text == "%")
+            {
+                double TyLeGiamGia = double.Parse(txtGiamGiaHoaDon.Text.ToString());
+                if (TyLeGiamGia <= 100 && TyLeGiamGia >= 0)
+                {
+                    //xem lại
+                    double TienGiam = double.Parse(txtGiamGiaHoaDon.Text.ToString());
+                    double TienGiamGia = TienGiam * (TyLeGiamGia / (double)100);
+                    txtGiamGia.Text = TienGiamGia.ToString();
+                    LoadTongTien();
+                }
+                else
+                {
+                    txtGiamGiaHoaDon.Text = "0";
+                    MessageBox.Show("Giảm giá theo phần trăm trong khoảng 0% đến 100% !!.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

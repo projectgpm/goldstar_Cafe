@@ -9,6 +9,13 @@ namespace QLCafe.DTO
 {
     public class DTO_DanhSachMenu
     {
+        private int inPhaChe;
+
+        public int InPhaChe
+        {
+            get { return inPhaChe; }
+            set { inPhaChe = value; }
+        }
         private int iDMayIn;
 
         public int IDMayIn
@@ -91,7 +98,7 @@ namespace QLCafe.DTO
             set { ghiChu = value; }
         }
 
-        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien, float getTrongLuong, int getID, int getTrangThai, string getGhiChu, int getIDMayIn)
+        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien, float getTrongLuong, int getID, int getTrangThai, string getGhiChu, int getIDMayIn, int getInPhaChe)
         {
             this.MaHangHoa = getMaHangHoa;
             this.TenHangHoa = getTenHangHoa;
@@ -103,6 +110,7 @@ namespace QLCafe.DTO
             this.ID = getID;
             this.TrangThai = getTrangThai;
             this.IDMayIn = getIDMayIn;
+            this.InPhaChe = getInPhaChe;
             // Bổ sung.
             this.GhiChu = getGhiChu;
         }
@@ -118,6 +126,7 @@ namespace QLCafe.DTO
             this.ID = Int32.Parse(dr["ID"].ToString());
             this.TrangThai = Int32.Parse(dr["TrangThai"].ToString());
             this.IDMayIn = Int32.Parse(dr["IDMayIn"].ToString());
+            this.InPhaChe = Int32.Parse(dr["InPhaChe"].ToString());
             // Bổ sung.
             this.GhiChu = dr["GhiChu"].ToString();
         }

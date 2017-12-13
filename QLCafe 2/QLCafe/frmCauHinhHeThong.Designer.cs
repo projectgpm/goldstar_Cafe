@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCauHinhHeThong));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbKhoGiay = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.label9 = new System.Windows.Forms.Label();
             this.cmbMayIn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDataSource = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -46,15 +48,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLuuLai = new DevExpress.XtraEditors.SimpleButton();
             this.btnKiemTra = new DevExpress.XtraEditors.SimpleButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cmbKhoGiay = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKhoGiay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMayIn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatabase.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKhoGiay.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +90,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cấu Hình";
             // 
+            // cmbKhoGiay
+            // 
+            this.cmbKhoGiay.EditValue = "58";
+            this.cmbKhoGiay.Location = new System.Drawing.Point(98, 160);
+            this.cmbKhoGiay.Name = "cmbKhoGiay";
+            this.cmbKhoGiay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKhoGiay.Properties.Appearance.Options.UseFont = true;
+            this.cmbKhoGiay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbKhoGiay.Properties.Items.AddRange(new object[] {
+            "58",
+            "80"});
+            this.cmbKhoGiay.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbKhoGiay.Size = new System.Drawing.Size(238, 24);
+            this.cmbKhoGiay.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 164);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 18);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Khổ Giấy:";
+            // 
             // cmbMayIn
             // 
             this.cmbMayIn.Location = new System.Drawing.Point(98, 130);
@@ -120,6 +145,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataSource.Properties.Items.AddRange(new object[] {
             "local"});
+            this.txtDataSource.Properties.UseSystemPasswordChar = true;
             this.txtDataSource.Size = new System.Drawing.Size(238, 24);
             this.txtDataSource.TabIndex = 4;
             // 
@@ -129,6 +155,7 @@
             this.txtDatabase.Name = "txtDatabase";
             this.txtDatabase.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDatabase.Properties.Appearance.Options.UseFont = true;
+            this.txtDatabase.Properties.UseSystemPasswordChar = true;
             this.txtDatabase.Size = new System.Drawing.Size(238, 22);
             this.txtDatabase.TabIndex = 3;
             // 
@@ -138,6 +165,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Properties.Appearance.Options.UseFont = true;
+            this.txtUserName.Properties.UseSystemPasswordChar = true;
             this.txtUserName.Size = new System.Drawing.Size(238, 22);
             this.txtUserName.TabIndex = 3;
             // 
@@ -241,31 +269,6 @@
             this.btnKiemTra.Text = "Kiểm tra kết nối";
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 164);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(71, 18);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Khổ Giấy:";
-            // 
-            // cmbKhoGiay
-            // 
-            this.cmbKhoGiay.EditValue = "58";
-            this.cmbKhoGiay.Location = new System.Drawing.Point(98, 160);
-            this.cmbKhoGiay.Name = "cmbKhoGiay";
-            this.cmbKhoGiay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbKhoGiay.Properties.Appearance.Options.UseFont = true;
-            this.cmbKhoGiay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbKhoGiay.Properties.Items.AddRange(new object[] {
-            "58",
-            "80"});
-            this.cmbKhoGiay.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbKhoGiay.Size = new System.Drawing.Size(238, 24);
-            this.cmbKhoGiay.TabIndex = 6;
-            // 
             // frmCauHinhHeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,12 +289,12 @@
             this.Load += new System.EventHandler(this.frmCauHinhHeThong_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKhoGiay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMayIn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatabase.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKhoGiay.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

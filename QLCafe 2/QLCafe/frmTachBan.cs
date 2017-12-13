@@ -65,6 +65,7 @@ namespace QLCafe
                             ThanhTien = TrongLuong > 0 ? (SoLuongA * (TrongLuong * DonGia)) : (SoLuongA * DonGia),
                             SoLuong = SoLuongA,
                             TrongLuong = TrongLuong,
+                            InPhaChe = SoLuong,
                         });
                         listChiTietHoaDonA1.RemoveAt(dongHienTai);// xóa dòng hiện tại A1
                     }
@@ -82,6 +83,7 @@ namespace QLCafe
                             {
                                 item.SoLuong = item.SoLuong - SoLuong;
                                 SoLuongB = SoLuong;
+                                item.InPhaChe = item.InPhaChe - SoLuong;
                                 item.ThanhTien = item.TrongLuong > 0 ? (item.SoLuong * (item.TrongLuong *item.DonGia)) : (item.SoLuong * item.DonGia);
                                 KiemTra = 1;
                                 break;
@@ -98,6 +100,7 @@ namespace QLCafe
                                 ThanhTien = TrongLuong > 0 ? (SoLuongB * (TrongLuong * DonGia)) : (SoLuongA * DonGia),
                                 SoLuong = SoLuongB,
                                 TrongLuong = TrongLuong,
+                                InPhaChe = SoLuongB,
                             });
                         }
                     }
@@ -120,8 +123,11 @@ namespace QLCafe
             int IDBanMoi = 0;
             if (cmbBanB.EditValue != null)
             {
-                IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
-                DanhSachHangHoaB(IDBanMoi);
+                if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(Int32.Parse(cmbBanB.EditValue.ToString()))) == 0)
+                {
+                    IDBanMoi = Int32.Parse(cmbBanB.EditValue.ToString());
+                    DanhSachHangHoaB(IDBanMoi);
+                }
             }
         }
         private void btnHuy_Click(object sender, EventArgs e)
@@ -146,13 +152,26 @@ namespace QLCafe
 
         private void cmbBanB_EditValueChanged(object sender, EventArgs e)
         {
-            btnAB2.Enabled = true;
-            listChiTietHoaDonB1.Clear();
-            gridControlB.DataSource = null;
-            gridControlB.Refresh();
-            LamMoi();
-            btnThucHien.Enabled = true;
-            DanhSachHangHoaB(Int32.Parse(cmbBanB.EditValue.ToString()));
+            if (DAO_BanHang.KiemTraPhaChe(DAO_BanHang.IDHoaDon(Int32.Parse(cmbBanB.EditValue.ToString()))) == 1)
+            {
+                listChiTietHoaDonB1.Clear();
+                gridControlB.DataSource = null;
+                btnAB2.Enabled = false;
+                btnThucHien.Enabled = false;
+                gridControlB.Refresh();
+                LamMoi();
+                MessageBox.Show("Bàn có món chưa In pha chế. Vui lòng In pha chế trước khi thao tác?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                btnAB2.Enabled = true;
+                listChiTietHoaDonB1.Clear();
+                gridControlB.DataSource = null;
+                gridControlB.Refresh();
+                LamMoi();
+                btnThucHien.Enabled = true;
+                DanhSachHangHoaB(Int32.Parse(cmbBanB.EditValue.ToString()));
+            }
         }
         public void DanhSachHangHoaB(int IDBanB)
         {
@@ -173,6 +192,7 @@ namespace QLCafe
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
                     IDMayIn = item.IDMayIn,
+                    InPhaChe = item.InPhaChe,
                 });
             }
             foreach (DTO_DanhSachMenu item in MonAnTuChon)
@@ -187,6 +207,7 @@ namespace QLCafe
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
                     IDMayIn = item.IDMayIn,
+                    InPhaChe = item.InPhaChe,
                 });
             }
             gridControlB.DataSource = null;
@@ -233,6 +254,7 @@ namespace QLCafe
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
                     IDMayIn = item.IDMayIn,
+                    InPhaChe = item.InPhaChe,
                 });
             }
             foreach (DTO_DanhSachMenu item in MonAnTuChon)
@@ -247,6 +269,7 @@ namespace QLCafe
                     TrongLuong = item.TrongLuong,
                     SoLuong = item.SoLuong,
                     IDMayIn = item.IDMayIn,
+                    InPhaChe = item.InPhaChe,
                 });
             }
             gridControlA.DataSource = null;
@@ -301,7 +324,7 @@ namespace QLCafe
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         // xóa a. Lưu lại A.
-                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong, IDMayIn); 
+                        DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonA, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanA, MaHang, IDDonViTinh, TrongLuong, IDMayIn, item.InPhaChe); 
                     }
                     foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
                     {
@@ -316,11 +339,11 @@ namespace QLCafe
                         int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDonB, IDHangHoa, IDBanB, TrongLuong) == false)
                         {
-                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong, IDMayIn); 
+                            DAO_GoiMon.ThemChiTietHoaDon(IDHoaDonB, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanB, MaHang, IDDonViTinh, TrongLuong, IDMayIn, item.InPhaChe); 
                         }
                         else
                         {
-                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonB, SoLuong, ThanhTien, IDHangHoa, IDBanB);
+                            DAO_GoiMon.CapNhatChiTietHoaDon(IDHoaDonB, SoLuong, ThanhTien, IDHangHoa, IDBanB, item.InPhaChe);
                         }
                         DAO_BAN.DoiTrangThaiBanCoNguoi(IDBanB);
                     }
@@ -339,6 +362,13 @@ namespace QLCafe
         //----------------------------------------------------------
         public class ChiTietHoaDonA1
         {
+            private int inPhaChe;
+
+            public int InPhaChe
+            {
+                get { return inPhaChe; }
+                set { inPhaChe = value; }
+            }
             private int iDMayIn;
 
             public int IDMayIn
@@ -400,6 +430,13 @@ namespace QLCafe
         //--------------------------------------------------------------------
         public class ChiTietHoaDonB1
         {
+            private int inPhaChe;
+
+            public int InPhaChe
+            {
+                get { return inPhaChe; }
+                set { inPhaChe = value; }
+            }
             private int iDMayIn;
 
             public int IDMayIn

@@ -128,7 +128,8 @@
        "CF_HoaDon"."KhachCanTra",
        "CF_HoaDon"."TienGio", 
 	 "CF_HoaDon"."LanIn",
-       "CF_Ban"."TenBan", "CF_KhuVuc"."TenKhuVuc",
+       "CF_Ban"."TenBan", 
+	 "CF_KhuVuc"."TenKhuVuc",
        "CF_HoaDon"."ID",
        "CF_NguoiDung"."TenNguoiDung"
   from ((("dbo"."CF_HoaDon" "CF_HoaDon"
@@ -138,8 +139,7 @@
        on ("CF_KhuVuc"."ID" = "CF_Ban"."IDKhuVuc"))
   inner join "dbo"."CF_NguoiDung" "CF_NguoiDung"
        on ("CF_NguoiDung"."ID" = "CF_HoaDon"."IDNhanVien"))
- where ("CF_HoaDon"."ID" = @ID)
-</value>
+ where ("CF_HoaDon"."ID" = @ID)</value>
   </data>
   <data name="customSqlQuery2.Sql" xml:space="preserve">
     <value>select "CF_ChiTietHoaDon_Temp"."IDHoaDon",
