@@ -100,6 +100,8 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrLabel33 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel34 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel49 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel50 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
@@ -111,6 +113,7 @@
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.strHoaDon = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
@@ -142,7 +145,6 @@
             this.xrLabel31 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel32 = new DevExpress.XtraReports.UI.XRLabel();
             this.SL = new DevExpress.XtraReports.UI.CalculatedField();
-            this.strHoaDon = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -252,6 +254,8 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel33,
+            this.xrLabel34,
             this.xrLabel49,
             this.xrLabel50,
             this.xrLabel13,
@@ -268,8 +272,35 @@
             this.xrLabel2,
             this.xrLabel1});
             this.ReportHeader.Dpi = 100F;
-            this.ReportHeader.HeightF = 152.378F;
+            this.ReportHeader.HeightF = 166.4422F;
             this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrLabel33
+            // 
+            this.xrLabel33.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TenKhachHang")});
+            this.xrLabel33.Dpi = 100F;
+            this.xrLabel33.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(120.275F, 151.7755F);
+            this.xrLabel33.Name = "xrLabel33";
+            this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel33.SizeF = new System.Drawing.SizeF(177.0169F, 14.66667F);
+            this.xrLabel33.StylePriority.UseFont = false;
+            this.xrLabel33.StylePriority.UseTextAlignment = false;
+            this.xrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel34
+            // 
+            this.xrLabel34.Dpi = 100F;
+            this.xrLabel34.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.xrLabel34.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 151.7755F);
+            this.xrLabel34.Name = "xrLabel34";
+            this.xrLabel34.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel34.SizeF = new System.Drawing.SizeF(110.0233F, 14.66667F);
+            this.xrLabel34.StylePriority.UseFont = false;
+            this.xrLabel34.StylePriority.UseTextAlignment = false;
+            this.xrLabel34.Text = "Khách hàng:";
+            this.xrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel49
             // 
@@ -278,7 +309,7 @@
             this.xrLabel49.LocationFloat = new DevExpress.Utils.PointFloat(9.999984F, 136.1088F);
             this.xrLabel49.Name = "xrLabel49";
             this.xrLabel49.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel49.SizeF = new System.Drawing.SizeF(81.66677F, 14.66667F);
+            this.xrLabel49.SizeF = new System.Drawing.SizeF(110.0233F, 14.66669F);
             this.xrLabel49.StylePriority.UseFont = false;
             this.xrLabel49.StylePriority.UseTextAlignment = false;
             this.xrLabel49.Text = "Nhân viên:";
@@ -290,10 +321,10 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TenNguoiDung")});
             this.xrLabel50.Dpi = 100F;
             this.xrLabel50.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(91.66676F, 137.1088F);
+            this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(120.275F, 137.1088F);
             this.xrLabel50.Name = "xrLabel50";
             this.xrLabel50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel50.SizeF = new System.Drawing.SizeF(205.6251F, 14.66667F);
+            this.xrLabel50.SizeF = new System.Drawing.SizeF(177.0169F, 14.66667F);
             this.xrLabel50.StylePriority.UseFont = false;
             this.xrLabel50.StylePriority.UseTextAlignment = false;
             this.xrLabel50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -419,6 +450,10 @@
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.StylePriority.UseTextAlignment = false;
             this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // strHoaDon
+            // 
+            this.strHoaDon.Name = "strHoaDon";
             // 
             // xrLabel4
             // 
@@ -940,10 +975,6 @@
             this.SL.Expression = "[SoLuong] * [TrongLuong]";
             this.SL.Name = "SL";
             // 
-            // strHoaDon
-            // 
-            this.strHoaDon.Name = "strHoaDon";
-            // 
             // rpHoaDonBanHang1
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1030,5 +1061,7 @@
         private DevExpress.XtraReports.UI.CalculatedField SL;
         private DevExpress.XtraReports.UI.XRLabel xrLabel38;
         private DevExpress.XtraReports.Parameters.Parameter strHoaDon;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel33;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel34;
     }
 }

@@ -10,6 +10,32 @@ namespace QLCafe.DAO
 {
     public class DAO_ChiTietHoaDonChinh
     {
+        public static bool CongDiemTichLuy(string IDKhachHang, double DiemTichLuy)
+        {
+            CongLichSu(IDKhachHang, DiemTichLuy);
+            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy +  '{0}' WHERE ID = {1}", DiemTichLuy.ToString(), IDKhachHang);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+
+        }
+        public static bool TruDiemTichLuy(string IDKhachHang, double DiemTichLuy)
+        {
+            TruLichSu(IDKhachHang, DiemTichLuy);
+            string sTruyVan = string.Format(@"UPDATE [GPM_KhachHang] SET DiemTichLuy = DiemTichLuy - '{0}' WHERE ID = '{1}'", DiemTichLuy, IDKhachHang);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+
+        }
+        public static bool TruLichSu(string IDKhachHang, double DiemTichLuy)
+        {
+            string DiemCu = DAO_Setting.LayDiemHienTai(IDKhachHang).ToString();
+            string sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Trừ')", IDKhachHang, DiemCu, (double.Parse(DiemCu) - DiemTichLuy).ToString());
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
+        public static bool CongLichSu(string IDKhachHang, double DiemTichLuy)
+        {
+            string DiemCu = DAO_Setting.LayDiemHienTai(IDKhachHang).ToString();
+            string sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Cộng')", IDKhachHang, DiemCu, (double.Parse(DiemCu) + DiemTichLuy).ToString());
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static bool ThemChiTietHoaDonChinh(int IDHoaDon, int IDHangHoa, int SL, double DonGia, double ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float TrongLuong)
         {
             string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrongLuong) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong);
@@ -25,9 +51,9 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_ChiTietGio] SET [ThanhToan] = 1 WHERE [TrangThai] = 1 AND [IDHoaDon] = {0} AND [IDBan] = {1}", IDHoaDon, IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool CapNhatHoaDonChinh(int IDHoaDon, int IDBan, int IDNhanVien, double KhachThanhToan, double TienThua, double KhachCanTra, string HinhThucGiamGia, double GiamGia)
+        public static bool CapNhatHoaDonChinh(int IDHoaDon, int IDBan, int IDNhanVien, string KhachThanhToan, string  TienThua, string KhachCanTra, string HinhThucGiamGia, string GiamGia, string IDKhachHang, string DiemQuiDoi, string GiamGiaDiem, string GiamGiaHoaDon, string TongGiamGia)
         {
-            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [GiamGia] = '{7}',[HinhThucGiamGia] = N'{6}',[KhachCanTra] = '{5}',[TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, KhachCanTra, HinhThucGiamGia, GiamGia);
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TongGiamGia] = '{12}',[GiamGiaHoaDon] = '{11}',[GiamGiaDiem] = '{10}',[DiemQuiDoi] = '{9}',[IDKhachHang] = '{8}',[GiamGia] = '{7}',[HinhThucGiamGia] = N'{6}',[KhachCanTra] = '{5}',[TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, KhachCanTra, HinhThucGiamGia, GiamGia, IDKhachHang, DiemQuiDoi, GiamGiaDiem, GiamGiaHoaDon, TongGiamGia);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
 

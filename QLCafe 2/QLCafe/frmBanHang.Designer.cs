@@ -68,13 +68,18 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtGiamGiaHoaDon = new DevExpress.XtraEditors.SpinEdit();
             this.txtDiemTichLuy = new DevExpress.XtraEditors.SpinEdit();
             this.txtTienThoi = new DevExpress.XtraEditors.SpinEdit();
             this.txtKhachThanhToan = new DevExpress.XtraEditors.SpinEdit();
             this.txtKhachCanTra = new DevExpress.XtraEditors.SpinEdit();
+            this.txtGiamGiaDiem = new DevExpress.XtraEditors.SpinEdit();
+            this.txtTongGiamGia = new DevExpress.XtraEditors.SpinEdit();
             this.txtGiamGia = new DevExpress.XtraEditors.SpinEdit();
             this.txtTongTien = new DevExpress.XtraEditors.SpinEdit();
             this.gridControlCTHD = new DevExpress.XtraGrid.GridControl();
@@ -114,11 +119,6 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.menuBan = new DevExpress.XtraBars.PopupMenu(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtGiamGiaDiem = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTongGiamGia = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtGiamGiaHoaDon = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnXoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -129,10 +129,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbHinhThucGiamGia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaHoaDon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiemTichLuy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhachThanhToan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhachCanTra.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaDiem.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongGiamGia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiamGia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCTHD)).BeginInit();
@@ -147,9 +150,6 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaDiem.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongGiamGia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaHoaDon.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemSpinEdit1
@@ -238,7 +238,7 @@
             // 
             // cmbTenKhachHang
             // 
-            this.cmbTenKhachHang.EditValue = "";
+            this.cmbTenKhachHang.EditValue = "1";
             this.cmbTenKhachHang.Location = new System.Drawing.Point(182, 17);
             this.cmbTenKhachHang.MenuManager = this.barManager1;
             this.cmbTenKhachHang.Name = "cmbTenKhachHang";
@@ -251,6 +251,7 @@
             this.cmbTenKhachHang.Properties.View = this.gridLookUpEdit1View;
             this.cmbTenKhachHang.Size = new System.Drawing.Size(161, 26);
             this.cmbTenKhachHang.TabIndex = 25;
+            this.cmbTenKhachHang.EditValueChanged += new System.EventHandler(this.cmbTenKhachHang_EditValueChanged);
             // 
             // barManager1
             // 
@@ -467,6 +468,7 @@
             this.cmbHinhThucGiamGia.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbHinhThucGiamGia.Size = new System.Drawing.Size(47, 30);
             this.cmbHinhThucGiamGia.TabIndex = 24;
+            this.cmbHinhThucGiamGia.SelectedIndexChanged += new System.EventHandler(this.cmbHinhThucGiamGia_SelectedIndexChanged);
             // 
             // btnThanhToan
             // 
@@ -542,6 +544,26 @@
             this.labelControl8.TabIndex = 4;
             this.labelControl8.Text = "KHÁCH CẦN TRẢ";
             // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Location = new System.Drawing.Point(370, 58);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.labelControl6.Size = new System.Drawing.Size(128, 18);
+            this.labelControl6.TabIndex = 4;
+            this.labelControl6.Text = "GIẢM GIÁ ĐIỂM";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Location = new System.Drawing.Point(370, 177);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.labelControl7.Size = new System.Drawing.Size(131, 18);
+            this.labelControl7.TabIndex = 4;
+            this.labelControl7.Text = "TỔNG GIẢM GIÁ";
+            // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -571,6 +593,31 @@
             this.labelControl2.Size = new System.Drawing.Size(114, 18);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "TIỀN MÓN ĂN";
+            // 
+            // txtGiamGiaHoaDon
+            // 
+            this.txtGiamGiaHoaDon.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtGiamGiaHoaDon.Location = new System.Drawing.Point(591, 88);
+            this.txtGiamGiaHoaDon.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.txtGiamGiaHoaDon.Name = "txtGiamGiaHoaDon";
+            this.txtGiamGiaHoaDon.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtGiamGiaHoaDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiamGiaHoaDon.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseBackColor = true;
+            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseFont = true;
+            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseForeColor = true;
+            this.txtGiamGiaHoaDon.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtGiamGiaHoaDon.Properties.DisplayFormat.FormatString = "N0";
+            this.txtGiamGiaHoaDon.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtGiamGiaHoaDon.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
+            this.txtGiamGiaHoaDon.Size = new System.Drawing.Size(131, 30);
+            this.txtGiamGiaHoaDon.TabIndex = 23;
+            this.txtGiamGiaHoaDon.EditValueChanged += new System.EventHandler(this.txtGiamGiaHoaDon_EditValueChanged);
             // 
             // txtDiemTichLuy
             // 
@@ -671,6 +718,57 @@
             this.txtKhachCanTra.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
             this.txtKhachCanTra.Size = new System.Drawing.Size(175, 30);
             this.txtKhachCanTra.TabIndex = 23;
+            // 
+            // txtGiamGiaDiem
+            // 
+            this.txtGiamGiaDiem.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtGiamGiaDiem.Enabled = false;
+            this.txtGiamGiaDiem.Location = new System.Drawing.Point(547, 51);
+            this.txtGiamGiaDiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.txtGiamGiaDiem.Name = "txtGiamGiaDiem";
+            this.txtGiamGiaDiem.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtGiamGiaDiem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiamGiaDiem.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.txtGiamGiaDiem.Properties.Appearance.Options.UseBackColor = true;
+            this.txtGiamGiaDiem.Properties.Appearance.Options.UseFont = true;
+            this.txtGiamGiaDiem.Properties.Appearance.Options.UseForeColor = true;
+            this.txtGiamGiaDiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtGiamGiaDiem.Properties.DisplayFormat.FormatString = "N0";
+            this.txtGiamGiaDiem.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtGiamGiaDiem.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
+            this.txtGiamGiaDiem.Size = new System.Drawing.Size(175, 30);
+            this.txtGiamGiaDiem.TabIndex = 23;
+            // 
+            // txtTongGiamGia
+            // 
+            this.txtTongGiamGia.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTongGiamGia.Enabled = false;
+            this.txtTongGiamGia.Location = new System.Drawing.Point(547, 170);
+            this.txtTongGiamGia.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.txtTongGiamGia.Name = "txtTongGiamGia";
+            this.txtTongGiamGia.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.txtTongGiamGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongGiamGia.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.txtTongGiamGia.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTongGiamGia.Properties.Appearance.Options.UseFont = true;
+            this.txtTongGiamGia.Properties.Appearance.Options.UseForeColor = true;
+            this.txtTongGiamGia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTongGiamGia.Properties.DisplayFormat.FormatString = "N0";
+            this.txtTongGiamGia.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtTongGiamGia.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
+            this.txtTongGiamGia.Size = new System.Drawing.Size(175, 30);
+            this.txtTongGiamGia.TabIndex = 23;
+            this.txtTongGiamGia.EditValueChanged += new System.EventHandler(this.txtGiamGia_EditValueChanged);
             // 
             // txtGiamGia
             // 
@@ -1109,102 +1207,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txtGiamGiaDiem
-            // 
-            this.txtGiamGiaDiem.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtGiamGiaDiem.Enabled = false;
-            this.txtGiamGiaDiem.Location = new System.Drawing.Point(547, 51);
-            this.txtGiamGiaDiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.txtGiamGiaDiem.Name = "txtGiamGiaDiem";
-            this.txtGiamGiaDiem.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtGiamGiaDiem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiamGiaDiem.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.txtGiamGiaDiem.Properties.Appearance.Options.UseBackColor = true;
-            this.txtGiamGiaDiem.Properties.Appearance.Options.UseFont = true;
-            this.txtGiamGiaDiem.Properties.Appearance.Options.UseForeColor = true;
-            this.txtGiamGiaDiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtGiamGiaDiem.Properties.DisplayFormat.FormatString = "N0";
-            this.txtGiamGiaDiem.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtGiamGiaDiem.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtGiamGiaDiem.Size = new System.Drawing.Size(175, 30);
-            this.txtGiamGiaDiem.TabIndex = 23;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Location = new System.Drawing.Point(370, 58);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl6.Size = new System.Drawing.Size(128, 18);
-            this.labelControl6.TabIndex = 4;
-            this.labelControl6.Text = "GIẢM GIÁ ĐIỂM";
-            // 
-            // txtTongGiamGia
-            // 
-            this.txtTongGiamGia.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtTongGiamGia.Enabled = false;
-            this.txtTongGiamGia.Location = new System.Drawing.Point(547, 170);
-            this.txtTongGiamGia.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.txtTongGiamGia.Name = "txtTongGiamGia";
-            this.txtTongGiamGia.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtTongGiamGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongGiamGia.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.txtTongGiamGia.Properties.Appearance.Options.UseBackColor = true;
-            this.txtTongGiamGia.Properties.Appearance.Options.UseFont = true;
-            this.txtTongGiamGia.Properties.Appearance.Options.UseForeColor = true;
-            this.txtTongGiamGia.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTongGiamGia.Properties.DisplayFormat.FormatString = "N0";
-            this.txtTongGiamGia.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtTongGiamGia.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtTongGiamGia.Size = new System.Drawing.Size(175, 30);
-            this.txtTongGiamGia.TabIndex = 23;
-            this.txtTongGiamGia.EditValueChanged += new System.EventHandler(this.txtGiamGia_EditValueChanged);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(370, 177);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.labelControl7.Size = new System.Drawing.Size(131, 18);
-            this.labelControl7.TabIndex = 4;
-            this.labelControl7.Text = "TỔNG GIẢM GIÁ";
-            // 
-            // txtGiamGiaHoaDon
-            // 
-            this.txtGiamGiaHoaDon.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtGiamGiaHoaDon.Location = new System.Drawing.Point(591, 88);
-            this.txtGiamGiaHoaDon.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
-            this.txtGiamGiaHoaDon.Name = "txtGiamGiaHoaDon";
-            this.txtGiamGiaHoaDon.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtGiamGiaHoaDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiamGiaHoaDon.Properties.Appearance.ForeColor = System.Drawing.Color.Blue;
-            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseBackColor = true;
-            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseFont = true;
-            this.txtGiamGiaHoaDon.Properties.Appearance.Options.UseForeColor = true;
-            this.txtGiamGiaHoaDon.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtGiamGiaHoaDon.Properties.DisplayFormat.FormatString = "N0";
-            this.txtGiamGiaHoaDon.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtGiamGiaHoaDon.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
-            this.txtGiamGiaHoaDon.Size = new System.Drawing.Size(131, 30);
-            this.txtGiamGiaHoaDon.TabIndex = 23;
-            this.txtGiamGiaHoaDon.EditValueChanged += new System.EventHandler(this.txtGiamGiaHoaDon_EditValueChanged);
-            // 
             // frmBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1237,10 +1239,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbHinhThucGiamGia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaHoaDon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiemTichLuy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTienThoi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhachThanhToan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhachCanTra.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaDiem.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongGiamGia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiamGia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCTHD)).EndInit();
@@ -1257,9 +1262,6 @@
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaDiem.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongGiamGia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiamGiaHoaDon.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

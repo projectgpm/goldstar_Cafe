@@ -108,6 +108,8 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrLabel31 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel32 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
@@ -261,6 +263,8 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel31,
+            this.xrLabel32,
             this.xrLabel1,
             this.xrLabel2,
             this.xrLabel3,
@@ -275,8 +279,35 @@
             this.xrLabel50,
             this.xrLabel49});
             this.ReportHeader.Dpi = 100F;
-            this.ReportHeader.HeightF = 146.1458F;
+            this.ReportHeader.HeightF = 158.6458F;
             this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrLabel31
+            // 
+            this.xrLabel31.Dpi = 100F;
+            this.xrLabel31.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(4.145781F, 143.7709F);
+            this.xrLabel31.Name = "xrLabel31";
+            this.xrLabel31.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel31.SizeF = new System.Drawing.SizeF(103.5418F, 14.66666F);
+            this.xrLabel31.StylePriority.UseFont = false;
+            this.xrLabel31.StylePriority.UseTextAlignment = false;
+            this.xrLabel31.Text = "Khách hàng:";
+            this.xrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel32
+            // 
+            this.xrLabel32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TenKhachHang")});
+            this.xrLabel32.Dpi = 100F;
+            this.xrLabel32.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.xrLabel32.LocationFloat = new DevExpress.Utils.PointFloat(107.6875F, 143.7709F);
+            this.xrLabel32.Name = "xrLabel32";
+            this.xrLabel32.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel32.SizeF = new System.Drawing.SizeF(187.4583F, 14.66666F);
+            this.xrLabel32.StylePriority.UseFont = false;
+            this.xrLabel32.StylePriority.UseTextAlignment = false;
+            this.xrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel1
             // 
@@ -615,7 +646,6 @@
             selectQuery2.Columns.Add(column9);
             selectQuery2.Columns.Add(column10);
             selectQuery2.FilterString = "[CF_ChiTietHoaDon_Temp.TrongLuong] = 0.0";
-            selectQuery2.GroupFilterString = "";
             selectQuery2.Name = "CF_ChiTietHoaDon_Temp_HangHoa";
             relationColumnInfo1.NestedKeyColumn = "ID";
             relationColumnInfo1.ParentKeyColumn = "IDHangHoa";
@@ -676,7 +706,6 @@
             selectQuery3.Columns.Add(column19);
             selectQuery3.Columns.Add(column20);
             selectQuery3.FilterString = "[CF_ChiTietHoaDon_Temp.TrongLuong] > 0.0";
-            selectQuery3.GroupFilterString = "";
             selectQuery3.Name = "CF_ChiTietHoaDon_Temp_NguyenLieu";
             relationColumnInfo3.NestedKeyColumn = "ID";
             relationColumnInfo3.ParentKeyColumn = "IDHangHoa";
@@ -1048,5 +1077,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel25;
         private DevExpress.XtraReports.UI.XRLabel xrLabel26;
         private DevExpress.XtraReports.UI.XRLabel xrLabel27;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel31;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel32;
     }
 }

@@ -63,8 +63,8 @@ namespace QLCafe
             List<DTO_KhachHang> listKhachHang = DAO_KhachHang.Instance.listKhachHang();
             cmbTenKhachHang.Properties.DataSource = listKhachHang;
             cmbTenKhachHang.Properties.ValueMember = "ID";
-            //cmbTenKhachHang.sele = "1";
             cmbTenKhachHang.Properties.DisplayMember = "TenKhachHang";
+
         }
         public void AddTabControl(string name, string ID, FlowLayoutPanel layout)
         {
@@ -253,6 +253,10 @@ namespace QLCafe
             //gridControlCTHD.Refresh();
             gridControlCTHD.DataSource = db;
             lblTenBan.Text = "Tên bàn: " + DAO_BAN.LenTenBan(IDBan);
+            txtDiemTichLuy.Text = "0";
+            txtGiamGiaHoaDon.Text = "0";
+            txtGiamGiaDiem.Text = "0";
+            cmbTenKhachHang.EditValue = "1";
             LoadTongTien();
         }
         public void LoadTongTien()
@@ -467,16 +471,25 @@ namespace QLCafe
         }
         private void txtKhachThanhToan_EditValueChanged(object sender, EventArgs e)
         {
-            float KhachThanhToan = float.Parse(txtKhachThanhToan.EditValue.ToString());
-            float KhachCanThanhToan = float.Parse(txtKhachCanTra.EditValue.ToString());
-            //if (KhachThanhToan >= KhachCanThanhToan)
-            //{
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDBanHT == 0)
+            {
+                MessageBox.Show("Vui lòng chọn bàn để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                float KhachThanhToan = float.Parse(txtKhachThanhToan.EditValue.ToString());
+                float KhachCanThanhToan = float.Parse(txtKhachCanTra.EditValue.ToString());
+                //if (KhachThanhToan >= KhachCanThanhToan)
+                //{
                 txtTienThoi.Text = (KhachThanhToan - KhachCanThanhToan).ToString();
-           // }
-            //else
-            //{
-            //    MessageBox.Show("Khách thanh toán không đủ số tiền?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                // }
+                //else
+                //{
+                //    MessageBox.Show("Khách thanh toán không đủ số tiền?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -609,6 +622,10 @@ namespace QLCafe
                 txtKhachThanhToan.Focus();
                 MessageBox.Show("Khách thanh toán không đủ số tiền.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if(double.Parse(txtTongGiamGia.Text.ToString()) > double.Parse(txtTongTien.Text.ToString()))
+            {
+                MessageBox.Show("Tổng tiền giảm giá phải nhỏ hơn hoặc bằng tiền món ăn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 if (MessageBox.Show("Thanh Toán", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
@@ -673,8 +690,29 @@ namespace QLCafe
                                 double GiamGia = double.Parse(txtGiamGia.Text.ToString());
                                 double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
                                 string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
-                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan, TienThua, KhachCanTra, HinhThucThanhToan, GiamGia) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                                double DiemQuiDoi = float.Parse(txtDiemTichLuy.Text.ToString());
+                                double GiamGiaDiem = float.Parse(txtGiamGiaDiem.Text.ToString());
+                                double GiamGiaHoaDon = float.Parse(txtGiamGia.Text.ToString());
+                                double TongGiamGia = float.Parse(txtTongGiamGia.Text.ToString());
+                                string IDKhachHang = "1";
+                                if (cmbTenKhachHang.EditValue != null)
+                                    IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString()) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
                                 {
+                                    // cập nhật điểm tích lũy
+                                    if (IDKhachHang != "1")
+                                    {
+                                        double DiemCong = KhachCanTra / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
+                                        if (txtDiemTichLuy.Text.ToString() != "0")
+                                        {
+                                            DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
+                                        }
+                                        DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
+                                    }
+                                    txtGiamGiaDiem.Text = "0";
+                                    txtDiemTichLuy.Text = "0";
+                                    txtGiamGiaHoaDon.Text = "0";
+                                    txtTongGiamGia.Text = "0";
                                     txtKhachThanhToan.Text = "0";
                                     txtTienThoi.Text = "0";
                                     cmbHinhThucGiamGia.SelectedIndex = 0;
@@ -725,6 +763,7 @@ namespace QLCafe
                                 }
                             }
                         }
+                        cmbTenKhachHang.EditValue = "1";
                     }
                 }
             }
@@ -987,64 +1026,98 @@ namespace QLCafe
       
         private void txtDiemTichLuy_EditValueChanged(object sender, EventArgs e)
         {
-            if (cmbTenKhachHang.EditValue == "")
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDHoaDonHT == 0)
             {
-                txtDiemTichLuy.Value = 0;
-                MessageBox.Show("Vui lòng chọn khách hàng?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (float.Parse(txtDiemTichLuy.Text) != 0)
+                {
+                    MessageBox.Show("Vui lòng chọn bàn để áp dụng khuyến mãi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                txtDiemTichLuy.Text = "0";
             }
             else
             {
-                float SoDiemCanDoi = float.Parse(txtDiemTichLuy.EditValue.ToString());
-                float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
-                if (SoDiemCanDoi <= DiemTichLuy)
+                if (cmbTenKhachHang.EditValue == "1")
                 {
-                    float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
-                    float TongTien = float.Parse(txtTongTien.EditValue.ToString());
-                    txtGiamGiaDiem.Text = (SoTienDoi * SoDiemCanDoi) + "";
-
-                    LoadTongTien();
+                    if (float.Parse(txtDiemTichLuy.Text) != 0)
+                    {
+                        MessageBox.Show("Khách lẻ không được áp giảm giá theo điểm?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    txtDiemTichLuy.Text = "0";
                 }
                 else
                 {
-                    MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    float SoDiemCanDoi = float.Parse(txtDiemTichLuy.EditValue.ToString());
+                    float DiemTichLuy = DAO_Setting.DiemTichLuy(cmbTenKhachHang.EditValue.ToString());
+                    if (SoDiemCanDoi <= DiemTichLuy)
+                    {
+                        float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
+                        float TongTien = float.Parse(txtTongTien.EditValue.ToString());
+                        txtGiamGiaDiem.Text = (SoTienDoi * SoDiemCanDoi) + "";
+                        LoadTongTien();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         private void txtGiamGiaHoaDon_EditValueChanged(object sender, EventArgs e)
         {
-            if (cmbHinhThucGiamGia.Text == "$")
+            int IDBanHT = IDBan;
+            int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+            if (IDBanHT == 0)
             {
-                double TienGiam = double.Parse(txtGiamGiaHoaDon.Text.ToString());
-                double TongTienCanTra = double.Parse(txtKhachCanTra.Text.ToString());
-                if (TienGiam > TongTienCanTra)
+                MessageBox.Show("Vui lòng chọn bàn để áp dụng khuyến mãi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (cmbHinhThucGiamGia.Text == "$")
                 {
-                    txtGiamGiaHoaDon.Text = "0";
-                    MessageBox.Show("Tiền giảm giá không thể lớn hơn tiền khách cần trả !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
+                    double TienGiam = double.Parse(txtGiamGiaHoaDon.Text.ToString());
+                    // double TongTienCanTra = double.Parse(txtKhachCanTra.Text.ToString());
+                    //if (TienGiam > TongTienCanTra)
+                    //{
+                    //    txtGiamGiaHoaDon.Text = "0";
+                    //    MessageBox.Show("Tiền giảm giá không thể lớn hơn tiền khách cần trả !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    //else
+                    //{
                     txtGiamGia.Text = TienGiam.ToString();
                     LoadTongTien();
+                    //}
+                }
+                else if (cmbHinhThucGiamGia.Text == "%")
+                {
+                    double TyLeGiamGia = double.Parse(txtGiamGiaHoaDon.Text.ToString());
+                    if (TyLeGiamGia <= 100 && TyLeGiamGia >= 0)
+                    {
+                        //xem lại
+                        double TongTien = double.Parse(txtTongTien.Text.ToString()) - double.Parse(txtGiamGiaDiem.Text.ToString());
+                        double TienGiamGia = TongTien * (TyLeGiamGia / (double)100);
+                        txtGiamGia.Text = TienGiamGia.ToString();
+                        LoadTongTien();
+                    }
+                    else
+                    {
+                        txtGiamGiaHoaDon.Text = "0";
+                        MessageBox.Show("Giảm giá theo phần trăm chỉ được nhập trong khoảng 0% đến 100% .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
-            else if (cmbHinhThucGiamGia.Text == "%")
-            {
-                double TyLeGiamGia = double.Parse(txtGiamGiaHoaDon.Text.ToString());
-                if (TyLeGiamGia <= 100 && TyLeGiamGia >= 0)
-                {
-                    //xem lại
-                    double TienGiam = double.Parse(txtGiamGiaHoaDon.Text.ToString());
-                    double TienGiamGia = TienGiam * (TyLeGiamGia / (double)100);
-                    txtGiamGia.Text = TienGiamGia.ToString();
-                    LoadTongTien();
-                }
-                else
-                {
-                    txtGiamGiaHoaDon.Text = "0";
-                    MessageBox.Show("Giảm giá theo phần trăm trong khoảng 0% đến 100% !!.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+        }
+
+        private void cmbHinhThucGiamGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtGiamGiaHoaDon.Text = "0";
+        }
+
+        private void cmbTenKhachHang_EditValueChanged(object sender, EventArgs e)
+        {
+            txtDiemTichLuy.Text = "0";
         }
     }
 }

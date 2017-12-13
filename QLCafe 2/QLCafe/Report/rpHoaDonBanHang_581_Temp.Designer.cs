@@ -96,6 +96,8 @@
             this.xrLabel29 = new DevExpress.XtraReports.UI.XRLabel();
             this.SL = new DevExpress.XtraReports.UI.CalculatedField();
             this.GiamG = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -209,6 +211,8 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel12,
+            this.xrLabel13,
             this.xrLabel22,
             this.xrLabel1,
             this.xrLabel2,
@@ -224,7 +228,7 @@
             this.xrLabel50,
             this.xrLabel49});
             this.ReportHeader.Dpi = 100F;
-            this.ReportHeader.HeightF = 126.7315F;
+            this.ReportHeader.HeightF = 136.9339F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrLabel22
@@ -785,6 +789,33 @@
             this.GiamG.Expression = "[TongTien] + [TienGio] - [KhachCanTra]";
             this.GiamG.Name = "GiamG";
             // 
+            // xrLabel12
+            // 
+            this.xrLabel12.Dpi = 100F;
+            this.xrLabel12.Font = new System.Drawing.Font("Times New Roman", 7F, System.Drawing.FontStyle.Bold);
+            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(3.999982F, 126.7315F);
+            this.xrLabel12.Name = "xrLabel12";
+            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel12.SizeF = new System.Drawing.SizeF(73.04175F, 10.20238F);
+            this.xrLabel12.StylePriority.UseFont = false;
+            this.xrLabel12.StylePriority.UseTextAlignment = false;
+            this.xrLabel12.Text = "Khách hàng:";
+            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel13
+            // 
+            this.xrLabel13.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CF_HoaDon.TenKhachHang")});
+            this.xrLabel13.Dpi = 100F;
+            this.xrLabel13.Font = new System.Drawing.Font("Times New Roman", 7F);
+            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(77.04173F, 126.7315F);
+            this.xrLabel13.Name = "xrLabel13";
+            this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel13.SizeF = new System.Drawing.SizeF(123.619F, 10.20239F);
+            this.xrLabel13.StylePriority.UseFont = false;
+            this.xrLabel13.StylePriority.UseTextAlignment = false;
+            this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
             // rpHoaDonBanHang_581_Temp
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -870,5 +901,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel29;
         private DevExpress.XtraReports.UI.CalculatedField GiamG;
         private DevExpress.XtraReports.Parameters.Parameter strHoaDon;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel12;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel13;
     }
 }
