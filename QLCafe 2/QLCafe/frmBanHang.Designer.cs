@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.btnXoa = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -175,7 +175,7 @@
             // btnXoa
             // 
             this.btnXoa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoa.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoa.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, "", null, null, true)});
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -431,11 +431,11 @@
             this.btnInPhaChe.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInPhaChe.Appearance.Options.UseFont = true;
             this.btnInPhaChe.Image = ((System.Drawing.Image)(resources.GetObject("btnInPhaChe.Image")));
-            this.btnInPhaChe.Location = new System.Drawing.Point(54, 215);
+            this.btnInPhaChe.Location = new System.Drawing.Point(38, 215);
             this.btnInPhaChe.Name = "btnInPhaChe";
-            this.btnInPhaChe.Size = new System.Drawing.Size(137, 36);
+            this.btnInPhaChe.Size = new System.Drawing.Size(163, 36);
             this.btnInPhaChe.TabIndex = 3;
-            this.btnInPhaChe.Text = "In Pha Chế";
+            this.btnInPhaChe.Text = "In Pha Chế (0)";
             this.btnInPhaChe.Click += new System.EventHandler(this.btnInPhaChe_Click);
             // 
             // btnInTam
@@ -443,11 +443,11 @@
             this.btnInTam.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInTam.Appearance.Options.UseFont = true;
             this.btnInTam.Image = ((System.Drawing.Image)(resources.GetObject("btnInTam.Image")));
-            this.btnInTam.Location = new System.Drawing.Point(211, 215);
+            this.btnInTam.Location = new System.Drawing.Point(221, 215);
             this.btnInTam.Name = "btnInTam";
-            this.btnInTam.Size = new System.Drawing.Size(137, 36);
+            this.btnInTam.Size = new System.Drawing.Size(158, 36);
             this.btnInTam.TabIndex = 3;
-            this.btnInTam.Text = "In Tạm";
+            this.btnInTam.Text = "In Tạm (0)";
             this.btnInTam.Click += new System.EventHandler(this.btnInTam_Click);
             // 
             // cmbHinhThucGiamGia
@@ -475,7 +475,7 @@
             this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToan.Appearance.Options.UseFont = true;
             this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
-            this.btnThanhToan.Location = new System.Drawing.Point(523, 215);
+            this.btnThanhToan.Location = new System.Drawing.Point(546, 215);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(135, 36);
             this.btnThanhToan.TabIndex = 3;
@@ -507,7 +507,7 @@
             this.btnTachHoaDon.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTachHoaDon.Appearance.Options.UseFont = true;
             this.btnTachHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnTachHoaDon.Image")));
-            this.btnTachHoaDon.Location = new System.Drawing.Point(375, 215);
+            this.btnTachHoaDon.Location = new System.Drawing.Point(399, 215);
             this.btnTachHoaDon.Name = "btnTachHoaDon";
             this.btnTachHoaDon.Size = new System.Drawing.Size(125, 36);
             this.btnTachHoaDon.TabIndex = 3;
@@ -984,7 +984,7 @@
             // 
             this.btnXoaMonAn.AutoHeight = false;
             this.btnXoaMonAn.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoaMonAn.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnXoaMonAn.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject6, "", null, null, true)});
             this.btnXoaMonAn.Name = "btnXoaMonAn";
             this.btnXoaMonAn.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnXoaMonAn.Click += new System.EventHandler(this.btnXoaMonAn_Click);

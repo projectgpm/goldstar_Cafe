@@ -99,6 +99,30 @@ namespace QLCafe.DAO
             }
             return 0;
         }
+        public static int LaySoInTamTinh(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT LanIn FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["LanIn"].ToString());
+            }
+            return 0;
+        }
+        public static int LaySoInTamPhaChe(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT LanIn2 FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["LanIn2"].ToString());
+            }
+            return 0;
+        }
         public static int LayIDKhachHang(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT IDKhachHang FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);

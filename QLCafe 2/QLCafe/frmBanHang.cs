@@ -270,6 +270,8 @@ namespace QLCafe
             txtGiamGiaDiem.Text = DAO_HoaDon.LayGiamGiaDiem(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGiaHoaDon.Text = DAO_HoaDon.LayGiamGiaHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtTongGiamGia.Text = DAO_HoaDon.LayTongGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
+            btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
         }
         private void btn_Click(object sender, EventArgs e)
         {
