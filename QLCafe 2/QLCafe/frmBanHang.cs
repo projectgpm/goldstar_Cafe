@@ -268,8 +268,10 @@ namespace QLCafe
             cmbTenKhachHang.EditValue = DAO_HoaDon.LayIDKhachHang(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtDiemTichLuy.Text = DAO_HoaDon.LayDiemQuyDoiHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGiaDiem.Text = DAO_HoaDon.LayGiamGiaDiem(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtGiamGiaHoaDon.Text = DAO_HoaDon.LayGiamGiaHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtGiamGia.Text = DAO_HoaDon.LayGiamGiaHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtGiamGiaHoaDon.Text = DAO_HoaDon.LayTyLeGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtTongGiamGia.Text = DAO_HoaDon.LayTongGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            //cmbHinhThucGiamGia.Text = DAO_HoaDon.LayHinhThucGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
             btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
         }
@@ -696,14 +698,15 @@ namespace QLCafe
                                 double GiamGia = double.Parse(txtGiamGia.Text.ToString());
                                 double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
                                 string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
-                                double DiemQuiDoi = float.Parse(txtDiemTichLuy.Text.ToString());
-                                double GiamGiaDiem = float.Parse(txtGiamGiaDiem.Text.ToString());
-                                double GiamGiaHoaDon = float.Parse(txtGiamGia.Text.ToString());
-                                double TongGiamGia = float.Parse(txtTongGiamGia.Text.ToString());
+                                double DiemQuiDoi = double.Parse(txtDiemTichLuy.Text.ToString());
+                                double GiamGiaDiem = double.Parse(txtGiamGiaDiem.Text.ToString());
+                                double GiamGiaHoaDon = double.Parse(txtGiamGia.Text.ToString());
+                                double TongGiamGia = double.Parse(txtTongGiamGia.Text.ToString());
+                                double TyLeGiamGia = double.Parse(txtGiamGiaHoaDon.Text.ToString());
                                 string IDKhachHang = "1";
                                 if (cmbTenKhachHang.EditValue != null)
                                     IDKhachHang = cmbTenKhachHang.EditValue.ToString();
-                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString()) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString(), TyLeGiamGia.ToString()) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
                                 {
                                     // cập nhật điểm tích lũy
                                     if (IDKhachHang != "1")
@@ -769,6 +772,7 @@ namespace QLCafe
                                 }
                             }
                         }
+                        KhachHang();
                         cmbTenKhachHang.EditValue = "1";
                     }
                 }
@@ -880,14 +884,15 @@ namespace QLCafe
                             double GiamGia = double.Parse(txtGiamGia.Text.ToString());
                             double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
                             string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
-                            double DiemQuiDoi = float.Parse(txtDiemTichLuy.Text.ToString());
-                            double GiamGiaDiem = float.Parse(txtGiamGiaDiem.Text.ToString());
-                            double GiamGiaHoaDon = float.Parse(txtGiamGia.Text.ToString());
-                            double TongGiamGia = float.Parse(txtTongGiamGia.Text.ToString());
+                            double DiemQuiDoi = double.Parse(txtDiemTichLuy.Text.ToString());
+                            double GiamGiaDiem = double.Parse(txtGiamGiaDiem.Text.ToString());
+                            double GiamGiaHoaDon = double.Parse(txtGiamGia.Text.ToString());
+                            double TongGiamGia = double.Parse(txtTongGiamGia.Text.ToString());
+                            double TyLeGiamGia = double.Parse(txtGiamGiaHoaDon.Text.ToString());
                             string IDKhachHang = "1";
                             if (cmbTenKhachHang.EditValue != null)
                                 IDKhachHang = cmbTenKhachHang.EditValue.ToString();
-                            DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinhTemp(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString());
+                            DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinhTemp(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString(), TyLeGiamGia.ToString());
 
                         //}
 

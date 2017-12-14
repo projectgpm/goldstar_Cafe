@@ -245,7 +245,6 @@ D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.exe
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.pdb
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\bin\Debug\QLCafe.exe
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\bin\Debug\QLCafe.pdb
-D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.csprojResolveAssemblyReference.cache
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmBanHang.resources
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmCauHinhHeThong.resources
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmCauHinhMayIn.resources
