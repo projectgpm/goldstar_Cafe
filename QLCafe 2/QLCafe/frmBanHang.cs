@@ -261,11 +261,15 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
-            txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
+            //txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
             txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-            
+            cmbTenKhachHang.EditValue = DAO_HoaDon.LayIDKhachHang(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtDiemTichLuy.Text = DAO_HoaDon.LayDiemQuyDoiHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtGiamGiaDiem.Text = DAO_HoaDon.LayGiamGiaDiem(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtGiamGiaHoaDon.Text = DAO_HoaDon.LayGiamGiaHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+            txtTongGiamGia.Text = DAO_HoaDon.LayTongGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -864,6 +868,27 @@ namespace QLCafe
                     }
                     else
                     {
+                        //int IDBanHT = IDBan;
+                        //int IDHoaDonHT = DAO_BanHang.IDHoaDon(IDBanHT);
+                        //if (IDBanHT != 0 && DAO_BanHang.IDHoaDon(IDBanHT) != 0)
+                        //{
+                            int IDNhanVien = frmDangNhap.NguoiDung.Id;
+                            double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
+                            double TienThua = double.Parse(txtTienThoi.Text.ToString());
+                            double GiamGia = double.Parse(txtGiamGia.Text.ToString());
+                            double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
+                            string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
+                            double DiemQuiDoi = float.Parse(txtDiemTichLuy.Text.ToString());
+                            double GiamGiaDiem = float.Parse(txtGiamGiaDiem.Text.ToString());
+                            double GiamGiaHoaDon = float.Parse(txtGiamGia.Text.ToString());
+                            double TongGiamGia = float.Parse(txtTongGiamGia.Text.ToString());
+                            string IDKhachHang = "1";
+                            if (cmbTenKhachHang.EditValue != null)
+                                IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                            DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinhTemp(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString());
+
+                        //}
+
                         // In 1 máy in bán hàng.
                         DAO_ConnectSQL connect = new DAO_ConnectSQL();
                         DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
@@ -1055,7 +1080,10 @@ namespace QLCafe
                         float SoTienDoi = DAO_Setting.LayDiemQuyDoiTien();
                         float TongTien = float.Parse(txtTongTien.EditValue.ToString());
                         txtGiamGiaDiem.Text = (SoTienDoi * SoDiemCanDoi) + "";
-                        LoadTongTien();
+                        txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
+                        txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                     }
                     else
                     {
@@ -1087,7 +1115,10 @@ namespace QLCafe
                     //else
                     //{
                     txtGiamGia.Text = TienGiam.ToString();
-                    LoadTongTien();
+                    txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
+                    txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+                    txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                    txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                     //}
                 }
                 else if (cmbHinhThucGiamGia.Text == "%")
@@ -1099,7 +1130,10 @@ namespace QLCafe
                         double TongTien = double.Parse(txtTongTien.Text.ToString()) - double.Parse(txtGiamGiaDiem.Text.ToString());
                         double TienGiamGia = TongTien * (TyLeGiamGia / (double)100);
                         txtGiamGia.Text = TienGiamGia.ToString();
-                        LoadTongTien();
+                        txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
+                        txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
+                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                     }
                     else
                     {

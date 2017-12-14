@@ -51,6 +51,66 @@ namespace QLCafe.DAO
             }
             return 0;
         }
+        public static float LayDiemQuyDoiHoaDon(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT DiemQuiDoi FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["DiemQuiDoi"].ToString());
+            }
+            return 0;
+        }
+        public static float LayGiamGiaDiem(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT GiamGiaDiem FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["GiamGiaDiem"].ToString());
+            }
+            return 0;
+        }
+        public static float LayGiamGiaHoaDon(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT GiamGiaHoaDon FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["GiamGiaHoaDon"].ToString());
+            }
+            return 0;
+        }
+        public static float LayTongGiamGia(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT TongGiamGia FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return float.Parse(dr["TongGiamGia"].ToString());
+            }
+            return 0;
+        }
+        public static int LayIDKhachHang(int IDHoaDon)
+        {
+            string sTruyVan = string.Format(@"SELECT IDKhachHang FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            if (data.Rows.Count > 0)
+            {
+                DataRow dr = data.Rows[0];
+                return Int32.Parse(dr["IDKhachHang"].ToString());
+            }
+            return 1;
+        }
         public static float TongTienGio(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT TienGio FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);

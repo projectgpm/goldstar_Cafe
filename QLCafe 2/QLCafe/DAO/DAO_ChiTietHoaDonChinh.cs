@@ -56,7 +56,11 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TongGiamGia] = '{12}',[GiamGiaHoaDon] = '{11}',[GiamGiaDiem] = '{10}',[DiemQuiDoi] = '{9}',[IDKhachHang] = '{8}',[GiamGia] = '{7}',[HinhThucGiamGia] = N'{6}',[KhachCanTra] = '{5}',[TrangThai] = 1, [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, KhachCanTra, HinhThucGiamGia, GiamGia, IDKhachHang, DiemQuiDoi, GiamGiaDiem, GiamGiaHoaDon, TongGiamGia);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-
+        public static bool CapNhatHoaDonChinhTemp(int IDHoaDon, int IDBan, int IDNhanVien, string KhachThanhToan, string TienThua, string KhachCanTra, string HinhThucGiamGia, string GiamGia, string IDKhachHang, string DiemQuiDoi, string GiamGiaDiem, string GiamGiaHoaDon, string TongGiamGia)
+        {
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TongGiamGia] = '{12}',[GiamGiaHoaDon] = '{11}',[GiamGiaDiem] = '{10}',[DiemQuiDoi] = '{9}',[IDKhachHang] = '{8}',[GiamGia] = '{7}',[HinhThucGiamGia] = N'{6}',[KhachCanTra] = '{5}', [GioRa] = getdate(), [IDNhanVien] = {0},[KhachThanhToan] = '{1}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", IDNhanVien, KhachThanhToan, TienThua, IDHoaDon, IDBan, KhachCanTra, HinhThucGiamGia, GiamGia, IDKhachHang, DiemQuiDoi, GiamGiaDiem, GiamGiaHoaDon, TongGiamGia);
+            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
+        }
         public static bool CapNhatChiTietGio_ID(int IDHoaDon, int IDBan, int ID)
         {
             string sTruyVan = string.Format(@"UPDATE [CF_ChiTietGio] SET [ThanhToan] = 1, [IDHoaDon] = {0} WHERE [TrangThai] = 1  AND [IDBan] = {1} AND [ID] = {2}", IDHoaDon, IDBan, ID);
