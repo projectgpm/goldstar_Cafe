@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="BKKiemKho.aspx.cs" Inherits="BanHang.BKKiemKho" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="BCTongHop.aspx.cs" Inherits="BanHang.BCTongHop" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+    
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
         <Items>
-            <dx:LayoutGroup Caption="Bảng kê kiểm kho" ColCount="4" HorizontalAlign="Center">
+            <dx:LayoutGroup Caption="Báo cáo tổng hợp" ColCount="4" HorizontalAlign="Center">
                 <Items>
                     <dx:LayoutItem Caption="Theo năm">
                         <LayoutItemNestedControlCollection>
@@ -59,7 +60,7 @@
                     <dx:LayoutItem Caption="">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                                <dx:ASPxButton ID="btnXem" runat="server" Text="In" Width="100%" OnClick="btnXem_Click">
+                                <dx:ASPxButton ID="btnXemBaoCao" runat="server" Text="In" Width="100%" OnClick="btnXemBaoCao_Click">
                                     <Image IconID="print_printarea_16x16">
                                     </Image>
                                 </dx:ASPxButton>
@@ -76,8 +77,8 @@
         <SettingsItems HorizontalAlign="Center" />
     </dx:ASPxFormLayout>
     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
-         Height="600px" FooterText="Thông tin kiểm kho"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1000px"
+         Height="550px" FooterText="Thông tin tổng hợp"
         HeaderText="Thông tin chi tiết" ClientInstanceName="popup" EnableHierarchyRecreation="True">
     </dx:ASPxPopupControl>
 </asp:Content>

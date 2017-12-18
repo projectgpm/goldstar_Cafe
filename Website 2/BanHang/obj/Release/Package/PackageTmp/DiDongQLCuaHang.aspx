@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 </head>
 <body>
@@ -12,9 +14,79 @@
     
         <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
             <Items>
-                <dx:LayoutGroup Caption="Thời gian" ColCount="2">
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxButton ID="btnLamMoi" runat="server" OnClick="btnLamMoi_Click" Text="Làm mới dữ liệu">
+                                <Image IconID="actions_reset2_16x16">
+                                </Image>
+                            </dx:ASPxButton>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutGroup Caption="Hiện tại">
                     <Items>
-                        <dx:LayoutItem Caption="Từ ngày" Width="100%">
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxGridView ID="girdHienTai" runat="server" AutoGenerateColumns="False" Width="100%">
+                                        <SettingsPager Mode="ShowAllRecords">
+                                        </SettingsPager>
+                                        <SettingsCommandButton>
+                                            <ShowAdaptiveDetailButton ButtonType="Image">
+                                            </ShowAdaptiveDetailButton>
+                                            <HideAdaptiveDetailButton ButtonType="Image">
+                                            </HideAdaptiveDetailButton>
+                                        </SettingsCommandButton>
+                                        <Columns>
+                                            <dx:GridViewDataTextColumn Caption="Thống kê" FieldName="ThongKe" ShowInCustomizationForm="True" VisibleIndex="0">
+                                                <CellStyle Wrap="False">
+                                                </CellStyle>
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Nội dung" FieldName="NoiDung" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                <CellStyle Wrap="False">
+                                                </CellStyle>
+                                            </dx:GridViewDataTextColumn>
+                                        </Columns>
+                                    </dx:ASPxGridView>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Thống kê">
+                    <Items>
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxGridView ID="girdThongKe" runat="server" AutoGenerateColumns="False" Width="100%">
+                                        <SettingsPager Mode="ShowAllRecords">
+                                        </SettingsPager>
+                                        <SettingsCommandButton>
+                                            <ShowAdaptiveDetailButton ButtonType="Image">
+                                            </ShowAdaptiveDetailButton>
+                                            <HideAdaptiveDetailButton ButtonType="Image">
+                                            </HideAdaptiveDetailButton>
+                                        </SettingsCommandButton>
+                                        <Columns>
+                                            <dx:GridViewDataTextColumn Caption="Thống kê" FieldName="ThongKe" ShowInCustomizationForm="True" VisibleIndex="0">
+                                                <CellStyle Wrap="False">
+                                                </CellStyle>
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Nội dung" FieldName="NoiDung" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                <CellStyle Wrap="False">
+                                                </CellStyle>
+                                            </dx:GridViewDataTextColumn>
+                                        </Columns>
+                                    </dx:ASPxGridView>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Tùy chọn">
+                    <Items>
+                        <dx:LayoutItem Caption="">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
                                     <dx:ASPxDateEdit ID="txtNgayBD" runat="server" DisplayFormatString="dd/MM/yyyy">
@@ -22,7 +94,7 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                        <dx:LayoutItem Caption="Đến ngày:" Width="100%">
+                        <dx:LayoutItem Caption="">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
                                     <dx:ASPxDateEdit ID="txtNgayKT" runat="server" DisplayFormatString="dd/MM/yyyy">
@@ -30,17 +102,7 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                        <dx:LayoutItem Caption="" Width="100%">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxButton ID="ASPxFormLayout1_E1" runat="server" OnClick="ASPxFormLayout1_E1_Click" Text="Hôm nay">
-                                        <Image IconID="actions_reset2_16x16">
-                                        </Image>
-                                    </dx:ASPxButton>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                        <dx:LayoutItem Caption="" Width="100%">
+                        <dx:LayoutItem Caption="">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
                                     <dx:ASPxButton ID="btnXem" runat="server" OnClick="btnXem_Click" Text="Lịch sử doanh thu">
@@ -50,14 +112,10 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                    </Items>
-                </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="">
-                    <Items>
-                        <dx:LayoutItem Caption="" Width="100%">
+                        <dx:LayoutItem Caption="">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxGridView ID="gridNoiDung" runat="server" AutoGenerateColumns="False" Width="100%">
+                                        <dx:ASPxGridView ID="girdTuyChon" runat="server" AutoGenerateColumns="False" Width="100%">
                                         <SettingsPager Mode="ShowAllRecords">
                                         </SettingsPager>
                                         <SettingsCommandButton>
@@ -79,6 +137,7 @@
                     </Items>
                 </dx:LayoutGroup>
             </Items>
+            <SettingsItems HorizontalAlign="Center" />
         </dx:ASPxFormLayout>
     
     </div>

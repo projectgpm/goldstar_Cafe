@@ -94,3 +94,26 @@ C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\
 C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll.licenses
 C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.dll
 C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.pdb
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\bin\BanHang.dll
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\bin\BanHang.pdb
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBaoCaoTongHop.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCBanHang.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCBanHang_W_In.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCNhapHang.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCTienGio.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCXuatKhac.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKBanHang.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKBanHang_W_In.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKKetCa.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKKiemKho.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKNhapHang.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKTienGio.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKXuatKhac.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBKXuatNhapChiTiet.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpHoaDonBanHang.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpTonKhoBanDau.resources
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.csproj.GenerateResource.Cache
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.dll.licenses
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.dll
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.pdb

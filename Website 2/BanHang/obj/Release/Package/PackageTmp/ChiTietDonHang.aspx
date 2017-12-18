@@ -49,11 +49,11 @@
 <SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa"></SettingsText>
 <Columns>
     
-    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng(g)" FieldName="SoLuong" VisibleIndex="4">
-        <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
+    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="SoLuong" VisibleIndex="4">
+        <propertiesspinedit DisplayFormatString="g"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Đơn Giá" FieldName="DonGia" VisibleIndex="5" ReadOnly="True">
-        <propertiesspinedit DisplayFormatString="{0:#,# VND}"></propertiesspinedit>
+        <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataTextColumn Caption="Mã Nguyên Liệu" FieldName="MaNguyenLieu" VisibleIndex="0" ReadOnly="True">
     </dx:GridViewDataTextColumn>

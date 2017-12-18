@@ -68,7 +68,7 @@
                                             <PropertiesComboBox DataSourceID="SqlDVT" TextField="TenDonViTinh" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng (g)" FieldName="TrongLuong" VisibleIndex="3">
+                                        <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="3">
                                             <PropertiesSpinEdit DisplayFormatString="g">
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>

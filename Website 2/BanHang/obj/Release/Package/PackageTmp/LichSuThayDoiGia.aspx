@@ -51,7 +51,7 @@
                                         <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-                                    <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHangHoa" VisibleIndex="1">
+                                    <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="1">
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="NgayThayDoi" VisibleIndex="8">
                                         <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm:ss tt">
@@ -61,7 +61,7 @@
                                         <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-                                    <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" VisibleIndex="2">
+                                    <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHang" VisibleIndex="2">
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataTextColumn Caption="Đơn Vị Tính" FieldName="TenDonViTinh" VisibleIndex="3">
                                     </dx:GridViewDataTextColumn>

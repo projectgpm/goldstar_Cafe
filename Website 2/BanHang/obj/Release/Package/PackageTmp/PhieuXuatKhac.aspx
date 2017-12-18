@@ -75,7 +75,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Tồn Kho(g)">
+                    <dx:LayoutItem Caption="Tồn Kho">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxSpinEdit ID="txtTonKho"  Width="100%" runat="server" Enabled="False">
@@ -93,7 +93,7 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Số Lượng(g)">
+                    <dx:LayoutItem Caption="Số Lượng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
                                 <dx:ASPxSpinEdit ID="txtSoLuong" Width="100%" runat="server">

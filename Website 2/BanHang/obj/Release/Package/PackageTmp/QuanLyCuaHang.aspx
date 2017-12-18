@@ -23,30 +23,38 @@
        
                                     <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin danh mục thuế" Title="DANH SÁCH LỊCH SỬ TRUY CẬP HỆ THỐNG" EmptyDataRow="Danh sách trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
                                     <Columns>
-                                        <dx:GridViewDataTextColumn Caption="Tổng số bàn sử dụng" FieldName="SoBanSuDung" VisibleIndex="1">
+                                        <dx:GridViewDataTextColumn Caption="Bàn sử dụng" FieldName="SoBanSuDung" VisibleIndex="0">
                                             <PropertiesTextEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#} bàn">
                                             </PropertiesTextEdit>
                                             <CellStyle HorizontalAlign="Center">
                                             </CellStyle>
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Tổng số khách hiện tại" FieldName="SoLuongKhach" VisibleIndex="0">
-                                            <PropertiesTextEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#} khách">
-                                            </PropertiesTextEdit>
-                                            <CellStyle HorizontalAlign="Center">
-                                            </CellStyle>
-                                        </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền hiện tại (Ngày)" FieldName="TongTienHienTai" ShowInCustomizationForm="True" VisibleIndex="4">
+                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền" FieldName="TienHienTai" ShowInCustomizationForm="True" VisibleIndex="4">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                             <CellStyle HorizontalAlign="Center">
                                             </CellStyle>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền hàng (Ngày)" FieldName="TongTienHang" ShowInCustomizationForm="True" VisibleIndex="3">
+                                        <dx:GridViewDataSpinEditColumn Caption="Lợi nhuận" FieldName="LoiNhuan" ShowInCustomizationForm="True" VisibleIndex="5">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
+                                            <CellStyle HorizontalAlign="Center">
+                                            </CellStyle>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Tổng tiền giờ (Ngày)" FieldName="TongTienGio" ShowInCustomizationForm="True" VisibleIndex="2">
+                                        <dx:GridViewDataSpinEditColumn Caption="Giảm giá" FieldName="GiamGia" ShowInCustomizationForm="True" VisibleIndex="3">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
+                                            </PropertiesSpinEdit>
+                                            <CellStyle HorizontalAlign="Center">
+                                            </CellStyle>
+                                        </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Tiền hàng" FieldName="TongVon" ShowInCustomizationForm="True" VisibleIndex="1">
+                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
+                                            </PropertiesSpinEdit>
+                                            <CellStyle HorizontalAlign="Center">
+                                            </CellStyle>
+                                        </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Doanh thu" FieldName="DoanhThu" ShowInCustomizationForm="True" VisibleIndex="2">
+                                            <PropertiesSpinEdit DisplayFormatString="{0:N0} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
                                     </Columns>

@@ -10,7 +10,7 @@
 </head>
 <body>
    <hgroup>
-  <h1>HỆ THỐNG QUẢN LÝ NHÀ HÀNG - CAFE - BÁN HÀNG LẺ
+  <h1>HỆ THỐNG QUẢN LÝ BÁN HÀNG
   </h1>
   <h3>Đăng Nhập Hệ Thống</h3>
 </hgroup>

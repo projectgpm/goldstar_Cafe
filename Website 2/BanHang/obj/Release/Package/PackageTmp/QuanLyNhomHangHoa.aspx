@@ -49,6 +49,8 @@
                                             </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Tên Nhóm" Name="TenDonViTinh">
                                             </dx:GridViewColumnLayoutItem>
+                                            <dx:GridViewColumnLayoutItem ColumnName="Máy In">
+                                            </dx:GridViewColumnLayoutItem>
                                             <dx:GridViewColumnLayoutItem ColumnName="Ghi Chú">
                                             </dx:GridViewColumnLayoutItem>
                                             <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
@@ -82,8 +84,15 @@
                                             <propertiesdateedit displayformatstring="dd/MM/yyyy"></propertiesdateedit>
                                             <settings autofiltercondition="Contains" />
                                         </dx:GridViewDataDateColumn>
-                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="4">
+                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="2">
                                         </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataComboBoxColumn Caption="Máy In" FieldName="IDMayIn" ShowInCustomizationForm="True" VisibleIndex="4">
+                                            <PropertiesComboBox DataSourceID="SqlMayIn" TextField="TenMayIn" ValueField="ID">
+                                                <ValidationSettings SetFocusOnError="True">
+                                                    <RequiredField IsRequired="True" />
+                                                </ValidationSettings>
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">
@@ -94,6 +103,7 @@
                                         </TitlePanel>
                                     </Styles>
                                 </dx:ASPxGridView>
+                                <asp:SqlDataSource ID="SqlMayIn" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenMayIn] FROM [CF_MayIn]"></asp:SqlDataSource>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
