@@ -714,9 +714,9 @@ namespace QLCafe
                                         double DiemCong = KhachCanTra / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString());
                                         if (txtDiemTichLuy.Text.ToString() != "0")
                                         {
-                                            DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, double.Parse(txtDiemTichLuy.Text.ToString()));
+                                            DAO_ChiTietHoaDonChinh.TruDiemTichLuy(IDKhachHang, txtDiemTichLuy.Text.ToString());
                                         }
-                                        DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong);
+                                        DAO_ChiTietHoaDonChinh.CongDiemTichLuy(IDKhachHang, DiemCong.ToString());
                                     }
                                     txtGiamGiaDiem.Text = "0";
                                     txtDiemTichLuy.Text = "0";
@@ -1094,6 +1094,7 @@ namespace QLCafe
                     }
                     else
                     {
+                        txtDiemTichLuy.Text = "0";
                         MessageBox.Show("Điểm tích lũy của khách hàng không đủ?", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
