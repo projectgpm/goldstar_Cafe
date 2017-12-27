@@ -168,6 +168,22 @@ namespace QLCafe
 
         }
 
+        private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DangNhap();
+            }
+        }
+
+        private void txtTenDangNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DangNhap();
+            }
+        }
+
 
 
 

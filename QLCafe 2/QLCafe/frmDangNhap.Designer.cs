@@ -88,6 +88,7 @@
             this.txtTenDangNhap.Properties.Appearance.Options.UseFont = true;
             this.txtTenDangNhap.Size = new System.Drawing.Size(237, 22);
             this.txtTenDangNhap.TabIndex = 3;
+            this.txtTenDangNhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenDangNhap_KeyDown);
             // 
             // txtMatKhau
             // 
@@ -99,6 +100,7 @@
             this.txtMatKhau.Properties.UseSystemPasswordChar = true;
             this.txtMatKhau.Size = new System.Drawing.Size(237, 22);
             this.txtMatKhau.TabIndex = 3;
+            this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatKhau_KeyDown);
             // 
             // linkDoiMatKhau
             // 
