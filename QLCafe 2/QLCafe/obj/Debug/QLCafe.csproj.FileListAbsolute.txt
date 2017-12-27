@@ -272,3 +272,4 @@ D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.csproj.GenerateRes
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.exe.licenses
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmThemKhachHang.resources
 D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.csprojResolveAssemblyReference.cache
+D:\GPMSoffware\goldstar_Cafe\QLCafe 2\QLCafe\obj\Debug\QLCafe.frmCapNhatDiem.resources

@@ -70,6 +70,7 @@ namespace QLCafe
                         //DataTable dt = BUS_DangNhap.ThongTin(TenDangNhap, MatKhau);
                         DataTable thungan = DAO_DangNhap.ThuNgan(TenDangNhap, MatKhau);
                         DataTable phache = DAO_DangNhap.PhaChe(TenDangNhap, MatKhau);
+                        DataTable capnhatdiem = DAO_DangNhap.CapNhatDiem(TenDangNhap, MatKhau);
                         if (thungan.Rows.Count > 0)
                         {
                             DataRow dr = thungan.Rows[0];
@@ -90,9 +91,28 @@ namespace QLCafe
                             this.Show();
 
                         }
-                        if (phache.Rows.Count > 0)
+                        //if (phache.Rows.Count > 0)
+                        //{
+                        //    DataRow dr = phache.Rows[0];
+                        //    NguoiDung = new DTO_DangNhap();
+                        //    NguoiDung.Id = Int32.Parse(dr["ID"].ToString());
+                        //    NguoiDung.Tendangnhap = dr["TenDangNhap"].ToString();
+                        //    NguoiDung.Idchinhanh = dr["IDChiNhanh"].ToString();
+                        //    NguoiDung.Manhanvien = dr["MaNhanVien"].ToString();
+                        //    NguoiDung.Tennguoidung = dr["TenNguoiDung"].ToString();
+                        //    NguoiDung.Sdt = dr["SDT"].ToString();
+                        //    NguoiDung.IDNhomNguoiDung = Int32.Parse(dr["IDNhomNguoiDung"].ToString());
+                        //    DAO_Setting.ThemLichSuTruyCap(frmDangNhap.NguoiDung.Id, frmDangNhap.NguoiDung.IDNhomNguoiDung, frmDangNhap.NguoiDung.Idchinhanh, "Đăng Nhập", "Đăng Nhập Pha Chế");
+                        //    frmPhaChe fr = new frmPhaChe();
+                        //    txtMatKhau.Text = "";
+                        //    txtMatKhau.Select();
+                        //    this.Hide();
+                        //    fr.ShowDialog();
+                        //    this.Show();
+                        //}
+                        if (capnhatdiem.Rows.Count > 0)
                         {
-                            DataRow dr = phache.Rows[0];
+                            DataRow dr = capnhatdiem.Rows[0];
                             NguoiDung = new DTO_DangNhap();
                             NguoiDung.Id = Int32.Parse(dr["ID"].ToString());
                             NguoiDung.Tendangnhap = dr["TenDangNhap"].ToString();
@@ -102,7 +122,7 @@ namespace QLCafe
                             NguoiDung.Sdt = dr["SDT"].ToString();
                             NguoiDung.IDNhomNguoiDung = Int32.Parse(dr["IDNhomNguoiDung"].ToString());
                             DAO_Setting.ThemLichSuTruyCap(frmDangNhap.NguoiDung.Id, frmDangNhap.NguoiDung.IDNhomNguoiDung, frmDangNhap.NguoiDung.Idchinhanh, "Đăng Nhập", "Đăng Nhập Pha Chế");
-                            frmPhaChe fr = new frmPhaChe();
+                            frmCapNhatDiem fr = new frmCapNhatDiem();
                             txtMatKhau.Text = "";
                             txtMatKhau.Select();
                             this.Hide();

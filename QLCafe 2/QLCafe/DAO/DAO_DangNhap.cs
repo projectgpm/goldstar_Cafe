@@ -52,6 +52,13 @@ namespace QLCafe.DAO
             data = DataProvider.TruyVanLayDuLieu(sTryVan);
             return data;
         }
+        public static DataTable CapNhatDiem(string TenDangNhap, string MatKhau)
+        {
+            string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}' AND IDNhomNguoiDung = 5", TenDangNhap, MatKhau);
+            DataTable data = new DataTable();
+            data = DataProvider.TruyVanLayDuLieu(sTryVan);
+            return data;
+        }
         public static DataTable ThongTinNhanVien(string TenDangNhap, string MatKhau)
         {
             string sTryVan = string.Format(@"SELECT * FROM [CF_NguoiDung] WHERE [TenDangNhap] = N'{0}' AND [DAXOA] = 0 AND [MatKhau] =N'{1}'", TenDangNhap, MatKhau);
