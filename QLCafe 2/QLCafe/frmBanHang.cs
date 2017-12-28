@@ -914,7 +914,6 @@ namespace QLCafe
                                 sqlDataSource.Connection.ConnectionString += connect.ConnectString();
                                 rp.Parameters["ID"].Value = IDHoaDonHT;
                                 rp.Parameters["ID"].Visible = false;
-
                                 rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
                                 rp.Parameters["strHoaDon"].Visible = false;
                                 rp.Print(NamePrinter);
@@ -926,7 +925,6 @@ namespace QLCafe
                                 sqlDataSource.Connection.ConnectionString += connect.ConnectString();
                                 rp.Parameters["ID"].Value = IDHoaDonHT;
                                 rp.Parameters["ID"].Visible = false;
-
                                 rp.Parameters["strHoaDon"].Value = "HÓA ĐƠN TẠM TÍNH " + SoLanIn;
                                 rp.Parameters["strHoaDon"].Visible = false;
                                 rp.Print(NamePrinter);
