@@ -381,7 +381,7 @@ namespace QLCafe
                 DanhSachBan();
                 //gridControlCTHD.DataSource = null;
                 //gridControlCTHD.Refresh();
-                MessageBox.Show("Chuyển bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+              //  MessageBox.Show("Chuyển bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -436,7 +436,7 @@ namespace QLCafe
                 TinhTongTien(IDHoaDonB);
                 gridControlCTHD.DataSource = null;
                 gridControlCTHD.Refresh();
-                MessageBox.Show("Tách bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+              //  MessageBox.Show("Tách bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -472,7 +472,7 @@ namespace QLCafe
                 TinhTongTien(IDHoaDon);
                 gridControlCTHD.DataSource = null;
                 gridControlCTHD.Refresh();
-                MessageBox.Show("Gộp bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+              //  MessageBox.Show("Gộp bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
