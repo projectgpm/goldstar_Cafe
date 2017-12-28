@@ -268,7 +268,7 @@
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(169, 45);
             this.simpleButton3.TabIndex = 13;
-            this.simpleButton3.Text = "Thoát Ứng Dụng";
+            this.simpleButton3.Text = "Thoát ứng dụng";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // cmbTrangThai
@@ -318,7 +318,7 @@
             this.btnCapNhatDiem.Name = "btnCapNhatDiem";
             this.btnCapNhatDiem.Size = new System.Drawing.Size(124, 45);
             this.btnCapNhatDiem.TabIndex = 13;
-            this.btnCapNhatDiem.Text = "Cập Nhật";
+            this.btnCapNhatDiem.Text = "Cập nhật";
             this.btnCapNhatDiem.Click += new System.EventHandler(this.btnCapNhatDiem_Click);
             // 
             // labelControl4
@@ -455,6 +455,7 @@
             this.Name = "frmCapNhatDiem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MÀN HÌNH CẬP NHẬT ĐIỂM TÍCH LŨY";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCapNhatDiem_FormClosing);
             this.Load += new System.EventHandler(this.frmCapNhatDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
