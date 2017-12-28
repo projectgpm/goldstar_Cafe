@@ -129,6 +129,7 @@
     <Content Include="BKXuatNhapChiTiet.aspx" />
     <Content Include="BKXuatNhapChiTiet_In.aspx" />
     <Content Include="CapNhatCongNo.aspx" />
+    <Content Include="CauHinhHeThong.aspx" />
     <Content Include="ChiNhanh.aspx" />
     <Content Include="ChiTietBangGia.aspx" />
     <Content Include="ChiTietCongNo.aspx" />
@@ -481,6 +482,13 @@
     </Compile>
     <Compile Include="CapNhatCongNo.aspx.designer.cs">
       <DependentUpon>CapNhatCongNo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CauHinhHeThong.aspx.cs">
+      <DependentUpon>CauHinhHeThong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CauHinhHeThong.aspx.designer.cs">
+      <DependentUpon>CauHinhHeThong.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChiNhanh.aspx.cs">
       <DependentUpon>ChiNhanh.aspx</DependentUpon>

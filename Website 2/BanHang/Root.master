@@ -160,6 +160,8 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="lich_su_thay_doi_gia" Text="Lịch sử thay đổi giá" NavigateUrl="LichSuThayDoiGia.aspx">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Cấu Hình Hệ Thống" NavigateUrl="CauHinhHeThong.aspx" Text="Cấu Hình Hệ Thống">
+                                                            </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/hethong.png">
                                                         </LargeImage>

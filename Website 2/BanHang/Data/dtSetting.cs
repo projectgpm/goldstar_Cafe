@@ -13,6 +13,57 @@ namespace BanHang.Data
 {
     public class dtSetting
     {
+
+        public void CapNhatCauHinh(string CongTy, string DiaChi, string SDT, string SoTienTichLuy, string SoTienQuyDoi)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [Setting] SET [CongTy] = @CongTy,[DiaChi] = @DiaChi ,[SDT] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@CongTy", CongTy);
+                        myCommand.Parameters.AddWithValue("@DiaChi", DiaChi);
+                        myCommand.Parameters.AddWithValue("@SDT", SDT);
+                        myCommand.Parameters.AddWithValue("@SoTienTichLuy", SoTienTichLuy);
+                        myCommand.Parameters.AddWithValue("@SoTienQuyDoi", SoTienQuyDoi);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    cmdText = "UPDATE [GPM_Setting] SET [TenCongTy] = @CongTy,[DiaChi] = @DiaChi ,[DienThoai] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@CongTy", CongTy);
+                        myCommand.Parameters.AddWithValue("@DiaChi", DiaChi);
+                        myCommand.Parameters.AddWithValue("@SDT", SDT);
+                        myCommand.Parameters.AddWithValue("@SoTienTichLuy", SoTienTichLuy);
+                        myCommand.Parameters.AddWithValue("@SoTienQuyDoi", SoTienQuyDoi);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public DataTable CauHinhHeThong()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT * FROM [Setting] Where ID = 1";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public static string LayMaKho(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
