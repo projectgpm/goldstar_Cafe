@@ -124,6 +124,7 @@
     <Compile Include="DAO\DAO_PhaChe.cs" />
     <Compile Include="DAO\DAO_Setting.cs" />
     <Compile Include="DAO\DAO_TestKetNoi.cs" />
+    <Compile Include="DAO\DAO_TimKiem.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\NativeMethods.cs" />
     <Compile Include="DTO\DTO_BAN.cs" />

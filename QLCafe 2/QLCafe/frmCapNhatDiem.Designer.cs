@@ -43,9 +43,24 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cmbLoaiHoaDon = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnTim = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLamMoi = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtDiem = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTongTien = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
+            this.cmbTenKhachHang = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbTrangThai = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,7 +68,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHoaDon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbLoaiHoaDon.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiem.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTenKhachHang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTrangThai.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl3
@@ -117,7 +136,7 @@
             // 
             this.panel1.Controls.Add(this.txtTenDangNhap);
             this.panel1.Controls.Add(this.lblNgay);
-            this.panel1.Location = new System.Drawing.Point(0, 460);
+            this.panel1.Location = new System.Drawing.Point(0, 238);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(740, 35);
             this.panel1.TabIndex = 8;
@@ -143,16 +162,16 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Location = new System.Drawing.Point(40, 133);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Location = new System.Drawing.Point(21, 133);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(102, 19);
+            this.labelControl1.Size = new System.Drawing.Size(96, 19);
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "Mã Hóa Đơn: ";
             // 
             // txtMaHoaDon
             // 
-            this.txtMaHoaDon.Location = new System.Drawing.Point(148, 130);
+            this.txtMaHoaDon.Location = new System.Drawing.Point(129, 130);
             this.txtMaHoaDon.Name = "txtMaHoaDon";
             this.txtMaHoaDon.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaHoaDon.Properties.Appearance.Options.UseFont = true;
@@ -161,16 +180,17 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Location = new System.Drawing.Point(360, 133);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Location = new System.Drawing.Point(341, 133);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(112, 19);
+            this.labelControl2.Size = new System.Drawing.Size(105, 19);
             this.labelControl2.TabIndex = 9;
             this.labelControl2.Text = "Loại Hóa Đơn: ";
             // 
             // cmbLoaiHoaDon
             // 
-            this.cmbLoaiHoaDon.Location = new System.Drawing.Point(484, 130);
+            this.cmbLoaiHoaDon.EditValue = "Bán Hàng Lẻ";
+            this.cmbLoaiHoaDon.Location = new System.Drawing.Point(465, 130);
             this.cmbLoaiHoaDon.Name = "cmbLoaiHoaDon";
             this.cmbLoaiHoaDon.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLoaiHoaDon.Properties.Appearance.Options.UseFont = true;
@@ -179,14 +199,24 @@
             this.cmbLoaiHoaDon.Properties.Items.AddRange(new object[] {
             "Bán Hàng Lẻ",
             "Bán Vé",
-            "Nhà Hàng - CaFe - Công Viên Nước"});
+            "Nhà Hàng - CaFe"});
             this.cmbLoaiHoaDon.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbLoaiHoaDon.Size = new System.Drawing.Size(166, 26);
             this.cmbLoaiHoaDon.TabIndex = 11;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textEdit1);
+            this.groupBox1.Controls.Add(this.cmbTenKhachHang);
+            this.groupBox1.Controls.Add(this.simpleButton3);
+            this.groupBox1.Controls.Add(this.cmbTrangThai);
+            this.groupBox1.Controls.Add(this.btnLamMoi);
+            this.groupBox1.Controls.Add(this.labelControl5);
+            this.groupBox1.Controls.Add(this.simpleButton1);
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.txtDiem);
+            this.groupBox1.Controls.Add(this.labelControl4);
+            this.groupBox1.Controls.Add(this.labelControl7);
+            this.groupBox1.Controls.Add(this.txtTongTien);
             this.groupBox1.Controls.Add(this.labelControl3);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 175);
@@ -196,46 +226,211 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // btnTim
+            // simpleButton3
             // 
-            this.btnTim.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTim.Appearance.Options.UseFont = true;
-            this.btnTim.Location = new System.Drawing.Point(657, 129);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(47, 30);
-            this.btnTim.TabIndex = 13;
-            this.btnTim.Text = "Tìm";
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(426, 168);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(169, 45);
+            this.simpleButton3.TabIndex = 13;
+            this.simpleButton3.Text = "Thoát Ứng Dụng";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.Appearance.Options.UseFont = true;
+            this.btnLamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.Image")));
+            this.btnLamMoi.Location = new System.Drawing.Point(292, 168);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(109, 45);
+            this.btnLamMoi.TabIndex = 13;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(148, 168);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(124, 45);
+            this.simpleButton1.TabIndex = 13;
+            this.simpleButton1.Text = "Cập Nhật";
+            // 
+            // txtDiem
+            // 
+            this.txtDiem.Enabled = false;
+            this.txtDiem.Location = new System.Drawing.Point(484, 35);
+            this.txtDiem.Name = "txtDiem";
+            this.txtDiem.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiem.Properties.Appearance.Options.UseFont = true;
+            this.txtDiem.Size = new System.Drawing.Size(194, 26);
+            this.txtDiem.TabIndex = 10;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Location = new System.Drawing.Point(376, 38);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(65, 19);
+            this.labelControl4.TabIndex = 9;
+            this.labelControl4.Text = "Số Điểm:";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Location = new System.Drawing.Point(354, 95);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(116, 19);
+            this.labelControl7.TabIndex = 9;
+            this.labelControl7.Text = "Tên Khách Hàng:";
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Enabled = false;
+            this.txtTongTien.Location = new System.Drawing.Point(148, 35);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongTien.Properties.Appearance.Options.UseFont = true;
+            this.txtTongTien.Size = new System.Drawing.Size(194, 26);
+            this.txtTongTien.TabIndex = 10;
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Location = new System.Drawing.Point(40, 38);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(84, 19);
+            this.labelControl3.Size = new System.Drawing.Size(76, 19);
             this.labelControl3.TabIndex = 9;
             this.labelControl3.Text = "Tổng Tiền: ";
             // 
-            // textEdit1
+            // btnTimKiem
             // 
-            this.textEdit1.Location = new System.Drawing.Point(148, 35);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(194, 26);
-            this.textEdit1.TabIndex = 10;
+            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Appearance.Options.UseFont = true;
+            this.btnTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Image")));
+            this.btnTimKiem.Location = new System.Drawing.Point(642, 121);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(83, 40);
+            this.btnTimKiem.TabIndex = 13;
+            this.btnTimKiem.Text = "Tìm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // cmbTenKhachHang
+            // 
+            this.cmbTenKhachHang.EditValue = "1";
+            this.cmbTenKhachHang.Location = new System.Drawing.Point(484, 92);
+            this.cmbTenKhachHang.Name = "cmbTenKhachHang";
+            this.cmbTenKhachHang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTenKhachHang.Properties.Appearance.Options.UseFont = true;
+            this.cmbTenKhachHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTenKhachHang.Properties.NullText = "";
+            this.cmbTenKhachHang.Properties.PopupFormSize = new System.Drawing.Size(700, 400);
+            this.cmbTenKhachHang.Properties.View = this.gridLookUpEdit1View;
+            this.cmbTenKhachHang.Size = new System.Drawing.Size(194, 26);
+            this.cmbTenKhachHang.TabIndex = 26;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15});
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
+            this.gridLookUpEdit1View.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Mã Khách Hàng";
+            this.gridColumn11.FieldName = "MaKhachHang";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Tên Khách Hàng";
+            this.gridColumn12.FieldName = "TenKhachHang";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Điện Thoại";
+            this.gridColumn13.FieldName = "DienThoai";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 2;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "CMND";
+            this.gridColumn14.FieldName = "CMND";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 3;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Điểm Tích Lũy";
+            this.gridColumn15.FieldName = "DiemTichLuy";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 4;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl5.Location = new System.Drawing.Point(37, 96);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(79, 19);
+            this.labelControl5.TabIndex = 9;
+            this.labelControl5.Text = "Trạng Thái: ";
+            // 
+            // cmbTrangThai
+            // 
+            this.cmbTrangThai.EditValue = "Chưa sử dụng";
+            this.cmbTrangThai.Enabled = false;
+            this.cmbTrangThai.Location = new System.Drawing.Point(148, 93);
+            this.cmbTrangThai.Name = "cmbTrangThai";
+            this.cmbTrangThai.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTrangThai.Properties.Appearance.Options.UseFont = true;
+            this.cmbTrangThai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTrangThai.Properties.Items.AddRange(new object[] {
+            "Chưa sử dụng",
+            "Đã sử dụng"});
+            this.cmbTrangThai.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbTrangThai.Size = new System.Drawing.Size(194, 26);
+            this.cmbTrangThai.TabIndex = 11;
             // 
             // frmCapNhatDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 497);
-            this.Controls.Add(this.btnTim);
+            this.ClientSize = new System.Drawing.Size(739, 447);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbLoaiHoaDon);
             this.Controls.Add(this.txtMaHoaDon);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelControl3);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -256,7 +451,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbLoaiHoaDon.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiem.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTenKhachHang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTrangThai.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,8 +477,23 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.ComboBoxEdit cmbLoaiHoaDon;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DevExpress.XtraEditors.SimpleButton btnTim;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.SimpleButton btnTimKiem;
+        private DevExpress.XtraEditors.TextEdit txtTongTien;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit txtDiem;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnLamMoi;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.GridLookUpEdit cmbTenKhachHang;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbTrangThai;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }
