@@ -275,7 +275,8 @@ namespace QLCafe
             btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
             btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
             //txtKhachCanTra.ToolTip = "1";
-            txtKhachCanTra.ToolTip = (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+            txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+            btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
         }
         private void btn_Click(object sender, EventArgs e)
         {
