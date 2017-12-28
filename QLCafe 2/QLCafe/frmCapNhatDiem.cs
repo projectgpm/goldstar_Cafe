@@ -254,15 +254,15 @@ namespace QLCafe
                 int Length = txtMaHoaDon.Text.Length;
                 switch (Length)
                 {
-                    case 14:
+                    case 12:
                         cmbLoaiHoaDon.SelectedIndex = 2;
                         TimKiem();
                         break;
-                    case 15:
+                    case 13:
                         cmbLoaiHoaDon.SelectedIndex = 0;
                         TimKiem();
                         break;
-                    case 16:
+                    case 11:
                         cmbLoaiHoaDon.SelectedIndex = 1;
                         TimKiem();
                         break;

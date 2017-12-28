@@ -57,7 +57,7 @@ namespace QLCafe.DAO
             string CompuMaHoaDon = @"SELECT 
                                           REPLICATE('0', 5 - LEN((count(ID) + 1))) + 
                                           CAST((count(ID) + 1) AS varchar) + '-' + 
-                                          FORMAT(GETDATE() , 'ddMMyyyy')
+                                          FORMAT(GETDATE() , 'ddMMyy')
                                           as 'Mã Hóa Đơn'  
                                           from CF_HoaDon 
                                           where MaHoaDon is not null AND DATEDIFF(dd,NgayBan, GetDate()) = 0";
@@ -114,7 +114,7 @@ namespace QLCafe.DAO
             string CompuMaHoaDon = @"SELECT 
                                           REPLICATE('0', 5 - LEN((count(ID) + 1))) + 
                                           CAST((count(ID) + 1) AS varchar) + '-' + 
-                                          FORMAT(GETDATE() , 'ddMMyyyy')
+                                          FORMAT(GETDATE() , 'ddMMyy')
                                           as 'Mã Hóa Đơn'  
                                           from CF_HoaDon 
                                           where MaHoaDon is not null  AND DATEDIFF(dd,NgayBan, GetDate()) = 0";
