@@ -160,28 +160,31 @@ namespace QLCafe
                 {
                     if (cmbTenKhachHang.EditValue != "1")
                     {
-                        string MaHoaDon = txtMaHoaDon.Text.ToString();
-                        string IDKhachHang = cmbTenKhachHang.EditValue.ToString();
-                        int LoaiHoaDon = cmbLoaiHoaDon.SelectedIndex;
-                        switch (LoaiHoaDon)
+                        if (MessageBox.Show("Xác nhận", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                         {
-                            case 0: // bán hàng lẻ
-                                CapNhatDiemBanHangLe(IDKhachHang, MaHoaDon);
-                                KhachHang();
-                                LamMoi();
-                                break;
-                            case 1:// bán vé
-                                CapNhatDiemBanVe(IDKhachHang, MaHoaDon);
-                                KhachHang();
-                                LamMoi();
-                                break;
-                            case 2://cafe
-                                CapNhatDiemCaFe(IDKhachHang, MaHoaDon);
-                                KhachHang();
-                                LamMoi();
-                                break;
-                            default:
-                                break;
+                            string MaHoaDon = txtMaHoaDon.Text.ToString();
+                            string IDKhachHang = cmbTenKhachHang.EditValue.ToString();
+                            int LoaiHoaDon = cmbLoaiHoaDon.SelectedIndex;
+                            switch (LoaiHoaDon)
+                            {
+                                case 0: // bán hàng lẻ
+                                    CapNhatDiemBanHangLe(IDKhachHang, MaHoaDon);
+                                    KhachHang();
+                                    LamMoi();
+                                    break;
+                                case 1:// bán vé
+                                    CapNhatDiemBanVe(IDKhachHang, MaHoaDon);
+                                    KhachHang();
+                                    LamMoi();
+                                    break;
+                                case 2://cafe
+                                    CapNhatDiemCaFe(IDKhachHang, MaHoaDon);
+                                    KhachHang();
+                                    LamMoi();
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                     else
