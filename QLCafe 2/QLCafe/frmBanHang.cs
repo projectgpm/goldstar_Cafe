@@ -1092,6 +1092,8 @@ namespace QLCafe
                         txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
                         txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                         txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     }
                     else
                     {
@@ -1128,6 +1130,8 @@ namespace QLCafe
                     txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
                     txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                     txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                    txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                    btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     //}
                 }
                 else if (cmbHinhThucGiamGia.Text == "%")
@@ -1143,6 +1147,8 @@ namespace QLCafe
                         txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
                         txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
                         txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     }
                     else
                     {
