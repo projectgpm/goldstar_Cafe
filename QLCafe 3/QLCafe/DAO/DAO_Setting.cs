@@ -105,12 +105,10 @@ namespace QLCafe.DAO
         }
         public static int setKeyCode(string Key, string user)
         {
-            string sx = GetHardDiskSerialNo();
-
-            string strAddress = sx + "GPM";
-
             if (Key.CompareTo("gpm686970") == 0)
             {
+                string sx = GetHardDiskSerialNo();
+                string strAddress = sx + "GPM2017";
                 string sha1Address = GetSHA1HashData(strAddress);
                 string sTruyVan = string.Format(@"INSERT INTO  [CF_KeyCode] (GetKey,NgayKichHoat) VALUES('{0}',getdate())", sha1Address);
                 DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
@@ -133,16 +131,18 @@ namespace QLCafe.DAO
         }
         public static string GetHardDiskSerialNo()
         {
-            string drive = "C";
-            ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + drive + ":\"");
-            disk.Get();
-            return disk["VolumeSerialNumber"].ToString();
+
+
+            return System.Environment.MachineName;
+            //string drive = "C";
+            //ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + drive + ":\"");
+            //disk.Get();
+            //return disk["VolumeSerialNumber"].ToString();
         }
         public static int getKeyCode()
         {
             string sx = GetHardDiskSerialNo();
-            string strAddress = sx + "GPM";
-
+            string strAddress = sx + "GPM2017";
             string sha1Address = GetSHA1HashData(strAddress);
             if (getData_Setting(sha1Address) == 1)
                 return 1;

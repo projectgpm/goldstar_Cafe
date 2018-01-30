@@ -57,8 +57,8 @@ namespace QLCafe
         }
         public void DangNhap()
         {
-            if (DAO_Setting.TestDuKieu() != "")
-            {
+            //if (DAO_Setting.TestDuKieu() != "")
+            //{
                 // kiểm tra key
                 if (DAO_Setting.getKeyCode() != -1)
                 {
@@ -143,15 +143,15 @@ namespace QLCafe
                         fr.ShowDialog();
                     }
                 }
-            }
-            else
-            {
-                if (MessageBox.Show("Phần mềm chưa được kích hoạt bản quyền.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.OK)
-                {
-                    frmKichHoat fr = new frmKichHoat();
-                    fr.ShowDialog();
-                }
-            }
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show("Phần mềm chưa được kích hoạt bản quyền.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        frmKichHoat fr = new frmKichHoat();
+            //        fr.ShowDialog();
+            //    }
+            //}
         }
        
         private void btnThoat_Click(object sender, EventArgs e)

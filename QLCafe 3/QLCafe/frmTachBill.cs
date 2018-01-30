@@ -404,7 +404,7 @@ namespace QLCafe
                             //DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
                             //int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
                             string sx = DAO_Setting.GetHardDiskSerialNo();
-                            string strAddress = sx + "GPM";
+                            string strAddress = sx + "GPM2017";
                             string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
 
                             string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);

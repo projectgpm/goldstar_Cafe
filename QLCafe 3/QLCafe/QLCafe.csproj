@@ -412,8 +412,11 @@
     <Content Include="bin\Debug\QLCafe.pdb" />
     <Content Include="bin\Debug\QLCafe.vshost.exe" />
     <Content Include="bin\Debug\ServerSql.txt" />
+    <Content Include="images\cafe.jpg" />
     <Content Include="images\gpm.ico" />
     <Content Include="images\gpm.png" />
+    <Content Include="images\logo gpm khong bong_small_150.png" />
+    <Content Include="images\logo.png" />
     <Content Include="obj\Debug\QLCafe.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\QLCafe.exe" />
     <Content Include="obj\Debug\qlcafe.exe.licenses" />

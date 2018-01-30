@@ -60,16 +60,27 @@ namespace QLCafe
             bool KT = BUS_TestKetNoiServer.DanhSachKetNoi();
             if (KT == true)
             {
-                string sx = DAO_Setting.GetHardDiskSerialNo();
-                string strAddress = sx + "GPM";
-                string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
-                DAO_Setting.CapNhatMayInBill(cmbMayIn.Text.ToString(),cmbKhoGiay.Text.ToString(),sha1Address);
-                MessageBox.Show("Kết nối tới server thành công.", "Thông báo");
-                this.Close();
+                if (DAO_Setting.getKeyCode() != -1)
+                {
+                    string sx = DAO_Setting.GetHardDiskSerialNo();
+                    string strAddress = sx + "GPM2017";
+                    string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
+                    DAO_Setting.CapNhatMayInBill(cmbMayIn.Text.ToString(), cmbKhoGiay.Text.ToString(), sha1Address);
+                    MessageBox.Show("Kết nối tới server thành công.", "Thông báo");
+                    this.Close();
+                }
+                else
+                {
+                    if (MessageBox.Show("Phần mềm chưa được kích hoạt bản quyền.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        frmKichHoat fr = new frmKichHoat();
+                        fr.ShowDialog();
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Kết nối tới server không thành công.", "Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Kết nối tới server không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void DanhSachMayIn()

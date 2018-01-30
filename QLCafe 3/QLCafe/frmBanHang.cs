@@ -164,7 +164,9 @@ namespace QLCafe
                         {
                             btn.ToolTip = dr1.TenKhachHang + Environment.NewLine + dr1.DienThoai + Environment.NewLine + dr1.GioDat;
                         }
-                        btn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Skin;
+                       
+                        btn.ImageToTextAlignment = ImageAlignToText.TopCenter;
+                        btn.Image = System.Drawing.Image.FromFile("cafe4.png");
                         layout.Controls.Add(btn);
                         break;
                     case 2:
@@ -172,7 +174,9 @@ namespace QLCafe
                         btn.StyleController = null;
                         btn.LookAndFeel.UseDefaultLookAndFeel = false;
                         btn.ToolTip = "Bàn có người";
-                        btn.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Office2003;
+                        btn.Appearance.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                        btn.ImageToTextAlignment = ImageAlignToText.TopCenter;
+                        btn.Image = System.Drawing.Image.FromFile("cafe3.png");
                         layout.Controls.Add(btn);
                         break;
                 }
@@ -198,6 +202,7 @@ namespace QLCafe
        
         public void HienThiHoaDon(int IDBan)
         {
+            gridView1.ViewCaption = "DANH SÁCH MÓN ĂN (" + DAO_BAN.LenTenBan(IDBan) + ")";
             List<DTO_DanhSachMenu> MonAnThuong = DAO_DanhSachMonAn.Instance.GetMonAnThuong(DAO_BanHang.IDHoaDon(IDBan));
             List<DTO_DanhSachMenu> MonAnTuChon = DAO_DanhSachMonAn.Instance.GetMonAnTuChon(DAO_BanHang.IDHoaDon(IDBan));
             DataTable db = new DataTable();
@@ -740,7 +745,7 @@ namespace QLCafe
                                         //DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
                                         //int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
                                         string sx = DAO_Setting.GetHardDiskSerialNo();
-                                        string strAddress = sx + "GPM";
+                                        string strAddress = sx + "GPM2017";
                                         string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
                                         string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
                                         if (NamePrinter != "")
@@ -904,7 +909,7 @@ namespace QLCafe
                         DAO_Setting.CapNhatBillInTemp(IDHoaDonHT + "");
                         int SoLanIn = DAO_Setting.LaySoLanInTemp(IDHoaDonHT + "");
                         string sx = DAO_Setting.GetHardDiskSerialNo();
-                        string strAddress = sx + "GPM";
+                        string strAddress = sx + "GPM2017";
                         string sha1Address = DAO_Setting.GetSHA1HashData(strAddress);
                         string NamePrinter = DAO_Setting.LayTenMayInBill(sha1Address);
                         if (NamePrinter != "")
