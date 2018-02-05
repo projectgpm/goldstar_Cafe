@@ -14,16 +14,17 @@ namespace BanHang.Data
     public class dtSetting
     {
 
-        public void CapNhatCauHinh(string CongTy, string DiaChi, string SDT, string SoTienTichLuy, string SoTienQuyDoi)
+        public void CapNhatCauHinh(string CongTy, string DiaChi, string SDT, string SoTienTichLuy, string SoTienQuyDoi, string PhuThuCaFe)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [Setting] SET [CongTy] = @CongTy,[DiaChi] = @DiaChi ,[SDT] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
+                    string cmdText = "UPDATE [Setting] SET [PhuThuCaFe] = @PhuThuCaFe,[CongTy] = @CongTy,[DiaChi] = @DiaChi ,[SDT] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@PhuThuCaFe", PhuThuCaFe);
                         myCommand.Parameters.AddWithValue("@CongTy", CongTy);
                         myCommand.Parameters.AddWithValue("@DiaChi", DiaChi);
                         myCommand.Parameters.AddWithValue("@SDT", SDT);

@@ -29,9 +29,10 @@ namespace BanHang
             string DiaChi = e.NewValues["DiaChi"].ToString();
             string SDT = e.NewValues["SDT"].ToString();
             string SoTienTichLuy = e.NewValues["SoTienTichLuy"].ToString();
+            string PhuThuCaFe = e.NewValues["PhuThuCaFe"].ToString();
             string SoTienQuyDoi = e.NewValues["SoTienQuyDoi"].ToString();
             data = new dtSetting();
-            data.CapNhatCauHinh(CongTy, DiaChi, SDT, SoTienTichLuy, SoTienQuyDoi);
+            data.CapNhatCauHinh(CongTy, DiaChi, SDT, SoTienTichLuy, SoTienQuyDoi, PhuThuCaFe);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
             LoadGrid();

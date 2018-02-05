@@ -82,11 +82,15 @@
                                                 </ValidationSettings>
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Điểm Qui Đổi Tiền" FieldName="SoTienQuyDoi" VisibleIndex="5">
+                                        <dx:GridViewDataSpinEditColumn Caption="Điểm Qui Đổi Tiền" FieldName="SoTienQuyDoi" VisibleIndex="4">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" NumberFormat="Custom">
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />
                                                 </ValidationSettings>
+                                            </PropertiesSpinEdit>
+                                        </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Phụ Thu Thanh Toán" FieldName="PhuThuCaFe" VisibleIndex="5">
+                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" NumberFormat="Custom">
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
                                     </Columns>
