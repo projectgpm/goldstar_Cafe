@@ -125,7 +125,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/30/2018 11:22:22</publishTime>
     </File>
     <File Include="bin/BanHang.dll">
-      <publishTime>02/05/2018 08:22:20</publishTime>
+      <publishTime>02/05/2018 17:23:52</publishTime>
     </File>
     <File Include="bin/BanHang.dll.r16">
       <publishTime>01/30/2018 11:22:22</publishTime>
@@ -200,7 +200,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/30/2018 11:22:22</publishTime>
     </File>
     <File Include="CauHinhHeThong.aspx">
-      <publishTime>02/05/2018 08:19:32</publishTime>
+      <publishTime>02/05/2018 14:17:49</publishTime>
     </File>
     <File Include="ChietKhauTheoHangHoa.aspx">
       <publishTime>06/24/2017 09:11:07</publishTime>
@@ -599,7 +599,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/30/2018 11:22:22</publishTime>
     </File>
     <File Include="QuanLyCuaHang.aspx">
-      <publishTime>01/30/2018 11:22:22</publishTime>
+      <publishTime>02/05/2018 15:21:25</publishTime>
     </File>
     <File Include="QuanLyGio.aspx">
       <publishTime>01/30/2018 11:22:22</publishTime>
@@ -620,7 +620,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/30/2018 11:22:22</publishTime>
     </File>
     <File Include="Root.master">
-      <publishTime>01/30/2018 11:22:22</publishTime>
+      <publishTime>02/05/2018 16:59:17</publishTime>
     </File>
     <File Include="ThanhPho.aspx">
       <publishTime>06/15/2017 09:09:57</publishTime>
@@ -671,7 +671,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2017 09:58:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/05/2018 08:22:21</publishTime>
+      <publishTime>02/05/2018 17:23:53</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -387,7 +387,6 @@ D:\GPMSoffware\QLCaFe_Chua\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.csproj
 D:\GPMSoffware\QLCaFe_Chua\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll.licenses
 D:\GPMSoffware\QLCaFe_Chua\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.dll
 D:\GPMSoffware\QLCaFe_Chua\WebSiteQLNhaHangCaFe\BanHang\obj\Debug\BanHang.pdb
-D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Debug\BanHang.csprojResolveAssemblyReference.cache
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Debug\BanHang.Report.rpBCBanHang.resources
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Debug\BanHang.Report.rpBCBanHang_W_In.resources
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Debug\BanHang.Report.rpBCNhapHang.resources

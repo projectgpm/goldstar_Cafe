@@ -37,16 +37,6 @@
                                         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
                                     </SettingsPopup>
                                     <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN VỊ TÍNH" EmptyDataRow="Danh sách trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
-                                    <EditFormLayoutProperties>
-                                        <Items>
-                                            <dx:GridViewColumnLayoutItem ColumnName="Mã ĐVT">
-                                            </dx:GridViewColumnLayoutItem>
-                                            <dx:GridViewColumnLayoutItem ColumnName="Tên Đơn Vị Tính" Name="TenDonViTinh">
-                                            </dx:GridViewColumnLayoutItem>
-                                            <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
-                                            </dx:EditModeCommandLayoutItem>
-                                        </Items>
-                                    </EditFormLayoutProperties>
                                     <Columns>
                                         <dx:GridViewDataTextColumn Caption="Công Ty" FieldName="CongTy" VisibleIndex="0">
                                             <PropertiesTextEdit>
@@ -89,10 +79,32 @@
                                                 </ValidationSettings>
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Phụ Thu Thanh Toán" FieldName="PhuThuCaFe" VisibleIndex="5">
+                                        <dx:GridViewDataSpinEditColumn Caption="Phụ Thu ($)" FieldName="PhuThuCaFe" VisibleIndex="5">
                                             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" NumberFormat="Custom">
+                                                <ValidationSettings SetFocusOnError="True">
+                                                    <RequiredField IsRequired="True" />
+                                                </ValidationSettings>
                                             </PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Phụ Thu (%)" FieldName="PhuThuCaFe_PhanTram" VisibleIndex="6">
+                                            <PropertiesSpinEdit DisplayFormatString="g">
+                                                <ValidationSettings SetFocusOnError="True">
+                                                    <RequiredField IsRequired="True" />
+                                                </ValidationSettings>
+                                            </PropertiesSpinEdit>
+                                        </dx:GridViewDataSpinEditColumn>
+                                        <dx:GridViewDataComboBoxColumn Caption="Phụ Thu Áp Dụng" FieldName="PhuThuCaFe_ApDung" VisibleIndex="7">
+                                            <PropertiesComboBox>
+                                                <Items>
+                                                    <dx:ListEditItem Text="Phụ Thu ($)" Value="0" />
+                                                    <dx:ListEditItem Text="Phụ Thu (%)" Value="1" />
+                                                    <dx:ListEditItem Text="Không áp dụng" Value="2" />
+                                                </Items>
+                                                <ValidationSettings SetFocusOnError="True">
+                                                    <RequiredField IsRequired="True" />
+                                                </ValidationSettings>
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">

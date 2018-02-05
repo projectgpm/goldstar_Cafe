@@ -96,7 +96,6 @@ C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\
 C:\Users\vmquy\Desktop\Code\QuanNhauVuonThuong\WebSiteQLNhaHangCaFe\BanHang\obj\Release\BanHang.pdb
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\bin\BanHang.dll
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\bin\BanHang.pdb
-D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBaoCaoTongHop.resources
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCBanHang.resources
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.Report.rpBCBanHang_W_In.resources
@@ -117,3 +116,4 @@ D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.csproj.Genera
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.dll.licenses
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.dll
 D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.pdb
+D:\GPMSoffware\goldstar_Cafe\Website 2\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
