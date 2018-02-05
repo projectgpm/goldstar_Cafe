@@ -205,9 +205,9 @@ namespace QLCafe.DAO
                
             }
         }
-        public static bool CapNhatTongTien(int ID, string TongTien, string KhachCanTra, string TienGio)
+        public static bool CapNhatTongTien(int ID, string TongTien, string KhachCanTra, string TienGio, string TienPhuThu)
         {
-            string sTruyVan = string.Format(@"UPDATE CF_HoaDon SET [TongTien] = {0}, [KhachCanTra] =  {1}, [TienGio] = {3} WHERE [ID] = {2} ", TongTien, KhachCanTra, ID, TienGio);
+            string sTruyVan = string.Format(@"UPDATE CF_HoaDon SET [TienPhuThu] = '{4}', [TongTien] = {0}, [KhachCanTra] =  {1}, [TienGio] = {3} WHERE [ID] = {2} ", TongTien, KhachCanTra, ID, TienGio, TienPhuThu);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
     }

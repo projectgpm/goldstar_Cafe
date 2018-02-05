@@ -119,6 +119,7 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.menuBan = new DevExpress.XtraBars.PopupMenu(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblTienPhuThu = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnXoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -183,6 +184,7 @@
             // 
             this.panelControl1.Controls.Add(this.panelControl2);
             this.panelControl1.Controls.Add(this.gridControlCTHD);
+            this.panelControl1.Controls.Add(this.lblTienPhuThu);
             this.panelControl1.Controls.Add(this.lblNgay);
             this.panelControl1.Controls.Add(this.lblTenBan);
             this.panelControl1.Controls.Add(this.xtraTabControlDanhSach);
@@ -964,7 +966,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 113;
+            this.gridColumn10.Width = 128;
             // 
             // repositoryItemTextEdit1
             // 
@@ -978,7 +980,7 @@
             this.btnXoaHangHoa.Name = "btnXoaHangHoa";
             this.btnXoaHangHoa.Visible = true;
             this.btnXoaHangHoa.VisibleIndex = 8;
-            this.btnXoaHangHoa.Width = 49;
+            this.btnXoaHangHoa.Width = 34;
             // 
             // btnXoaMonAn
             // 
@@ -1207,6 +1209,16 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblTienPhuThu
+            // 
+            this.lblTienPhuThu.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTienPhuThu.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.lblTienPhuThu.Location = new System.Drawing.Point(577, 678);
+            this.lblTienPhuThu.Name = "lblTienPhuThu";
+            this.lblTienPhuThu.Size = new System.Drawing.Size(81, 18);
+            this.lblTienPhuThu.TabIndex = 11;
+            this.lblTienPhuThu.Text = "labelControl6";
+            // 
             // frmBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1356,6 +1368,7 @@
         private DevExpress.XtraEditors.SpinEdit txtGiamGiaDiem;
         private DevExpress.XtraEditors.SpinEdit txtTongGiamGia;
         private DevExpress.XtraEditors.SpinEdit txtGiamGiaHoaDon;
+        private DevExpress.XtraEditors.LabelControl lblTienPhuThu;
 
     }
 }

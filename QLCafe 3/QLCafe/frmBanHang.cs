@@ -49,10 +49,10 @@ namespace QLCafe
             lblDiaChi.Text = DAO_Setting.DiaChiCongTy();
             lblDienThoai.Text = DAO_Setting.DienThoaiCongTy();
             txtTongTien.ReadOnly = true;
-           
+            lblTienPhuThu.Text = "Tiền phụ thu: " + String.Format("{0:N0}", DAO_Setting.LayTienPhuThu()) + " VNĐ (Đã cộng vào khách cần trả)";
             txtKhachCanTra.ReadOnly = true;
             txtTienThoi.ReadOnly = true;
-            txtKhachThanhToan.ReadOnly = true;
+            //txtKhachThanhToan.ReadOnly = true;
             txtTenDangNhap.Text = "Nhân viên: " + frmDangNhap.NguoiDung.Tennguoidung;
             
         }
@@ -266,10 +266,11 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
+           
             //txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-            txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+            txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+            txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
             cmbTenKhachHang.EditValue = DAO_HoaDon.LayIDKhachHang(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtDiemTichLuy.Text = DAO_HoaDon.LayDiemQuyDoiHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGiaDiem.Text = DAO_HoaDon.LayGiamGiaDiem(DAO_BanHang.IDHoaDon(IDBan)).ToString();
@@ -280,14 +281,14 @@ namespace QLCafe
             btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
             btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
             //txtKhachCanTra.ToolTip = "1";
-            txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
-            btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+            txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu() ) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+            btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
         }
         private void btn_Click(object sender, EventArgs e)
         {
             IDBan = ((sender as SimpleButton).Tag as DTO_BAN).Id;
             HienThiHoaDon(IDBan);
-            txtKhachThanhToan.ReadOnly = false;
+            //txtKhachThanhToan.ReadOnly = false;
         }
         private void frmBanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -547,12 +548,14 @@ namespace QLCafe
             {
                 TongTien = TongTien + item.ThanhTien;
             }
-            List<DTO_ChiTietGio> DanhSachGio = DAO_DanhSachGioChuaThanhToan.Instance.GetDanhSachGio(IDHoaDon, IDBan);
-            foreach (DTO_ChiTietGio item in DanhSachGio)
-            {
-                TienGio = TienGio + item.ThanhTien;
-            }
-            DAO_HoaDon.CapNhatTongTien(IDHoaDon, TongTien.ToString(), TongTien.ToString(), TienGio.ToString());
+            float PhuThu = DAO_Setting.LayTienPhuThu();
+            //List<DTO_ChiTietGio> DanhSachGio = DAO_DanhSachGioChuaThanhToan.Instance.GetDanhSachGio(IDHoaDon, IDBan);
+            //foreach (DTO_ChiTietGio item in DanhSachGio)
+            //{
+            //    TienGio = TienGio + item.ThanhTien;
+            //}
+            double TongTienDaCongPhuThu = TongTien + PhuThu;
+            DAO_HoaDon.CapNhatTongTien(IDHoaDon, TongTien.ToString(), TongTienDaCongPhuThu.ToString(), TienGio.ToString(), PhuThu.ToString());
            
         }
         private void gridView1_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
@@ -697,14 +700,14 @@ namespace QLCafe
                         if (insert == true)
                         {
                             // xóa chi tiết hóa đơn temp, cập nhật chi tiết giờ thanh toán  = 1,
-                            if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true && DAO_ChiTietHoaDonChinh.CapNhatChiTietGio(IDHoaDonHT, IDBanHT) == true)
+                            if (DAO_ChiTietHoaDonChinh.XoaChiTietHoaDonTemp(IDHoaDonHT) == true)
                             {
                                 // cập nhật trạng thái hóa đơn đã thanh toán, đổi trạng thái bàn
                                 int IDNhanVien = frmDangNhap.NguoiDung.Id;
                                 double KhachThanhToan = double.Parse(txtKhachThanhToan.Text.ToString());
                                 double TienThua = double.Parse(txtTienThoi.Text.ToString());
                                 double GiamGia = double.Parse(txtGiamGia.Text.ToString());
-                                double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString());
+                                double KhachCanTra = double.Parse(txtKhachCanTra.Text.ToString()) - DAO_Setting.LayTienPhuThu();
                                 string HinhThucThanhToan = cmbHinhThucGiamGia.Text.ToString();
                                 double DiemQuiDoi = double.Parse(txtDiemTichLuy.Text.ToString());
                                 double GiamGiaDiem = double.Parse(txtGiamGiaDiem.Text.ToString());
@@ -714,7 +717,7 @@ namespace QLCafe
                                 string IDKhachHang = "1";
                                 if (cmbTenKhachHang.EditValue != null)
                                     IDKhachHang = cmbTenKhachHang.EditValue.ToString();
-                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), KhachCanTra.ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString(), TyLeGiamGia.ToString()) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
+                                if (DAO_ChiTietHoaDonChinh.CapNhatHoaDonChinh(IDHoaDonHT, IDBanHT, IDNhanVien, KhachThanhToan.ToString(), TienThua.ToString(), (KhachCanTra + DAO_Setting.LayTienPhuThu()).ToString(), HinhThucThanhToan, GiamGia.ToString(), IDKhachHang, DiemQuiDoi.ToString(), GiamGiaDiem.ToString(), GiamGiaHoaDon.ToString(), TongGiamGia.ToString(), TyLeGiamGia.ToString()) == true && DAO.DAO_BAN.XoaBanVeMatDinh(IDBanHT) == true)// thành công
                                 {
                                     // cập nhật điểm tích lũy
                                     if (IDKhachHang != "1")
@@ -1095,10 +1098,10 @@ namespace QLCafe
                         txtGiamGiaDiem.Text = (SoTienDoi * SoDiemCanDoi) + "";
                         txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
                         txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
-                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     }
                     else
                     {
@@ -1133,10 +1136,10 @@ namespace QLCafe
                     txtGiamGia.Text = TienGiam.ToString();
                     txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
                     txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-                    txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                    txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                    txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
-                    btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                    txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                    txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                    txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                    btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     //}
                 }
                 else if (cmbHinhThucGiamGia.Text == "%")
@@ -1150,10 +1153,10 @@ namespace QLCafe
                         txtGiamGia.Text = TienGiamGia.ToString();
                         txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
                         txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
-                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
-                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text)) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                        txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                        txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
+                        btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
                     }
                     else
                     {

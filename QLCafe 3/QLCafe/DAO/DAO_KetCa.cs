@@ -82,7 +82,7 @@ namespace QLCafe.DAO
 
         public static double TongTienHienTai(int IDNhanVien)
         {
-            string sTruyVan = string.Format(@" SELECT (SUM(TongTien)) AS TongTien FROM [CF_HoaDon] WHERE IDNhanVien = {0} AND TrangThai = 1 AND TrangThaiKetCa = 0", IDNhanVien);
+            string sTruyVan = string.Format(@" SELECT (SUM(TongTien + TienPhuThu ) ) AS TongTien FROM [CF_HoaDon] WHERE IDNhanVien = {0} AND TrangThai = 1 AND TrangThaiKetCa = 0", IDNhanVien);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
@@ -98,7 +98,7 @@ namespace QLCafe.DAO
         }
         public static double TongTienGiamGiaHienTai(int IDNhanVien)
         {
-            string sTruyVan = string.Format(@" SELECT (SUM(TongTien - KhachCanTra)) AS TongTienGiamGia FROM [CF_HoaDon] WHERE IDNhanVien = {0} AND TrangThai = 1 AND TrangThaiKetCa = 0", IDNhanVien);
+            string sTruyVan = string.Format(@" SELECT (SUM(TongGiamGia)) AS TongTienGiamGia FROM [CF_HoaDon] WHERE IDNhanVien = {0} AND TrangThai = 1 AND TrangThaiKetCa = 0", IDNhanVien);
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             if (data.Rows.Count > 0)
