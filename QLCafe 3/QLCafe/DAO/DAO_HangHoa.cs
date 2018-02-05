@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace QLCafe.DAO
@@ -25,9 +26,15 @@ namespace QLCafe.DAO
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             return data;
         }
+        public static string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        } 
         public static DataTable DanhSachHangHoaTimKiem(string TenHangHoa)
         {
-            string sTruyVan = string.Format(@"SELECT * FROM [CF_HangHoa] WHERE TenHangHoa LIKE N'%" + TenHangHoa + "%' AND DaXoa = 0 ORDER BY TenHangHoa ASC");
+            string sTruyVan = string.Format(@"SELECT * FROM [CF_HangHoa] WHERE " + convertToUnSign3("TenHangHoa") + " LIKE N'%" + TenHangHoa + "%' AND DaXoa = 0 ORDER BY TenHangHoa ASC");
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
             return data;

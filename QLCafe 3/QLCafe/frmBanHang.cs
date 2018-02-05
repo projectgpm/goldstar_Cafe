@@ -266,21 +266,28 @@ namespace QLCafe
         }
         public void LoadTongTien()
         {
-           
-            //txtTongGiamGia.Text = (float.Parse(txtGiamGia.Text.ToString()) + float.Parse(txtGiamGiaDiem.Text.ToString())) + "";
             txtTongTien.Text = DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
-            txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+            if (DAO_HoaDon.TongTienHoaDon(DAO_BanHang.IDHoaDon(IDBan)) != 0)
+            {
+                txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+                txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + DAO_Setting.LayTienPhuThu() + "";
+            }
+            else
+            {
+                txtKhachCanTra.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+                txtKhachThanhToan.Text = (float.Parse(txtTongTien.Text.ToString()) - float.Parse(txtTongGiamGia.Text.ToString())) + "";
+            }
             cmbTenKhachHang.EditValue = DAO_HoaDon.LayIDKhachHang(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtDiemTichLuy.Text = DAO_HoaDon.LayDiemQuyDoiHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGiaDiem.Text = DAO_HoaDon.LayGiamGiaDiem(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGia.Text = DAO_HoaDon.LayGiamGiaHoaDon(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtGiamGiaHoaDon.Text = DAO_HoaDon.LayTyLeGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
             txtTongGiamGia.Text = DAO_HoaDon.LayTongGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            //cmbHinhThucGiamGia.Text = DAO_HoaDon.LayHinhThucGiamGia(DAO_BanHang.IDHoaDon(IDBan)).ToString();
-            btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
-            btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
-            //txtKhachCanTra.ToolTip = "1";
+           
+            //btnInPhaChe.Text = "In Pha Chế (" + DAO_HoaDon.LaySoInTamPhaChe(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
+            //btnInTam.Text = "In Tạm (" + DAO_HoaDon.LaySoInTamTinh(DAO_BanHang.IDHoaDon(IDBan)).ToString() + ")";
+           
+
             txtKhachCanTra.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu() ) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
             btnThanhToan.ToolTip = "Điểm cộng: " + (double.Parse(txtKhachCanTra.Text) - DAO_Setting.LayTienPhuThu()) / double.Parse(DAO_Setting.LayTienQuiDoiDiem().ToString()) + "";
         }
@@ -385,9 +392,6 @@ namespace QLCafe
                 TinhTongTien(IDHoaDon);
                 HienThiHoaDon(IDBanNhan);
                 DanhSachBan();
-                //gridControlCTHD.DataSource = null;
-                //gridControlCTHD.Refresh();
-              //  MessageBox.Show("Chuyển bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -402,10 +406,6 @@ namespace QLCafe
                 TinhTongTien(IDHoaDon);
                 HienThiHoaDon(IDBan);
                 DanhSachBan();
-                //LoadTongTien();
-                //gridControlCTHD.DataSource = null;
-                //gridControlCTHD.Refresh();
-               // MessageBox.Show("Gọi Món Thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -442,7 +442,6 @@ namespace QLCafe
                 TinhTongTien(IDHoaDonB);
                 gridControlCTHD.DataSource = null;
                 gridControlCTHD.Refresh();
-              //  MessageBox.Show("Tách bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -478,7 +477,6 @@ namespace QLCafe
                 TinhTongTien(IDHoaDon);
                 gridControlCTHD.DataSource = null;
                 gridControlCTHD.Refresh();
-              //  MessageBox.Show("Gộp bàn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
@@ -529,7 +527,6 @@ namespace QLCafe
                         {
                             TinhTongTien(IDHoaDon);
                             HienThiHoaDon(IDban);
-                            //MessageBox.Show("Xóa món ăn thành Công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
@@ -672,6 +669,7 @@ namespace QLCafe
                             //thêm chi tiết hóa đơn chính, - nguyên liệu hàng hóa
                             if (DAO_ChiTietHoaDonChinh.ThemChiTietHoaDonChinh(IDHoaDonHT, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBanHT, MaHangHoa, IDDonViTinh, TrongLuong) == false)
                             {
+                                //thất bại
                                 insert = false;
                             }
                             else
