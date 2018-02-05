@@ -14,16 +14,18 @@ namespace BanHang.Data
     public class dtSetting
     {
 
-        public void CapNhatCauHinh(string CongTy, string DiaChi, string SDT, string SoTienTichLuy, string SoTienQuyDoi, string PhuThuCaFe)
+        public void CapNhatCauHinh(string CongTy, string DiaChi, string SDT, string SoTienTichLuy, string SoTienQuyDoi, string PhuThuCaFe, string PhuThuCaFe_PhanTram, string PhuThuCaFe_ApDung)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [Setting] SET [PhuThuCaFe] = @PhuThuCaFe,[CongTy] = @CongTy,[DiaChi] = @DiaChi ,[SDT] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
+                    string cmdText = "UPDATE [Setting] SET [PhuThuCaFe_PhanTram] = @PhuThuCaFe_PhanTram,[PhuThuCaFe_ApDung] = @PhuThuCaFe_ApDung,[PhuThuCaFe] = @PhuThuCaFe,[CongTy] = @CongTy,[DiaChi] = @DiaChi ,[SDT] = @SDT,[SoTienTichLuy] = @SoTienTichLuy,[SoTienQuyDoi] = @SoTienQuyDoi WHERE ID = 1";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@PhuThuCaFe_PhanTram", PhuThuCaFe_PhanTram);
+                        myCommand.Parameters.AddWithValue("@PhuThuCaFe_ApDung", PhuThuCaFe_ApDung);
                         myCommand.Parameters.AddWithValue("@PhuThuCaFe", PhuThuCaFe);
                         myCommand.Parameters.AddWithValue("@CongTy", CongTy);
                         myCommand.Parameters.AddWithValue("@DiaChi", DiaChi);
