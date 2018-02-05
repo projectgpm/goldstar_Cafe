@@ -372,6 +372,7 @@ namespace QLCafe
                              DAO_ChuyenBan.XoaChiTietBanCu(IDHoaDon, IDBan);
                              foreach (ChiTietHoaDonA1 item in listChiTietMonAn)
                              {
+                                 //thêm chi tiết hóa đơn chính
                                  string MaHang = item.MaHangHoa;
                                  int SoLuong = item.SoLuong;
                                  float DonGia = item.DonGia;
@@ -383,6 +384,7 @@ namespace QLCafe
                                  DAO_GoiMon.ThemChiTietHoaDon(IDHoaDon, IDHangHoa, SoLuong, DonGia, ThanhTien, IDBan, MaHang, IDDonViTinh, TrongLuong, IDMayIn,item.InPhaChe);
                              }
 
+                            //cập nhật hóa đơn
                              DAO_ChiTietHoaDonChinh.CapNhatTongTienHoaDonChinh(Int32.Parse(ID.ToString()), IDBan, TongTien);
                         }
                         

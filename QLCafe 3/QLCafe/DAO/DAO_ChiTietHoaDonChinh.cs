@@ -87,7 +87,7 @@ namespace QLCafe.DAO
         public static object ThemMoiHoaDon(int IDBan, int NhanVien, DateTime GioVao)
         {
             object ID = null;
-            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien,GioRa,NgayBan) OUTPUT INSERTED.ID VALUES ('{0}','{1}',{2},getdate(),getdate())", IDBan, GioVao.ToString("yyyy-MM-dd hh:mm:ss tt"), NhanVien);
+            string sTruyVan = string.Format(@"INSERT INTO CF_HoaDon(IDBan,GioVao,IDNhanVien,GioRa,NgayBan,TienPhuThu) OUTPUT INSERTED.ID VALUES ('{0}','{1}',{2},getdate(),getdate()," + DAO_Setting.LayTienPhuThu() + ")", IDBan, GioVao.ToString("yyyy-MM-dd hh:mm:ss tt"), NhanVien);
             SqlConnection conn = new SqlConnection();
             DAO_ConnectSQL connect = new DAO_ConnectSQL();
             conn = connect.Connect();
@@ -127,7 +127,7 @@ namespace QLCafe.DAO
                 MaHoaDon = dr["Mã Hóa Đơn"].ToString();
             }
 
-            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [MaHoaDon] = N'" + MaHoaDon + "',[TrangThai] = 1,  [TongTien] = {0},[KhachThanhToan] = '{1}',KhachCanTra = '{5}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", TongTien, TongTien, TongTien, IDHoaDon, IDBan, TongTien);
+            string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [MaHoaDon] = N'" + MaHoaDon + "',[TrangThai] = 1,  [TongTien] = {0},[KhachThanhToan] = '{1}',KhachCanTra = '{5}', [TienThua] = '{2}' WHERE [ID] = {3} AND [IDBan] = {4}", TongTien, TongTien + DAO_Setting.LayTienPhuThu(), 0, IDHoaDon, IDBan, TongTien + DAO_Setting.LayTienPhuThu());
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
         public static bool CapNhatTienGioHoaDonChinh(int IDHoaDon, int IDBan, double TienGio)
