@@ -19,10 +19,9 @@ namespace BanHang
         {
             DataTable da = new DataTable();
             da.Columns.Add("SoBanSuDung", typeof(String));
-            da.Columns.Add("TongVon", typeof(float));
-            da.Columns.Add("DoanhThu", typeof(float));
+            da.Columns.Add("TongTien", typeof(float));
             da.Columns.Add("GiamGia", typeof(float));
-            da.Columns.Add("TienHienTai", typeof(float));
+            da.Columns.Add("PhuThu", typeof(float));
             da.Columns.Add("LoiNhuan", typeof(float));
 
             DateTime date = DateTime.Now;
@@ -35,21 +34,23 @@ namespace BanHang
             int SoLuongBan = dtQuanLyCuaHang.SoLuongBan();
             DataTable data = dtQuanLyCuaHang.TongTienHienTai(ngayBD, ngayKT);
             float TongTien = 0;
-            float KhachCanTra = 0;
-            float TongGiaMua = 0;
+            float GiamGia = 0;
+            float PhuThu = 0;
+            float LoiNhuan = 0;
             try
             {
                 if (data.Rows.Count != 0)
                 {
                     TongTien = float.Parse(data.Rows[0]["TongTien"].ToString());
-                    KhachCanTra = float.Parse(data.Rows[0]["KhachCanTra"].ToString());
-                    TongGiaMua = dtQuanLyCuaHang.TongTienVonHienTai(ngayBD, ngayKT);
+                    GiamGia = float.Parse(data.Rows[0]["TongGiamGia"].ToString());
+                    PhuThu = float.Parse(data.Rows[0]["TienPhuThu"].ToString());
+                    LoiNhuan = (TongTien + PhuThu) - GiamGia;
                 }
             }
             catch (Exception) { }
 
 
-            da.Rows.Add(SoLuongBan, TongGiaMua, TongTien, TongTien - KhachCanTra, KhachCanTra, KhachCanTra - TongGiaMua);
+            da.Rows.Add(SoLuongBan, TongTien, GiamGia, PhuThu, LoiNhuan);
 
             gridDanhSachBan.DataSource = da;
             gridDanhSachBan.DataBind();

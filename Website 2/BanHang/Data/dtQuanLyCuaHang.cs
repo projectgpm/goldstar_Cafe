@@ -57,7 +57,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT SUM(TongTien) as TongTien, SUM(TienGio) as TienGio, SUM(KhachCanTra) as KhachCanTra FROM CF_HoaDon WHERE GioVao >= '" + GioBD + "' AND GioVao <= '" + GioKT + "'";
+                string cmdText = "SELECT SUM(TongTien) as TongTien,SUM(TongGiamGia) as TongGiamGia,SUM(TienPhuThu) as TienPhuThu FROM CF_HoaDon WHERE GioVao >= '" + GioBD + "' AND GioVao <= '" + GioKT + "' AND [TrangThai] = 1";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
