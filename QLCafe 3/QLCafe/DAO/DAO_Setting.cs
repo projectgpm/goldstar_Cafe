@@ -58,7 +58,7 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
-        public static float LayTienPhuThu(float TongTienHienTai)
+        public static double LayTienPhuThu(double TongTienHienTai)
         {
             //0 Phu thu $, 1 Phụ thu %, 2 Không tính phụ thu;
             string sTruyVan = string.Format(@"SELECT PhuThuCaFe_ApDung FROM [Setting] WHERE ID = 1 ");
@@ -85,6 +85,7 @@ namespace QLCafe.DAO
                     {
                         DataRow dr = data.Rows[0];
                         return float.Parse(dr["PhuThuCaFe"].ToString());
+                        break;
                     }
                     else
                     {
@@ -98,8 +99,9 @@ namespace QLCafe.DAO
                     if (data.Rows.Count > 0)
                     {
                         DataRow dr = data.Rows[0];
-                        float TylePhanTram =  float.Parse(dr["PhuThuCaFe_PhanTram"].ToString());
+                        double TylePhanTram =  float.Parse(dr["PhuThuCaFe_PhanTram"].ToString());
                         return TongTienHienTai * (TylePhanTram/100);
+                        break;
                     }
                     else
                     {
