@@ -58,20 +58,64 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
-        public static float LayTienPhuThu()
+        public static float LayTienPhuThu(float TongTienHienTai)
         {
-            string sTruyVan = string.Format(@"SELECT PhuThuCaFe FROM [Setting] WHERE ID = 1 ");
+            //0 Phu thu $, 1 Phụ thu %, 2 Không tính phụ thu;
+            string sTruyVan = string.Format(@"SELECT PhuThuCaFe_ApDung FROM [Setting] WHERE ID = 1 ");
             DataTable data = new DataTable();
             data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+            int PhuThuCaFe_ApDung = 0;
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["PhuThuCaFe"].ToString());
+                PhuThuCaFe_ApDung = Int32.Parse(dr["PhuThuCaFe_ApDung"].ToString());
             }
             else
             {
-                return 0;
+                PhuThuCaFe_ApDung = 2;
             }
+
+           switch (PhuThuCaFe_ApDung)
+           {
+                case 0: // phụ thu tiền
+                   sTruyVan = string.Format(@"SELECT PhuThuCaFe FROM [Setting] WHERE ID = 1 ");
+                   data = new DataTable();
+                   data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+                    if (data.Rows.Count > 0)
+                    {
+                        DataRow dr = data.Rows[0];
+                        return float.Parse(dr["PhuThuCaFe"].ToString());
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                   break;
+               case 1:// phụ thu %
+                   sTruyVan = string.Format(@"SELECT PhuThuCaFe_PhanTram FROM [Setting] WHERE ID = 1 ");
+                   data = new DataTable();
+                   data = DataProvider.TruyVanLayDuLieu(sTruyVan);
+                    if (data.Rows.Count > 0)
+                    {
+                        DataRow dr = data.Rows[0];
+                        float TylePhanTram =  float.Parse(dr["PhuThuCaFe_PhanTram"].ToString());
+                        return TongTienHienTai * (TylePhanTram/100);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                   break;
+               case 2:// không phụ thu
+                   return 0;
+                   break;
+               default:
+                   return 0;
+                   break;
+
+
+
+           }
         }
         public static float DiemTichLuy(string IDKhachHang)
         {
