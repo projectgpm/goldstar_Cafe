@@ -98,6 +98,7 @@
                                                 <Items>
                                                     <dx:ListEditItem Text="Phụ Thu ($)" Value="0" />
                                                     <dx:ListEditItem Text="Phụ Thu (%)" Value="1" />
+                                                    <dx:ListEditItem Text="Không áp dụng" Value="2" />
                                                 </Items>
                                                 <ValidationSettings SetFocusOnError="True">
                                                     <RequiredField IsRequired="True" />
