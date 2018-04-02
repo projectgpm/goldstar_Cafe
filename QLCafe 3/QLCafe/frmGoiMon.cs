@@ -99,14 +99,14 @@ namespace QLCafe
             ThemMonAn(dt,0);
             BindGridChiTietHoaDon();
         }
-        public void ThemMonAn(DataTable tbThongTin, float TrongLuong)
+        public void ThemMonAn(DataTable tbThongTin, double TrongLuong)
         {
             int IDBangGia = DAO_GoiMon.LayIDBanGia(IDBan);
             int IDHangHoa = Int32.Parse(tbThongTin.Rows[0]["ID"].ToString());
             string MaHangHoa = tbThongTin.Rows[0]["MaHangHoa"].ToString();
             string TenHangHoa = tbThongTin.Rows[0]["TenHangHoa"].ToString();
             string TenDonViTinh = tbThongTin.Rows[0]["TenDonViTinh"].ToString();
-            float GiaBan = float.Parse(tbThongTin.Rows[0]["GiaBan"].ToString());
+            double GiaBan = double.Parse(tbThongTin.Rows[0]["GiaBan"].ToString());
             if (IDBangGia != 0)
             {
                 GiaBan = DAO_GoiMon.LayGiaBan(IDHangHoa, IDBangGia);
@@ -190,12 +190,12 @@ namespace QLCafe
                         {
                             int IDHangHoa = item.IDHangHoa;
                             int SL = item.SoLuong;
-                            float DonGia = item.DonGia;
-                            float ThanhTien = item.ThanhTien;
+                            double DonGia = item.DonGia;
+                            double ThanhTien = item.ThanhTien;
                             int IdBan = item.IdBan;
                             string MaHangHoa = item.MaHangHoa;
                             int IDDonViTinh = item.IDDonViTinh;
-                            float TrongLuong = item.TrongLuong;
+                            double TrongLuong = item.TrongLuong;
                             int IDMayIn = item.IdMayIn;
                             DAO_GoiMon.ThemChiTietHoaDon(ID, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong, IDMayIn,0);
                         }
@@ -209,11 +209,11 @@ namespace QLCafe
                         int IDHangHoa = item.IDHangHoa;
                         int IdBan = item.IdBan;
                         int SL = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float ThanhTien = item.ThanhTien;
+                        double DonGia = item.DonGia;
+                        double ThanhTien = item.ThanhTien;
                         string MaHangHoa = item.MaHangHoa;
                         int IDDonViTinh = item.IDDonViTinh;
-                        float TrongLuong = item.TrongLuong;
+                        double TrongLuong = item.TrongLuong;
                         int IDMayIn = item.IdMayIn;
                         if (DAO_ChiTietHoaDon.KiemTraHangHoa(IDHoaDon, IDHangHoa, IDBan, TrongLuong) == false)
                         {
@@ -247,9 +247,9 @@ namespace QLCafe
                 get { return idMayIn; }
                 set { idMayIn = value; }
             }
-            private float trongLuong;
+            private double trongLuong;
 
-            public float TrongLuong
+            public double TrongLuong
             {
                 get { return trongLuong; }
                 set { trongLuong = value; }
@@ -278,14 +278,14 @@ namespace QLCafe
                 get { return soLuong; }
                 set { soLuong = value; }
             }
-            private float donGia;
-            public float DonGia
+            private double donGia;
+            public double DonGia
             {
                 get { return donGia; }
                 set { donGia = value; }
             }
-            private float thanhTien;
-            public float ThanhTien
+            private double thanhTien;
+            public double ThanhTien
             {
                 get { return thanhTien; }
                 set { thanhTien = value; }
@@ -330,11 +330,11 @@ namespace QLCafe
                     string MaHangHoa = dt.Rows[0]["MaNguyenLieu"].ToString();
                     string TenHangHoa = dt.Rows[0]["TenNguyenLieu"].ToString();
                     string TenDonViTinh = dt.Rows[0]["TenDonViTinh"].ToString();
-                    float GiaBan = float.Parse(txtDonGiaBan.Text.ToString());
+                    double GiaBan = double.Parse(txtDonGiaBan.Text.ToString());
                     int IDDonViTinh = Int32.Parse(dt.Rows[0]["IDDonViTinh"].ToString());
                     int idban = IDBan;
                     int SL = 1;
-                    float TrongLuong = float.Parse(txtTrongLuongTuChon.Text.ToString());
+                    double TrongLuong = double.Parse(txtTrongLuongTuChon.Text.ToString());
                     //-------------------------------------------
                     int IDMayIn;
                     if (TrongLuong > 0)
@@ -389,7 +389,7 @@ namespace QLCafe
             if (cmbHangHoaTuChon.Text != "Chọn Hàng Hóa")
             {
                 string IDHangHoa = cmbHangHoaTuChon.EditValue.ToString();
-                float GiaBan = DAO_GoiMon.LayGiaBanTuChon(IDHangHoa);
+                double GiaBan = DAO_GoiMon.LayGiaBanTuChon(IDHangHoa);
                 txtDonGiaBan.Text = GiaBan.ToString();
             }
         }

@@ -16,7 +16,7 @@ namespace QLCafe.DAO
         /// <param name="IDHangHoa"></param>
         /// <param name="IDBangGia"></param>
         /// <returns></returns>
-        public static float LayGiaBanTuChon(string IDNguyenLieu)
+        public static double LayGiaBanTuChon(string IDNguyenLieu)
         {
             string sTruyVan = string.Format(@"SELECT GiaBan FROM [CF_NguyenLieu] WHERE ID = {0}", IDNguyenLieu);
             DataTable data = new DataTable();
@@ -24,7 +24,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["GiaBan"].ToString());
+                return double.Parse(dr["GiaBan"].ToString());
             }
             return -1;
         }
@@ -33,7 +33,7 @@ namespace QLCafe.DAO
         /// </summary>
         /// <param name="IDBan"></param>
         /// <returns></returns>
-        public static float LayGiaBan(int IDHangHoa, int IDBangGia)
+        public static double LayGiaBan(int IDHangHoa, int IDBangGia)
         {
             string sTruyVan = string.Format(@"SELECT GiaMoi FROM [CF_ChiTietBangGia] WHERE IDBangGia = {0} AND IDHangHoa = {1}", IDBangGia, IDHangHoa);
             DataTable data = new DataTable();
@@ -41,7 +41,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["GiaMoi"].ToString());
+                return double.Parse(dr["GiaMoi"].ToString());
             }
             return -1;
         }
@@ -173,12 +173,12 @@ namespace QLCafe.DAO
         }
 
 
-        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, float DonGia, float ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float TrongLuong, int IDMayIn, int InPhaChe)
+        public static bool ThemChiTietHoaDon(object IDHoaDon, int IDHangHoa, int SL, double DonGia, double ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, double TrongLuong, int IDMayIn, int InPhaChe)
         {
             string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon_Temp(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrongLuong,IDMayIn,InPhaChe) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong, IDMayIn, InPhaChe);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool CapNhatChiTietHoaDon(int IDHoaDon, int SL, float ThanhTien, int IDHangHoa, int IDBan, int InPhaChe)
+        public static bool CapNhatChiTietHoaDon(int IDHoaDon, int SL, double ThanhTien, int IDHangHoa, int IDBan, int InPhaChe)
         {
             string sTruyVan = string.Format(@"UPDATE CF_ChiTietHoaDon_Temp SET [InPhaChe] = InPhaChe + {5},[SoLuong] =  SoLuong + {0}, [ThanhTien] = [ThanhTien] + {1} WHERE [IDHoaDon] = {2} AND [IDHangHoa] = {3} AND [IDBan] = {4}", SL, ThanhTien, IDHoaDon, IDHangHoa, IDBan, InPhaChe);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);

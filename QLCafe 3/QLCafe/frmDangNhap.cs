@@ -169,6 +169,11 @@ namespace QLCafe
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
             txtTenDangNhap.Select();
+            //if (DAO_Setting.getKeyCode() != -1)
+            //{
+            //   // linkCauHinh.Visible = false;
+            //    frmCauHinhHeThong
+            //}
         }
 
         private void ckeHienMatKhau_CheckedChanged(object sender, EventArgs e)
@@ -202,6 +207,14 @@ namespace QLCafe
             {
                 DangNhap();
             }
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+            frmCauHinhHeThong fr = new frmCauHinhHeThong();
+            this.Hide();
+            fr.ShowDialog();
+            this.Show();
         }
 
 

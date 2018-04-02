@@ -44,15 +44,15 @@ namespace QLCafe.DTO
             get { return cMND; }
             set { cMND = value; }
         }
-        private float diemTichLuy;
+        private double diemTichLuy;
 
-        public float DiemTichLuy
+        public double DiemTichLuy
         {
             get { return diemTichLuy; }
             set { diemTichLuy = value; }
         }
 
-        public DTO_KhachHang(int getId, string getmakhachhang, string gettenkhachhang, string getdienthoai, string getCMND, float getdiemtichluy)
+        public DTO_KhachHang(int getId, string getmakhachhang, string gettenkhachhang, string getdienthoai, string getCMND, double getdiemtichluy)
         {
             this.ID = getId;
             this.MaKhachHang = getmakhachhang;
@@ -68,7 +68,7 @@ namespace QLCafe.DTO
             this.TenKhachHang = dr["TenKhachHang"].ToString();
             this.DienThoai = dr["DienThoai"].ToString();
             this.CMND = dr["CMND"].ToString();
-            this.DiemTichLuy = float.Parse(dr["DiemTichLuy"].ToString());
+            this.DiemTichLuy = double.Parse(dr["DiemTichLuy"].ToString());
         }
     }
 }

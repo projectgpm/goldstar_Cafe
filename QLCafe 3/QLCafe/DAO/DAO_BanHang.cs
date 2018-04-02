@@ -43,7 +43,7 @@ namespace QLCafe.DAO
            string sTruyVan = string.Format(@"UPDATE [CF_ChiTietGio] SET [GioBatDau] = '{0}' WHERE [IDHoaDon] = {1}  AND [ID] = {2} AND [IDBan] = {3}", GioBatDau.ToString("yyyy-MM-dd H:mm:ss tt") ,IDHoaDon,IDGio, IDBan);
            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
        }
-       public static bool ThemChiTietGio(object IDHoaDon, DateTime GioBatDau, float DonGia, int IDBan)
+       public static bool ThemChiTietGio(object IDHoaDon, DateTime GioBatDau, double DonGia, int IDBan)
        {
            string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietGio(IDHoaDon,GioBatDau,DonGia,IDBan) VALUES ('{0}','{1}','{2}','{3}')", IDHoaDon, GioBatDau.ToString("yyyy-MM-dd H:mm:ss tt"), DonGia, IDBan);
            return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);

@@ -80,7 +80,7 @@ namespace QLCafe.DTO
             set { thanhToan = value; }
         }
         public DTO_ChiTietGio() { }
-        public DTO_ChiTietGio(int getID, DateTime getGioBD, DateTime getGioKT, string getGioChoi, float getDonGia, float getThanhTien, int getIDBan, int getIDHoaDon, int getTrangThai, int getThanhToan)
+        public DTO_ChiTietGio(int getID, DateTime getGioBD, DateTime getGioKT, string getGioChoi, double getDonGia, double getThanhTien, int getIDBan, int getIDHoaDon, int getTrangThai, int getThanhToan)
         {
             this.ID = getID;
             this.GioBatDau = getGioBD;

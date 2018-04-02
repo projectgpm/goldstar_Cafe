@@ -38,7 +38,7 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
-        //public static float LayGiaTheoKhuVuc(int IDKhuVuc)
+        //public static double LayGiaTheoKhuVuc(int IDKhuVuc)
         //{
         //    string sTruyVan = string.Format(@"SELECT GiaKhuVuc FROM [CF_KhuVuc] WHERE [ID] = {0} ", IDKhuVuc);
         //    DataTable data = new DataTable();
@@ -46,7 +46,7 @@ namespace QLCafe.DAO
         //    if (data.Rows.Count > 0)
         //    {
         //        DataRow dr = data.Rows[0];
-        //        return float.Parse(dr["GiaKhuVuc"].ToString());
+        //        return double.Parse(dr["GiaKhuVuc"].ToString());
         //    }
         //    return 0;
         //}

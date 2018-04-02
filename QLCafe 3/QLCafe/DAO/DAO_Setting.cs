@@ -13,7 +13,7 @@ namespace QLCafe.DAO
 {
     class DAO_Setting
     {
-        public static float LayTienQuiDoiDiem()
+        public static double LayTienQuiDoiDiem()
         {
             string sTruyVan = string.Format(@"SELECT SoTienTichLuy FROM [GPM_Setting] ");
             DataTable data = new DataTable();
@@ -21,7 +21,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["SoTienTichLuy"].ToString());
+                return double.Parse(dr["SoTienTichLuy"].ToString());
             }
             else
             {
@@ -43,7 +43,7 @@ namespace QLCafe.DAO
                 return 0;
             }
         }
-        public static float LayDiemQuyDoiTien()
+        public static double LayDiemQuyDoiTien()
         {
             string sTruyVan = string.Format(@"SELECT SoTienQuyDoi FROM [GPM_Setting] ");
             DataTable data = new DataTable();
@@ -51,7 +51,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["SoTienQuyDoi"].ToString());
+                return double.Parse(dr["SoTienQuyDoi"].ToString());
             }
             else
             {
@@ -84,7 +84,7 @@ namespace QLCafe.DAO
                     if (data.Rows.Count > 0)
                     {
                         DataRow dr = data.Rows[0];
-                        return float.Parse(dr["PhuThuCaFe"].ToString());
+                        return double.Parse(dr["PhuThuCaFe"].ToString());
                         break;
                     }
                     else
@@ -99,7 +99,7 @@ namespace QLCafe.DAO
                     if (data.Rows.Count > 0)
                     {
                         DataRow dr = data.Rows[0];
-                        double TylePhanTram =  float.Parse(dr["PhuThuCaFe_PhanTram"].ToString());
+                        double TylePhanTram =  double.Parse(dr["PhuThuCaFe_PhanTram"].ToString());
                         return TongTienHienTai * (TylePhanTram/100);
                         break;
                     }
@@ -119,7 +119,7 @@ namespace QLCafe.DAO
 
            }
         }
-        public static float DiemTichLuy(string IDKhachHang)
+        public static double DiemTichLuy(string IDKhachHang)
         {
             string sTruyVan = string.Format(@"SELECT DiemTichLuy FROM [GPM_KhachHang] WHERE [ID] = {0}", IDKhachHang);
             DataTable data = new DataTable();
@@ -127,7 +127,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["DiemTichLuy"].ToString());
+                return double.Parse(dr["DiemTichLuy"].ToString());
             }
             else
             {
@@ -275,7 +275,7 @@ namespace QLCafe.DAO
             else
                 return 0;
         }
-        public static float LayGiaBanTheoKhuVuc(int IDBan)
+        public static double LayGiaBanTheoKhuVuc(int IDBan)
         {
             string sTruyVan = string.Format(@"SELECT [CF_KhuVuc].GiaKhuVuc FROM [CF_Ban],[CF_KhuVuc] WHERE [CF_KhuVuc].ID =  [CF_Ban].IDKhuVuc AND [CF_Ban].ID = {0} ", IDBan);
             DataTable data = new DataTable();
@@ -283,7 +283,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["GiaKhuVuc"].ToString());
+                return double.Parse(dr["GiaKhuVuc"].ToString());
             }
             else
                 return 0;
@@ -561,7 +561,7 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"INSERT INTO [CF_LichSuQuanLy](IDChiNhanh,IDNhom,IDNguoiDung,Menu,HanhDong,ThoiGian) VALUES ('{0}','{1}','{2}',N'{3}',N'{4}',getdate())", IDChiNhanh, IDNhom, IDNhanVien, Menu, HanhDong);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        //public static float LayDiemQuyDoiTien()
+        //public static double LayDiemQuyDoiTien()
         //{
         //    string sTruyVan = string.Format(@"SELECT SoTienQuyDoi FROM [GPM_Setting] ");
         //    DataTable data = new DataTable();
@@ -569,7 +569,7 @@ namespace QLCafe.DAO
         //    if (data.Rows.Count > 0)
         //    {
         //        DataRow dr = data.Rows[0];
-        //        return float.Parse(dr["SoTienQuyDoi"].ToString());
+        //        return double.Parse(dr["SoTienQuyDoi"].ToString());
         //    }
         //    else
         //    {
@@ -577,7 +577,7 @@ namespace QLCafe.DAO
         //    }
         //}
 
-        //public static float LayTienQuyDoiDiem()
+        //public static double LayTienQuyDoiDiem()
         //{
         //    string sTruyVan = string.Format(@"SELECT SoTienTichLuy FROM [GPM_Setting] ");
         //    DataTable data = new DataTable();
@@ -585,12 +585,12 @@ namespace QLCafe.DAO
         //    if (data.Rows.Count > 0)
         //    {
         //        DataRow dr = data.Rows[0];
-        //        return float.Parse(dr["SoTienTichLuy"].ToString());
+        //        return double.Parse(dr["SoTienTichLuy"].ToString());
         //    }
         //    return 0;
         //}
 
-        //public static float DiemTichLuy(string IDKhachHang)
+        //public static double DiemTichLuy(string IDKhachHang)
         //{
         //    string sTruyVan = string.Format(@"SELECT DiemTichLuy FROM [GPM_KhachHang] WHERE [ID] = {0}", IDKhachHang);
         //    DataTable data = new DataTable();
@@ -598,7 +598,7 @@ namespace QLCafe.DAO
         //    if (data.Rows.Count > 0)
         //    {
         //        DataRow dr = data.Rows[0];
-        //        return float.Parse(dr["DiemTichLuy"].ToString());
+        //        return double.Parse(dr["DiemTichLuy"].ToString());
         //    }
         //    else
         //    {

@@ -39,7 +39,7 @@ namespace QLCafe.DAO
             return -1;
         }
 
-        public static float TongTienHoaDon(int IDHoaDon)
+        public static double TongTienHoaDon(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT TongTien FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -47,11 +47,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["TongTien"].ToString());
+                return double.Parse(dr["TongTien"].ToString());
             }
             return 0;
         }
-        public static float LayDiemQuyDoiHoaDon(int IDHoaDon)
+        public static double LayDiemQuyDoiHoaDon(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT DiemQuiDoi FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -59,11 +59,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["DiemQuiDoi"].ToString());
+                return double.Parse(dr["DiemQuiDoi"].ToString());
             }
             return 0;
         }
-        public static float LayGiamGiaDiem(int IDHoaDon)
+        public static double LayGiamGiaDiem(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT GiamGiaDiem FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -71,11 +71,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["GiamGiaDiem"].ToString());
+                return double.Parse(dr["GiamGiaDiem"].ToString());
             }
             return 0;
         }
-        public static float LayGiamGiaHoaDon(int IDHoaDon)
+        public static double LayGiamGiaHoaDon(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT GiamGiaHoaDon FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -83,11 +83,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["GiamGiaHoaDon"].ToString());
+                return double.Parse(dr["GiamGiaHoaDon"].ToString());
             }
             return 0;
         }
-        public static float LayTongGiamGia(int IDHoaDon)
+        public static double LayTongGiamGia(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT TongGiamGia FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -95,11 +95,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["TongGiamGia"].ToString());
+                return double.Parse(dr["TongGiamGia"].ToString());
             }
             return 0;
         }
-        public static float LayTyLeGiamGia(int IDHoaDon)
+        public static double LayTyLeGiamGia(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT TyLeGiamGia FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -107,7 +107,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["TyLeGiamGia"].ToString());
+                return double.Parse(dr["TyLeGiamGia"].ToString());
             }
             return 0;
         }
@@ -160,7 +160,7 @@ namespace QLCafe.DAO
             }
             return 1;
         }
-        public static float TongTienGio(int IDHoaDon)
+        public static double TongTienGio(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT TienGio FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -168,11 +168,11 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["TienGio"].ToString());
+                return double.Parse(dr["TienGio"].ToString());
             }
             return 0;
         }
-        public static float KhachCanTra(int IDHoaDon)
+        public static double KhachCanTra(int IDHoaDon)
         {
             string sTruyVan = string.Format(@"SELECT KhachCanTra FROM [CF_HoaDon] WHERE ID = {0} ", IDHoaDon);
             DataTable data = new DataTable();
@@ -180,7 +180,7 @@ namespace QLCafe.DAO
             if (data.Rows.Count > 0)
             {
                 DataRow dr = data.Rows[0];
-                return float.Parse(dr["KhachCanTra"].ToString());
+                return double.Parse(dr["KhachCanTra"].ToString());
             }
             return 0;
         }

@@ -30,9 +30,9 @@ namespace QLCafe.DTO
             get { return tenHangHoa; }
             set { tenHangHoa = value; }
         }
-        private float giaBan;
+        private double giaBan;
 
-        public float GiaBan
+        public double GiaBan
         {
             get { return giaBan; }
             set { giaBan = value; }
@@ -52,7 +52,7 @@ namespace QLCafe.DTO
             set { iDNhomHang = value; }
         }
 
-        public DTO_HangHoa(int getID, string getMaHangHoa, string getTenHangHoa, float getGiaBan, int getIDDVT, int getIDNhomHang)
+        public DTO_HangHoa(int getID, string getMaHangHoa, string getTenHangHoa, double getGiaBan, int getIDDVT, int getIDNhomHang)
         {
             this.ID = getID;
             this.MaHangHoa = getMaHangHoa;
@@ -66,7 +66,7 @@ namespace QLCafe.DTO
             this.ID = (int)dr["ID"];
             this.MaHangHoa = dr["MaHangHoa"].ToString();
             this.TenHangHoa = dr["TenHangHoa"].ToString();
-            this.GiaBan = float.Parse(dr["GiaBan"].ToString());
+            this.GiaBan = double.Parse(dr["GiaBan"].ToString());
             this.IDDonViTinh = (int)dr["IDDonViTinh"];
             this.IDNhomHang = (int)dr["IDNhomHang"];
         }

@@ -32,7 +32,7 @@ namespace QLCafe.DAO
             return list;
         }
 
-        public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan, float TrongLuong)
+        public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan, double TrongLuong)
         {
             string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon_Temp] WHERE IDBan = {0} AND  IDHangHoa = {1} AND [IDHoaDon] = {2} AND TrongLuong = {3}", IDBan, IDHangHoa, IDHoaDon, TrongLuong);
             DataTable data = new DataTable();

@@ -65,49 +65,49 @@ namespace QLCafe.DTO
             get { return iDNhanVien; }
             set { iDNhanVien = value; }
         }
-        private float tongTien;
+        private double tongTien;
 
-        public float TongTien
+        public double TongTien
         {
             get { return tongTien; }
             set { tongTien = value; }
         }
-        private float giamGia;
+        private double giamGia;
 
-        public float GiamGia
+        public double GiamGia
         {
             get { return giamGia; }
             set { giamGia = value; }
         }
-        private float khachCanTra;
+        private double khachCanTra;
 
-        public float KhachCanTra
+        public double KhachCanTra
         {
             get { return khachCanTra; }
             set { khachCanTra = value; }
         }
-        private float khachThanhToan;
+        private double khachThanhToan;
 
-        public float KhachThanhToan
+        public double KhachThanhToan
         {
             get { return khachThanhToan; }
             set { khachThanhToan = value; }
         }
-        private float tienThua;
+        private double tienThua;
 
-        public float TienThua
+        public double TienThua
         {
             get { return tienThua; }
             set { tienThua = value; }
         }
-        private float tienGio;
+        private double tienGio;
 
-        public float TienGio
+        public double TienGio
         {
             get { return tienGio; }
             set { tienGio = value; }
         }
-        public DTO_HoaDon(int getid, DateTime? getgiovao, DateTime? getgiora, int getidban, int gettrangthai, float getTienGio, string getmahoadon, int getidnhanvien, float gettongtien, float getgiamgia, float getkhachcantra, float getkhachthanhtoan, float gettienthua)
+        public DTO_HoaDon(int getid, DateTime? getgiovao, DateTime? getgiora, int getidban, int gettrangthai, double getTienGio, string getmahoadon, int getidnhanvien, double gettongtien, double getgiamgia, double getkhachcantra, double getkhachthanhtoan, double gettienthua)
         {
             this.ID = getid;
             this.GioRa = getgiora;
@@ -139,12 +139,12 @@ namespace QLCafe.DTO
             var IDNV = dr["IDNhanVien"];
             if(IDNV.ToString() !="")
                 this.IDNhanVien = (int)IDNV;
-            this.TongTien = float.Parse(dr["TongTien"].ToString());
-            this.GiamGia = float.Parse(dr["GiamGia"].ToString());
-            this.KhachCanTra = float.Parse(dr["KhachCanTra"].ToString());
-            this.KhachThanhToan = float.Parse(dr["KhachThanhToan"].ToString());
-            this.TienThua = float.Parse(dr["TienThua"].ToString());
-            this.TienGio = float.Parse(dr["TienGio"].ToString());
+            this.TongTien = double.Parse(dr["TongTien"].ToString());
+            this.GiamGia = double.Parse(dr["GiamGia"].ToString());
+            this.KhachCanTra = double.Parse(dr["KhachCanTra"].ToString());
+            this.KhachThanhToan = double.Parse(dr["KhachThanhToan"].ToString());
+            this.TienThua = double.Parse(dr["TienThua"].ToString());
+            this.TienGio = double.Parse(dr["TienGio"].ToString());
         }
     }
 }

@@ -36,7 +36,7 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"INSERT INTO [GPM_LichSuQuyDoiDiem]([IDKhachHang],[SoDiemCu],[SoDiemMoi],[NoiDung],[Ngay],[HinhThuc]) VALUES('{0}','{1}','{2}',N'Thanh toán Nhà hàng - Cafe',getdate(),N'Cộng')", IDKhachHang, DiemCu, (double.Parse(DiemCu) + double.Parse(DiemTichLuy)).ToString());
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool ThemChiTietHoaDonChinh(int IDHoaDon, int IDHangHoa, int SL, double DonGia, double ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, float TrongLuong)
+        public static bool ThemChiTietHoaDonChinh(int IDHoaDon, int IDHangHoa, int SL, double DonGia, double ThanhTien, int IDBan, string MaHangHoa, int IDDonViTinh, double TrongLuong)
         {
             string sTruyVan = string.Format(@"INSERT INTO CF_ChiTietHoaDon(IDHoaDon,IDHangHoa,SoLuong,DonGia,ThanhTien,IDBan,MaHangHoa,IDDonViTinh,TrongLuong) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", IDHoaDon, IDHangHoa, SL, DonGia, ThanhTien, IDBan, MaHangHoa, IDDonViTinh, TrongLuong);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
@@ -135,7 +135,7 @@ namespace QLCafe.DAO
             string sTruyVan = string.Format(@"UPDATE [CF_HoaDon] SET [TrangThai] = 1,  [TienGio] = {0} WHERE [ID] = {1} AND [IDBan] = {2}", TienGio, IDHoaDon, IDBan);
             return DataProvider.TruyVanKhongLayDuLieu(sTruyVan);
         }
-        public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan, float TrongLuong)
+        public static bool KiemTraHangHoa(int IDHoaDon, int IDHangHoa, int IDBan, double TrongLuong)
         {
             string sTruyVan = string.Format(@"SELECT * FROM [CF_ChiTietHoaDon] WHERE IDBan = {0} AND IDHangHoa = {1} AND [IDHoaDon] = {2} AND TrongLuong = '{3}'", IDBan, IDHangHoa, IDHoaDon, TrongLuong);
             DataTable data = new DataTable();

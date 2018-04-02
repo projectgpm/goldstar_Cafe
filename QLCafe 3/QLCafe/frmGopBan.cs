@@ -276,10 +276,10 @@ namespace QLCafe
                     foreach (ChiTietHoaDonB1 item in listChiTietHoaDonB1)
                     {
                         string MaHang = item.MaHangHoa;
-                        float TrongLuong = item.TrongLuong;
+                        double TrongLuong = item.TrongLuong;
                         int SL = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float ThanhTien = item.ThanhTien;
+                        double DonGia = item.DonGia;
+                        double ThanhTien = item.ThanhTien;
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
@@ -313,10 +313,10 @@ namespace QLCafe
                     foreach (ChiTietHoaDonA1 item in listChiTietHoaDonA1)
                     {
                         string MaHang = item.MaHangHoa;
-                        float TrongLuong = item.TrongLuong;
+                        double TrongLuong = item.TrongLuong;
                         int SL = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float ThanhTien = item.ThanhTien;
+                        double DonGia = item.DonGia;
+                        double ThanhTien = item.ThanhTien;
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
@@ -352,24 +352,24 @@ namespace QLCafe
                 get { return inPhaChe; }
                 set { inPhaChe = value; }
             }
-            private float trongLuong;
+            private double trongLuong;
 
-            public float TrongLuong
+            public double TrongLuong
             {
                 get { return trongLuong; }
                 set { trongLuong = value; }
             }
-            private float thanhTien;
+            private double thanhTien;
 
-            public float ThanhTien
+            public double ThanhTien
             {
                 get { return thanhTien; }
                 set { thanhTien = value; }
             }
 
-            private float donGia;
+            private double donGia;
 
-            public float DonGia
+            public double DonGia
             {
                 get { return donGia; }
                 set { donGia = value; }
@@ -427,24 +427,24 @@ namespace QLCafe
                 get { return iDMayIn; }
                 set { iDMayIn = value; }
             }
-            private float trongLuong;
+            private double trongLuong;
 
-            public float TrongLuong
+            public double TrongLuong
             {
                 get { return trongLuong; }
                 set { trongLuong = value; }
             }
-            private float thanhTien;
+            private double thanhTien;
 
-            public float ThanhTien
+            public double ThanhTien
             {
                 get { return thanhTien; }
                 set { thanhTien = value; }
             }
 
-            private float donGia;
+            private double donGia;
 
-            public float DonGia
+            public double DonGia
             {
                 get { return donGia; }
                 set { donGia = value; }

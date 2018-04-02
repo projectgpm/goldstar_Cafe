@@ -50,9 +50,9 @@ namespace QLCafe
                     string TenHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[1]).ToString();
                     string MaHangHoa = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[0]).ToString();
                     string DonViTinh = gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[2]).ToString();
-                    float DonGia = float.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[4]).ToString());
+                    double DonGia = double.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[4]).ToString());
                     int IDHoaDon = DAO_BanHang.IDHoaDon(IDBan);
-                    float TrongLuong = float.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[6]).ToString());
+                    double TrongLuong = double.Parse(gridViewA.GetRowCellValue(gridViewA.FocusedRowHandle, gridViewA.Columns[6]).ToString());
                     if (SoLuongA == SoLuong)
                     {
                         int dongHienTai = gridViewA.FocusedRowHandle;
@@ -315,11 +315,11 @@ namespace QLCafe
                 {
                     foreach (ChiTietHoaDonA1 item in listChiTietHoaDonA1)
                     {
-                        float TrongLuong = item.TrongLuong;
+                        double TrongLuong = item.TrongLuong;
                         string MaHang = item.MaHangHoa;
                         int SoLuong = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
+                        double DonGia = item.DonGia;
+                        double ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         int IDMayIn = TrongLuong > 0 ? DAO_GoiMon.LayIDMayInNguyenLieu(IDHangHoa) : DAO_GoiMon.LayIDMayInHangHoa(IDHangHoa);
@@ -330,9 +330,9 @@ namespace QLCafe
                     {
                         string MaHang = item.MaHangHoa;
                         int SoLuong = item.SoLuong;
-                        float DonGia = item.DonGia;
-                        float TrongLuong = item.TrongLuong;
-                        float ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
+                        double DonGia = item.DonGia;
+                        double TrongLuong = item.TrongLuong;
+                        double ThanhTien = TrongLuong > 0 ? (SoLuong * (TrongLuong * DonGia)) : (SoLuong * DonGia);
                         int IDHangHoa = TrongLuong > 0 ? DAO_Setting.LayIDHangHoaTuChon(MaHang) : DAO_Setting.LayIDHangHoa(MaHang);
                         int IDDonViTinh = TrongLuong > 0 ? DAO_Setting.LayIDDonViTinhTuChon(MaHang) : DAO_Setting.LayIDDonViTinh(MaHang);
                         // xóa B. Lưu lại B.
@@ -376,24 +376,24 @@ namespace QLCafe
                 get { return iDMayIn; }
                 set { iDMayIn = value; }
             }
-            private float trongLuong;
+            private double trongLuong;
 
-            public float TrongLuong
+            public double TrongLuong
             {
                 get { return trongLuong; }
                 set { trongLuong = value; }
             }
-            private float thanhTien;
+            private double thanhTien;
 
-            public float ThanhTien
+            public double ThanhTien
             {
                 get { return thanhTien; }
                 set { thanhTien = value; }
             }
 
-            private float donGia;
+            private double donGia;
 
-            public float DonGia
+            public double DonGia
             {
                 get { return donGia; }
                 set { donGia = value; }
@@ -444,24 +444,24 @@ namespace QLCafe
                 get { return iDMayIn; }
                 set { iDMayIn = value; }
             }
-            private float trongLuong;
+            private double trongLuong;
 
-            public float TrongLuong
+            public double TrongLuong
             {
                 get { return trongLuong; }
                 set { trongLuong = value; }
             }
-            private float thanhTien;
+            private double thanhTien;
 
-            public float ThanhTien
+            public double ThanhTien
             {
                 get { return thanhTien; }
                 set { thanhTien = value; }
             }
 
-            private float donGia;
+            private double donGia;
 
-            public float DonGia
+            public double DonGia
             {
                 get { return donGia; }
                 set { donGia = value; }

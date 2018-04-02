@@ -23,17 +23,17 @@ namespace QLCafe.DTO
             get { return iDMayIn; }
             set { iDMayIn = value; }
         }
-        private float thanhTien;
+        private double thanhTien;
 
-        public float ThanhTien
+        public double ThanhTien
         {
             get { return thanhTien; }
             set { thanhTien = value; }
         }
 
-        private float donGia;
+        private double donGia;
 
-        public float DonGia
+        public double DonGia
         {
             get { return donGia; }
             set { donGia = value; }
@@ -66,9 +66,9 @@ namespace QLCafe.DTO
             get { return maHangHoa; }
             set { maHangHoa = value; }
         }
-        private float trongLuong;
+        private double trongLuong;
 
-        public float TrongLuong
+        public double TrongLuong
         {
             get { return trongLuong; }
             set { trongLuong = value; }
@@ -98,7 +98,7 @@ namespace QLCafe.DTO
             set { ghiChu = value; }
         }
 
-        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, float getDonGia, float getThanhTien, float getTrongLuong, int getID, int getTrangThai, string getGhiChu, int getIDMayIn, int getInPhaChe)
+        public DTO_DanhSachMenu(string getMaHangHoa, string getTenHangHoa, string getTenDonViTinh, int getSL, double getDonGia, double getThanhTien, double getTrongLuong, int getID, int getTrangThai, string getGhiChu, int getIDMayIn, int getInPhaChe)
         {
             this.MaHangHoa = getMaHangHoa;
             this.TenHangHoa = getTenHangHoa;
@@ -120,9 +120,9 @@ namespace QLCafe.DTO
             this.TenHangHoa = dr["TenHangHoa"].ToString();
             this.DonViTinh = dr["TenDonViTinh"].ToString();
             this.SoLuong = Int32.Parse(dr["SoLuong"].ToString());
-            this.DonGia = float.Parse(dr["DonGia"].ToString());
-            this.ThanhTien = float.Parse(dr["ThanhTien"].ToString());
-            this.TrongLuong = float.Parse(dr["TrongLuong"].ToString());
+            this.DonGia = double.Parse(dr["DonGia"].ToString());
+            this.ThanhTien = double.Parse(dr["ThanhTien"].ToString());
+            this.TrongLuong = double.Parse(dr["TrongLuong"].ToString());
             this.ID = Int32.Parse(dr["ID"].ToString());
             this.TrangThai = Int32.Parse(dr["TrangThai"].ToString());
             this.IDMayIn = Int32.Parse(dr["IDMayIn"].ToString());

@@ -90,10 +90,10 @@ namespace QLCafe
             db.Columns.Add("MaHangHoa", typeof(string));
             db.Columns.Add("TenHangHoa", typeof(string));
             db.Columns.Add("DonViTinh", typeof(string));
-            db.Columns.Add("TrongLuong", typeof(float));
+            db.Columns.Add("TrongLuong", typeof(double));
             db.Columns.Add("SoLuong", typeof(int));
-            db.Columns.Add("DonGia", typeof(float));
-            db.Columns.Add("ThanhTien", typeof(float));
+            db.Columns.Add("DonGia", typeof(double));
+            db.Columns.Add("ThanhTien", typeof(double));
             db.Columns.Add("ID", typeof(int));
             foreach (DTO_DanhSachMenu item in MonAnThuong)
             {
@@ -140,10 +140,10 @@ namespace QLCafe
             db.Columns.Add("MaHangHoa", typeof(string));
             db.Columns.Add("TenHangHoa", typeof(string));
             db.Columns.Add("DonViTinh", typeof(string));
-            db.Columns.Add("TrongLuong", typeof(float));
+            db.Columns.Add("TrongLuong", typeof(double));
             db.Columns.Add("SoLuong", typeof(int));
-            db.Columns.Add("DonGia", typeof(float));
-            db.Columns.Add("ThanhTien", typeof(float));
+            db.Columns.Add("DonGia", typeof(double));
+            db.Columns.Add("ThanhTien", typeof(double));
             db.Columns.Add("ID", typeof(int));
             foreach (DTO_DanhSachMenu item in MonAnThuong)
             {

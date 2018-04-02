@@ -45,6 +45,7 @@
             this.themes = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.btnDangNhap = new DevExpress.XtraEditors.SimpleButton();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckeHienMatKhau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDangNhap.Properties)).BeginInit();
@@ -212,11 +213,21 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(2, 242);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(4, 13);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = ".";
+            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 255);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.linkLienHe);
@@ -260,6 +271,7 @@
         private DevExpress.XtraEditors.TextEdit txtMatKhau;
         private DevExpress.XtraEditors.TextEdit txtTenDangNhap;
         private DevExpress.XtraEditors.CheckEdit ckeHienMatKhau;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
 
 
     }

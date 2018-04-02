@@ -46,9 +46,8 @@ namespace QLCafe
                 double TongTien = DAO_KetCa.TongTienHienTai(IDNhanVien);
                 double GiamGia = DAO_KetCa.TongTienGiamGiaHienTai(IDNhanVien);
                 double ThanhTien = TongTien - GiamGia; 
-                string GioVaoCa = DAO_KetCa.GioVaoCa(IDNhanVien, DateTime.Now);
-                string GioRaCa = DAO_KetCa.GioRaCa(IDNhanVien, DateTime.Now);
-                if (DAO_KetCa.ThemKetCa(IDNhanVien, GioVaoCa, GioRaCa, ThanhTien, frmDangNhap.NguoiDung.Idchinhanh, TongTien, GiamGia) == true)
+                string GioVaoCa = DAO_KetCa.GioVaoCa(IDNhanVien);
+                if (DAO_KetCa.ThemKetCa(IDNhanVien, GioVaoCa, ThanhTien, frmDangNhap.NguoiDung.Idchinhanh, TongTien, GiamGia) == true)
                 {
                     // đổi trạng thái hóa đơn kết ca  = 1
                     DAO_Setting.ThemLichSuTruyCap(frmDangNhap.NguoiDung.Id, frmDangNhap.NguoiDung.IDNhomNguoiDung, frmDangNhap.NguoiDung.Idchinhanh, "Kết Ca", "Nhân Viên Kết Ca Bán Hàng");
